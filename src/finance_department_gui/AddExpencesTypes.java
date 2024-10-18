@@ -42,11 +42,11 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        signOutButtonPanal = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         ExpencesTablePanal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        signOutButtonPanal = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -159,35 +159,7 @@ public class AddExpencesTypes extends javax.swing.JFrame {
 
         TypeSearchPanal.add(ExpencesTypeSearchPanal, java.awt.BorderLayout.PAGE_START);
 
-        signOutButtonPanal.setPreferredSize(new java.awt.Dimension(826, 60));
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
-        jButton1.setToolTipText("Sign Out");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout signOutButtonPanalLayout = new javax.swing.GroupLayout(signOutButtonPanal);
-        signOutButtonPanal.setLayout(signOutButtonPanalLayout);
-        signOutButtonPanalLayout.setHorizontalGroup(
-            signOutButtonPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signOutButtonPanalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addContainerGap(782, Short.MAX_VALUE))
-        );
-        signOutButtonPanalLayout.setVerticalGroup(
-            signOutButtonPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signOutButtonPanalLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        TypeSearchPanal.add(signOutButtonPanal, java.awt.BorderLayout.PAGE_END);
-
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -225,6 +197,35 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         );
 
         TypeSearchPanal.add(ExpencesTablePanal, java.awt.BorderLayout.CENTER);
+
+        signOutButtonPanal.setPreferredSize(new java.awt.Dimension(826, 60));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        jButton1.setToolTipText("Sign Out");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout signOutButtonPanalLayout = new javax.swing.GroupLayout(signOutButtonPanal);
+        signOutButtonPanal.setLayout(signOutButtonPanalLayout);
+        signOutButtonPanalLayout.setHorizontalGroup(
+            signOutButtonPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(signOutButtonPanalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addContainerGap(782, Short.MAX_VALUE))
+        );
+        signOutButtonPanalLayout.setVerticalGroup(
+            signOutButtonPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(signOutButtonPanalLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        TypeSearchPanal.add(signOutButtonPanal, java.awt.BorderLayout.PAGE_END);
 
         bodyPanal.add(TypeSearchPanal, java.awt.BorderLayout.CENTER);
 
