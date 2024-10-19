@@ -44,9 +44,9 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         ExpencesTablePanal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        EmployeeTypeTable = new javax.swing.JTable();
         signOutButtonPanal = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        SignOutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -159,8 +159,8 @@ public class AddExpencesTypes extends javax.swing.JFrame {
 
         TypeSearchPanal.add(ExpencesTypeSearchPanal, java.awt.BorderLayout.PAGE_START);
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        EmployeeTypeTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        EmployeeTypeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -176,8 +176,8 @@ public class AddExpencesTypes extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        EmployeeTypeTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(EmployeeTypeTable);
 
         javax.swing.GroupLayout ExpencesTablePanalLayout = new javax.swing.GroupLayout(ExpencesTablePanal);
         ExpencesTablePanal.setLayout(ExpencesTablePanalLayout);
@@ -200,11 +200,11 @@ public class AddExpencesTypes extends javax.swing.JFrame {
 
         signOutButtonPanal.setPreferredSize(new java.awt.Dimension(826, 60));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
-        jButton1.setToolTipText("Sign Out");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        SignOutButton.setToolTipText("Sign Out");
+        SignOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SignOutButtonActionPerformed(evt);
             }
         });
 
@@ -214,14 +214,14 @@ public class AddExpencesTypes extends javax.swing.JFrame {
             signOutButtonPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signOutButtonPanalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(SignOutButton)
                 .addContainerGap(782, Short.MAX_VALUE))
         );
         signOutButtonPanalLayout.setVerticalGroup(
             signOutButtonPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signOutButtonPanalLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(SignOutButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -235,11 +235,17 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+    //signOutButtonCode
+    
+    private void SignOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutButtonActionPerformed
+         
+        //signOutButtonExitCodeStart
+         
         System.exit(0);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        //signOutButtonExitCodeStart        
+        
+    }//GEN-LAST:event_SignOutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,20 +264,20 @@ public class AddExpencesTypes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable EmployeeTypeTable;
     private javax.swing.JPanel ExpencesAddSectionPanal;
     private javax.swing.JPanel ExpencesTablePanal;
     private javax.swing.JPanel ExpencesTypeSearchPanal;
     private javax.swing.JTextField ExpencesTypeTextField;
+    private javax.swing.JButton SignOutButton;
     private javax.swing.JPanel TypeSearchPanal;
     private javax.swing.JButton addTypeButton;
     private javax.swing.JPanel bodyPanal;
     private javax.swing.JPanel headerPanal;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton refreshButton;
     private javax.swing.JPanel signOutButtonPanal;
