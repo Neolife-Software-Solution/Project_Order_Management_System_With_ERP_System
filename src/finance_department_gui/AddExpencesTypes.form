@@ -103,9 +103,9 @@
                       <Component id="addTypeButton" pref="165" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="updateTypeButton" pref="166" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="refreshButton" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="refreshButton" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -136,6 +136,9 @@
                 <Property name="toolTipText" type="java.lang.String" value="Add Expences Type"/>
                 <Property name="name" type="java.lang.String" value="" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExpencesTypeTextFieldActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="addTypeButton">
               <Properties>
@@ -243,7 +246,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                          <EmptySpace pref="35" max="32767" attributes="0"/>
                           <Component id="jScrollPane1" pref="749" max="32767" attributes="0"/>
                           <EmptySpace pref="42" max="32767" attributes="0"/>
                       </Group>

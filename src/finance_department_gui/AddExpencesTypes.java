@@ -84,6 +84,11 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         ExpencesTypeTextField.setText("Add Expences Types");
         ExpencesTypeTextField.setToolTipText("Add Expences Type");
         ExpencesTypeTextField.setName(""); // NOI18N
+        ExpencesTypeTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExpencesTypeTextFieldActionPerformed(evt);
+            }
+        });
 
         addTypeButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         addTypeButton.setText("Add Type");
@@ -105,9 +110,9 @@ public class AddExpencesTypes extends javax.swing.JFrame {
                 .addComponent(addTypeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(updateTypeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(refreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(12, 12, 12))
         );
         ExpencesAddSectionPanalLayout.setVerticalGroup(
             ExpencesAddSectionPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +189,7 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         ExpencesTablePanalLayout.setHorizontalGroup(
             ExpencesTablePanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ExpencesTablePanalLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -246,6 +251,10 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         //signOutButtonExitCodeStart        
         
     }//GEN-LAST:event_SignOutButtonActionPerformed
+
+    private void ExpencesTypeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpencesTypeTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ExpencesTypeTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
