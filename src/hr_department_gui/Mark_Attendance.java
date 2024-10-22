@@ -50,7 +50,7 @@ public class Mark_Attendance extends javax.swing.JFrame {
         EmployeeAttendanceView = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         AttendanceView = new javax.swing.JTable();
-        Logout = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -108,6 +108,11 @@ public class Mark_Attendance extends javax.swing.JFrame {
 
         AdjustDateButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         AdjustDateButton.setText("Adjust Date");
+        AdjustDateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdjustDateButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout AddEmployeePanelLayout = new javax.swing.GroupLayout(AddEmployeePanel);
         AddEmployeePanel.setLayout(AddEmployeePanelLayout);
@@ -216,28 +221,33 @@ public class Mark_Attendance extends javax.swing.JFrame {
         AttendanceView.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(AttendanceView);
 
-        Logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout EmployeeAttendanceViewLayout = new javax.swing.GroupLayout(EmployeeAttendanceView);
         EmployeeAttendanceView.setLayout(EmployeeAttendanceViewLayout);
         EmployeeAttendanceViewLayout.setHorizontalGroup(
             EmployeeAttendanceViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EmployeeAttendanceViewLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
             .addGroup(EmployeeAttendanceViewLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(Logout)
+                .addContainerGap()
+                .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         EmployeeAttendanceViewLayout.setVerticalGroup(
             EmployeeAttendanceViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EmployeeAttendanceViewLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(Logout)
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
 
@@ -251,13 +261,29 @@ public class Mark_Attendance extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AdjustDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdjustDateButtonActionPerformed
+
+//        Adjuest Date Button
+        Clander clander = new Clander();
+        clander.setVisible(true);
+        
+
+    }//GEN-LAST:event_AdjustDateButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+//        LogOut Button
+        System.exit(0);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         FlatMacLightLaf.setup();
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -282,9 +308,9 @@ public class Mark_Attendance extends javax.swing.JFrame {
     private javax.swing.JPanel EmployeeAttendanceView;
     private javax.swing.JLabel Header;
     private javax.swing.JPanel HeaderPane;
-    private javax.swing.JLabel Logout;
     private javax.swing.JPanel SearchEmployeePanel;
     private javax.swing.JLabel Time;
+    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel4;

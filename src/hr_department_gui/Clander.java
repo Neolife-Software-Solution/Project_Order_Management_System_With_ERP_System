@@ -98,7 +98,7 @@ public class Clander extends javax.swing.JFrame {
         AddHolidayPanelLayout.setHorizontalGroup(
             AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddHolidayPanelLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(EmpID)
                     .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -108,7 +108,7 @@ public class Clander extends javax.swing.JFrame {
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(43, 43, 43))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         AddHolidayPanelLayout.setVerticalGroup(
             AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

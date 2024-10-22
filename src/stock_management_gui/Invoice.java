@@ -51,10 +51,10 @@ public class Invoice extends javax.swing.JFrame {
         TotalTextField = new javax.swing.JTextField();
         PayTypeLable = new javax.swing.JLabel();
         PayButton = new javax.swing.JToggleButton();
-        LogOutIcon = new javax.swing.JLabel();
         PayTypeComboBox = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         HeaderPanel.setPreferredSize(new java.awt.Dimension(540, 80));
 
@@ -150,12 +150,13 @@ public class Invoice extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(SelectOrdersPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(SalesCountLable)
-                            .addComponent(SaleseCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(OnlineOrdersButton)
-                                .addComponent(TakeawayOrdersButton)))))
+                                .addComponent(TakeawayOrdersButton))
+                            .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(SalesCountLable)
+                                .addComponent(SaleseCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
@@ -218,10 +219,20 @@ public class Invoice extends javax.swing.JFrame {
         PayButton.setBackground(new java.awt.Color(204, 204, 204));
         PayButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         PayButton.setText("Pay");
-
-        LogOutIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        PayButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PayButtonActionPerformed(evt);
+            }
+        });
 
         PayTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cache", "Card", " " }));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout OrderViewPanelLayout = new javax.swing.GroupLayout(OrderViewPanel);
         OrderViewPanel.setLayout(OrderViewPanelLayout);
@@ -246,10 +257,6 @@ public class Invoice extends javax.swing.JFrame {
                                 .addComponent(AddButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))))
                     .addGroup(OrderViewPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(LogOutIcon)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(OrderViewPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(OrderViewPanelLayout.createSequentialGroup()
@@ -262,6 +269,10 @@ public class Invoice extends javax.swing.JFrame {
                                     .addComponent(PayTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addComponent(PayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(36, Short.MAX_VALUE))
+            .addGroup(OrderViewPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         OrderViewPanelLayout.setVerticalGroup(
             OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,23 +286,20 @@ public class Invoice extends javax.swing.JFrame {
                         .addComponent(QTYTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(AddButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(OrderViewPanelLayout.createSequentialGroup()
-                        .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TotalLable)
-                            .addComponent(TotalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PayTypeLable, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PayTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(PayButton)
-                        .addGap(48, 48, 48))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OrderViewPanelLayout.createSequentialGroup()
-                        .addComponent(LogOutIcon)
-                        .addContainerGap())))
+                .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TotalLable)
+                    .addComponent(TotalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PayTypeLable, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PayTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PayButton)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(7, 7, 7))
         );
 
         BodyPanel.add(OrderViewPanel, java.awt.BorderLayout.CENTER);
@@ -299,6 +307,7 @@ public class Invoice extends javax.swing.JFrame {
         getContentPane().add(BodyPanel, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void EmpIDTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpIDTextfieldActionPerformed
@@ -306,7 +315,12 @@ public class Invoice extends javax.swing.JFrame {
     }//GEN-LAST:event_EmpIDTextfieldActionPerformed
 
     private void SeemysalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeemysalesButtonActionPerformed
-        // TODO add your handling code here:
+
+//        Display See My Sales Design
+        SeemySales sales = new SeemySales();
+        sales.setVisible(true);
+        
+
     }//GEN-LAST:event_SeemysalesButtonActionPerformed
 
     private void AddProductTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductTextFieldActionPerformed
@@ -320,6 +334,21 @@ public class Invoice extends javax.swing.JFrame {
     private void TotalTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TotalTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TotalTextFieldActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+//       LogOut Button
+        System.exit(0);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void PayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayButtonActionPerformed
+
+//         Chanage Price View Desig
+        PriceView priceView = new PriceView(this, true);
+        priceView.setVisible(true);
+        
+    }//GEN-LAST:event_PayButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -344,7 +373,6 @@ public class Invoice extends javax.swing.JFrame {
     private javax.swing.JLabel EmpID;
     private javax.swing.JTextField EmpIDTextfield;
     private javax.swing.JPanel HeaderPanel;
-    private javax.swing.JLabel LogOutIcon;
     private javax.swing.JToggleButton OnlineOrdersButton;
     private javax.swing.JPanel OrderViewPanel;
     private javax.swing.JTable OrdersView;
@@ -360,6 +388,7 @@ public class Invoice extends javax.swing.JFrame {
     private javax.swing.JToggleButton TakeawayOrdersButton;
     private javax.swing.JLabel TotalLable;
     private javax.swing.JTextField TotalTextField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
