@@ -184,14 +184,14 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         ExpencesTablePanalLayout.setHorizontalGroup(
             ExpencesTablePanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ExpencesTablePanalLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         ExpencesTablePanalLayout.setVerticalGroup(
             ExpencesTablePanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ExpencesTablePanalLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                 .addContainerGap(28, Short.MAX_VALUE))
         );
@@ -226,6 +226,7 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         );
 
         TypeSearchPanal.add(signOutButtonPanal, java.awt.BorderLayout.PAGE_END);
+        signOutButtonPanal.getAccessibleContext().setAccessibleName("");
 
         bodyPanal.add(TypeSearchPanal, java.awt.BorderLayout.CENTER);
 
