@@ -184,6 +184,7 @@ public class Invoice extends javax.swing.JFrame {
 
         AddButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
 
+        OrdersView.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         OrdersView.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -225,7 +226,8 @@ public class Invoice extends javax.swing.JFrame {
             }
         });
 
-        PayTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cache", "Card", " " }));
+        PayTypeComboBox.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        PayTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cache", "Card", "" }));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -286,7 +288,7 @@ public class Invoice extends javax.swing.JFrame {
                         .addComponent(QTYTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(AddButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TotalLable)

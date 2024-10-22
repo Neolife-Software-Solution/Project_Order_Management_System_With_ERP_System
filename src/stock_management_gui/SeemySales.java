@@ -49,6 +49,7 @@ public class SeemySales extends javax.swing.JFrame {
             }
         });
 
+        OrdersView.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         OrdersView.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
