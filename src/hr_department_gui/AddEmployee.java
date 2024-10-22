@@ -197,12 +197,12 @@ public class AddEmployee extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)))
                         .addGap(108, 108, 108))
                     .addGroup(AddEmployeePanelLayout.createSequentialGroup()
-                        .addGroup(AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PartTime, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
-                            .addComponent(FullTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(FullTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(29, 29, 29)
-                        .addComponent(Intern, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-                        .addGap(495, 495, 495))))
+                        .addComponent(Intern, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PartTime, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                        .addGap(415, 415, 415))))
         );
         AddEmployeePanelLayout.setVerticalGroup(
             AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,11 +239,11 @@ public class AddEmployee extends javax.swing.JFrame {
                 .addComponent(EmploymentTypeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Intern, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addGroup(AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Intern, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                        .addComponent(PartTime, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                     .addComponent(FullTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PartTime, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addGap(15, 15, 15))
+                .addGap(49, 49, 49))
         );
 
         BodyPanel.add(AddEmployeePanel, java.awt.BorderLayout.PAGE_START);

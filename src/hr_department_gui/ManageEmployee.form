@@ -18,7 +18,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,4,110,0,0,3,-44"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-128,0,0,3,-43"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -40,7 +40,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="281" max="-2" attributes="0"/>
-                  <Component id="jLabel1" pref="419" max="32767" attributes="0"/>
+                  <Component id="jLabel1" pref="420" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -97,12 +97,12 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <EmptySpace pref="48" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="EmployeeStatusLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EmployeeStatusComboBox" pref="222" max="32767" attributes="0"/>
+                              <Component id="EmployeeStatusComboBox" pref="204" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -111,9 +111,9 @@
                           </Group>
                       </Group>
                       <Component id="SearchButton" pref="149" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="RefreshButton" pref="136" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                      <Component id="RefreshButton" min="-2" pref="54" max="-2" attributes="0"/>
+                      <EmptySpace pref="92" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -205,7 +205,7 @@
             <Container class="javax.swing.JPanel" name="TableUpdatePanel">
               <Properties>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[803, 150]"/>
+                  <Dimension value="[803, 200]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -218,62 +218,56 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="DepartmentLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="DateOfHireLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="StatusLabel" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="DepartmentComboBox" max="32767" attributes="0"/>
-                              <Component id="DateOfHireComboBox" max="32767" attributes="0"/>
-                              <Component id="StatusComboBox" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
-                                  <Component id="EmployeeTypeLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="UpdateButton" min="-2" pref="211" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                                  <Component id="DeleteButton" min="-2" pref="189" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="JobTitleLabel" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="DepartmentLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DateOfHireLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="StatusLabel" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="DateOfHireComboBox" pref="162" max="32767" attributes="0"/>
+                                      <Component id="StatusComboBox" max="32767" attributes="0"/>
+                                      <Component id="DepartmentComboBox" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="EmployeeTypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="JobTitleLabel" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="JobTitleComboBox" max="32767" attributes="0"/>
-                              <Component id="EmployeeTypeComboBox" max="32767" attributes="0"/>
+                              <Component id="EmployeeTypeComboBox" min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="711" max="-2" attributes="0"/>
-                          <Component id="UpdateButton" pref="113" max="32767" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="DeleteButton" pref="107" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="DepartmentLabel" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="DepartmentComboBox" alignment="3" max="32767" attributes="0"/>
-                                  <Component id="JobTitleLabel" alignment="3" max="32767" attributes="0"/>
-                                  <Component id="JobTitleComboBox" alignment="3" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                                          <Component id="DepartmentLabel" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="DepartmentComboBox" alignment="0" pref="26" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
@@ -281,26 +275,31 @@
                                       </Group>
                                       <Component id="DateOfHireComboBox" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="JobTitleLabel" alignment="3" max="32767" attributes="0"/>
+                                      <Component id="JobTitleComboBox" alignment="3" max="32767" attributes="0"/>
+                                  </Group>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="StatusLabel" alignment="3" max="32767" attributes="0"/>
-                                      <Component id="StatusComboBox" alignment="3" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="137" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="EmployeeTypeComboBox" alignment="3" max="32767" attributes="0"/>
+                                      <Component id="EmployeeTypeComboBox" alignment="3" pref="25" max="32767" attributes="0"/>
                                       <Component id="EmployeeTypeLabel" alignment="3" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="DeleteButton" alignment="3" max="32767" attributes="0"/>
-                                      <Component id="UpdateButton" alignment="3" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="StatusLabel" alignment="3" max="32767" attributes="0"/>
+                              <Component id="StatusComboBox" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="UpdateButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="DeleteButton" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -467,6 +466,9 @@
                       <Dimension value="[72, 25]"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="DeleteButton">
                   <Properties>
@@ -484,7 +486,7 @@
             <Container class="javax.swing.JPanel" name="SignOutPanel">
               <Properties>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[915, 40]"/>
+                  <Dimension value="[915, 50]"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -497,15 +499,19 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="SignOutButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="928" max="32767" attributes="0"/>
+                          <EmptySpace pref="937" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="SignOutButton" alignment="0" pref="40" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="SignOutButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -523,6 +529,11 @@
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="TableViewPanel">
+              <Properties>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[981, 200]"/>
+                </Property>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                   <BorderConstraints direction="Center"/>
@@ -532,19 +543,19 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace pref="16" max="32767" attributes="0"/>
-                          <Component id="jScrollPane2" pref="942" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace pref="15" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="944" max="32767" attributes="0"/>
                           <EmptySpace pref="22" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace pref="69" max="32767" attributes="0"/>
-                          <Component id="jScrollPane2" pref="564" max="32767" attributes="0"/>
-                          <EmptySpace pref="121" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" pref="188" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>

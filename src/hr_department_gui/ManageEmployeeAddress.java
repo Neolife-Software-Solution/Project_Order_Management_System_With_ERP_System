@@ -180,11 +180,11 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         ButtonPanelLayout.setHorizontalGroup(
             ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
-                .addGap(259, 259, 259)
+                .addContainerGap(259, Short.MAX_VALUE)
                 .addComponent(UpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                 .addGap(50, 50, 50)
                 .addComponent(DeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                .addGap(242, 242, 242))
+                .addContainerGap(242, Short.MAX_VALUE))
             .addComponent(jSeparator1)
         );
         ButtonPanelLayout.setVerticalGroup(
@@ -260,7 +260,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         TableViewPanelLayout.setVerticalGroup(
             TableViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TableViewPanelLayout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
                 .addComponent(jScrollPane1)
                 .addContainerGap(11, Short.MAX_VALUE))
         );

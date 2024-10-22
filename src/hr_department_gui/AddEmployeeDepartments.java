@@ -36,10 +36,6 @@ public class AddEmployeeDepartments extends javax.swing.JFrame {
         SearchButton = new javax.swing.JButton();
         RefreshButton = new javax.swing.JButton();
         TableUpdatePanel = new javax.swing.JPanel();
-        ButtonPanel = new javax.swing.JPanel();
-        UpdateButton = new javax.swing.JButton();
-        RemoveButton = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
         SignOutPanel = new javax.swing.JPanel();
         SignOutButton = new javax.swing.JButton();
         TablePanel = new javax.swing.JPanel();
@@ -50,6 +46,8 @@ public class AddEmployeeDepartments extends javax.swing.JFrame {
         SelectDepartmentLabel = new javax.swing.JLabel();
         AddButton = new javax.swing.JButton();
         AddDepartmentField = new javax.swing.JTextField();
+        UpdateButton = new javax.swing.JButton();
+        RemoveButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -127,46 +125,6 @@ public class AddEmployeeDepartments extends javax.swing.JFrame {
         TableUpdatePanel.setPreferredSize(new java.awt.Dimension(796, 550));
         TableUpdatePanel.setLayout(new java.awt.BorderLayout());
 
-        ButtonPanel.setPreferredSize(new java.awt.Dimension(796, 70));
-
-        UpdateButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        UpdateButton.setText("Update");
-        UpdateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdateButtonActionPerformed(evt);
-            }
-        });
-
-        RemoveButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        RemoveButton.setText("Remove");
-
-        javax.swing.GroupLayout ButtonPanelLayout = new javax.swing.GroupLayout(ButtonPanel);
-        ButtonPanel.setLayout(ButtonPanelLayout);
-        ButtonPanelLayout.setHorizontalGroup(
-            ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ButtonPanelLayout.createSequentialGroup()
-                .addGap(236, 236, 236)
-                .addComponent(UpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .addGap(69, 69, 69)
-                .addComponent(RemoveButton, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                .addGap(261, 261, 261))
-            .addComponent(jSeparator2)
-        );
-        ButtonPanelLayout.setVerticalGroup(
-            ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(ButtonPanelLayout.createSequentialGroup()
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
-                .addGroup(ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ButtonPanelLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(UpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(RemoveButton, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        TableUpdatePanel.add(ButtonPanel, java.awt.BorderLayout.PAGE_START);
-
         SignOutPanel.setPreferredSize(new java.awt.Dimension(796, 55));
 
         SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
@@ -181,16 +139,16 @@ public class AddEmployeeDepartments extends javax.swing.JFrame {
         SignOutPanelLayout.setHorizontalGroup(
             SignOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SignOutPanelLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap()
                 .addComponent(SignOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(718, Short.MAX_VALUE))
+                .addContainerGap(741, Short.MAX_VALUE))
         );
         SignOutPanelLayout.setVerticalGroup(
             SignOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignOutPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(SignOutPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(SignOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         TableUpdatePanel.add(SignOutPanel, java.awt.BorderLayout.PAGE_END);
@@ -219,22 +177,24 @@ public class AddEmployeeDepartments extends javax.swing.JFrame {
         TablePanel.setLayout(TablePanelLayout);
         TablePanelLayout.setHorizontalGroup(
             TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TablePanelLayout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
-                .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TablePanelLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         TablePanelLayout.setVerticalGroup(
             TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TablePanelLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                .addGap(14, 14, 14))
         );
 
         TableUpdatePanel.add(TablePanel, java.awt.BorderLayout.CENTER);
 
         BodyPanel.add(TableUpdatePanel, java.awt.BorderLayout.PAGE_END);
+
+        DepartmentAddPanel.setPreferredSize(new java.awt.Dimension(796, 80));
 
         DepartmentComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         DepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "item 1", "item 2", "item 3", "item 4" }));
@@ -249,41 +209,64 @@ public class AddEmployeeDepartments extends javax.swing.JFrame {
 
         AddButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         AddButton.setText("Add");
+        AddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddButtonActionPerformed(evt);
+            }
+        });
 
         AddDepartmentField.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         AddDepartmentField.setText("Add Other Department");
+
+        UpdateButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        UpdateButton.setText("Update");
+        UpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateButtonActionPerformed(evt);
+            }
+        });
+
+        RemoveButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        RemoveButton.setText("Remove");
 
         javax.swing.GroupLayout DepartmentAddPanelLayout = new javax.swing.GroupLayout(DepartmentAddPanel);
         DepartmentAddPanel.setLayout(DepartmentAddPanelLayout);
         DepartmentAddPanelLayout.setHorizontalGroup(
             DepartmentAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DepartmentAddPanelLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addContainerGap(103, Short.MAX_VALUE)
                 .addComponent(SelectDepartmentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DepartmentComboBox, 0, 152, Short.MAX_VALUE)
-                .addGap(127, 127, 127)
-                .addComponent(AddDepartmentField, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                .addGap(85, 85, 85))
+                .addComponent(DepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addComponent(AddDepartmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(104, Short.MAX_VALUE))
+            .addGroup(DepartmentAddPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(UpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(RemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         DepartmentAddPanelLayout.setVerticalGroup(
             DepartmentAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DepartmentAddPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(DepartmentAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DepartmentAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SelectDepartmentLabel)
                     .addGroup(DepartmentAddPanelLayout.createSequentialGroup()
-                        .addComponent(DepartmentComboBox)
-                        .addContainerGap())
-                    .addGroup(DepartmentAddPanelLayout.createSequentialGroup()
-                        .addComponent(SelectDepartmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                        .addGap(13, 13, 13))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DepartmentAddPanelLayout.createSequentialGroup()
-                        .addGroup(DepartmentAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(AddDepartmentField))
-                        .addContainerGap())))
+                        .addGroup(DepartmentAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(AddDepartmentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(DepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(DepartmentAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(UpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(RemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
 
         BodyPanel.add(DepartmentAddPanel, java.awt.BorderLayout.CENTER);
@@ -309,6 +292,10 @@ public class AddEmployeeDepartments extends javax.swing.JFrame {
     private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UpdateButtonActionPerformed
+
+    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,7 +339,6 @@ public class AddEmployeeDepartments extends javax.swing.JFrame {
     private javax.swing.JTextField AddDepartmentField;
     private javax.swing.JTable AddEmployeeDepartmentsTable;
     private javax.swing.JPanel BodyPanel;
-    private javax.swing.JPanel ButtonPanel;
     private javax.swing.JPanel DepartmentAddPanel;
     private javax.swing.JComboBox<String> DepartmentComboBox;
     private javax.swing.JTextField EmployeeSearchField;
@@ -369,6 +355,5 @@ public class AddEmployeeDepartments extends javax.swing.JFrame {
     private javax.swing.JButton UpdateButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }

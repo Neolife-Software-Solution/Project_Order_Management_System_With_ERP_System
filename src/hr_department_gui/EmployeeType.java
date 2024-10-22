@@ -133,11 +133,11 @@ public class EmployeeType extends javax.swing.JFrame {
         ButtonPanelLayout.setHorizontalGroup(
             ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ButtonPanelLayout.createSequentialGroup()
-                .addGap(247, 247, 247)
+                .addContainerGap(247, Short.MAX_VALUE)
                 .addComponent(UpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addGap(43, 43, 43)
                 .addComponent(DeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                .addGap(222, 222, 222))
+                .addContainerGap(222, Short.MAX_VALUE))
             .addComponent(jSeparator1)
         );
         ButtonPanelLayout.setVerticalGroup(
@@ -206,14 +206,14 @@ public class EmployeeType extends javax.swing.JFrame {
         TableViewPanelLayout.setHorizontalGroup(
             TableViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TableViewPanelLayout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 652, Short.MAX_VALUE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         TableViewPanelLayout.setVerticalGroup(
             TableViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TableViewPanelLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
