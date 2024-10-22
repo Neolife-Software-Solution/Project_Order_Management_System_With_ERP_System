@@ -48,7 +48,7 @@ public class BrandRegister extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        headerPanel.setPreferredSize(new java.awt.Dimension(75, 75));
+        headerPanel.setPreferredSize(new java.awt.Dimension(720, 60));
 
         brandRegistrationLable.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
         brandRegistrationLable.setText("Brand Registration");
@@ -58,23 +58,23 @@ public class BrandRegister extends javax.swing.JFrame {
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addContainerGap(136, Short.MAX_VALUE)
+                .addContainerGap(217, Short.MAX_VALUE)
                 .addComponent(brandRegistrationLable)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(brandRegistrationLable)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
         brandRegisterPanel.setLayout(new java.awt.BorderLayout());
 
-        brandAddSection.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
+        brandAddSection.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         brandAddSection.setPreferredSize(new java.awt.Dimension(100, 100));
 
         brandName.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -94,7 +94,7 @@ public class BrandRegister extends javax.swing.JFrame {
         brandAddSectionLayout.setHorizontalGroup(
             brandAddSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(brandAddSectionLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(110, Short.MAX_VALUE)
                 .addComponent(brandName, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(brandAddSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -109,7 +109,7 @@ public class BrandRegister extends javax.swing.JFrame {
                     .addGroup(brandAddSectionLayout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addComponent(clearButton)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         brandAddSectionLayout.setVerticalGroup(
             brandAddSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +147,7 @@ public class BrandRegister extends javax.swing.JFrame {
             .addGroup(logOutPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addContainerGap(513, Short.MAX_VALUE))
+                .addContainerGap(676, Short.MAX_VALUE))
         );
         logOutPanelLayout.setVerticalGroup(
             logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,15 +188,15 @@ public class BrandRegister extends javax.swing.JFrame {
             brandTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, brandTablePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 545, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
                 .addContainerGap())
         );
         brandTablePanelLayout.setVerticalGroup(
             brandTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(brandTablePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         brandTableSection.add(brandTablePanel, java.awt.BorderLayout.CENTER);
@@ -210,7 +210,7 @@ public class BrandRegister extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      System.exit(0);        // TODO add your handling code here:
+      System.exit(0); // LogOut Button:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
