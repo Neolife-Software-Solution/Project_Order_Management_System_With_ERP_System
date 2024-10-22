@@ -114,7 +114,7 @@ public class AddExpencesTypes extends javax.swing.JFrame {
             .addGroup(ExpencesAddSectionPanalLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(ExpencesAddSectionPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(refreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, Short.MAX_VALUE)
                     .addGroup(ExpencesAddSectionPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(ExpencesTypeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                         .addComponent(addTypeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
@@ -185,8 +185,8 @@ public class AddExpencesTypes extends javax.swing.JFrame {
             ExpencesTablePanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ExpencesTablePanalLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         ExpencesTablePanalLayout.setVerticalGroup(
             ExpencesTablePanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
