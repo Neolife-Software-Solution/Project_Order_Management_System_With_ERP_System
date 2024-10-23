@@ -50,7 +50,7 @@ public class ReturnManage extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         ReturnsManageTable = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        ManageReturnTable = new javax.swing.JTable();
         SignOutPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
 
@@ -219,7 +219,8 @@ public class ReturnManage extends javax.swing.JFrame {
 
         bodyPanel.add(AddAndUpdateReturnsPanel, java.awt.BorderLayout.PAGE_START);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ManageReturnTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ManageReturnTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -235,8 +236,8 @@ public class ReturnManage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        ManageReturnTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(ManageReturnTable);
 
         javax.swing.GroupLayout ReturnsManageTableLayout = new javax.swing.GroupLayout(ReturnsManageTable);
         ReturnsManageTable.setLayout(ReturnsManageTableLayout);
@@ -334,6 +335,7 @@ public class ReturnManage extends javax.swing.JFrame {
     private javax.swing.JButton AddReturnsButton;
     private javax.swing.JTextField CustomerNameTextField;
     private javax.swing.JTextField InvoiceIDTextField;
+    private javax.swing.JTable ManageReturnTable;
     private javax.swing.JTextField PriceTextField;
     private javax.swing.JTextField ProductIDTextField;
     private javax.swing.JTextField ProductNameTextField;
@@ -356,6 +358,5 @@ public class ReturnManage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

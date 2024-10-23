@@ -32,40 +32,41 @@ public class Dashboard extends javax.swing.JFrame {
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         bodyPanel = new javax.swing.JPanel();
-        positionsAndOtherDetailPanel = new javax.swing.JPanel();
-        NameLabel = new javax.swing.JLabel();
-        DepartNameLabel = new javax.swing.JLabel();
-        PositionNameLabel = new javax.swing.JLabel();
-        DateAndTimeLabel = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         sideBarBodyPanel = new javax.swing.JPanel();
         SideBarIconPanel = new javax.swing.JPanel();
         sideBarHideIconPanel = new javax.swing.JPanel();
         BackKeyPanel = new javax.swing.JLabel();
         ProfileSettingIconPanel = new javax.swing.JPanel();
         UserProfileKeyPanel = new javax.swing.JLabel();
+        LogOutButton = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         SideBarButtonsPanel = new javax.swing.JPanel();
         DashboardButton = new javax.swing.JButton();
         HRButton = new javax.swing.JButton();
         FinanceButton = new javax.swing.JButton();
         StockButton = new javax.swing.JButton();
         OrderButton = new javax.swing.JButton();
-        bodydataAddingPanel = new javax.swing.JPanel();
-        DashboardBodyPanel = new javax.swing.JPanel();
-        EmployeeNumberPanel = new javax.swing.JPanel();
+        PositionsAndEtcPanel = new javax.swing.JPanel();
+        NameLabel = new javax.swing.JLabel();
+        DepNameLabel = new javax.swing.JLabel();
+        PositionLabel = new javax.swing.JLabel();
+        DateTimeLabel = new javax.swing.JLabel();
+        DetailShowingPanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        NumberOfDepartmentpanel = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        ProfitPerDayPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        ProfitPerMonthPanel = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        ProfitPerYearPanel = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        TotalSalesPanel = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(850, 800));
 
         headerPanel.setPreferredSize(new java.awt.Dimension(738, 60));
 
@@ -77,16 +78,16 @@ public class Dashboard extends javax.swing.JFrame {
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                .addContainerGap(445, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
-                .addGap(281, 281, 281))
+                .addGap(422, 422, 422)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(356, 356, 356))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+                .addGap(15, 15, 15))
         );
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
@@ -94,56 +95,8 @@ public class Dashboard extends javax.swing.JFrame {
         bodyPanel.setPreferredSize(new java.awt.Dimension(782, 50));
         bodyPanel.setLayout(new java.awt.BorderLayout());
 
-        positionsAndOtherDetailPanel.setPreferredSize(new java.awt.Dimension(782, 50));
-
-        NameLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        NameLabel.setText("User");
-
-        DepartNameLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        DepartNameLabel.setText("Department Name");
-
-        PositionNameLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        PositionNameLabel.setText("Position");
-
-        DateAndTimeLabel.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        DateAndTimeLabel.setText("Date And Time");
-
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout positionsAndOtherDetailPanelLayout = new javax.swing.GroupLayout(positionsAndOtherDetailPanel);
-        positionsAndOtherDetailPanel.setLayout(positionsAndOtherDetailPanelLayout);
-        positionsAndOtherDetailPanelLayout.setHorizontalGroup(
-            positionsAndOtherDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(positionsAndOtherDetailPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(NameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(249, 249, 249)
-                .addComponent(DepartNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(238, 238, 238)
-                .addComponent(PositionNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(273, 273, 273)
-                .addComponent(DateAndTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-        positionsAndOtherDetailPanelLayout.setVerticalGroup(
-            positionsAndOtherDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(positionsAndOtherDetailPanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(positionsAndOtherDetailPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DepartNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PositionNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DateAndTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        bodyPanel.add(positionsAndOtherDetailPanel, java.awt.BorderLayout.PAGE_START);
-
         sideBarBodyPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        sideBarBodyPanel.setPreferredSize(new java.awt.Dimension(285, 620));
+        sideBarBodyPanel.setPreferredSize(new java.awt.Dimension(280, 620));
         sideBarBodyPanel.setLayout(new java.awt.BorderLayout());
 
         SideBarIconPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -169,9 +122,23 @@ public class Dashboard extends javax.swing.JFrame {
 
         SideBarIconPanel.add(ProfileSettingIconPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 60, 50));
 
+        LogOutButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        LogOutButton.setLayout(new java.awt.BorderLayout());
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        LogOutButton.add(jButton1, java.awt.BorderLayout.CENTER);
+
+        SideBarIconPanel.add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 60, 40));
+
         sideBarBodyPanel.add(SideBarIconPanel, java.awt.BorderLayout.LINE_START);
 
-        SideBarButtonsPanel.setLayout(new java.awt.GridLayout(18, 1, 4, 4));
+        SideBarButtonsPanel.setLayout(new java.awt.GridLayout(13, 1, 6, 3));
 
         DashboardButton.setText("Dashboard");
         DashboardButton.addActionListener(new java.awt.event.ActionListener() {
@@ -197,96 +164,112 @@ public class Dashboard extends javax.swing.JFrame {
 
         bodyPanel.add(sideBarBodyPanel, java.awt.BorderLayout.LINE_START);
 
-        bodydataAddingPanel.setLayout(new java.awt.BorderLayout());
+        PositionsAndEtcPanel.setPreferredSize(new java.awt.Dimension(782, 50));
 
-        EmployeeNumberPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        EmployeeNumberPanel.setLayout(new java.awt.BorderLayout());
+        NameLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        NameLabel.setText("Name");
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        DepNameLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        DepNameLabel.setText("Department Name");
+
+        PositionLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        PositionLabel.setText("Position");
+
+        DateTimeLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        DateTimeLabel.setText("Date And Time");
+
+        javax.swing.GroupLayout PositionsAndEtcPanelLayout = new javax.swing.GroupLayout(PositionsAndEtcPanel);
+        PositionsAndEtcPanel.setLayout(PositionsAndEtcPanelLayout);
+        PositionsAndEtcPanelLayout.setHorizontalGroup(
+            PositionsAndEtcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PositionsAndEtcPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(NameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                .addGap(161, 161, 161)
+                .addComponent(DepNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                .addGap(91, 91, 91)
+                .addComponent(PositionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                .addGap(103, 103, 103)
+                .addComponent(DateTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                .addContainerGap(90, Short.MAX_VALUE))
+        );
+        PositionsAndEtcPanelLayout.setVerticalGroup(
+            PositionsAndEtcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PositionsAndEtcPanelLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(PositionsAndEtcPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DepNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PositionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DateTimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        bodyPanel.add(PositionsAndEtcPanel, java.awt.BorderLayout.PAGE_START);
+
+        DetailShowingPanel.setLayout(new java.awt.GridLayout(3, 2, 9, 10));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Number Of Employee");
-        EmployeeNumberPanel.add(jLabel2, java.awt.BorderLayout.CENTER);
+        jPanel1.add(jLabel2, java.awt.BorderLayout.PAGE_START);
 
-        NumberOfDepartmentpanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        NumberOfDepartmentpanel.setLayout(new java.awt.BorderLayout());
+        DetailShowingPanel.add(jPanel1);
 
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Number Of Department");
-        NumberOfDepartmentpanel.add(jLabel3, java.awt.BorderLayout.CENTER);
+        jPanel2.add(jLabel3, java.awt.BorderLayout.PAGE_START);
 
-        ProfitPerDayPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ProfitPerDayPanel.setLayout(new java.awt.BorderLayout());
+        DetailShowingPanel.add(jPanel2);
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Profit Per Day");
-        ProfitPerDayPanel.add(jLabel4, java.awt.BorderLayout.CENTER);
+        jPanel3.add(jLabel4, java.awt.BorderLayout.PAGE_START);
 
-        ProfitPerMonthPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ProfitPerMonthPanel.setLayout(new java.awt.BorderLayout());
+        DetailShowingPanel.add(jPanel3);
 
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel4.setLayout(new java.awt.BorderLayout());
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Profit Per Month");
-        ProfitPerMonthPanel.add(jLabel5, java.awt.BorderLayout.CENTER);
+        jPanel4.add(jLabel5, java.awt.BorderLayout.PAGE_START);
 
-        ProfitPerYearPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        ProfitPerYearPanel.setLayout(new java.awt.BorderLayout());
+        DetailShowingPanel.add(jPanel4);
 
-        jLabel6.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel5.setLayout(new java.awt.BorderLayout());
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Profit Per Year");
-        ProfitPerYearPanel.add(jLabel6, java.awt.BorderLayout.CENTER);
+        jPanel5.add(jLabel6, java.awt.BorderLayout.PAGE_START);
 
-        TotalSalesPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        TotalSalesPanel.setLayout(new java.awt.BorderLayout());
+        DetailShowingPanel.add(jPanel5);
 
-        jLabel7.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel6.setLayout(new java.awt.BorderLayout());
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Total Sales");
-        TotalSalesPanel.add(jLabel7, java.awt.BorderLayout.CENTER);
+        jPanel6.add(jLabel7, java.awt.BorderLayout.PAGE_START);
 
-        javax.swing.GroupLayout DashboardBodyPanelLayout = new javax.swing.GroupLayout(DashboardBodyPanel);
-        DashboardBodyPanel.setLayout(DashboardBodyPanelLayout);
-        DashboardBodyPanelLayout.setHorizontalGroup(
-            DashboardBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DashboardBodyPanelLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(DashboardBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DashboardBodyPanelLayout.createSequentialGroup()
-                        .addComponent(EmployeeNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(NumberOfDepartmentpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(DashboardBodyPanelLayout.createSequentialGroup()
-                        .addComponent(ProfitPerDayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(ProfitPerMonthPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(DashboardBodyPanelLayout.createSequentialGroup()
-                        .addComponent(ProfitPerYearPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(TotalSalesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        DashboardBodyPanelLayout.setVerticalGroup(
-            DashboardBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DashboardBodyPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(DashboardBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmployeeNumberPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NumberOfDepartmentpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(DashboardBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ProfitPerDayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ProfitPerMonthPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(DashboardBodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ProfitPerYearPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TotalSalesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        DetailShowingPanel.add(jPanel6);
 
-        bodydataAddingPanel.add(DashboardBodyPanel, java.awt.BorderLayout.CENTER);
-
-        bodyPanel.add(bodydataAddingPanel, java.awt.BorderLayout.CENTER);
+        bodyPanel.add(DetailShowingPanel, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
 
@@ -297,6 +280,16 @@ public class Dashboard extends javax.swing.JFrame {
     private void DashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DashboardButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DashboardButtonActionPerformed
+
+    //signOut Button LogOut Code
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        //signout Button logOut code
+        
+        System.exit(0);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,29 +309,25 @@ public class Dashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BackKeyPanel;
-    private javax.swing.JPanel DashboardBodyPanel;
     private javax.swing.JButton DashboardButton;
-    private javax.swing.JLabel DateAndTimeLabel;
-    private javax.swing.JLabel DepartNameLabel;
-    private javax.swing.JPanel EmployeeNumberPanel;
+    private javax.swing.JLabel DateTimeLabel;
+    private javax.swing.JLabel DepNameLabel;
+    private javax.swing.JPanel DetailShowingPanel;
     private javax.swing.JButton FinanceButton;
     private javax.swing.JButton HRButton;
+    private javax.swing.JPanel LogOutButton;
     private javax.swing.JLabel NameLabel;
-    private javax.swing.JPanel NumberOfDepartmentpanel;
     private javax.swing.JButton OrderButton;
-    private javax.swing.JLabel PositionNameLabel;
+    private javax.swing.JLabel PositionLabel;
+    private javax.swing.JPanel PositionsAndEtcPanel;
     private javax.swing.JPanel ProfileSettingIconPanel;
-    private javax.swing.JPanel ProfitPerDayPanel;
-    private javax.swing.JPanel ProfitPerMonthPanel;
-    private javax.swing.JPanel ProfitPerYearPanel;
     private javax.swing.JPanel SideBarButtonsPanel;
     private javax.swing.JPanel SideBarIconPanel;
     private javax.swing.JButton StockButton;
-    private javax.swing.JPanel TotalSalesPanel;
     private javax.swing.JLabel UserProfileKeyPanel;
     private javax.swing.JPanel bodyPanel;
-    private javax.swing.JPanel bodydataAddingPanel;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -346,8 +335,12 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPanel positionsAndOtherDetailPanel;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel sideBarBodyPanel;
     private javax.swing.JPanel sideBarHideIconPanel;
     // End of variables declaration//GEN-END:variables

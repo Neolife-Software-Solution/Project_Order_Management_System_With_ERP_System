@@ -44,7 +44,7 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         ExpencesTablePanal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        EmployeeTypeTable = new javax.swing.JTable();
+        ExpencesTypeTable = new javax.swing.JTable();
         signOutButtonPanal = new javax.swing.JPanel();
         SignOutButton = new javax.swing.JButton();
 
@@ -164,8 +164,8 @@ public class AddExpencesTypes extends javax.swing.JFrame {
 
         TypeSearchPanal.add(ExpencesTypeSearchPanal, java.awt.BorderLayout.PAGE_START);
 
-        EmployeeTypeTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        EmployeeTypeTable.setModel(new javax.swing.table.DefaultTableModel(
+        ExpencesTypeTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ExpencesTypeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -181,8 +181,8 @@ public class AddExpencesTypes extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        EmployeeTypeTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(EmployeeTypeTable);
+        ExpencesTypeTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(ExpencesTypeTable);
 
         javax.swing.GroupLayout ExpencesTablePanalLayout = new javax.swing.GroupLayout(ExpencesTablePanal);
         ExpencesTablePanal.setLayout(ExpencesTablePanalLayout);
@@ -273,10 +273,10 @@ public class AddExpencesTypes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable EmployeeTypeTable;
     private javax.swing.JPanel ExpencesAddSectionPanal;
     private javax.swing.JPanel ExpencesTablePanal;
     private javax.swing.JPanel ExpencesTypeSearchPanal;
+    private javax.swing.JTable ExpencesTypeTable;
     private javax.swing.JTextField ExpencesTypeTextField;
     private javax.swing.JButton SignOutButton;
     private javax.swing.JPanel TypeSearchPanal;

@@ -37,7 +37,7 @@ public class ManageGrns extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         GrnsTableBody = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        ManageGRNtable = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -123,7 +123,7 @@ public class ManageGrns extends javax.swing.JFrame {
 
         bodyPanel.add(SIgnOutPanel, java.awt.BorderLayout.PAGE_END);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ManageGRNtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -139,8 +139,8 @@ public class ManageGrns extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        ManageGRNtable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(ManageGRNtable);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton2.setText("Print GRNS");
@@ -215,6 +215,7 @@ public class ManageGrns extends javax.swing.JFrame {
     private javax.swing.JTextField GRNSearchTextField;
     private javax.swing.JPanel GRNsearchPanal;
     private javax.swing.JPanel GrnsTableBody;
+    private javax.swing.JTable ManageGRNtable;
     private javax.swing.JPanel SIgnOutPanel;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel headerPanel;
@@ -224,6 +225,5 @@ public class ManageGrns extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

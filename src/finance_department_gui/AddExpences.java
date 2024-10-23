@@ -45,7 +45,7 @@ public class AddExpences extends javax.swing.JFrame {
         LogOutButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        ExpencesTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -117,7 +117,6 @@ public class AddExpences extends javax.swing.JFrame {
                         .addComponent(DateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
                         .addGap(14, 14, 14))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ExpencesAddingPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(ExpencesAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ExpencesUpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -175,7 +174,7 @@ public class AddExpences extends javax.swing.JFrame {
 
         bodyPanel.add(signOutPanel, java.awt.BorderLayout.PAGE_END);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ExpencesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -191,8 +190,8 @@ public class AddExpences extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        ExpencesTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(ExpencesTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -251,6 +250,7 @@ public class AddExpences extends javax.swing.JFrame {
     private javax.swing.JPanel ExpencesAddingPanel;
     private javax.swing.JTextField ExpencesPriceTextField;
     private javax.swing.JComboBox<String> ExpencesSelectComboBox;
+    private javax.swing.JTable ExpencesTable;
     private javax.swing.JButton ExpencesUpdateButton;
     private javax.swing.JButton LogOutButton;
     private javax.swing.JPanel bodyPanel;
@@ -261,7 +261,6 @@ public class AddExpences extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel signOutPanel;
     // End of variables declaration//GEN-END:variables
 }
