@@ -10,12 +10,12 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
  *
  * @author sanja
  */
-public class Payroll_Management extends javax.swing.JFrame {
+public class PayrollManagement extends javax.swing.JFrame {
 
     /**
      * Creates new form Payroll_Management
      */
-    public Payroll_Management() {
+    public PayrollManagement() {
         initComponents();
     }
 
@@ -230,7 +230,7 @@ public class Payroll_Management extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Payroll_Management().setVisible(true);
+                new PayrollManagement().setVisible(true);
             }
         });
     }
