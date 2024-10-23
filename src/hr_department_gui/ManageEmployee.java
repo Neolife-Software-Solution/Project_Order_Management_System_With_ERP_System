@@ -194,7 +194,7 @@ public class ManageEmployee extends javax.swing.JFrame {
 
         UpdateButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         UpdateButton.setText("Update");
-        UpdateButton.setPreferredSize(new java.awt.Dimension(72, 25));
+        UpdateButton.setPreferredSize(new java.awt.Dimension(72, 32));
         UpdateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdateButtonActionPerformed(evt);
@@ -203,7 +203,7 @@ public class ManageEmployee extends javax.swing.JFrame {
 
         DeleteButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         DeleteButton.setText("Delete");
-        DeleteButton.setPreferredSize(new java.awt.Dimension(72, 25));
+        DeleteButton.setPreferredSize(new java.awt.Dimension(72, 32));
 
         javax.swing.GroupLayout TableUpdatePanelLayout = new javax.swing.GroupLayout(TableUpdatePanel);
         TableUpdatePanel.setLayout(TableUpdatePanelLayout);
@@ -232,10 +232,10 @@ public class ManageEmployee extends javax.swing.JFrame {
                             .addComponent(EmployeeTypeLabel)
                             .addComponent(JobTitleLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addGroup(TableUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(TableUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JobTitleComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(EmployeeTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(85, 85, 85))
+                    .addComponent(EmployeeTypeComboBox, 0, 137, Short.MAX_VALUE))
+                .addGap(68, 68, 68))
         );
         TableUpdatePanelLayout.setVerticalGroup(
             TableUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,7 +247,7 @@ public class ManageEmployee extends javax.swing.JFrame {
                             .addGroup(TableUpdatePanelLayout.createSequentialGroup()
                                 .addGap(2, 2, 2)
                                 .addComponent(DepartmentLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(DepartmentComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
+                            .addComponent(DepartmentComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(TableUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(TableUpdatePanelLayout.createSequentialGroup()
@@ -260,7 +260,7 @@ public class ManageEmployee extends javax.swing.JFrame {
                             .addComponent(JobTitleComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(TableUpdatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(EmployeeTypeComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                            .addComponent(EmployeeTypeComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EmployeeTypeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(1, 1, 1)))
                 .addGap(18, 18, 18)
