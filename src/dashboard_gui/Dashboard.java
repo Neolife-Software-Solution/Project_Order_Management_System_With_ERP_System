@@ -207,8 +207,6 @@ public class Dashboard extends javax.swing.JFrame {
 
         bodyPanel.add(PositionsAndEtcPanel, java.awt.BorderLayout.PAGE_START);
 
-        DetailShowingPanel.setLayout(new java.awt.GridLayout(3, 2, 9, 10));
-
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -216,8 +214,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Number Of Employee");
         jPanel1.add(jLabel2, java.awt.BorderLayout.PAGE_START);
-
-        DetailShowingPanel.add(jPanel1);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new java.awt.BorderLayout());
@@ -227,8 +223,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel3.setText("Number Of Department");
         jPanel2.add(jLabel3, java.awt.BorderLayout.PAGE_START);
 
-        DetailShowingPanel.add(jPanel2);
-
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setLayout(new java.awt.BorderLayout());
 
@@ -236,8 +230,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Profit Per Day");
         jPanel3.add(jLabel4, java.awt.BorderLayout.PAGE_START);
-
-        DetailShowingPanel.add(jPanel3);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel4.setLayout(new java.awt.BorderLayout());
@@ -247,8 +239,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel5.setText("Profit Per Month");
         jPanel4.add(jLabel5, java.awt.BorderLayout.PAGE_START);
 
-        DetailShowingPanel.add(jPanel4);
-
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel5.setLayout(new java.awt.BorderLayout());
 
@@ -256,8 +246,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Profit Per Year");
         jPanel5.add(jLabel6, java.awt.BorderLayout.PAGE_START);
-
-        DetailShowingPanel.add(jPanel5);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel6.setLayout(new java.awt.BorderLayout());
@@ -267,7 +255,38 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel7.setText("Total Sales");
         jPanel6.add(jLabel7, java.awt.BorderLayout.PAGE_START);
 
-        DetailShowingPanel.add(jPanel6);
+        javax.swing.GroupLayout DetailShowingPanelLayout = new javax.swing.GroupLayout(DetailShowingPanel);
+        DetailShowingPanel.setLayout(DetailShowingPanelLayout);
+        DetailShowingPanelLayout.setHorizontalGroup(
+            DetailShowingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DetailShowingPanelLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(DetailShowingPanelLayout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(DetailShowingPanelLayout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        DetailShowingPanelLayout.setVerticalGroup(
+            DetailShowingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DetailShowingPanelLayout.createSequentialGroup()
+                .addGroup(DetailShowingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(DetailShowingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(DetailShowingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         bodyPanel.add(DetailShowingPanel, java.awt.BorderLayout.CENTER);
 
