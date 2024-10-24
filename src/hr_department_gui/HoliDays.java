@@ -10,12 +10,12 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
  *
  * @author sanja
  */
-public class Clander extends javax.swing.JFrame {
+public class HoliDays extends javax.swing.JFrame {
 
     /**
      * Creates new form Clander
      */
-    public Clander() {
+    public HoliDays() {
         initComponents();
     }
 
@@ -36,7 +36,9 @@ public class Clander extends javax.swing.JFrame {
         EmpName = new javax.swing.JLabel();
         EmpID = new javax.swing.JLabel();
         EmpIDTextfield = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         HolidayPanel = new javax.swing.JPanel();
         LogOutPanel = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
@@ -74,7 +76,7 @@ public class Clander extends javax.swing.JFrame {
         BodyPanel.setLayout(new java.awt.BorderLayout());
 
         AddHolidayPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        AddHolidayPanel.setPreferredSize(new java.awt.Dimension(568, 80));
+        AddHolidayPanel.setPreferredSize(new java.awt.Dimension(568, 100));
 
         jDateChooser1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
 
@@ -91,29 +93,58 @@ public class Clander extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton3.setText("ADD");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton4.setText("Update");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton5.setText("Delete");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout AddHolidayPanelLayout = new javax.swing.GroupLayout(AddHolidayPanel);
         AddHolidayPanel.setLayout(AddHolidayPanelLayout);
         AddHolidayPanelLayout.setHorizontalGroup(
             AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddHolidayPanelLayout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
                 .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpID)
-                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpName)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addGroup(AddHolidayPanelLayout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EmpID)
+                            .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EmpName)))
+                    .addGroup(AddHolidayPanelLayout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jButton3)
+                        .addGap(64, 64, 64)
+                        .addComponent(jButton4)
+                        .addGap(58, 58, 58)
+                        .addComponent(jButton5)))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         AddHolidayPanelLayout.setVerticalGroup(
             AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddHolidayPanelLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EmpID)
                     .addComponent(EmpName))
@@ -121,11 +152,12 @@ public class Clander extends javax.swing.JFrame {
                 .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(11, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddHolidayPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         BodyPanel.add(AddHolidayPanel, java.awt.BorderLayout.PAGE_START);
@@ -196,7 +228,7 @@ public class Clander extends javax.swing.JFrame {
             HolidayPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HolidayPanelViewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(0, 0, 0))
@@ -226,6 +258,18 @@ public class Clander extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EmpIDTextfieldActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -236,7 +280,7 @@ public class Clander extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Clander().setVisible(true);
+                new HoliDays().setVisible(true);
             }
         });
     }
@@ -254,9 +298,11 @@ public class Clander extends javax.swing.JFrame {
     private javax.swing.JPanel LogOutPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -38,7 +38,6 @@ public class Mark_Attendance extends javax.swing.JFrame {
         EmpNameTextfield = new javax.swing.JTextField();
         EmpID = new javax.swing.JLabel();
         EmpName = new javax.swing.JLabel();
-        AdjustDateButton = new javax.swing.JButton();
         AttendancePanel = new javax.swing.JPanel();
         SearchEmployeePanel = new javax.swing.JPanel();
         EmpID_Name = new javax.swing.JLabel();
@@ -71,7 +70,7 @@ public class Mark_Attendance extends javax.swing.JFrame {
             .addGroup(HeaderPaneLayout.createSequentialGroup()
                 .addContainerGap(320, Short.MAX_VALUE)
                 .addComponent(Header)
-                .addGap(227, 227, 227)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
                 .addGroup(HeaderPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Time, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -106,14 +105,6 @@ public class Mark_Attendance extends javax.swing.JFrame {
         EmpName.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         EmpName.setText("Employee Name");
 
-        AdjustDateButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        AdjustDateButton.setText("Adjust Date");
-        AdjustDateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdjustDateButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout AddEmployeePanelLayout = new javax.swing.GroupLayout(AddEmployeePanel);
         AddEmployeePanel.setLayout(AddEmployeePanelLayout);
         AddEmployeePanelLayout.setHorizontalGroup(
@@ -126,11 +117,8 @@ public class Mark_Attendance extends javax.swing.JFrame {
                 .addGap(66, 66, 66)
                 .addGroup(AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(EmpName)
-                    .addGroup(AddEmployeePanelLayout.createSequentialGroup()
-                        .addComponent(EmpNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
-                        .addComponent(AdjustDateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                    .addComponent(EmpNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
         AddEmployeePanelLayout.setVerticalGroup(
             AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,9 +130,8 @@ public class Mark_Attendance extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EmpNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AdjustDateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28))
+                    .addComponent(EmpNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34))
         );
 
         BodyPanel.add(AddEmployeePanel, java.awt.BorderLayout.PAGE_START);
@@ -245,7 +232,7 @@ public class Mark_Attendance extends javax.swing.JFrame {
             EmployeeAttendanceViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EmployeeAttendanceViewLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE)
                 .addGap(23, 23, 23)
                 .addComponent(jButton1)
                 .addContainerGap())
@@ -260,15 +247,6 @@ public class Mark_Attendance extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void AdjustDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdjustDateButtonActionPerformed
-
-//        Adjuest Date Button
-        Clander clander = new Clander();
-        clander.setVisible(true);
-        
-
-    }//GEN-LAST:event_AdjustDateButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -294,7 +272,6 @@ public class Mark_Attendance extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddEmployeePanel;
-    private javax.swing.JButton AdjustDateButton;
     private javax.swing.JPanel AttendancePanel;
     private javax.swing.JTable AttendanceView;
     private javax.swing.JPanel BodyPanel;

@@ -4,8 +4,6 @@
  */
 package hr_department_gui;
 
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
-
 /**
  *
  * @author sanja
@@ -30,88 +28,210 @@ public class Add_New_Customer extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Header = new javax.swing.JLabel();
-        EmpID = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        EmpID = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        EmpIDTextfield = new javax.swing.JTextField();
+        EmpID1 = new javax.swing.JLabel();
+        EmpName = new javax.swing.JLabel();
+        EmpNameTextfield = new javax.swing.JTextField();
+        EmpIDTextfield1 = new javax.swing.JTextField();
+        EmpID2 = new javax.swing.JLabel();
+        EmpNameTextfield2 = new javax.swing.JTextField();
+        EmpName2 = new javax.swing.JLabel();
+        EmpNameTextfield1 = new javax.swing.JTextField();
+        EmpName1 = new javax.swing.JLabel();
+        SeemysalesButton1 = new javax.swing.JButton();
+        SeemysalesButton2 = new javax.swing.JButton();
+        SeemysalesButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        EmpID3 = new javax.swing.JLabel();
-        EmpName3 = new javax.swing.JLabel();
         EmpNameTextfield3 = new javax.swing.JTextField();
-        EmpIDTextfield2 = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        EmpID1 = new javax.swing.JLabel();
-        EmpIDTextfield = new javax.swing.JTextField();
-        EmpName = new javax.swing.JLabel();
-        EmpNameTextfield = new javax.swing.JTextField();
-        EmpName1 = new javax.swing.JLabel();
-        EmpNameTextfield1 = new javax.swing.JTextField();
-        EmpID2 = new javax.swing.JLabel();
-        EmpIDTextfield1 = new javax.swing.JTextField();
-        EmpName2 = new javax.swing.JLabel();
-        EmpNameTextfield2 = new javax.swing.JTextField();
-        SeemysalesButton = new javax.swing.JButton();
-        SeemysalesButton1 = new javax.swing.JButton();
-        SeemysalesButton2 = new javax.swing.JButton();
+        EmpName3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        EmpIDTextfield2 = new javax.swing.JTextField();
+        EmpID3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-
-        jPanel1.setPreferredSize(new java.awt.Dimension(656, 80));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Header.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
         Header.setText("New Customer");
-
-        EmpID.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpID.setText("Customer ID");
-
-        jTextField1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/generate.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(EmpID)
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel1))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addContainerGap(252, Short.MAX_VALUE)
                 .addComponent(Header)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EmpID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(Header)))
-                .addGap(14, 14, 14))
+                .addGap(22, 22, 22)
+                .addComponent(Header)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        jPanel4.setPreferredSize(new java.awt.Dimension(656, 50));
-        jPanel4.setLayout(new java.awt.BorderLayout());
+        jPanel3.setPreferredSize(new java.awt.Dimension(671, 200));
+
+        EmpID.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        EmpID.setText("Customer ID");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/generate.png"))); // NOI18N
+
+        EmpIDTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+
+        EmpID1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        EmpID1.setText("First Name");
+
+        EmpName.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        EmpName.setText("Last Name ");
+
+        EmpNameTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        EmpNameTextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmpNameTextfieldActionPerformed(evt);
+            }
+        });
+
+        EmpIDTextfield1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        EmpIDTextfield1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmpIDTextfield1ActionPerformed(evt);
+            }
+        });
+
+        EmpID2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        EmpID2.setText("Email Address");
+
+        EmpNameTextfield2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        EmpNameTextfield2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmpNameTextfield2ActionPerformed(evt);
+            }
+        });
+
+        EmpName2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        EmpName2.setText("Mobile No");
+
+        EmpNameTextfield1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+
+        EmpName1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        EmpName1.setText("Address");
+
+        SeemysalesButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        SeemysalesButton1.setText("Delete Customer");
+        SeemysalesButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeemysalesButton1ActionPerformed(evt);
+            }
+        });
+
+        SeemysalesButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        SeemysalesButton2.setText("Update Customer");
+        SeemysalesButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeemysalesButton2ActionPerformed(evt);
+            }
+        });
+
+        SeemysalesButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        SeemysalesButton.setText("Add New Customer ");
+        SeemysalesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SeemysalesButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 671, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(EmpID)
+                            .addGap(51, 51, 51)
+                            .addComponent(jLabel1))
+                        .addComponent(EmpID1)
+                        .addComponent(EmpName)
+                        .addComponent(EmpIDTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                        .addComponent(EmpNameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                    .addGap(50, 50, 50)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(EmpName1)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(EmpID2)
+                                .addComponent(EmpName2)
+                                .addComponent(EmpNameTextfield1, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                .addComponent(EmpNameTextfield2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                .addComponent(EmpIDTextfield1, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
+                            .addGap(50, 50, 50)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(SeemysalesButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(SeemysalesButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(SeemysalesButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap(35, Short.MAX_VALUE)))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(17, 17, 17)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(EmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(EmpID1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(EmpName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(EmpNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(SeemysalesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SeemysalesButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(SeemysalesButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(EmpName1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(EmpNameTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(EmpName2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(EmpNameTextfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(EmpID2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(EmpIDTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(18, Short.MAX_VALUE)))
+        );
+
+        jPanel2.add(jPanel3, java.awt.BorderLayout.PAGE_START);
+
+        jPanel4.setPreferredSize(new java.awt.Dimension(671, 50));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -119,9 +239,26 @@ public class Add_New_Customer extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, java.awt.BorderLayout.LINE_START);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addContainerGap(627, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         jPanel2.add(jPanel4, java.awt.BorderLayout.PAGE_END);
+
+        jPanel5.setPreferredSize(new java.awt.Dimension(671, 300));
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -143,192 +280,66 @@ public class Add_New_Customer extends javax.swing.JFrame {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        EmpID3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpID3.setText("Full Name / Email / Mobile");
+        EmpNameTextfield3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         EmpName3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         EmpName3.setText("Ponits");
 
-        EmpNameTextfield3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         EmpIDTextfield2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.setPreferredSize(new java.awt.Dimension(656, 180));
-
-        EmpID1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpID1.setText("First Name");
-
-        EmpIDTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
-        EmpName.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpName.setText("Last Name ");
-
-        EmpNameTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
-        EmpName1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpName1.setText("Address");
-
-        EmpNameTextfield1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
-        EmpID2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpID2.setText("Email Address");
-
-        EmpIDTextfield1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        EmpIDTextfield1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmpIDTextfield1ActionPerformed(evt);
-            }
-        });
-
-        EmpName2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpName2.setText("Mobile No");
-
-        EmpNameTextfield2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        EmpNameTextfield2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmpNameTextfield2ActionPerformed(evt);
-            }
-        });
-
-        SeemysalesButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        SeemysalesButton.setText("Add New Customer ");
-        SeemysalesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SeemysalesButtonActionPerformed(evt);
-            }
-        });
-
-        SeemysalesButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        SeemysalesButton1.setText("Delete Customer");
-        SeemysalesButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SeemysalesButton1ActionPerformed(evt);
-            }
-        });
-
-        SeemysalesButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        SeemysalesButton2.setText("Update Customer");
-        SeemysalesButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SeemysalesButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(SeemysalesButton1)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(SeemysalesButton)
-                                .addGap(39, 39, 39)
-                                .addComponent(SeemysalesButton2))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(EmpID1)
-                                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(34, 34, 34)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(EmpName)
-                                    .addComponent(EmpNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(17, 17, 17)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EmpName1)
-                            .addComponent(EmpNameTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EmpID2)
-                            .addComponent(EmpIDTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EmpName2)
-                            .addComponent(EmpNameTextfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(42, 42, 42)
-                        .addComponent(jButton2)))
-                .addContainerGap(56, Short.MAX_VALUE))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(EmpName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EmpNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(EmpName1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EmpNameTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(EmpID1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(EmpID2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(EmpIDTextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(EmpName2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(EmpNameTextfield2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(SeemysalesButton)
-                    .addComponent(SeemysalesButton1)
-                    .addComponent(SeemysalesButton2))
-                .addGap(14, 14, 14))
-        );
+        EmpID3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        EmpID3.setText("Full Name / Email / Mobile");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpID3)
-                    .addComponent(EmpIDTextfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpName3)
-                    .addComponent(EmpNameTextfield3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 671, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGap(37, 37, 37)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(EmpID3)
+                                .addComponent(EmpIDTextfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(EmpName3)
+                                .addComponent(EmpNameTextfield3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(58, 58, 58)
+                            .addComponent(jButton2)
+                            .addGap(50, 50, 50))
+                        .addComponent(jScrollPane1))
+                    .addContainerGap()))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpName3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(EmpID3, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EmpIDTextfield2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EmpNameTextfield3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+            .addGap(0, 246, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel5Layout.createSequentialGroup()
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(EmpName3, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(EmpID3, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(EmpIDTextfield2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(EmpNameTextfield3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton2))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         jPanel2.add(jPanel5, java.awt.BorderLayout.CENTER);
@@ -336,12 +347,19 @@ public class Add_New_Customer extends javax.swing.JFrame {
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SeemysalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeemysalesButtonActionPerformed
+    private void EmpNameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpNameTextfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SeemysalesButtonActionPerformed
+    }//GEN-LAST:event_EmpNameTextfieldActionPerformed
+
+    private void EmpIDTextfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpIDTextfield1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmpIDTextfield1ActionPerformed
+
+    private void EmpNameTextfield2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpNameTextfield2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmpNameTextfield2ActionPerformed
 
     private void SeemysalesButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeemysalesButton1ActionPerformed
         // TODO add your handling code here:
@@ -351,27 +369,47 @@ public class Add_New_Customer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SeemysalesButton2ActionPerformed
 
-    private void EmpNameTextfield2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpNameTextfield2ActionPerformed
+    private void SeemysalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeemysalesButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EmpNameTextfield2ActionPerformed
+    }//GEN-LAST:event_SeemysalesButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-//        Logout Button
+        //        Logout Button
         System.exit(0);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void EmpIDTextfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpIDTextfield1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EmpIDTextfield1ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        FlatMacLightLaf.setup();
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Add_New_Customer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Add_New_Customer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Add_New_Customer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Add_New_Customer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -411,6 +449,5 @@ public class Add_New_Customer extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
