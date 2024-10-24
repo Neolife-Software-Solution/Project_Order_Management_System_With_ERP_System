@@ -74,7 +74,7 @@ public class AddDeliveryOrder extends javax.swing.JFrame {
         submitButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
         expDeliveryDate = new com.toedter.calendar.JDateChooser();
-        signOutButtonPanal = new javax.swing.JPanel();
+        footerPanel = new javax.swing.JPanel();
         signoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -312,7 +312,7 @@ public class AddDeliveryOrder extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
                 .addComponent(productSearchComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addGap(27, 27, 27)
                 .addComponent(QtySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -383,7 +383,7 @@ public class AddDeliveryOrder extends javax.swing.JFrame {
         TablePanelLayout.setHorizontalGroup(
             TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TablePanelLayout.createSequentialGroup()
-                .addGap(297, 307, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -478,7 +478,7 @@ public class AddDeliveryOrder extends javax.swing.JFrame {
 
         orderInfoPanel.add(OrderInfoTableAndSearchPanel, java.awt.BorderLayout.CENTER);
 
-        signOutButtonPanal.setPreferredSize(new java.awt.Dimension(826, 60));
+        footerPanel.setPreferredSize(new java.awt.Dimension(826, 60));
 
         signoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
         signoutButton.setToolTipText("Sign Out");
@@ -491,24 +491,24 @@ public class AddDeliveryOrder extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout signOutButtonPanalLayout = new javax.swing.GroupLayout(signOutButtonPanal);
-        signOutButtonPanal.setLayout(signOutButtonPanalLayout);
-        signOutButtonPanalLayout.setHorizontalGroup(
-            signOutButtonPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signOutButtonPanalLayout.createSequentialGroup()
+        javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
+        footerPanel.setLayout(footerPanelLayout);
+        footerPanelLayout.setHorizontalGroup(
+            footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(footerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(signoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(952, Short.MAX_VALUE))
         );
-        signOutButtonPanalLayout.setVerticalGroup(
-            signOutButtonPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signOutButtonPanalLayout.createSequentialGroup()
+        footerPanelLayout.setVerticalGroup(
+            footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, footerPanelLayout.createSequentialGroup()
                 .addContainerGap(12, Short.MAX_VALUE)
                 .addComponent(signoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        orderInfoPanel.add(signOutButtonPanal, java.awt.BorderLayout.PAGE_END);
+        orderInfoPanel.add(footerPanel, java.awt.BorderLayout.PAGE_END);
 
         bodyPanel.add(orderInfoPanel, java.awt.BorderLayout.CENTER);
 
@@ -560,6 +560,7 @@ public class AddDeliveryOrder extends javax.swing.JFrame {
     private javax.swing.JButton clearButton;
     private javax.swing.JPanel customerInfoPanel;
     private com.toedter.calendar.JDateChooser expDeliveryDate;
+    private javax.swing.JPanel footerPanel;
     private javax.swing.JButton generateButton;
     private javax.swing.JTextField generateText;
     private javax.swing.JPanel headerPanel;
@@ -585,7 +586,6 @@ public class AddDeliveryOrder extends javax.swing.JFrame {
     private javax.swing.JPanel orderInfoPanel;
     private javax.swing.JComboBox<String> productSearchComboBox;
     private javax.swing.JButton refreshButton;
-    private javax.swing.JPanel signOutButtonPanal;
     private javax.swing.JButton signoutButton;
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables

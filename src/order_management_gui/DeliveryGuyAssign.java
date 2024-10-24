@@ -85,6 +85,9 @@ public class DeliveryGuyAssign extends javax.swing.JFrame {
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        jButton4.setMaximumSize(new java.awt.Dimension(42, 42));
+        jButton4.setMinimumSize(new java.awt.Dimension(42, 42));
+        jButton4.setPreferredSize(new java.awt.Dimension(42, 42));
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
