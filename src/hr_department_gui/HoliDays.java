@@ -52,16 +52,16 @@ public class HoliDays extends javax.swing.JFrame {
         HeaderPanel.setPreferredSize(new java.awt.Dimension(400, 60));
 
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
-        jLabel1.setText("Calender");
+        jLabel1.setText("HoliDays");
 
         javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(HeaderPanel);
         HeaderPanel.setLayout(HeaderPanelLayout);
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addContainerGap(209, Short.MAX_VALUE)
+                .addContainerGap(288, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addContainerGap(306, Short.MAX_VALUE))
         );
         HeaderPanelLayout.setVerticalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,7 +76,7 @@ public class HoliDays extends javax.swing.JFrame {
         BodyPanel.setLayout(new java.awt.BorderLayout());
 
         AddHolidayPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        AddHolidayPanel.setPreferredSize(new java.awt.Dimension(568, 100));
+        AddHolidayPanel.setPreferredSize(new java.awt.Dimension(568, 110));
 
         jDateChooser1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
 
@@ -122,24 +122,23 @@ public class HoliDays extends javax.swing.JFrame {
         AddHolidayPanelLayout.setHorizontalGroup(
             AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddHolidayPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AddHolidayPanelLayout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EmpID)
-                            .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(50, 50, 50)
-                        .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EmpName)))
-                    .addGroup(AddHolidayPanelLayout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jButton3)
-                        .addGap(64, 64, 64)
-                        .addComponent(jButton4)
-                        .addGap(58, 58, 58)
-                        .addComponent(jButton5)))
-                .addContainerGap(97, Short.MAX_VALUE))
+                    .addComponent(EmpID)
+                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(144, 144, 144)
+                .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EmpName)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(AddHolidayPanelLayout.createSequentialGroup()
+                .addContainerGap(90, Short.MAX_VALUE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         AddHolidayPanelLayout.setVerticalGroup(
             AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,14 +148,14 @@ public class HoliDays extends javax.swing.JFrame {
                     .addComponent(EmpID)
                     .addComponent(EmpName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
 
@@ -181,7 +180,7 @@ public class HoliDays extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogOutPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton2)
-                .addContainerGap(524, Short.MAX_VALUE))
+                .addContainerGap(667, Short.MAX_VALUE))
         );
         LogOutPanelLayout.setVerticalGroup(
             LogOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,6 +191,8 @@ public class HoliDays extends javax.swing.JFrame {
         );
 
         HolidayPanel.add(LogOutPanel, java.awt.BorderLayout.PAGE_END);
+
+        HolidayPanelView.setPreferredSize(new java.awt.Dimension(711, 225));
 
         HolidayView.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         HolidayView.setModel(new javax.swing.table.DefaultTableModel(
@@ -218,20 +219,23 @@ public class HoliDays extends javax.swing.JFrame {
         HolidayPanelViewLayout.setHorizontalGroup(
             HolidayPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HolidayPanelViewLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(HolidayPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addGroup(HolidayPanelViewLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(HolidayPanelViewLayout.createSequentialGroup()
+                        .addContainerGap(33, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         HolidayPanelViewLayout.setVerticalGroup(
             HolidayPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HolidayPanelViewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addGap(0, 0, 0))
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         HolidayPanel.add(HolidayPanelView, java.awt.BorderLayout.CENTER);
