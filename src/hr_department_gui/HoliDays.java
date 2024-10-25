@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package hr_department_gui;
 
@@ -10,12 +10,13 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
  *
  * @author sanja
  */
-public class HoliDays extends javax.swing.JFrame {
+public class HoliDays extends javax.swing.JDialog {
 
     /**
-     * Creates new form Clander
+     * Creates new form HoliDays
      */
-    public HoliDays() {
+    public HoliDays(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
     }
 
@@ -31,25 +32,25 @@ public class HoliDays extends javax.swing.JFrame {
         HeaderPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         BodyPanel = new javax.swing.JPanel();
-        AddHolidayPanel = new javax.swing.JPanel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        EmpName = new javax.swing.JLabel();
+        SearchPanel = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
         EmpID = new javax.swing.JLabel();
         EmpIDTextfield = new javax.swing.JTextField();
+        EmpName = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        HolidayPanel = new javax.swing.JPanel();
         LogOutPanel = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        HolidayPanelView = new javax.swing.JPanel();
+        ViewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         HolidayView = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        HeaderPanel.setPreferredSize(new java.awt.Dimension(400, 60));
+        HeaderPanel.setPreferredSize(new java.awt.Dimension(549, 50));
 
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
         jLabel1.setText("HoliDays");
@@ -59,29 +60,23 @@ public class HoliDays extends javax.swing.JFrame {
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addContainerGap(288, Short.MAX_VALUE)
+                .addContainerGap(289, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
         HeaderPanelLayout.setVerticalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(HeaderPanel, java.awt.BorderLayout.PAGE_START);
 
         BodyPanel.setLayout(new java.awt.BorderLayout());
 
-        AddHolidayPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        AddHolidayPanel.setPreferredSize(new java.awt.Dimension(568, 110));
-
-        jDateChooser1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-
-        EmpName.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpName.setText("Date");
+        SearchPanel.setPreferredSize(new java.awt.Dimension(560, 120));
 
         EmpID.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         EmpID.setText("Holiday Name");
@@ -92,6 +87,11 @@ public class HoliDays extends javax.swing.JFrame {
                 EmpIDTextfieldActionPerformed(evt);
             }
         });
+
+        EmpName.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        EmpName.setText("Date");
+
+        jDateChooser1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
 
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton3.setText("ADD");
@@ -117,53 +117,55 @@ public class HoliDays extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout AddHolidayPanelLayout = new javax.swing.GroupLayout(AddHolidayPanel);
-        AddHolidayPanel.setLayout(AddHolidayPanelLayout);
-        AddHolidayPanelLayout.setHorizontalGroup(
-            AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddHolidayPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpID)
-                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(144, 144, 144)
-                .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpName)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(AddHolidayPanelLayout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+        javax.swing.GroupLayout SearchPanelLayout = new javax.swing.GroupLayout(SearchPanel);
+        SearchPanel.setLayout(SearchPanelLayout);
+        SearchPanelLayout.setHorizontalGroup(
+            SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(SearchPanelLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(SearchPanelLayout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(SearchPanelLayout.createSequentialGroup()
+                        .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EmpID)
+                            .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(104, 104, 104)
+                        .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EmpName))))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
-        AddHolidayPanelLayout.setVerticalGroup(
-            AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddHolidayPanelLayout.createSequentialGroup()
+        SearchPanelLayout.setVerticalGroup(
+            SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EmpID)
-                    .addComponent(EmpName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(AddHolidayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchPanelLayout.createSequentialGroup()
+                        .addComponent(EmpID)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchPanelLayout.createSequentialGroup()
+                        .addComponent(EmpName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        BodyPanel.add(AddHolidayPanel, java.awt.BorderLayout.PAGE_START);
+        BodyPanel.add(SearchPanel, java.awt.BorderLayout.PAGE_START);
 
-        HolidayPanel.setLayout(new java.awt.BorderLayout());
-
-        LogOutPanel.setPreferredSize(new java.awt.Dimension(568, 50));
+        LogOutPanel.setPreferredSize(new java.awt.Dimension(607, 50));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
         jButton2.setToolTipText("Sign Out");
@@ -180,19 +182,19 @@ public class HoliDays extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogOutPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton2)
-                .addContainerGap(667, Short.MAX_VALUE))
+                .addGap(667, 667, 667))
         );
         LogOutPanelLayout.setVerticalGroup(
             LogOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogOutPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jButton2)
                 .addContainerGap())
         );
 
-        HolidayPanel.add(LogOutPanel, java.awt.BorderLayout.PAGE_END);
+        BodyPanel.add(LogOutPanel, java.awt.BorderLayout.PAGE_END);
 
-        HolidayPanelView.setPreferredSize(new java.awt.Dimension(711, 225));
+        ViewPanel.setPreferredSize(new java.awt.Dimension(657, 250));
 
         HolidayView.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         HolidayView.setModel(new javax.swing.table.DefaultTableModel(
@@ -214,49 +216,41 @@ public class HoliDays extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout HolidayPanelViewLayout = new javax.swing.GroupLayout(HolidayPanelView);
-        HolidayPanelView.setLayout(HolidayPanelViewLayout);
-        HolidayPanelViewLayout.setHorizontalGroup(
-            HolidayPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HolidayPanelViewLayout.createSequentialGroup()
-                .addGroup(HolidayPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(HolidayPanelViewLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addGroup(HolidayPanelViewLayout.createSequentialGroup()
-                        .addContainerGap(33, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+        javax.swing.GroupLayout ViewPanelLayout = new javax.swing.GroupLayout(ViewPanel);
+        ViewPanel.setLayout(ViewPanelLayout);
+        ViewPanelLayout.setHorizontalGroup(
+            ViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 711, Short.MAX_VALUE)
+            .addGroup(ViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ViewPanelLayout.createSequentialGroup()
+                    .addGroup(ViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(ViewPanelLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ViewPanelLayout.createSequentialGroup()
+                            .addGap(535, 535, 535)
+                            .addComponent(jButton1)))
+                    .addContainerGap(70, Short.MAX_VALUE)))
         );
-        HolidayPanelViewLayout.setVerticalGroup(
-            HolidayPanelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HolidayPanelViewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        ViewPanelLayout.setVerticalGroup(
+            ViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 206, Short.MAX_VALUE)
+            .addGroup(ViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ViewPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
 
-        HolidayPanel.add(HolidayPanelView, java.awt.BorderLayout.CENTER);
-
-        BodyPanel.add(HolidayPanel, java.awt.BorderLayout.CENTER);
+        BodyPanel.add(ViewPanel, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(BodyPanel, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        System.exit(0);
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void EmpIDTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpIDTextfieldActionPerformed
         // TODO add your handling code here:
@@ -274,6 +268,15 @@ public class HoliDays extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        System.exit(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -281,25 +284,31 @@ public class HoliDays extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         FlatMacLightLaf.setup();
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HoliDays().setVisible(true);
+                HoliDays dialog = new HoliDays(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel AddHolidayPanel;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JLabel EmpID;
     private javax.swing.JTextField EmpIDTextfield;
     private javax.swing.JLabel EmpName;
     private javax.swing.JPanel HeaderPanel;
-    private javax.swing.JPanel HolidayPanel;
-    private javax.swing.JPanel HolidayPanelView;
     private javax.swing.JTable HolidayView;
     private javax.swing.JPanel LogOutPanel;
+    private javax.swing.JPanel SearchPanel;
+    private javax.swing.JPanel ViewPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -308,5 +317,6 @@ public class HoliDays extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
