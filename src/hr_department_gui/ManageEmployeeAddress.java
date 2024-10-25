@@ -82,7 +82,6 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
 
         BodyPanel.setLayout(new java.awt.BorderLayout());
 
-        SearchPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         SearchPanel.setPreferredSize(new java.awt.Dimension(780, 200));
 
         ProvinceField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -107,7 +106,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         CityLabel.setText("Search by City");
 
         DistrictField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        DistrictField.setPreferredSize(new java.awt.Dimension(92, 27));
+        DistrictField.setPreferredSize(new java.awt.Dimension(92, 24));
 
         CityField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
@@ -129,7 +128,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(NameField)
-                    .addComponent(DistrictField, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(DistrictField, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                     .addComponent(EmailField))
                 .addGap(53, 53, 53)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -138,7 +137,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ProvinceField)
-                    .addComponent(CityField, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+                    .addComponent(CityField, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE))
                 .addGap(44, 44, 44))
         );
         SearchPanelLayout.setVerticalGroup(
@@ -146,7 +145,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
             .addGroup(SearchPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NameField, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(NameField, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(NameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ProvinceLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ProvinceField, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -154,7 +153,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(DistrictLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DistrictField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(DistrictField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                     .addComponent(CityField, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

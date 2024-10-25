@@ -105,40 +105,51 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="FirstNameLabel" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
-                                  <Component id="EmployeeIdLabel" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
-                                  <Component id="EmployeeIdField" max="32767" attributes="0"/>
-                                  <Component id="FNameField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="DOBField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="EmailField" alignment="0" pref="271" max="32767" attributes="0"/>
-                                  <Component id="EmailLabel" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
-                                  <Component id="DOBLabel" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
-                                  <Component id="EmploymentTypeLabel" alignment="0" min="-2" pref="211" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="LastNameLabel" max="32767" attributes="0"/>
-                                      <Component id="ContactNumberLabel" alignment="0" pref="223" max="32767" attributes="0"/>
-                                      <Component id="DateOfHireLabel" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="DateOfHireField" pref="258" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="ContactNumberField" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="LNameField" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="FirstNameLabel" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
+                                          <Component id="EmployeeIdLabel" alignment="0" min="-2" pref="188" max="-2" attributes="0"/>
+                                          <Component id="EmailLabel" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
+                                          <Component id="DOBLabel" alignment="0" min="-2" pref="186" max="-2" attributes="0"/>
+                                          <Component id="EmploymentTypeLabel" alignment="0" min="-2" pref="211" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="168" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="FNameField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="DOBField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="EmailField" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="EmployeeIdField" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                              <Component id="GenerateButton" max="32767" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="LastNameLabel" max="32767" attributes="0"/>
+                                          <Component id="ContactNumberLabel" alignment="0" pref="223" max="32767" attributes="0"/>
+                                          <Component id="DateOfHireLabel" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="DateOfHireField" pref="265" max="32767" attributes="0"/>
+                                  <Component id="ContactNumberField" max="32767" attributes="0"/>
+                                  <Component id="LNameField" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="FullTime" max="32767" attributes="0"/>
+                              <Component id="FullTime" pref="72" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="Intern" max="32767" attributes="0"/>
+                              <Component id="Intern" pref="59" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="PartTime" pref="109" max="32767" attributes="0"/>
+                              <Component id="PartTime" pref="142" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="415" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -151,7 +162,10 @@
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="EmployeeIdLabel" pref="21" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="EmployeeIdField" pref="42" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="EmployeeIdField" alignment="3" pref="42" max="32767" attributes="0"/>
+                          <Component id="GenerateButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="FirstNameLabel" alignment="3" max="32767" attributes="0"/>
@@ -358,6 +372,16 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Intern"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="GenerateButton">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/resources/generate.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GenerateButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

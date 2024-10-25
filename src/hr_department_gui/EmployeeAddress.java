@@ -50,6 +50,7 @@ public class EmployeeAddress extends javax.swing.JFrame {
         AddressLine2Field = new javax.swing.JTextField();
         AddButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         SignOutPanel = new javax.swing.JPanel();
         SignOutButton = new javax.swing.JButton();
 
@@ -82,7 +83,6 @@ public class EmployeeAddress extends javax.swing.JFrame {
 
         BodyPanel.setLayout(new java.awt.BorderLayout());
 
-        AddressAdd1Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         AddressAdd1Panel.setPreferredSize(new java.awt.Dimension(808, 250));
 
         NameField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -129,9 +129,9 @@ public class EmployeeAddress extends javax.swing.JFrame {
                 .addGap(170, 170, 170))
             .addGroup(AddressAdd1PanelLayout.createSequentialGroup()
                 .addGap(235, 235, 235)
-                .addComponent(CityField, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                .addComponent(CityField, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                 .addGap(123, 123, 123)
-                .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                 .addGap(52, 52, 52))
         );
         AddressAdd1PanelLayout.setVerticalGroup(
@@ -144,7 +144,7 @@ public class EmployeeAddress extends javax.swing.JFrame {
                 .addGap(51, 51, 51)
                 .addGroup(AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DistrictField)
-                    .addComponent(ProvinceField, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                    .addComponent(ProvinceField, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                 .addGroup(AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddressAdd1PanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -202,23 +202,8 @@ public class EmployeeAddress extends javax.swing.JFrame {
         AddressAdd2PanelLayout.setHorizontalGroup(
             AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                .addGap(272, 272, 272)
-                .addComponent(CityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CityComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(237, 237, 237))
-            .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                        .addComponent(ProvinceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ProvinceComboBox, 0, 125, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                        .addComponent(DistrictLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(DistrictComboBox, 0, 125, Short.MAX_VALUE)
-                        .addGap(144, 144, 144))
                     .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
                         .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AddressLine1Field)
@@ -227,42 +212,58 @@ public class EmployeeAddress extends javax.swing.JFrame {
                         .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AddButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(66, 66, 66))))
+                        .addGap(66, 66, 66))
+                    .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
+                        .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
+                                .addGap(209, 209, 209)
+                                .addComponent(CityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(CityComboBox, 0, 132, Short.MAX_VALUE)
+                                .addGap(17, 17, 17))
+                            .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
+                                .addComponent(ProvinceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ProvinceComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(52, 52, 52)
+                                .addComponent(DistrictLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(DistrictComboBox, 0, 125, Short.MAX_VALUE)
+                        .addGap(138, 138, 138))))
+            .addComponent(jSeparator1)
         );
         AddressAdd2PanelLayout.setVerticalGroup(
             AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(ProvinceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(DistrictLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                            .addComponent(DistrictComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)))
                     .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(ProvinceComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
-                    .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(DistrictLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE))
-                    .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(DistrictComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)))
-                .addGap(37, 37, 37)
-                .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(31, 31, 31)
+                        .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ProvinceComboBox, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ProvinceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))))
+                .addGap(35, 35, 35)
+                .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(CityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(CityComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(CityComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addGap(50, 50, 50)
                 .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(AddButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                        .addComponent(AddButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
                     .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                        .addComponent(AddressLine1Field, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                        .addComponent(AddressLine1Field, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                         .addGap(1, 1, 1)))
                 .addGap(18, 18, 18)
                 .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AddressLine2Field, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(AddressLine2Field, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(16, 16, 16))
         );
@@ -380,5 +381,6 @@ public class EmployeeAddress extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
