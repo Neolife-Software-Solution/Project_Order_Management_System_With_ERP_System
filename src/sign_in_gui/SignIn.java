@@ -33,6 +33,8 @@ public class SignIn extends javax.swing.JFrame {
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         logOutPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         bodyPanel = new javax.swing.JPanel();
         signInLabel = new javax.swing.JLabel();
         signInTextField = new javax.swing.JTextField();
@@ -48,6 +50,7 @@ public class SignIn extends javax.swing.JFrame {
         headerPanel.setPreferredSize(new java.awt.Dimension(468, 60));
 
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Sign In");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
@@ -55,31 +58,54 @@ public class SignIn extends javax.swing.JFrame {
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addContainerGap(193, Short.MAX_VALUE)
+                .addGap(207, 207, 207)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addGap(215, 215, 215))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
-        logOutPanel.setPreferredSize(new java.awt.Dimension(468, 40));
+        logOutPanel.setBackground(new java.awt.Color(51, 51, 51));
+        logOutPanel.setPreferredSize(new java.awt.Dimension(468, 60));
+
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Designed & Developed By NeoLife Software Solutions");
+
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("All Rights Reserved | NeoLife Software Solutions");
 
         javax.swing.GroupLayout logOutPanelLayout = new javax.swing.GroupLayout(logOutPanel);
         logOutPanel.setLayout(logOutPanelLayout);
         logOutPanelLayout.setHorizontalGroup(
             logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 522, Short.MAX_VALUE)
+            .addGroup(logOutPanelLayout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addGroup(logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logOutPanelLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(103, 103, 103))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logOutPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(87, 87, 87))))
         );
         logOutPanelLayout.setVerticalGroup(
             logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logOutPanelLayout.createSequentialGroup()
+                .addContainerGap(10, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(12, 12, 12))
         );
 
         getContentPane().add(logOutPanel, java.awt.BorderLayout.PAGE_END);
@@ -132,7 +158,7 @@ public class SignIn extends javax.swing.JFrame {
         bodyPanelLayout.setVerticalGroup(
             bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyPanelLayout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(signInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(signInTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,13 +177,13 @@ public class SignIn extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void signInTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_signInTextFieldActionPerformed
-
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordFieldActionPerformed
+
+    private void signInTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_signInTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,6 +203,8 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JToggleButton jToggleButton1;
     private com.k33ptoo.components.KButton kButton1;
     private javax.swing.JPanel logOutPanel;
