@@ -56,15 +56,15 @@ public class PayrollManagement extends javax.swing.JFrame {
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addGap(251, 251, 251)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
-                .addGap(244, 244, 244))
+                .addGap(339, 339, 339)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(283, 283, 283))
         );
         HeaderPanelLayout.setVerticalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
                 .addGap(15, 15, 15))
         );
 
@@ -74,8 +74,6 @@ public class PayrollManagement extends javax.swing.JFrame {
 
         SearchPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         SearchPanel.setPreferredSize(new java.awt.Dimension(855, 150));
-
-        jYearChooser1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         jTextField1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jTextField1.setText("Search employee....");

@@ -29,19 +29,21 @@ public class SignIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToggleButton1 = new javax.swing.JToggleButton();
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         logOutPanel = new javax.swing.JPanel();
-        logOutButton = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
         signInLabel = new javax.swing.JLabel();
         signInTextField = new javax.swing.JTextField();
         passwordLabel = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
-        signInButton = new javax.swing.JButton();
+        kButton1 = new com.k33ptoo.components.KButton();
+
+        jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setResizable(false);
 
         headerPanel.setPreferredSize(new java.awt.Dimension(468, 60));
 
@@ -67,30 +69,17 @@ public class SignIn extends javax.swing.JFrame {
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
-        logOutPanel.setPreferredSize(new java.awt.Dimension(468, 60));
-
-        logOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
-        logOutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logOutButtonActionPerformed(evt);
-            }
-        });
+        logOutPanel.setPreferredSize(new java.awt.Dimension(468, 40));
 
         javax.swing.GroupLayout logOutPanelLayout = new javax.swing.GroupLayout(logOutPanel);
         logOutPanel.setLayout(logOutPanelLayout);
         logOutPanelLayout.setHorizontalGroup(
             logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logOutPanelLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(logOutButton)
-                .addContainerGap(455, Short.MAX_VALUE))
+            .addGap(0, 522, Short.MAX_VALUE)
         );
         logOutPanelLayout.setVerticalGroup(
             logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logOutPanelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(logOutButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 40, Short.MAX_VALUE)
         );
 
         getContentPane().add(logOutPanel, java.awt.BorderLayout.PAGE_END);
@@ -107,37 +96,43 @@ public class SignIn extends javax.swing.JFrame {
         passwordLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         passwordLabel.setText("Password");
 
-        signInButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        signInButton.setText("Sign In");
-        signInButton.addActionListener(new java.awt.event.ActionListener() {
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signInButtonActionPerformed(evt);
+                passwordFieldActionPerformed(evt);
             }
         });
+
+        kButton1.setText("Sign IN");
+        kButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        kButton1.setkEndColor(new java.awt.Color(0, 204, 204));
+        kButton1.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton1.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        kButton1.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkStartColor(new java.awt.Color(0, 102, 153));
 
         javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
         bodyPanel.setLayout(bodyPanelLayout);
         bodyPanelLayout.setHorizontalGroup(
             bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bodyPanelLayout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
-                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(passwordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(signInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(signInTextField)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(126, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bodyPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(signInButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(120, 120, 120)
+                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(kButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(bodyPanelLayout.createSequentialGroup()
+                        .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(signInLabel)
+                            .addComponent(passwordLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(signInTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))))
+                .addGap(121, 121, 121))
         );
         bodyPanelLayout.setVerticalGroup(
             bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyPanelLayout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
+                .addContainerGap(63, Short.MAX_VALUE)
                 .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(signInLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(signInTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,9 +140,9 @@ public class SignIn extends javax.swing.JFrame {
                 .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(signInButton, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                .addGap(65, 65, 65))
+                .addGap(46, 46, 46)
+                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
         );
 
         getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
@@ -160,13 +155,9 @@ public class SignIn extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_signInTextFieldActionPerformed
 
-    private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
-       System.exit(0); // Log Out Button
-    }//GEN-LAST:event_logOutButtonActionPerformed
-
-    private void signInButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInButtonActionPerformed
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_signInButtonActionPerformed
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,11 +177,11 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton logOutButton;
+    private javax.swing.JToggleButton jToggleButton1;
+    private com.k33ptoo.components.KButton kButton1;
     private javax.swing.JPanel logOutPanel;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JButton signInButton;
     private javax.swing.JLabel signInLabel;
     private javax.swing.JTextField signInTextField;
     // End of variables declaration//GEN-END:variables
