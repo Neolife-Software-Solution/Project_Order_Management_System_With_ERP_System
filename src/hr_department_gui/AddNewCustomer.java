@@ -10,12 +10,12 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
  *
  * @author sanja
  */
-public class Add_New_Customer extends javax.swing.JFrame {
+public class AddNewCustomer extends javax.swing.JFrame {
 
     /**
      * Creates new form Add_New_Customer
      */
-    public Add_New_Customer() {
+    public AddNewCustomer() {
         initComponents();
     }
 
@@ -215,63 +215,63 @@ public class Add_New_Customer extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addComponent(EmpID1)
                     .addComponent(EmpName)
-                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-                    .addComponent(EmpNameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
-                .addGap(32, 32, 32)
+                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                    .addComponent(EmpNameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
                 .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(EmpName1)
-                    .addGroup(AddCustomerPanelLayout.createSequentialGroup()
-                        .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(EmpID2)
-                            .addComponent(EmpName2)
-                            .addComponent(EmpIDTextfield1, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
-                            .addComponent(EmpNameTextfield2, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
-                            .addComponent(EmpNameTextfield1, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
-                        .addGap(39, 39, 39)
-                        .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(SeemysalesButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                            .addComponent(SeemysalesButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(SeemysalesButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(EmpID2)
+                        .addComponent(EmpName2)
+                        .addComponent(EmpIDTextfield1, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                        .addComponent(EmpNameTextfield2, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                        .addComponent(EmpNameTextfield1, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)))
+                .addGap(38, 38, 38)
+                .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(SeemysalesButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                    .addComponent(SeemysalesButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SeemysalesButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(50, 50, 50))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         AddCustomerPanelLayout.setVerticalGroup(
             AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddCustomerPanelLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddCustomerPanelLayout.createSequentialGroup()
-                        .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(EmpID1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EmpIDTextfield)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EmpName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EmpNameTextfield))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddCustomerPanelLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AddCustomerPanelLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
                         .addComponent(SeemysalesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SeemysalesButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SeemysalesButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AddCustomerPanelLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(EmpID1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EmpIDTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EmpName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EmpNameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddCustomerPanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(EmpName1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EmpNameTextfield1)
+                        .addComponent(EmpNameTextfield1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(EmpName2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EmpNameTextfield2)
+                        .addComponent(EmpNameTextfield2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(EmpID2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EmpIDTextfield1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EmpIDTextfield1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -291,7 +291,7 @@ public class Add_New_Customer extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(CustomerViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(EmpID3)
-                    .addComponent(EmpIDTextfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EmpIDTextfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(CustomerViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(EmpName3)
@@ -378,7 +378,7 @@ public class Add_New_Customer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Add_New_Customer().setVisible(true);
+                new AddNewCustomer().setVisible(true);
             }
         });
     }

@@ -10,12 +10,12 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
  *
  * @author sanja
  */
-public class Mark_Attendance extends javax.swing.JFrame {
+public class MarkAttendance extends javax.swing.JFrame {
 
     /**
      * Creates new form Mark_Attendance
      */
-    public Mark_Attendance() {
+    public MarkAttendance() {
         initComponents();
     }
 
@@ -265,7 +265,7 @@ public class Mark_Attendance extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Mark_Attendance().setVisible(true);
+                new MarkAttendance().setVisible(true);
             }
         });
     }
