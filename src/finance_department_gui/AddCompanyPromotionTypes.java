@@ -103,9 +103,9 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
                 .addComponent(PromotionTypesDescriptionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(AddPromotionButton)
-                .addGap(46, 46, 46)
+                .addGap(37, 37, 37)
                 .addComponent(refreshButton)
-                .addGap(23, 23, 23))
+                .addGap(32, 32, 32))
             .addComponent(jSeparator1)
         );
         PromotionAddingSectionPanelLayout.setVerticalGroup(
