@@ -180,9 +180,9 @@ public class AddCategory extends javax.swing.JFrame {
         categoryTablePanelLayout.setHorizontalGroup(
             categoryTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, categoryTablePanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         categoryTablePanelLayout.setVerticalGroup(
             categoryTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
