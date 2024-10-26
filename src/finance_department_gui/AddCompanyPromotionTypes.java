@@ -29,6 +29,7 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         BodyPanel = new javax.swing.JPanel();
@@ -111,15 +112,16 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
             PromotionAddingSectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PromotionAddingSectionPanelLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addGroup(PromotionAddingSectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AddPromotionTypesTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(PromotionTypesDescriptionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addGroup(PromotionAddingSectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PromotionAddingSectionPanelLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(AddPromotionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(PromotionAddingSectionPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PromotionAddingSectionPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(refreshButton)))
+                        .addComponent(refreshButton))
+                    .addGroup(PromotionAddingSectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(AddPromotionTypesTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                        .addComponent(PromotionTypesDescriptionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)))
                 .addGap(40, 40, 40)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -176,16 +178,16 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
         PromotionAddingTablePanel.setLayout(PromotionAddingTablePanelLayout);
         PromotionAddingTablePanelLayout.setHorizontalGroup(
             PromotionAddingTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PromotionAddingTablePanelLayout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(jScrollPane1)
-                .addGap(150, 150, 150))
+            .addGroup(PromotionAddingTablePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
+                .addContainerGap())
         );
         PromotionAddingTablePanelLayout.setVerticalGroup(
             PromotionAddingTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PromotionAddingTablePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
+                .addComponent(jScrollPane1)
                 .addContainerGap())
         );
 
@@ -240,6 +242,7 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton refreshButton;
     private javax.swing.JPanel signOutPanel;
     // End of variables declaration//GEN-END:variables
