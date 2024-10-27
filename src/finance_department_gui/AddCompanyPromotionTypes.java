@@ -113,15 +113,13 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
             .addGroup(PromotionAddingSectionPanelLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(PromotionAddingSectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PromotionAddingSectionPanelLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(AddPromotionButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PromotionAddingSectionPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(refreshButton))
                     .addGroup(PromotionAddingSectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(AddPromotionTypesTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                        .addComponent(PromotionTypesDescriptionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)))
+                        .addComponent(PromotionTypesDescriptionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                    .addComponent(AddPromotionButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(40, 40, 40)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -142,8 +140,9 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
         signOutPanelLayout.setHorizontalGroup(
             signOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signOutPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jButton1)
-                .addGap(0, 726, Short.MAX_VALUE))
+                .addContainerGap(720, Short.MAX_VALUE))
         );
         signOutPanelLayout.setVerticalGroup(
             signOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,6 +154,7 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
 
         BodyPanel.add(signOutPanel, java.awt.BorderLayout.PAGE_END);
 
+        PromotionTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         PromotionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

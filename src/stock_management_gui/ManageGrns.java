@@ -123,6 +123,7 @@ public class ManageGrns extends javax.swing.JFrame {
 
         bodyPanel.add(SIgnOutPanel, java.awt.BorderLayout.PAGE_END);
 
+        ManageGRNtable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ManageGRNtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -149,23 +150,23 @@ public class ManageGrns extends javax.swing.JFrame {
         GrnsTableBody.setLayout(GrnsTableBodyLayout);
         GrnsTableBodyLayout.setHorizontalGroup(
             GrnsTableBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GrnsTableBodyLayout.createSequentialGroup()
-                .addGap(123, 123, 123)
-                .addComponent(jScrollPane1)
-                .addGap(117, 117, 117))
+            .addGroup(GrnsTableBodyLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GrnsTableBodyLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
-                .addGap(46, 46, 46))
+                .addGap(42, 42, 42))
         );
         GrnsTableBodyLayout.setVerticalGroup(
             GrnsTableBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GrnsTableBodyLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jButton2)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         bodyPanel.add(GrnsTableBody, java.awt.BorderLayout.CENTER);

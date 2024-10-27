@@ -39,7 +39,7 @@ public class SignIn extends javax.swing.JFrame {
         signInLabel = new javax.swing.JLabel();
         signInTextField = new javax.swing.JTextField();
         passwordLabel = new javax.swing.JLabel();
-        passwordField = new javax.swing.JPasswordField();
+        PasswordField = new javax.swing.JPasswordField();
         kButton1 = new com.k33ptoo.components.KButton();
 
         jToggleButton1.setText("jToggleButton1");
@@ -58,9 +58,9 @@ public class SignIn extends javax.swing.JFrame {
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(207, 207, 207)
+                .addGap(215, 215, 215)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addGap(207, 207, 207))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,9 +122,9 @@ public class SignIn extends javax.swing.JFrame {
         passwordLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         passwordLabel.setText("Password");
 
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
+        PasswordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordFieldActionPerformed(evt);
+                PasswordFieldActionPerformed(evt);
             }
         });
 
@@ -151,7 +151,7 @@ public class SignIn extends javax.swing.JFrame {
                             .addComponent(passwordLabel))
                         .addGap(18, 18, 18)
                         .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                             .addComponent(signInTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))))
                 .addGap(121, 121, 121))
         );
@@ -165,7 +165,7 @@ public class SignIn extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(73, 73, 73))
@@ -177,9 +177,9 @@ public class SignIn extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
+    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFieldActionPerformed
+    }//GEN-LAST:event_PasswordFieldActionPerformed
 
     private void signInTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInTextFieldActionPerformed
         // TODO add your handling code here:
@@ -200,6 +200,7 @@ public class SignIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField PasswordField;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
@@ -208,7 +209,6 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton1;
     private com.k33ptoo.components.KButton kButton1;
     private javax.swing.JPanel logOutPanel;
-    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel signInLabel;
     private javax.swing.JTextField signInTextField;

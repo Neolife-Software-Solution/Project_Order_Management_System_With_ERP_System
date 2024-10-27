@@ -32,18 +32,18 @@ public class PayrollManagement extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BodyPanel = new javax.swing.JPanel();
         SearchPanel = new javax.swing.JPanel();
-        jYearChooser1 = new com.toedter.calendar.JYearChooser();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
-        jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
+        YearChooseFromDateField = new com.toedter.calendar.JYearChooser();
+        SearchEmployeeTextField = new javax.swing.JTextField();
+        SearchButton = new javax.swing.JButton();
+        SelectDepartmentComboBox = new javax.swing.JComboBox<>();
+        RefreshButton = new javax.swing.JButton();
+        MonthChooseFromDateField = new com.toedter.calendar.JMonthChooser();
         ViewPanel = new javax.swing.JPanel();
         LogOutPanel = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        BackToDashboardButton = new javax.swing.JButton();
         TableViewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        PayrollManagementTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -75,24 +75,24 @@ public class PayrollManagement extends javax.swing.JFrame {
         SearchPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         SearchPanel.setPreferredSize(new java.awt.Dimension(855, 150));
 
-        jTextField1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jTextField1.setText("Search employee....");
+        SearchEmployeeTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        SearchEmployeeTextField.setText("Search employee");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton1.setText("Search");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        SearchButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        SearchButton.setText("Search");
+        SearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SearchButtonActionPerformed(evt);
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Department", "HR Department", "Finance Department", "Product Department" }));
+        SelectDepartmentComboBox.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        SelectDepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Department", "HR Department", "Finance Department", "Product Department" }));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
-        jButton3.setToolTipText("");
+        RefreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        RefreshButton.setToolTipText("");
 
-        jMonthChooser1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        MonthChooseFromDateField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout SearchPanelLayout = new javax.swing.GroupLayout(SearchPanel);
         SearchPanel.setLayout(SearchPanelLayout);
@@ -102,17 +102,17 @@ public class PayrollManagement extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(SearchPanelLayout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SearchEmployeeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(jButton1)
+                        .addComponent(SearchButton)
                         .addGap(92, 92, 92)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SelectDepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(MonthChooseFromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(SearchPanelLayout.createSequentialGroup()
-                        .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(YearChooseFromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(706, 706, 706)
-                        .addComponent(jButton3)))
+                        .addComponent(RefreshButton)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         SearchPanelLayout.setVerticalGroup(
@@ -120,15 +120,15 @@ public class PayrollManagement extends javax.swing.JFrame {
             .addGroup(SearchPanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                    .addComponent(YearChooseFromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RefreshButton))
                 .addGap(28, 28, 28)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jMonthChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(SearchEmployeeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(SelectDepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(MonthChooseFromDateField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -138,10 +138,10 @@ public class PayrollManagement extends javax.swing.JFrame {
 
         LogOutPanel.setPreferredSize(new java.awt.Dimension(855, 50));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
@@ -151,19 +151,20 @@ public class PayrollManagement extends javax.swing.JFrame {
             LogOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LogOutPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton4)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(856, Short.MAX_VALUE))
         );
         LogOutPanelLayout.setVerticalGroup(
             LogOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LogOutPanelLayout.createSequentialGroup()
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         ViewPanel.add(LogOutPanel, java.awt.BorderLayout.PAGE_END);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PayrollManagementTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -179,8 +180,8 @@ public class PayrollManagement extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        PayrollManagementTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(PayrollManagementTable);
 
         javax.swing.GroupLayout TableViewPanelLayout = new javax.swing.GroupLayout(TableViewPanel);
         TableViewPanel.setLayout(TableViewPanelLayout);
@@ -209,14 +210,14 @@ public class PayrollManagement extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SearchButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
 //        LogOut Button
         System.exit(0);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,21 +235,21 @@ public class PayrollManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackToDashboardButton;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JPanel LogOutPanel;
+    private com.toedter.calendar.JMonthChooser MonthChooseFromDateField;
+    private javax.swing.JTable PayrollManagementTable;
+    private javax.swing.JButton RefreshButton;
+    private javax.swing.JButton SearchButton;
+    private javax.swing.JTextField SearchEmployeeTextField;
     private javax.swing.JPanel SearchPanel;
+    private javax.swing.JComboBox<String> SelectDepartmentComboBox;
     private javax.swing.JPanel TableViewPanel;
     private javax.swing.JPanel ViewPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JYearChooser YearChooseFromDateField;
     private javax.swing.JLabel jLabel1;
-    private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private com.toedter.calendar.JYearChooser jYearChooser1;
     // End of variables declaration//GEN-END:variables
 }

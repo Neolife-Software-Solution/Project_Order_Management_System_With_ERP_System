@@ -35,8 +35,8 @@ public class IncomeManagement extends javax.swing.JFrame {
         logOutButton = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
         searchSection = new javax.swing.JPanel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        DateChooseFromDateField = new com.toedter.calendar.JDateChooser();
+        DateChooseToDateField = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         todayButton = new javax.swing.JButton();
         weekSelectCombo = new javax.swing.JComboBox<>();
@@ -76,7 +76,7 @@ public class IncomeManagement extends javax.swing.JFrame {
 
         logOutPanel.setPreferredSize(new java.awt.Dimension(684, 50));
 
-        logOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        logOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         logOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logOutButtonActionPerformed(evt);
@@ -104,14 +104,19 @@ public class IncomeManagement extends javax.swing.JFrame {
 
         bodyPanel.setLayout(new java.awt.BorderLayout());
 
-        searchSection.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        searchSection.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        DateChooseFromDateField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+
+        DateChooseToDateField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel2.setText("From");
+        jLabel2.setText("To");
 
         todayButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         todayButton.setText("Select Today");
 
+        weekSelectCombo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         weekSelectCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Last 7 Days", "Last 14 Days", "Last 21 Days" }));
         weekSelectCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,15 +132,15 @@ public class IncomeManagement extends javax.swing.JFrame {
             searchSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchSectionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                .addComponent(DateChooseFromDateField, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(43, 43, 43)
+                .addComponent(DateChooseToDateField, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
                 .addGap(106, 106, 106)
                 .addComponent(todayButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(24, 24, 24)
-                .addComponent(weekSelectCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(weekSelectCombo, 0, 110, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -159,8 +164,8 @@ public class IncomeManagement extends javax.swing.JFrame {
                         .addComponent(jMonthChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(weekSelectCombo, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(todayButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DateChooseToDateField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DateChooseFromDateField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(16, 16, 16))
         );
@@ -199,7 +204,7 @@ public class IncomeManagement extends javax.swing.JFrame {
             tableSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tableSectionLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
 
@@ -234,10 +239,10 @@ public class IncomeManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser DateChooseFromDateField;
+    private com.toedter.calendar.JDateChooser DateChooseToDateField;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel headerPanel;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private com.toedter.calendar.JMonthChooser jMonthChooser1;

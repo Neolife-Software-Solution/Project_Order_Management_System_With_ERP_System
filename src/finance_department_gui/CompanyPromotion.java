@@ -36,10 +36,10 @@ public class CompanyPromotion extends javax.swing.JFrame {
         bodyPanel = new javax.swing.JPanel();
         detailsSection = new javax.swing.JPanel();
         searchPanel = new javax.swing.JPanel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        DateChooseFromDateField = new com.toedter.calendar.JDateChooser();
+        DateChooseToDateField = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
-        searchPromotion = new javax.swing.JTextField();
+        searchPromotionTextField = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         detailsAddPanel = new javax.swing.JPanel();
         promotionType = new javax.swing.JLabel();
@@ -83,7 +83,7 @@ public class CompanyPromotion extends javax.swing.JFrame {
 
         logOutPanel.setPreferredSize(new java.awt.Dimension(803, 50));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -95,9 +95,9 @@ public class CompanyPromotion extends javax.swing.JFrame {
         logOutPanelLayout.setHorizontalGroup(
             logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(logOutPanelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
                 .addComponent(jButton1)
-                .addContainerGap(750, Short.MAX_VALUE))
+                .addContainerGap(759, Short.MAX_VALUE))
         );
         logOutPanelLayout.setVerticalGroup(
             logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,10 +116,14 @@ public class CompanyPromotion extends javax.swing.JFrame {
 
         searchPanel.setPreferredSize(new java.awt.Dimension(803, 60));
 
-        jLabel2.setText("From");
+        DateChooseFromDateField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
-        searchPromotion.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        searchPromotion.setText("Search Promotion...");
+        DateChooseToDateField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+
+        jLabel2.setText("To");
+
+        searchPromotionTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        searchPromotionTextField.setText("Search Promotion");
 
         searchButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         searchButton.setText("Search");
@@ -136,13 +140,13 @@ public class CompanyPromotion extends javax.swing.JFrame {
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPanelLayout.createSequentialGroup()
                 .addGap(13, 13, 13)
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DateChooseFromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(37, 37, 37)
-                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DateChooseToDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70)
-                .addComponent(searchPromotion, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                .addComponent(searchPromotionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
                 .addGap(43, 43, 43)
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -153,22 +157,23 @@ public class CompanyPromotion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(searchPromotion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchPromotionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DateChooseToDateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DateChooseFromDateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         detailsSection.add(searchPanel, java.awt.BorderLayout.PAGE_START);
 
-        detailsAddPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        detailsAddPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         detailsAddPanel.setPreferredSize(new java.awt.Dimension(803, 200));
 
         promotionType.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         promotionType.setText("Promotion Type");
 
+        promotionTypeCombo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         promotionTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         description.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -189,15 +194,15 @@ public class CompanyPromotion extends javax.swing.JFrame {
             .addGroup(detailsAddPanelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(promotionType, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(description)
-                    .addComponent(costLable, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(costLable, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(promotionType))
                 .addGap(24, 24, 24)
                 .addGroup(detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descriptionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+                    .addComponent(descriptionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
                     .addComponent(promotionTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(detailsAddPanelLayout.createSequentialGroup()
-                        .addComponent(costTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                        .addComponent(costTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                         .addGap(258, 258, 258)))
                 .addGap(18, 18, 18)
                 .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,25 +218,24 @@ public class CompanyPromotion extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(refreshButton))
                     .addGroup(detailsAddPanelLayout.createSequentialGroup()
-                        .addGroup(detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(detailsAddPanelLayout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(promotionTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsAddPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(promotionType)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(7, 7, 7)
+                        .addGroup(detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(promotionTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(promotionType))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(descriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(costLable)
-                            .addComponent(costTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)))
+                            .addGroup(detailsAddPanelLayout.createSequentialGroup()
+                                .addComponent(costLable)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE))
+                            .addComponent(costTextField)))
                     .addGroup(detailsAddPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addGap(7, 7, 7))
         );
 
         detailsSection.add(detailsAddPanel, java.awt.BorderLayout.CENTER);
@@ -309,6 +313,8 @@ public class CompanyPromotion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser DateChooseFromDateField;
+    private com.toedter.calendar.JDateChooser DateChooseToDateField;
     private javax.swing.JButton addButton;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JLabel costLable;
@@ -319,8 +325,6 @@ public class CompanyPromotion extends javax.swing.JFrame {
     private javax.swing.JPanel detailsSection;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -331,7 +335,7 @@ public class CompanyPromotion extends javax.swing.JFrame {
     private javax.swing.JButton refreshButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JPanel searchPanel;
-    private javax.swing.JTextField searchPromotion;
+    private javax.swing.JTextField searchPromotionTextField;
     private javax.swing.JPanel tabalePanel;
     // End of variables declaration//GEN-END:variables
 }

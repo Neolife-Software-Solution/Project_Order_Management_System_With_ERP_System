@@ -38,8 +38,8 @@ public class LeaveManage extends javax.swing.JFrame {
         EmployeeTextField = new javax.swing.JTextField();
         EmployeeNameTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        DateFromChooser = new com.toedter.calendar.JDateChooser();
-        DateToChooser = new com.toedter.calendar.JDateChooser();
+        DateChooseFromDateField = new com.toedter.calendar.JDateChooser();
+        DateChooseToDateField = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
         RefreshButton = new javax.swing.JButton();
         AddLeaveButton = new javax.swing.JButton();
@@ -55,7 +55,7 @@ public class LeaveManage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ManageLeaveTable = new javax.swing.JTable();
         BackButtonPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -149,11 +149,11 @@ public class LeaveManage extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(DateFromChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DateChooseFromDateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel3)
                         .addGap(22, 22, 22)
-                        .addComponent(DateToChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(DateChooseToDateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(RefreshButton)))
                 .addGap(48, 48, 48))
@@ -173,8 +173,8 @@ public class LeaveManage extends javax.swing.JFrame {
                     .addGroup(AddLeavePanelLayout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(jLabel2))
-                    .addComponent(DateToChooser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DateFromChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DateChooseToDateField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DateChooseFromDateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(RefreshButton)
                     .addGroup(AddLeavePanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -259,10 +259,10 @@ public class LeaveManage extends javax.swing.JFrame {
 
         BackButtonPanel.setPreferredSize(new java.awt.Dimension(779, 50));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
@@ -271,14 +271,15 @@ public class LeaveManage extends javax.swing.JFrame {
         BackButtonPanelLayout.setHorizontalGroup(
             BackButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackButtonPanelLayout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addGap(0, 777, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(BackToDashboardButton)
+                .addContainerGap(771, Short.MAX_VALUE))
         );
         BackButtonPanelLayout.setVerticalGroup(
             BackButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackButtonPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap())
         );
 
@@ -323,13 +324,13 @@ public class LeaveManage extends javax.swing.JFrame {
 
     //BackButtonCode
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
         
         //BackToDashboard
         
         System.exit(0);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -355,9 +356,10 @@ public class LeaveManage extends javax.swing.JFrame {
     private javax.swing.JButton AddLeaveButton;
     private javax.swing.JPanel AddLeavePanel;
     private javax.swing.JPanel BackButtonPanel;
+    private javax.swing.JButton BackToDashboardButton;
     private javax.swing.JPanel BodyPanelLeaveSearchAndTable;
-    private com.toedter.calendar.JDateChooser DateFromChooser;
-    private com.toedter.calendar.JDateChooser DateToChooser;
+    private com.toedter.calendar.JDateChooser DateChooseFromDateField;
+    private com.toedter.calendar.JDateChooser DateChooseToDateField;
     private javax.swing.JTextField EmployeeNameTextField;
     private javax.swing.JTextField EmployeeTextField;
     private javax.swing.JButton LeaveIdGenerateButton;
@@ -368,7 +370,6 @@ public class LeaveManage extends javax.swing.JFrame {
     private javax.swing.JButton UpdateLeaveButton;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel headerPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -47,9 +47,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
                   <Component id="jLabel1" pref="100" max="32767" attributes="0"/>
-                  <EmptySpace pref="215" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -167,7 +167,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="passwordField" pref="195" max="32767" attributes="0"/>
+                              <Component id="PasswordField" pref="195" max="32767" attributes="0"/>
                               <Component id="signInTextField" pref="195" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -187,7 +187,7 @@
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="passwordLabel" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="passwordField" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="PasswordField" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   <Component id="kButton1" min="-2" pref="34" max="-2" attributes="0"/>
@@ -218,9 +218,9 @@
             <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="passwordField">
+        <Component class="javax.swing.JPasswordField" name="PasswordField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passwordFieldActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PasswordFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="com.k33ptoo.components.KButton" name="kButton1">

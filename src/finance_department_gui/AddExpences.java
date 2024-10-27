@@ -148,7 +148,7 @@ public class AddExpences extends javax.swing.JFrame {
 
         signOutPanel.setPreferredSize(new java.awt.Dimension(714, 50));
 
-        LogOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        LogOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         LogOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LogOutButtonActionPerformed(evt);
@@ -174,6 +174,7 @@ public class AddExpences extends javax.swing.JFrame {
 
         bodyPanel.add(signOutPanel, java.awt.BorderLayout.PAGE_END);
 
+        ExpencesTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ExpencesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

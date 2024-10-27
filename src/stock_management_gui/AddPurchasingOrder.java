@@ -258,6 +258,7 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
 
         SupplierAndSelectProductAddingPanel.add(addProductToGRNS, java.awt.BorderLayout.PAGE_START);
 
+        GRNaddingtable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         GRNaddingtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -298,7 +299,7 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
 
         SignOutPanel.setPreferredSize(new java.awt.Dimension(833, 50));
 
-        SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         SignOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SignOutButtonActionPerformed(evt);
