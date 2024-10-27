@@ -33,20 +33,21 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
         headingText = new javax.swing.JLabel();
         bodyPanal = new javax.swing.JPanel();
         advancedPayrollAddPanel = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        PayrollIDTextfield = new javax.swing.JTextField();
+        EmployeeIDTextfield = new javax.swing.JTextField();
+        EmployeeNameTextfield = new javax.swing.JTextField();
+        AdvanceAmountTextfield = new javax.swing.JTextField();
+        AddButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
-        logoutPanel = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        RefreshButton = new javax.swing.JButton();
+        Backpanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
         tablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        PayrollTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
 
         headerPanal.setPreferredSize(new java.awt.Dimension(874, 45));
 
@@ -82,32 +83,32 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
         advancedPayrollAddPanel.setPreferredSize(new java.awt.Dimension(894, 136));
         advancedPayrollAddPanel.setRequestFocusEnabled(false);
 
-        jTextField4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setText("Payroll ID");
-        jTextField4.setPreferredSize(new java.awt.Dimension(87, 32));
+        PayrollIDTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        PayrollIDTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        PayrollIDTextfield.setText("Payroll ID");
+        PayrollIDTextfield.setPreferredSize(new java.awt.Dimension(87, 32));
 
-        jTextField1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("Enter Employee ID");
-        jTextField1.setPreferredSize(new java.awt.Dimension(152, 32));
+        EmployeeIDTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        EmployeeIDTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        EmployeeIDTextfield.setText("Enter Employee ID");
+        EmployeeIDTextfield.setPreferredSize(new java.awt.Dimension(152, 32));
 
-        jTextField2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("Employee Name");
-        jTextField2.setPreferredSize(new java.awt.Dimension(133, 32));
+        EmployeeNameTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        EmployeeNameTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        EmployeeNameTextfield.setText("Employee Name");
+        EmployeeNameTextfield.setPreferredSize(new java.awt.Dimension(133, 32));
 
-        jTextField3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("Advance Amount");
-        jTextField3.setPreferredSize(new java.awt.Dimension(137, 32));
+        AdvanceAmountTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        AdvanceAmountTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        AdvanceAmountTextfield.setText("Advance Amount");
+        AdvanceAmountTextfield.setPreferredSize(new java.awt.Dimension(137, 32));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton1.setText("Add");
-        jButton1.setPreferredSize(new java.awt.Dimension(72, 32));
+        AddButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        AddButton.setText("Add");
+        AddButton.setPreferredSize(new java.awt.Dimension(72, 32));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
-        jButton2.setPreferredSize(new java.awt.Dimension(38, 32));
+        RefreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        RefreshButton.setPreferredSize(new java.awt.Dimension(38, 32));
 
         javax.swing.GroupLayout advancedPayrollAddPanelLayout = new javax.swing.GroupLayout(advancedPayrollAddPanel);
         advancedPayrollAddPanel.setLayout(advancedPayrollAddPanelLayout);
@@ -116,19 +117,19 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
             .addGroup(advancedPayrollAddPanelLayout.createSequentialGroup()
                 .addContainerGap(91, Short.MAX_VALUE)
                 .addGroup(advancedPayrollAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
+                    .addComponent(PayrollIDTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AdvanceAmountTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addGroup(advancedPayrollAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
+                    .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EmployeeIDTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
                 .addGroup(advancedPayrollAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(advancedPayrollAddPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                        .addComponent(EmployeeNameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                     .addGroup(advancedPayrollAddPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(RefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(91, Short.MAX_VALUE))
             .addComponent(jSeparator1)
         );
@@ -137,50 +138,51 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
             .addGroup(advancedPayrollAddPanelLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(advancedPayrollAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EmployeeIDTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EmployeeNameTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PayrollIDTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(advancedPayrollAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(advancedPayrollAddPanelLayout.createSequentialGroup()
-                        .addGroup(advancedPayrollAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE))
-                    .addGroup(advancedPayrollAddPanelLayout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, advancedPayrollAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AdvanceAmountTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(RefreshButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         bodyPanal.add(advancedPayrollAddPanel, java.awt.BorderLayout.PAGE_START);
 
-        logoutPanel.setPreferredSize(new java.awt.Dimension(894, 40));
+        Backpanel.setPreferredSize(new java.awt.Dimension(894, 50));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout logoutPanelLayout = new javax.swing.GroupLayout(logoutPanel);
-        logoutPanel.setLayout(logoutPanelLayout);
-        logoutPanelLayout.setHorizontalGroup(
-            logoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logoutPanelLayout.createSequentialGroup()
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 856, Short.MAX_VALUE))
+        javax.swing.GroupLayout BackpanelLayout = new javax.swing.GroupLayout(Backpanel);
+        Backpanel.setLayout(BackpanelLayout);
+        BackpanelLayout.setHorizontalGroup(
+            BackpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackpanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(850, Short.MAX_VALUE))
         );
-        logoutPanelLayout.setVerticalGroup(
-            logoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, Short.MAX_VALUE)
+        BackpanelLayout.setVerticalGroup(
+            BackpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackpanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BackToDashboardButton)
+                .addContainerGap())
         );
 
-        bodyPanal.add(logoutPanel, java.awt.BorderLayout.PAGE_END);
+        bodyPanal.add(Backpanel, java.awt.BorderLayout.PAGE_END);
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PayrollTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        PayrollTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -196,8 +198,8 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        PayrollTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(PayrollTable);
 
         javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);
         tablePanel.setLayout(tablePanelLayout);
@@ -212,7 +214,7 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
             tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tablePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -224,9 +226,9 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,21 +253,21 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddButton;
+    private javax.swing.JTextField AdvanceAmountTextfield;
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel Backpanel;
+    private javax.swing.JTextField EmployeeIDTextfield;
+    private javax.swing.JTextField EmployeeNameTextfield;
+    private javax.swing.JTextField PayrollIDTextfield;
+    private javax.swing.JTable PayrollTable;
+    private javax.swing.JButton RefreshButton;
     private javax.swing.JPanel advancedPayrollAddPanel;
     private javax.swing.JPanel bodyPanal;
     private javax.swing.JPanel headerPanal;
     private javax.swing.JLabel headingText;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JPanel logoutPanel;
     private javax.swing.JPanel tablePanel;
     // End of variables declaration//GEN-END:variables
 }
