@@ -168,7 +168,7 @@ public class AddEmployee extends javax.swing.JFrame {
         jButton3.setText("Add");
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton4.setText("Submit");
+        jButton4.setText("Update");
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
 

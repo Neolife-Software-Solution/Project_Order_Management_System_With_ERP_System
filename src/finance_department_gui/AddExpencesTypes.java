@@ -191,16 +191,16 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         ExpencesTablePanalLayout.setVerticalGroup(
             ExpencesTablePanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ExpencesTablePanalLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         TypeSearchPanal.add(ExpencesTablePanal, java.awt.BorderLayout.CENTER);
 
-        signOutButtonPanal.setPreferredSize(new java.awt.Dimension(826, 60));
+        signOutButtonPanal.setPreferredSize(new java.awt.Dimension(826, 50));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         jButton1.setToolTipText("Sign Out");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,7 +222,7 @@ public class AddExpencesTypes extends javax.swing.JFrame {
             .addGroup(signOutButtonPanalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         TypeSearchPanal.add(signOutButtonPanal, java.awt.BorderLayout.PAGE_END);
