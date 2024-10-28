@@ -220,9 +220,9 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         signOutButtonPanalLayout.setVerticalGroup(
             signOutButtonPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(signOutButtonPanalLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         TypeSearchPanal.add(signOutButtonPanal, java.awt.BorderLayout.PAGE_END);
