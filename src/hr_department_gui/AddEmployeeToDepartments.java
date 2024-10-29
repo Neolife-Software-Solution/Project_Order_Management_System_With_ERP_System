@@ -36,8 +36,8 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         SearchButton = new javax.swing.JButton();
         RefreshButton = new javax.swing.JButton();
         TableUpdatePanel = new javax.swing.JPanel();
-        SignOutPanel = new javax.swing.JPanel();
-        SignOutButton = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
         TablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         AddEmployeeDepartmentsTable = new javax.swing.JTable();
@@ -125,33 +125,33 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         TableUpdatePanel.setPreferredSize(new java.awt.Dimension(796, 550));
         TableUpdatePanel.setLayout(new java.awt.BorderLayout());
 
-        SignOutPanel.setPreferredSize(new java.awt.Dimension(796, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(796, 50));
 
-        SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        SignOutButton.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SignOutButtonActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout SignOutPanelLayout = new javax.swing.GroupLayout(SignOutPanel);
-        SignOutPanel.setLayout(SignOutPanelLayout);
-        SignOutPanelLayout.setHorizontalGroup(
-            SignOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SignOutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(SignOutButton)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(793, Short.MAX_VALUE))
         );
-        SignOutPanelLayout.setVerticalGroup(
-            SignOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignOutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SignOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        TableUpdatePanel.add(SignOutPanel, java.awt.BorderLayout.PAGE_END);
+        TableUpdatePanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         AddEmployeeDepartmentsTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         AddEmployeeDepartmentsTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -288,9 +288,9 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_DepartmentComboBoxActionPerformed
 
-    private void SignOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutButtonActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_SignOutButtonActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void EmployeeSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmployeeSearchFieldActionPerformed
         // TODO add your handling code here:
@@ -346,6 +346,8 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
     private javax.swing.JButton AddButton;
     private javax.swing.JTextField AddDepartmentField;
     private javax.swing.JTable AddEmployeeDepartmentsTable;
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JPanel DepartmentAddPanel;
     private javax.swing.JComboBox<String> DepartmentComboBox;
@@ -356,8 +358,6 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
     private javax.swing.JButton SearchButton;
     private javax.swing.JPanel SearchPanel;
     private javax.swing.JLabel SelectDepartmentLabel;
-    private javax.swing.JButton SignOutButton;
-    private javax.swing.JPanel SignOutPanel;
     private javax.swing.JPanel TablePanel;
     private javax.swing.JPanel TableUpdatePanel;
     private javax.swing.JButton UpdateButton;

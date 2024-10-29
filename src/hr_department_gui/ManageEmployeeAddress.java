@@ -44,8 +44,8 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         EmailField = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         TableUpdatePanel = new javax.swing.JPanel();
-        SignOutPanel = new javax.swing.JPanel();
-        SignOutButton = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
         TableViewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ManageEmployeeAddressTable = new javax.swing.JTable();
@@ -170,33 +170,33 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
 
         TableUpdatePanel.setLayout(new java.awt.BorderLayout());
 
-        SignOutPanel.setPreferredSize(new java.awt.Dimension(780, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(780, 50));
 
-        SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        SignOutButton.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SignOutButtonActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout SignOutPanelLayout = new javax.swing.GroupLayout(SignOutPanel);
-        SignOutPanel.setLayout(SignOutPanelLayout);
-        SignOutPanelLayout.setHorizontalGroup(
-            SignOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SignOutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(SignOutButton)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(736, Short.MAX_VALUE))
         );
-        SignOutPanelLayout.setVerticalGroup(
-            SignOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignOutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SignOutButton)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap())
         );
 
-        TableUpdatePanel.add(SignOutPanel, java.awt.BorderLayout.PAGE_END);
+        TableUpdatePanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         ManageEmployeeAddressTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ManageEmployeeAddressTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -281,9 +281,9 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ProvinceFieldActionPerformed
 
-    private void SignOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutButtonActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_SignOutButtonActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,6 +322,8 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JPanel ButtonPanel;
     private javax.swing.JTextField CityField;
@@ -338,8 +340,6 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
     private javax.swing.JTextField ProvinceField;
     private javax.swing.JLabel ProvinceLabel;
     private javax.swing.JPanel SearchPanel;
-    private javax.swing.JButton SignOutButton;
-    private javax.swing.JPanel SignOutPanel;
     private javax.swing.JPanel TableUpdatePanel;
     private javax.swing.JPanel TableViewPanel;
     private javax.swing.JButton UpdateButton;

@@ -31,8 +31,8 @@ public class AddProduct extends javax.swing.JFrame {
 
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        logOutPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
         productAddingPanel = new javax.swing.JPanel();
         addProduct = new javax.swing.JTextField();
@@ -81,34 +81,34 @@ public class AddProduct extends javax.swing.JFrame {
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
-        logOutPanel.setPreferredSize(new java.awt.Dimension(50, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(50, 50));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        jButton1.setPreferredSize(new java.awt.Dimension(75, 75));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.setPreferredSize(new java.awt.Dimension(75, 75));
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout logOutPanelLayout = new javax.swing.GroupLayout(logOutPanel);
-        logOutPanel.setLayout(logOutPanelLayout);
-        logOutPanelLayout.setHorizontalGroup(
-            logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logOutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(680, Short.MAX_VALUE))
         );
-        logOutPanelLayout.setVerticalGroup(
-            logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logOutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        getContentPane().add(logOutPanel, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         bodyPanel.setLayout(new java.awt.BorderLayout());
 
@@ -319,9 +319,9 @@ public class AddProduct extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addProductActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
        System.exit(0); // LogOut Button
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         // TODO add your handling code here:
@@ -346,18 +346,18 @@ public class AddProduct extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JTextField addDiscription;
     private javax.swing.JTextField addProduct;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JButton clearButton;
     private javax.swing.JPanel headerPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JPanel logOutPanel;
     private javax.swing.JPanel productAddingPanel;
     private javax.swing.JPanel productTable;
     private javax.swing.JPanel productTablePanel;

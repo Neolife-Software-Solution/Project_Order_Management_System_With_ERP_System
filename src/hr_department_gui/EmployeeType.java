@@ -41,8 +41,8 @@ public class EmployeeType extends javax.swing.JFrame {
         UpdateButton = new javax.swing.JButton();
         DeleteButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        SignOutPanel = new javax.swing.JPanel();
-        SignOutButton = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
         TableViewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         EmployeeTypeTable = new javax.swing.JTable();
@@ -153,33 +153,33 @@ public class EmployeeType extends javax.swing.JFrame {
 
         TableUpdatePanel.add(ButtonPanel, java.awt.BorderLayout.PAGE_START);
 
-        SignOutPanel.setPreferredSize(new java.awt.Dimension(757, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(757, 50));
 
-        SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        SignOutButton.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SignOutButtonActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout SignOutPanelLayout = new javax.swing.GroupLayout(SignOutPanel);
-        SignOutPanel.setLayout(SignOutPanelLayout);
-        SignOutPanelLayout.setHorizontalGroup(
-            SignOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SignOutPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(SignOutButton)
-                .addContainerGap(699, Short.MAX_VALUE))
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(713, Short.MAX_VALUE))
         );
-        SignOutPanelLayout.setVerticalGroup(
-            SignOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignOutPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SignOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BackToDashboardButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        TableUpdatePanel.add(SignOutPanel, java.awt.BorderLayout.PAGE_END);
+        TableUpdatePanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         EmployeeTypeTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         EmployeeTypeTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -232,9 +232,9 @@ public class EmployeeType extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_UpdateButtonActionPerformed
 
-    private void SignOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutButtonActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
          System.exit(0);
-    }//GEN-LAST:event_SignOutButtonActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,13 +276,13 @@ public class EmployeeType extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddTypePanel;
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JPanel ButtonPanel;
     private javax.swing.JButton DeleteButton;
     private javax.swing.JTable EmployeeTypeTable;
     private javax.swing.JPanel HeaderPanel;
-    private javax.swing.JButton SignOutButton;
-    private javax.swing.JPanel SignOutPanel;
     private javax.swing.JPanel TableUpdatePanel;
     private javax.swing.JPanel TableViewPanel;
     private javax.swing.JButton UpdateButton;

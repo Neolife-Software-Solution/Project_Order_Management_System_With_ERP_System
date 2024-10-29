@@ -52,7 +52,7 @@ public class Invoice extends javax.swing.JFrame {
         PayTypeLable = new javax.swing.JLabel();
         PayButton = new javax.swing.JToggleButton();
         PayTypeComboBox = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -229,10 +229,10 @@ public class Invoice extends javax.swing.JFrame {
         PayTypeComboBox.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         PayTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cache", "Card", "" }));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
@@ -273,7 +273,7 @@ public class Invoice extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
             .addGroup(OrderViewPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         OrderViewPanelLayout.setVerticalGroup(
@@ -300,7 +300,7 @@ public class Invoice extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PayButton)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(BackToDashboardButton)
                 .addGap(7, 7, 7))
         );
 
@@ -337,12 +337,12 @@ public class Invoice extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TotalTextFieldActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
 
 //       LogOut Button
         System.exit(0);
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void PayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayButtonActionPerformed
 
@@ -371,6 +371,7 @@ public class Invoice extends javax.swing.JFrame {
     private javax.swing.JLabel AddButton;
     private javax.swing.JLabel AddProductLable;
     private javax.swing.JTextField AddProductTextField;
+    private javax.swing.JButton BackToDashboardButton;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JLabel EmpID;
     private javax.swing.JTextField EmpIDTextfield;
@@ -390,7 +391,6 @@ public class Invoice extends javax.swing.JFrame {
     private javax.swing.JToggleButton TakeawayOrdersButton;
     private javax.swing.JLabel TotalLable;
     private javax.swing.JTextField TotalTextField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

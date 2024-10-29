@@ -31,8 +31,8 @@ public class AddNewCustomer extends javax.swing.JFrame {
         HeaderPanel = new javax.swing.JPanel();
         Header = new javax.swing.JLabel();
         BodyPanel = new javax.swing.JPanel();
-        LogOutPanel = new javax.swing.JPanel();
-        BackToDashboard = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
         CustomerViewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         CustomerTable = new javax.swing.JTable();
@@ -87,32 +87,32 @@ public class AddNewCustomer extends javax.swing.JFrame {
 
         BodyPanel.setLayout(new java.awt.BorderLayout());
 
-        LogOutPanel.setPreferredSize(new java.awt.Dimension(656, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(656, 50));
 
-        BackToDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        BackToDashboard.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackToDashboardActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout LogOutPanelLayout = new javax.swing.GroupLayout(LogOutPanel);
-        LogOutPanel.setLayout(LogOutPanelLayout);
-        LogOutPanelLayout.setHorizontalGroup(
-            LogOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LogOutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BackToDashboard)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(760, Short.MAX_VALUE))
         );
-        LogOutPanelLayout.setVerticalGroup(
-            LogOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogOutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
                 .addGap(0, 6, Short.MAX_VALUE)
-                .addComponent(BackToDashboard, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        BodyPanel.add(LogOutPanel, java.awt.BorderLayout.PAGE_END);
+        BodyPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         CustomerTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CustomerTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -363,12 +363,12 @@ public class AddNewCustomer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_MobileTextfieldActionPerformed
 
-    private void BackToDashboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
 
 //        Logout Button
         System.exit(0);
         
-    }//GEN-LAST:event_BackToDashboardActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void EmailAddressTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailAddressTextfieldActionPerformed
         // TODO add your handling code here:
@@ -402,7 +402,8 @@ public class AddNewCustomer extends javax.swing.JFrame {
     private javax.swing.JButton AddNewCustomerButton;
     private javax.swing.JLabel Address;
     private javax.swing.JTextField AddressTextfield;
-    private javax.swing.JButton BackToDashboard;
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JLabel CustomerID;
     private javax.swing.JTable CustomerTable;
@@ -416,7 +417,6 @@ public class AddNewCustomer extends javax.swing.JFrame {
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JLabel LastName;
     private javax.swing.JTextField LastNameTextfield;
-    private javax.swing.JPanel LogOutPanel;
     private javax.swing.JTextField MobileTextfield;
     private javax.swing.JLabel Points;
     private javax.swing.JTextField PointsTextfield;

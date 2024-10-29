@@ -49,7 +49,7 @@ public class MarkAttendance extends javax.swing.JFrame {
         EmployeeAttendanceView = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         AttendanceView = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -181,7 +181,6 @@ public class MarkAttendance extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, SearchEmployeePanelLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(EmpID_Name)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(EmpID_NameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,10 +218,10 @@ public class MarkAttendance extends javax.swing.JFrame {
         AttendanceView.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(AttendanceView);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
@@ -236,7 +235,7 @@ public class MarkAttendance extends javax.swing.JFrame {
                 .addGap(21, 21, 21))
             .addGroup(EmployeeAttendanceViewLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         EmployeeAttendanceViewLayout.setVerticalGroup(
@@ -245,11 +244,11 @@ public class MarkAttendance extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
                 .addGap(23, 23, 23)
-                .addComponent(jButton1)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap())
         );
 
-        AttendancePanel.add(EmployeeAttendanceView, java.awt.BorderLayout.CENTER);
+        AttendancePanel.add(EmployeeAttendanceView, java.awt.BorderLayout.PAGE_END);
 
         BodyPanel.add(AttendancePanel, java.awt.BorderLayout.CENTER);
 
@@ -259,12 +258,12 @@ public class MarkAttendance extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
 
 //        LogOut Button
         System.exit(0);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void EmpID_NameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpID_NameTextfieldActionPerformed
         // TODO add your handling code here:
@@ -289,6 +288,7 @@ public class MarkAttendance extends javax.swing.JFrame {
     private javax.swing.JPanel AddEmployeePanel;
     private javax.swing.JPanel AttendancePanel;
     private javax.swing.JTable AttendanceView;
+    private javax.swing.JButton BackToDashboardButton;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JLabel Date;
     private javax.swing.JLabel EmpID;
@@ -302,7 +302,6 @@ public class MarkAttendance extends javax.swing.JFrame {
     private javax.swing.JPanel HeaderPane;
     private javax.swing.JPanel SearchEmployeePanel;
     private javax.swing.JLabel Time;
-    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel4;

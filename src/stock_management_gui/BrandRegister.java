@@ -40,8 +40,8 @@ public class BrandRegister extends javax.swing.JFrame {
         submitButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         brandTableSection = new javax.swing.JPanel();
-        logOutPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
         brandTablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -129,33 +129,33 @@ public class BrandRegister extends javax.swing.JFrame {
 
         brandTableSection.setLayout(new java.awt.BorderLayout());
 
-        logOutPanel.setPreferredSize(new java.awt.Dimension(100, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(100, 50));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout logOutPanelLayout = new javax.swing.GroupLayout(logOutPanel);
-        logOutPanel.setLayout(logOutPanelLayout);
-        logOutPanelLayout.setHorizontalGroup(
-            logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logOutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(676, Short.MAX_VALUE))
         );
-        logOutPanelLayout.setVerticalGroup(
-            logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logOutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap())
         );
 
-        brandTableSection.add(logOutPanel, java.awt.BorderLayout.PAGE_END);
+        brandTableSection.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -207,9 +207,9 @@ public class BrandRegister extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
       System.exit(0); // LogOut Button:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,6 +226,8 @@ public class BrandRegister extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel brandAddSection;
     private javax.swing.JLabel brandName;
     private javax.swing.JTextField brandNameTextField;
@@ -236,11 +238,9 @@ public class BrandRegister extends javax.swing.JFrame {
     private javax.swing.JLabel companyName;
     private javax.swing.JTextField companyNameTextField;
     private javax.swing.JPanel headerPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JPanel logOutPanel;
     private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
 }

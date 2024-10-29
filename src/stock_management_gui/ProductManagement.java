@@ -37,8 +37,8 @@ public class ProductManagement extends javax.swing.JFrame {
         buttonPanel = new javax.swing.JPanel();
         standerdButton = new javax.swing.JButton();
         comboButton = new javax.swing.JButton();
-        logOutPanel = new javax.swing.JPanel();
-        logOutButton = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
         viwePanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -110,33 +110,33 @@ public class ProductManagement extends javax.swing.JFrame {
 
         bodyPanel.add(buttonPanel, java.awt.BorderLayout.PAGE_START);
 
-        logOutPanel.setPreferredSize(new java.awt.Dimension(733, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(733, 50));
 
-        logOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        logOutButton.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logOutButtonActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout logOutPanelLayout = new javax.swing.GroupLayout(logOutPanel);
-        logOutPanel.setLayout(logOutPanelLayout);
-        logOutPanelLayout.setHorizontalGroup(
-            logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logOutPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(logOutButton)
-                .addContainerGap(675, Short.MAX_VALUE))
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BackToDashboardButton)
+                .addContainerGap(689, Short.MAX_VALUE))
         );
-        logOutPanelLayout.setVerticalGroup(
-            logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logOutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(logOutButton)
+                .addComponent(BackToDashboardButton)
                 .addGap(26, 26, 26))
         );
 
-        bodyPanel.add(logOutPanel, java.awt.BorderLayout.PAGE_END);
+        bodyPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         viwePanel.setMinimumSize(new java.awt.Dimension(200, 200));
         viwePanel.setLayout(new java.awt.BorderLayout());
@@ -164,9 +164,9 @@ public class ProductManagement extends javax.swing.JFrame {
         SwingUtilities.updateComponentTreeUI(viwePanel);
     }//GEN-LAST:event_comboButtonActionPerformed
 
-    private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
         System.exit(0); // LogOut Button
-    }//GEN-LAST:event_logOutButtonActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,13 +182,13 @@ public class ProductManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel buttonPanel;
     private javax.swing.JButton comboButton;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton logOutButton;
-    private javax.swing.JPanel logOutPanel;
     private javax.swing.JButton standerdButton;
     private javax.swing.JPanel viwePanel;
     // End of variables declaration//GEN-END:variables

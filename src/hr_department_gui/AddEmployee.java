@@ -33,7 +33,7 @@ public class AddEmployee extends javax.swing.JFrame {
         HeaderPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         BackToDashboardPanel = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        BackToDashboardButton = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
         employeeIdLabel = new javax.swing.JLabel();
         employeeIdTextField = new javax.swing.JTextField();
@@ -93,10 +93,10 @@ public class AddEmployee extends javax.swing.JFrame {
 
         BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(732, 50));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
@@ -106,14 +106,14 @@ public class AddEmployee extends javax.swing.JFrame {
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(688, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -298,11 +298,11 @@ public class AddEmployee extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_generateButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
         
         System.exit(0);
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void jLabel1ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jLabel1ComponentHidden
         // TODO add your handling code here:
@@ -325,6 +325,7 @@ public class AddEmployee extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackToDashboardButton;
     private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JButton addButton;
@@ -346,7 +347,6 @@ public class AddEmployee extends javax.swing.JFrame {
     private javax.swing.JRadioButton fullTimeRadio;
     private javax.swing.JButton generateButton;
     private javax.swing.JRadioButton internRadio;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lNameLabel;
     private javax.swing.JTextField lNameTextField;
