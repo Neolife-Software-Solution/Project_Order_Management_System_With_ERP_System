@@ -51,9 +51,9 @@ public class AddNewCustomer extends javax.swing.JFrame {
         EmpIDTextfield1 = new javax.swing.JTextField();
         EmpName2 = new javax.swing.JLabel();
         EmpNameTextfield2 = new javax.swing.JTextField();
-        SeemysalesButton = new javax.swing.JButton();
-        SeemysalesButton1 = new javax.swing.JButton();
-        SeemysalesButton2 = new javax.swing.JButton();
+        AddNewCustomerButton = new javax.swing.JButton();
+        DeleteCustomerButton = new javax.swing.JButton();
+        UpdateCustomerButton = new javax.swing.JButton();
         EmpID = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -88,7 +88,6 @@ public class AddNewCustomer extends javax.swing.JFrame {
         BodyPanel.setLayout(new java.awt.BorderLayout());
 
         LogOutPanel.setPreferredSize(new java.awt.Dimension(656, 50));
-        LogOutPanel.setLayout(new java.awt.BorderLayout());
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +95,22 @@ public class AddNewCustomer extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        LogOutPanel.add(jButton1, java.awt.BorderLayout.LINE_START);
+
+        javax.swing.GroupLayout LogOutPanelLayout = new javax.swing.GroupLayout(LogOutPanel);
+        LogOutPanel.setLayout(LogOutPanelLayout);
+        LogOutPanelLayout.setHorizontalGroup(
+            LogOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LogOutPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addContainerGap(760, Short.MAX_VALUE))
+        );
+        LogOutPanelLayout.setVerticalGroup(
+            LogOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LogOutPanelLayout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         BodyPanel.add(LogOutPanel, java.awt.BorderLayout.PAGE_END);
 
@@ -173,27 +187,27 @@ public class AddNewCustomer extends javax.swing.JFrame {
             }
         });
 
-        SeemysalesButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        SeemysalesButton.setText("Add New Customer ");
-        SeemysalesButton.addActionListener(new java.awt.event.ActionListener() {
+        AddNewCustomerButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        AddNewCustomerButton.setText("Add New Customer ");
+        AddNewCustomerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SeemysalesButtonActionPerformed(evt);
+                AddNewCustomerButtonActionPerformed(evt);
             }
         });
 
-        SeemysalesButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        SeemysalesButton1.setText("Delete Customer");
-        SeemysalesButton1.addActionListener(new java.awt.event.ActionListener() {
+        DeleteCustomerButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DeleteCustomerButton.setText("Delete Customer");
+        DeleteCustomerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SeemysalesButton1ActionPerformed(evt);
+                DeleteCustomerButtonActionPerformed(evt);
             }
         });
 
-        SeemysalesButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        SeemysalesButton2.setText("Update Customer");
-        SeemysalesButton2.addActionListener(new java.awt.event.ActionListener() {
+        UpdateCustomerButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        UpdateCustomerButton.setText("Update Customer");
+        UpdateCustomerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SeemysalesButton2ActionPerformed(evt);
+                UpdateCustomerButtonActionPerformed(evt);
             }
         });
 
@@ -228,9 +242,9 @@ public class AddNewCustomer extends javax.swing.JFrame {
                         .addComponent(EmpNameTextfield1, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)))
                 .addGap(38, 38, 38)
                 .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(SeemysalesButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                    .addComponent(SeemysalesButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(SeemysalesButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(AddNewCustomerButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                    .addComponent(UpdateCustomerButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DeleteCustomerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(50, 50, 50))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -240,11 +254,11 @@ public class AddNewCustomer extends javax.swing.JFrame {
                 .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddCustomerPanelLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(SeemysalesButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AddNewCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SeemysalesButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UpdateCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SeemysalesButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(DeleteCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AddCustomerPanelLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -333,17 +347,17 @@ public class AddNewCustomer extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SeemysalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeemysalesButtonActionPerformed
+    private void AddNewCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewCustomerButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SeemysalesButtonActionPerformed
+    }//GEN-LAST:event_AddNewCustomerButtonActionPerformed
 
-    private void SeemysalesButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeemysalesButton1ActionPerformed
+    private void DeleteCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCustomerButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SeemysalesButton1ActionPerformed
+    }//GEN-LAST:event_DeleteCustomerButtonActionPerformed
 
-    private void SeemysalesButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeemysalesButton2ActionPerformed
+    private void UpdateCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateCustomerButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SeemysalesButton2ActionPerformed
+    }//GEN-LAST:event_UpdateCustomerButtonActionPerformed
 
     private void EmpNameTextfield2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpNameTextfield2ActionPerformed
         // TODO add your handling code here:
@@ -385,8 +399,10 @@ public class AddNewCustomer extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddCustomerPanel;
+    private javax.swing.JButton AddNewCustomerButton;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JPanel CustomerViewPanel;
+    private javax.swing.JButton DeleteCustomerButton;
     private javax.swing.JLabel EmpID;
     private javax.swing.JLabel EmpID1;
     private javax.swing.JLabel EmpID2;
@@ -405,9 +421,7 @@ public class AddNewCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel Header;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JPanel LogOutPanel;
-    private javax.swing.JButton SeemysalesButton;
-    private javax.swing.JButton SeemysalesButton1;
-    private javax.swing.JButton SeemysalesButton2;
+    private javax.swing.JButton UpdateCustomerButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
