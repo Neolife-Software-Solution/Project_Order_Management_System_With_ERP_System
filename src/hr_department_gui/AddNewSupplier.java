@@ -260,9 +260,10 @@ public class AddNewSupplier extends javax.swing.JFrame {
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BackToDashboardButton)
-                .addGap(6, 6, 6))
+                .addContainerGap())
         );
 
         bodyPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);

@@ -119,15 +119,16 @@ public class AddDepartment extends javax.swing.JFrame {
         BackToDashboardPanelLayout.setHorizontalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(BackToDashboardButton)
-                .addGap(0, 789, Short.MAX_VALUE))
+                .addContainerGap(787, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(BackToDashboardButton)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bodyPanal.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
