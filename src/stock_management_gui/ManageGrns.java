@@ -33,8 +33,8 @@ public class ManageGrns extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         GRNSearchTextField = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        SIgnOutPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
         GrnsTableBody = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ManageGRNtable = new javax.swing.JTable();
@@ -100,28 +100,28 @@ public class ManageGrns extends javax.swing.JFrame {
 
         bodyPanel.add(GRNsearchPanal, java.awt.BorderLayout.PAGE_START);
 
-        SIgnOutPanel.setPreferredSize(new java.awt.Dimension(689, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(689, 50));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
 
-        javax.swing.GroupLayout SIgnOutPanelLayout = new javax.swing.GroupLayout(SIgnOutPanel);
-        SIgnOutPanel.setLayout(SIgnOutPanelLayout);
-        SIgnOutPanelLayout.setHorizontalGroup(
-            SIgnOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SIgnOutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(648, Short.MAX_VALUE))
         );
-        SIgnOutPanelLayout.setVerticalGroup(
-            SIgnOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SIgnOutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(BackToDashboardButton)
                 .addGap(27, 27, 27))
         );
 
-        bodyPanel.add(SIgnOutPanel, java.awt.BorderLayout.PAGE_END);
+        bodyPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         ManageGRNtable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ManageGRNtable.setModel(new javax.swing.table.DefaultTableModel(
@@ -213,14 +213,14 @@ public class ManageGrns extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JTextField GRNSearchTextField;
     private javax.swing.JPanel GRNsearchPanal;
     private javax.swing.JPanel GrnsTableBody;
     private javax.swing.JTable ManageGRNtable;
-    private javax.swing.JPanel SIgnOutPanel;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel headerPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

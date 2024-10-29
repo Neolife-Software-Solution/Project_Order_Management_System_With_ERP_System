@@ -58,7 +58,7 @@ public class ProductPromotion extends javax.swing.JFrame {
         tablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ProductPromotionTable = new javax.swing.JTable();
-        footerPanel = new javax.swing.JPanel();
+        BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -339,7 +339,7 @@ public class ProductPromotion extends javax.swing.JFrame {
 
         tableAndFootPanel.add(tablePanel, java.awt.BorderLayout.CENTER);
 
-        footerPanel.setPreferredSize(new java.awt.Dimension(1000, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(1000, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         BackToDashboardButton.setToolTipText("Sign Out");
@@ -349,24 +349,24 @@ public class ProductPromotion extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
-        footerPanel.setLayout(footerPanelLayout);
-        footerPanelLayout.setHorizontalGroup(
-            footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(footerPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
                 .addContainerGap(952, Short.MAX_VALUE))
         );
-        footerPanelLayout.setVerticalGroup(
-            footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(footerPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tableAndFootPanel.add(footerPanel, java.awt.BorderLayout.PAGE_END);
+        tableAndFootPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         bodyPanel.add(tableAndFootPanel, java.awt.BorderLayout.PAGE_END);
 
@@ -401,6 +401,7 @@ public class ProductPromotion extends javax.swing.JFrame {
     private javax.swing.JButton AddButton;
     private javax.swing.JButton AddProductButton;
     private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private com.toedter.calendar.JDateChooser DateChooseFromDateField;
     private com.toedter.calendar.JDateChooser DateChooseToDateField;
     private javax.swing.JTextField ProductAddingTextField;
@@ -412,7 +413,6 @@ public class ProductPromotion extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser SortDateChooseToDateField;
     private javax.swing.JPanel addDataPanel;
     private javax.swing.JPanel bodyPanel;
-    private javax.swing.JPanel footerPanel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

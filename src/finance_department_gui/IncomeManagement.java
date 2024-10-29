@@ -31,8 +31,8 @@ public class IncomeManagement extends javax.swing.JFrame {
 
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        logOutPanel = new javax.swing.JPanel();
-        logOutButton = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
         searchSection = new javax.swing.JPanel();
         DateChooseFromDateField = new com.toedter.calendar.JDateChooser();
@@ -74,33 +74,33 @@ public class IncomeManagement extends javax.swing.JFrame {
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
-        logOutPanel.setPreferredSize(new java.awt.Dimension(684, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(684, 50));
 
-        logOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        logOutButton.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logOutButtonActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout logOutPanelLayout = new javax.swing.GroupLayout(logOutPanel);
-        logOutPanel.setLayout(logOutPanelLayout);
-        logOutPanelLayout.setHorizontalGroup(
-            logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logOutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(logOutButton)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(784, Short.MAX_VALUE))
         );
-        logOutPanelLayout.setVerticalGroup(
-            logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logOutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(logOutButton)
+                .addComponent(BackToDashboardButton)
                 .addGap(21, 21, 21))
         );
 
-        getContentPane().add(logOutPanel, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         bodyPanel.setLayout(new java.awt.BorderLayout());
 
@@ -216,9 +216,9 @@ public class IncomeManagement extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void logOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutButtonActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
      System.exit(0);        // Log Out Button
-    }//GEN-LAST:event_logOutButtonActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void weekSelectComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weekSelectComboActionPerformed
         // TODO add your handling code here:
@@ -239,6 +239,8 @@ public class IncomeManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private com.toedter.calendar.JDateChooser DateChooseFromDateField;
     private com.toedter.calendar.JDateChooser DateChooseToDateField;
     private javax.swing.JPanel bodyPanel;
@@ -249,8 +251,6 @@ public class IncomeManagement extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private com.toedter.calendar.JYearChooser jYearChooser1;
-    private javax.swing.JButton logOutButton;
-    private javax.swing.JPanel logOutPanel;
     private javax.swing.JButton refreshButton;
     private javax.swing.JPanel searchSection;
     private javax.swing.JPanel tableSection;

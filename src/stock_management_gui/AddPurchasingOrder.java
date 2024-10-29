@@ -55,8 +55,8 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
         GRNSaddingTablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         GRNaddingtable = new javax.swing.JTable();
-        SignOutPanel = new javax.swing.JPanel();
-        SignOutButton = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -297,33 +297,33 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
 
         SupplierAndSelectProductAddingPanel.add(GRNSaddingTablePanel, java.awt.BorderLayout.CENTER);
 
-        SignOutPanel.setPreferredSize(new java.awt.Dimension(833, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(833, 50));
 
-        SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        SignOutButton.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SignOutButtonActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout SignOutPanelLayout = new javax.swing.GroupLayout(SignOutPanel);
-        SignOutPanel.setLayout(SignOutPanelLayout);
-        SignOutPanelLayout.setHorizontalGroup(
-            SignOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SignOutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(SignOutButton)
-                .addContainerGap(789, Short.MAX_VALUE))
+                .addComponent(BackToDashboardButton)
+                .addContainerGap(786, Short.MAX_VALUE))
         );
-        SignOutPanelLayout.setVerticalGroup(
-            SignOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SignOutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(SignOutButton)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        SupplierAndSelectProductAddingPanel.add(SignOutPanel, java.awt.BorderLayout.PAGE_END);
+        SupplierAndSelectProductAddingPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         bodyPanel.add(SupplierAndSelectProductAddingPanel, java.awt.BorderLayout.CENTER);
 
@@ -347,13 +347,13 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
 
     //SignOutButtonCode
     
-    private void SignOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutButtonActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
         
         //Code for exit in system
         
         System.exit(0);
         
-    }//GEN-LAST:event_SignOutButtonActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,6 +373,8 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AddProductComboBox;
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JComboBox<String> BatchSelectComboBox;
     private javax.swing.JPanel GRNSaddingTablePanel;
     private javax.swing.JButton GRNaddButton;
@@ -381,8 +383,6 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> GrnStatusSelectComboBox;
     private javax.swing.JButton NewBatchAddingButton;
     private javax.swing.JTextField NewBatchAddingTextField;
-    private javax.swing.JButton SignOutButton;
-    private javax.swing.JPanel SignOutPanel;
     private javax.swing.JPanel SupplierAndSelectProductAddingPanel;
     private javax.swing.JComboBox<String> SupplierSelectComboBox;
     private javax.swing.JPanel addProductToGRNS;

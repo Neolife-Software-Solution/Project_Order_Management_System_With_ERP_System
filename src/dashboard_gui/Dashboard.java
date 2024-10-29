@@ -38,8 +38,8 @@ public class Dashboard extends javax.swing.JFrame {
         BackKeyPanel = new javax.swing.JLabel();
         ProfileSettingIconPanel = new javax.swing.JPanel();
         UserProfileKeyPanel = new javax.swing.JLabel();
-        LogOutButton = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        LogOutButtonPanel = new javax.swing.JPanel();
+        LogOutButton = new javax.swing.JButton();
         SideBarButtonsPanel = new javax.swing.JPanel();
         DashboardButton = new javax.swing.JButton();
         HRButton = new javax.swing.JButton();
@@ -122,19 +122,19 @@ public class Dashboard extends javax.swing.JFrame {
 
         SideBarIconPanel.add(ProfileSettingIconPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 60, 50));
 
-        LogOutButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        LogOutButton.setLayout(new java.awt.BorderLayout());
+        LogOutButtonPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        LogOutButtonPanel.setLayout(new java.awt.BorderLayout());
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        LogOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        LogOutButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        LogOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                LogOutButtonActionPerformed(evt);
             }
         });
-        LogOutButton.add(jButton1, java.awt.BorderLayout.CENTER);
+        LogOutButtonPanel.add(LogOutButton, java.awt.BorderLayout.CENTER);
 
-        SideBarIconPanel.add(LogOutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 60, 40));
+        SideBarIconPanel.add(LogOutButtonPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 60, 40));
 
         sideBarBodyPanel.add(SideBarIconPanel, java.awt.BorderLayout.LINE_START);
 
@@ -302,13 +302,13 @@ public class Dashboard extends javax.swing.JFrame {
 
     //signOut Button LogOut Code
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void LogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutButtonActionPerformed
         
         //signout Button logOut code
         
         System.exit(0);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_LogOutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,7 +334,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel DetailShowingPanel;
     private javax.swing.JButton FinanceButton;
     private javax.swing.JButton HRButton;
-    private javax.swing.JPanel LogOutButton;
+    private javax.swing.JButton LogOutButton;
+    private javax.swing.JPanel LogOutButtonPanel;
     private javax.swing.JLabel NameLabel;
     private javax.swing.JButton OrderButton;
     private javax.swing.JLabel PositionLabel;
@@ -346,7 +347,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel UserProfileKeyPanel;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel headerPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

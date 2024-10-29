@@ -54,7 +54,7 @@ public class LeaveManage extends javax.swing.JFrame {
         ManageLeaveTablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ManageLeaveTable = new javax.swing.JTable();
-        BackButtonPanel = new javax.swing.JPanel();
+        BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -257,7 +257,7 @@ public class LeaveManage extends javax.swing.JFrame {
         ManageLeaveTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(ManageLeaveTable);
 
-        BackButtonPanel.setPreferredSize(new java.awt.Dimension(779, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(779, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
@@ -266,18 +266,18 @@ public class LeaveManage extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout BackButtonPanelLayout = new javax.swing.GroupLayout(BackButtonPanel);
-        BackButtonPanel.setLayout(BackButtonPanelLayout);
-        BackButtonPanelLayout.setHorizontalGroup(
-            BackButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackButtonPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
                 .addContainerGap(771, Short.MAX_VALUE))
         );
-        BackButtonPanelLayout.setVerticalGroup(
-            BackButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackButtonPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BackToDashboardButton)
                 .addContainerGap())
@@ -288,7 +288,7 @@ public class LeaveManage extends javax.swing.JFrame {
         ManageLeaveTablePanelLayout.setHorizontalGroup(
             ManageLeaveTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManageLeaveTablePanelLayout.createSequentialGroup()
-                .addComponent(BackButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BackToDashboardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ManageLeaveTablePanelLayout.createSequentialGroup()
                 .addContainerGap()
@@ -301,7 +301,7 @@ public class LeaveManage extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(BackButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(BackToDashboardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         BodyPanelLeaveSearchAndTable.add(ManageLeaveTablePanel, java.awt.BorderLayout.CENTER);
@@ -355,8 +355,8 @@ public class LeaveManage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddLeaveButton;
     private javax.swing.JPanel AddLeavePanel;
-    private javax.swing.JPanel BackButtonPanel;
     private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel BodyPanelLeaveSearchAndTable;
     private com.toedter.calendar.JDateChooser DateChooseFromDateField;
     private com.toedter.calendar.JDateChooser DateChooseToDateField;

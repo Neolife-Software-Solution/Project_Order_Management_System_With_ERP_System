@@ -45,8 +45,8 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         ExpencesTablePanal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ExpencesTypeTable = new javax.swing.JTable();
-        signOutButtonPanal = new javax.swing.JPanel();
-        SignOutButton = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -203,34 +203,34 @@ public class AddExpencesTypes extends javax.swing.JFrame {
 
         TypeSearchPanal.add(ExpencesTablePanal, java.awt.BorderLayout.CENTER);
 
-        signOutButtonPanal.setPreferredSize(new java.awt.Dimension(826, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(826, 50));
 
-        SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        SignOutButton.setToolTipText("Sign Out");
-        SignOutButton.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.setToolTipText("Sign Out");
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SignOutButtonActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout signOutButtonPanalLayout = new javax.swing.GroupLayout(signOutButtonPanal);
-        signOutButtonPanal.setLayout(signOutButtonPanalLayout);
-        signOutButtonPanalLayout.setHorizontalGroup(
-            signOutButtonPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signOutButtonPanalLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(SignOutButton)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(782, Short.MAX_VALUE))
         );
-        signOutButtonPanalLayout.setVerticalGroup(
-            signOutButtonPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signOutButtonPanalLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(SignOutButton)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        TypeSearchPanal.add(signOutButtonPanal, java.awt.BorderLayout.PAGE_END);
+        TypeSearchPanal.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         bodyPanal.add(TypeSearchPanal, java.awt.BorderLayout.CENTER);
 
@@ -242,7 +242,7 @@ public class AddExpencesTypes extends javax.swing.JFrame {
 
     //signOutButtonCode
     
-    private void SignOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutButtonActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
          
         //signOutButtonExitCodeStart
          
@@ -250,7 +250,7 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         
         //signOutButtonExitCodeStart        
         
-    }//GEN-LAST:event_SignOutButtonActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void ExpencesTypeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpencesTypeTextFieldActionPerformed
         // TODO add your handling code here:
@@ -273,12 +273,13 @@ public class AddExpencesTypes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel ExpencesAddSectionPanal;
     private javax.swing.JPanel ExpencesTablePanal;
     private javax.swing.JPanel ExpencesTypeSearchPanal;
     private javax.swing.JTable ExpencesTypeTable;
     private javax.swing.JTextField ExpencesTypeTextField;
-    private javax.swing.JButton SignOutButton;
     private javax.swing.JPanel TypeSearchPanal;
     private javax.swing.JButton addTypeButton;
     private javax.swing.JPanel bodyPanal;
@@ -289,7 +290,6 @@ public class AddExpencesTypes extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton refreshButton;
-    private javax.swing.JPanel signOutButtonPanal;
     private javax.swing.JButton updateTypeButton;
     // End of variables declaration//GEN-END:variables
 }

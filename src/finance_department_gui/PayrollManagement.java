@@ -39,7 +39,7 @@ public class PayrollManagement extends javax.swing.JFrame {
         RefreshButton = new javax.swing.JButton();
         MonthChooseFromDateField = new com.toedter.calendar.JMonthChooser();
         ViewPanel = new javax.swing.JPanel();
-        LogOutPanel = new javax.swing.JPanel();
+        BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
         TableViewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -136,7 +136,7 @@ public class PayrollManagement extends javax.swing.JFrame {
 
         ViewPanel.setLayout(new java.awt.BorderLayout());
 
-        LogOutPanel.setPreferredSize(new java.awt.Dimension(855, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(855, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
@@ -145,24 +145,24 @@ public class PayrollManagement extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout LogOutPanelLayout = new javax.swing.GroupLayout(LogOutPanel);
-        LogOutPanel.setLayout(LogOutPanelLayout);
-        LogOutPanelLayout.setHorizontalGroup(
-            LogOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LogOutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
                 .addContainerGap(856, Short.MAX_VALUE))
         );
-        LogOutPanelLayout.setVerticalGroup(
-            LogOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LogOutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        ViewPanel.add(LogOutPanel, java.awt.BorderLayout.PAGE_END);
+        ViewPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         PayrollManagementTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -236,9 +236,9 @@ public class PayrollManagement extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JPanel HeaderPanel;
-    private javax.swing.JPanel LogOutPanel;
     private com.toedter.calendar.JMonthChooser MonthChooseFromDateField;
     private javax.swing.JTable PayrollManagementTable;
     private javax.swing.JButton RefreshButton;

@@ -41,8 +41,8 @@ public class AddExpences extends javax.swing.JFrame {
         ExpencesAddButton = new javax.swing.JButton();
         ExpencesUpdateButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        signOutPanel = new javax.swing.JPanel();
-        LogOutButton = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ExpencesTable = new javax.swing.JTable();
@@ -146,33 +146,33 @@ public class AddExpences extends javax.swing.JFrame {
 
         bodyPanel.add(ExpencesAddingPanel, java.awt.BorderLayout.PAGE_START);
 
-        signOutPanel.setPreferredSize(new java.awt.Dimension(714, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(714, 50));
 
-        LogOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        LogOutButton.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogOutButtonActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout signOutPanelLayout = new javax.swing.GroupLayout(signOutPanel);
-        signOutPanel.setLayout(signOutPanelLayout);
-        signOutPanelLayout.setHorizontalGroup(
-            signOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signOutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(LogOutButton)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(670, Short.MAX_VALUE))
         );
-        signOutPanelLayout.setVerticalGroup(
-            signOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signOutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LogOutButton)
+                .addComponent(BackToDashboardButton)
                 .addGap(25, 25, 25))
         );
 
-        bodyPanel.add(signOutPanel, java.awt.BorderLayout.PAGE_END);
+        bodyPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         ExpencesTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ExpencesTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -221,13 +221,13 @@ public class AddExpences extends javax.swing.JFrame {
 
     //signOut Button
     
-    private void LogOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutButtonActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
         
         //LogOut Button Code
         
         System.exit(0);
         
-    }//GEN-LAST:event_LogOutButtonActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,6 +246,8 @@ public class AddExpences extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private com.toedter.calendar.JDateChooser DateChooser;
     private javax.swing.JButton ExpencesAddButton;
     private javax.swing.JPanel ExpencesAddingPanel;
@@ -253,7 +255,6 @@ public class AddExpences extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ExpencesSelectComboBox;
     private javax.swing.JTable ExpencesTable;
     private javax.swing.JButton ExpencesUpdateButton;
-    private javax.swing.JButton LogOutButton;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
@@ -262,6 +263,5 @@ public class AddExpences extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPanel signOutPanel;
     // End of variables declaration//GEN-END:variables
 }

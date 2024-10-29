@@ -51,8 +51,8 @@ public class ReturnManage extends javax.swing.JFrame {
         ReturnsManageTable = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ManageReturnTable = new javax.swing.JTable();
-        SignOutPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -258,28 +258,28 @@ public class ReturnManage extends javax.swing.JFrame {
 
         bodyPanel.add(ReturnsManageTable, java.awt.BorderLayout.CENTER);
 
-        SignOutPanel.setPreferredSize(new java.awt.Dimension(800, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(800, 50));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
 
-        javax.swing.GroupLayout SignOutPanelLayout = new javax.swing.GroupLayout(SignOutPanel);
-        SignOutPanel.setLayout(SignOutPanelLayout);
-        SignOutPanelLayout.setHorizontalGroup(
-            SignOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SignOutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(762, Short.MAX_VALUE))
         );
-        SignOutPanelLayout.setVerticalGroup(
-            SignOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignOutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap())
         );
 
-        bodyPanel.add(SignOutPanel, java.awt.BorderLayout.PAGE_END);
+        bodyPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
 
@@ -333,6 +333,8 @@ public class ReturnManage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddAndUpdateReturnsPanel;
     private javax.swing.JButton AddReturnsButton;
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JTextField CustomerNameTextField;
     private javax.swing.JTextField InvoiceIDTextField;
     private javax.swing.JTable ManageReturnTable;
@@ -343,11 +345,9 @@ public class ReturnManage extends javax.swing.JFrame {
     private javax.swing.JTextField ReturnIDTextField;
     private javax.swing.JButton ReturnIdGenarateButton;
     private javax.swing.JPanel ReturnsManageTable;
-    private javax.swing.JPanel SignOutPanel;
     private javax.swing.JButton UpdateReturnButton;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel headerPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

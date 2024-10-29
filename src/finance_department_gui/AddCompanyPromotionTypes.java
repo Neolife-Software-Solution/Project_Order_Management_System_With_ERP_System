@@ -39,8 +39,8 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
         AddPromotionButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        signOutPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
         PromotionAddingTablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         PromotionTable = new javax.swing.JTable();
@@ -126,33 +126,33 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
 
         BodyPanel.add(PromotionAddingSectionPanel, java.awt.BorderLayout.PAGE_START);
 
-        signOutPanel.setPreferredSize(new java.awt.Dimension(764, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(764, 50));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout signOutPanelLayout = new javax.swing.GroupLayout(signOutPanel);
-        signOutPanel.setLayout(signOutPanelLayout);
-        signOutPanelLayout.setHorizontalGroup(
-            signOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signOutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(720, Short.MAX_VALUE))
         );
-        signOutPanelLayout.setVerticalGroup(
-            signOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signOutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BackToDashboardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        BodyPanel.add(signOutPanel, java.awt.BorderLayout.PAGE_END);
+        BodyPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         PromotionTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         PromotionTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -205,13 +205,13 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
 
     //BackTodashboardButton
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
         
         //BackToDashboardCode
         
         System.exit(0);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,18 +232,18 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddPromotionButton;
     private javax.swing.JTextField AddPromotionTypesTextField;
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JPanel PromotionAddingSectionPanel;
     private javax.swing.JPanel PromotionAddingTablePanel;
     private javax.swing.JTable PromotionTable;
     private javax.swing.JTextField PromotionTypesDescriptionTextField;
     private javax.swing.JPanel headerPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton refreshButton;
-    private javax.swing.JPanel signOutPanel;
     // End of variables declaration//GEN-END:variables
 }
