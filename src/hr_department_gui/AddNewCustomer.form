@@ -92,7 +92,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="BackToDashboard" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="760" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -101,20 +101,20 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="BackToDashboard" min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="BackToDashboard">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/back-arrow.png"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackToDashboardActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -132,16 +132,16 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="EmpID3" min="-2" max="-2" attributes="0"/>
-                          <Component id="EmpIDTextfield2" min="-2" pref="353" max="-2" attributes="0"/>
+                          <Component id="Search" min="-2" max="-2" attributes="0"/>
+                          <Component id="SearchTextfield" min="-2" pref="353" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="EmpName3" min="-2" max="-2" attributes="0"/>
-                          <Component id="EmpNameTextfield3" max="-2" attributes="0"/>
+                          <Component id="Points" min="-2" max="-2" attributes="0"/>
+                          <Component id="PointsTextfield" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="Refresh" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -159,16 +159,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="EmpID3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Search" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EmpIDTextfield2" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="SearchTextfield" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="EmpName3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Points" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="EmpNameTextfield3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="PointsTextfield" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="Refresh" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" pref="308" max="32767" attributes="0"/>
@@ -185,7 +185,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="CustomerTable">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="12" style="0"/>
@@ -247,7 +247,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="EmpID3">
+            <Component class="javax.swing.JLabel" name="Search">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Yu Gothic UI" size="14" style="0"/>
@@ -255,7 +255,7 @@
                 <Property name="text" type="java.lang.String" value="Full Name / Email / Mobile"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="EmpName3">
+            <Component class="javax.swing.JLabel" name="Points">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Yu Gothic UI" size="14" style="0"/>
@@ -263,14 +263,14 @@
                 <Property name="text" type="java.lang.String" value="Ponits"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="EmpNameTextfield3">
+            <Component class="javax.swing.JTextField" name="PointsTextfield">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="0"/>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="EmpIDTextfield2">
+            <Component class="javax.swing.JTextField" name="SearchTextfield">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="0"/>
@@ -296,24 +296,24 @@
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="EmpID" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CustomerID" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Regenarate" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="EmpID1" min="-2" max="-2" attributes="0"/>
-                              <Component id="EmpName" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="EmpIDTextfield" alignment="0" pref="245" max="32767" attributes="0"/>
-                              <Component id="EmpNameTextfield" pref="245" max="32767" attributes="0"/>
+                              <Component id="FirstName" min="-2" max="-2" attributes="0"/>
+                              <Component id="LastName" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="FirstNameTextfield" alignment="0" pref="245" max="32767" attributes="0"/>
+                              <Component id="LastNameTextfield" pref="245" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="EmpName1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="Address" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                                  <Component id="EmpID2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EmpName2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="EmpIDTextfield1" alignment="0" pref="244" max="32767" attributes="0"/>
-                                  <Component id="EmpNameTextfield2" alignment="0" pref="244" max="32767" attributes="0"/>
-                                  <Component id="EmpNameTextfield1" pref="244" max="32767" attributes="0"/>
+                                  <Component id="Email" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="mobile" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="EmailAddressTextfield" alignment="0" pref="244" max="32767" attributes="0"/>
+                                  <Component id="MobileTextfield" alignment="0" pref="244" max="32767" attributes="0"/>
+                                  <Component id="AddressTextfield" pref="244" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -342,31 +342,31 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel1" max="32767" attributes="0"/>
-                                      <Component id="EmpID" min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Component id="Regenarate" max="32767" attributes="0"/>
+                                      <Component id="CustomerID" min="-2" pref="32" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="EmpID1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FirstName" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EmpIDTextfield" max="-2" attributes="0"/>
+                                  <Component id="FirstNameTextfield" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EmpName" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LastName" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EmpNameTextfield" max="-2" attributes="0"/>
+                                  <Component id="LastNameTextfield" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EmpName1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Address" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EmpNameTextfield1" max="-2" attributes="0"/>
+                                  <Component id="AddressTextfield" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EmpName2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="mobile" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EmpNameTextfield2" max="-2" attributes="0"/>
+                                  <Component id="MobileTextfield" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EmpID2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Email" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EmpIDTextfield1" max="-2" attributes="0"/>
+                                  <Component id="EmailAddressTextfield" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -377,7 +377,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="EmpID1">
+                <Component class="javax.swing.JLabel" name="FirstName">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="14" style="0"/>
@@ -385,14 +385,14 @@
                     <Property name="text" type="java.lang.String" value="First Name"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="EmpIDTextfield">
+                <Component class="javax.swing.JTextField" name="FirstNameTextfield">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="14" style="0"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="EmpName">
+                <Component class="javax.swing.JLabel" name="LastName">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="14" style="0"/>
@@ -400,17 +400,17 @@
                     <Property name="text" type="java.lang.String" value="Last Name "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="EmpNameTextfield">
+                <Component class="javax.swing.JTextField" name="LastNameTextfield">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="14" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmpNameTextfieldActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LastNameTextfieldActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="EmpName1">
+                <Component class="javax.swing.JLabel" name="Address">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="14" style="0"/>
@@ -418,14 +418,14 @@
                     <Property name="text" type="java.lang.String" value="Address"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="EmpNameTextfield1">
+                <Component class="javax.swing.JTextField" name="AddressTextfield">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="14" style="0"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="EmpID2">
+                <Component class="javax.swing.JLabel" name="Email">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="14" style="0"/>
@@ -433,17 +433,17 @@
                     <Property name="text" type="java.lang.String" value="Email Address"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="EmpIDTextfield1">
+                <Component class="javax.swing.JTextField" name="EmailAddressTextfield">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="14" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmpIDTextfield1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmailAddressTextfieldActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="EmpName2">
+                <Component class="javax.swing.JLabel" name="mobile">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="14" style="0"/>
@@ -451,14 +451,14 @@
                     <Property name="text" type="java.lang.String" value="Mobile No"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="EmpNameTextfield2">
+                <Component class="javax.swing.JTextField" name="MobileTextfield">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="14" style="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmpNameTextfield2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MobileTextfieldActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="AddNewCustomerButton">
@@ -494,7 +494,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateCustomerButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="EmpID">
+                <Component class="javax.swing.JLabel" name="CustomerID">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="14" style="0"/>
@@ -502,7 +502,7 @@
                     <Property name="text" type="java.lang.String" value="Customer ID"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel1">
+                <Component class="javax.swing.JLabel" name="Regenarate">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/resources/generate.png"/>
@@ -513,14 +513,14 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="Refresh">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/refresh.png"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RefreshActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
