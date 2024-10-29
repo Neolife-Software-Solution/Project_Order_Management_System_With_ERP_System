@@ -44,9 +44,9 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         ExpencesTablePanal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        signOutButtonPanal = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        ExpencesTypeTable = new javax.swing.JTable();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -84,6 +84,11 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         ExpencesTypeTextField.setText("Add Expences Types");
         ExpencesTypeTextField.setToolTipText("Add Expences Type");
         ExpencesTypeTextField.setName(""); // NOI18N
+        ExpencesTypeTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExpencesTypeTextFieldActionPerformed(evt);
+            }
+        });
 
         addTypeButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         addTypeButton.setText("Add Type");
@@ -105,9 +110,9 @@ public class AddExpencesTypes extends javax.swing.JFrame {
                 .addComponent(addTypeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(updateTypeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(refreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(12, 12, 12))
         );
         ExpencesAddSectionPanalLayout.setVerticalGroup(
             ExpencesAddSectionPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,8 +164,8 @@ public class AddExpencesTypes extends javax.swing.JFrame {
 
         TypeSearchPanal.add(ExpencesTypeSearchPanal, java.awt.BorderLayout.PAGE_START);
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ExpencesTypeTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ExpencesTypeTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -176,15 +181,15 @@ public class AddExpencesTypes extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        ExpencesTypeTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(ExpencesTypeTable);
 
         javax.swing.GroupLayout ExpencesTablePanalLayout = new javax.swing.GroupLayout(ExpencesTablePanal);
         ExpencesTablePanal.setLayout(ExpencesTablePanalLayout);
         ExpencesTablePanalLayout.setHorizontalGroup(
             ExpencesTablePanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ExpencesTablePanalLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -192,40 +197,40 @@ public class AddExpencesTypes extends javax.swing.JFrame {
             ExpencesTablePanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ExpencesTablePanalLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         TypeSearchPanal.add(ExpencesTablePanal, java.awt.BorderLayout.CENTER);
 
-        signOutButtonPanal.setPreferredSize(new java.awt.Dimension(826, 60));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(826, 50));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
-        jButton1.setToolTipText("Sign Out");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.setToolTipText("Sign Out");
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout signOutButtonPanalLayout = new javax.swing.GroupLayout(signOutButtonPanal);
-        signOutButtonPanal.setLayout(signOutButtonPanalLayout);
-        signOutButtonPanalLayout.setHorizontalGroup(
-            signOutButtonPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signOutButtonPanalLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(782, Short.MAX_VALUE))
         );
-        signOutButtonPanalLayout.setVerticalGroup(
-            signOutButtonPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signOutButtonPanalLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        TypeSearchPanal.add(signOutButtonPanal, java.awt.BorderLayout.PAGE_END);
+        TypeSearchPanal.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         bodyPanal.add(TypeSearchPanal, java.awt.BorderLayout.CENTER);
 
@@ -235,11 +240,21 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+    //signOutButtonCode
+    
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
+         
+        //signOutButtonExitCodeStart
+         
         System.exit(0);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+        //signOutButtonExitCodeStart        
+        
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
+
+    private void ExpencesTypeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpencesTypeTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ExpencesTypeTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,23 +273,23 @@ public class AddExpencesTypes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel ExpencesAddSectionPanal;
     private javax.swing.JPanel ExpencesTablePanal;
     private javax.swing.JPanel ExpencesTypeSearchPanal;
+    private javax.swing.JTable ExpencesTypeTable;
     private javax.swing.JTextField ExpencesTypeTextField;
     private javax.swing.JPanel TypeSearchPanal;
     private javax.swing.JButton addTypeButton;
     private javax.swing.JPanel bodyPanal;
     private javax.swing.JPanel headerPanal;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton refreshButton;
-    private javax.swing.JPanel signOutButtonPanal;
     private javax.swing.JButton updateTypeButton;
     // End of variables declaration//GEN-END:variables
 }
