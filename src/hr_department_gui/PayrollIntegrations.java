@@ -44,11 +44,11 @@ public class PayrollIntegrations extends javax.swing.JFrame {
         PayAdvanceButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         RefreshButton = new javax.swing.JButton();
-        BackPanel = new javax.swing.JPanel();
-        BackToDashboardButton = new javax.swing.JButton();
         tablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         PayrollTable = new javax.swing.JTable();
+        BackPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -134,34 +134,6 @@ public class PayrollIntegrations extends javax.swing.JFrame {
 
         bodyPanal.add(payrollAddPanel, java.awt.BorderLayout.PAGE_START);
 
-        BackPanel.setPreferredSize(new java.awt.Dimension(891, 50));
-
-        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackToDashboardButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout BackPanelLayout = new javax.swing.GroupLayout(BackPanel);
-        BackPanel.setLayout(BackPanelLayout);
-        BackPanelLayout.setHorizontalGroup(
-            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BackToDashboardButton)
-                .addContainerGap(850, Short.MAX_VALUE))
-        );
-        BackPanelLayout.setVerticalGroup(
-            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BackToDashboardButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        bodyPanal.add(BackPanel, java.awt.BorderLayout.PAGE_END);
-
         PayrollTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         PayrollTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -200,6 +172,34 @@ public class PayrollIntegrations extends javax.swing.JFrame {
         );
 
         bodyPanal.add(tablePanel, java.awt.BorderLayout.CENTER);
+
+        BackPanel.setPreferredSize(new java.awt.Dimension(891, 50));
+
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackToDashboardButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout BackPanelLayout = new javax.swing.GroupLayout(BackPanel);
+        BackPanel.setLayout(BackPanelLayout);
+        BackPanelLayout.setHorizontalGroup(
+            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BackToDashboardButton)
+                .addContainerGap(850, Short.MAX_VALUE))
+        );
+        BackPanelLayout.setVerticalGroup(
+            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BackToDashboardButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        bodyPanal.add(BackPanel, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(bodyPanal, java.awt.BorderLayout.CENTER);
 

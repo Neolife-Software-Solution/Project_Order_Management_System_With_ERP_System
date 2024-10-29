@@ -41,7 +41,7 @@ public class AddDepartment extends javax.swing.JFrame {
         BackButton = new javax.swing.JButton();
         tablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        departmentTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -119,22 +119,21 @@ public class AddDepartment extends javax.swing.JFrame {
         logoutPanelLayout.setHorizontalGroup(
             logoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(logoutPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(BackButton)
-                .addContainerGap(787, Short.MAX_VALUE))
+                .addGap(0, 789, Short.MAX_VALUE))
         );
         logoutPanelLayout.setVerticalGroup(
             logoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logoutPanelLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoutPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BackButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         bodyPanal.add(logoutPanel, java.awt.BorderLayout.PAGE_END);
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        departmentTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        departmentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -150,8 +149,8 @@ public class AddDepartment extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        departmentTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(departmentTable);
 
         javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);
         tablePanel.setLayout(tablePanelLayout);
@@ -205,12 +204,12 @@ public class AddDepartment extends javax.swing.JFrame {
     private javax.swing.JPanel bodyPanal;
     private javax.swing.JPanel departmentAddPanel;
     private javax.swing.JTextField departmentNameTextfield;
+    private javax.swing.JTable departmentTable;
     private javax.swing.JPanel headerPanal;
     private javax.swing.JLabel headingText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel logoutPanel;
     private javax.swing.JPanel tablePanel;
     // End of variables declaration//GEN-END:variables

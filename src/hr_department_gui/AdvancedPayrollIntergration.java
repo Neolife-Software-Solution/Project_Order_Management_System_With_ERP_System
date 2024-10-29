@@ -40,11 +40,11 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
         AddButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         RefreshButton = new javax.swing.JButton();
-        Backpanel = new javax.swing.JPanel();
-        BackToDashboardButton = new javax.swing.JButton();
         tablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         PayrollTable = new javax.swing.JTable();
+        Backpanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -153,34 +153,6 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
 
         bodyPanal.add(advancedPayrollAddPanel, java.awt.BorderLayout.PAGE_START);
 
-        Backpanel.setPreferredSize(new java.awt.Dimension(894, 50));
-
-        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackToDashboardButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout BackpanelLayout = new javax.swing.GroupLayout(Backpanel);
-        Backpanel.setLayout(BackpanelLayout);
-        BackpanelLayout.setHorizontalGroup(
-            BackpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackpanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(850, Short.MAX_VALUE))
-        );
-        BackpanelLayout.setVerticalGroup(
-            BackpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackpanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BackToDashboardButton)
-                .addContainerGap())
-        );
-
-        bodyPanal.add(Backpanel, java.awt.BorderLayout.PAGE_END);
-
         PayrollTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         PayrollTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -219,6 +191,34 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
         );
 
         bodyPanal.add(tablePanel, java.awt.BorderLayout.CENTER);
+
+        Backpanel.setPreferredSize(new java.awt.Dimension(894, 50));
+
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackToDashboardButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout BackpanelLayout = new javax.swing.GroupLayout(Backpanel);
+        Backpanel.setLayout(BackpanelLayout);
+        BackpanelLayout.setHorizontalGroup(
+            BackpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackpanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(850, Short.MAX_VALUE))
+        );
+        BackpanelLayout.setVerticalGroup(
+            BackpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackpanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BackToDashboardButton)
+                .addContainerGap())
+        );
+
+        bodyPanal.add(Backpanel, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(bodyPanal, java.awt.BorderLayout.CENTER);
 
