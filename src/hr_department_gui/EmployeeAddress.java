@@ -32,9 +32,7 @@ public class EmployeeAddress extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BodyPanel = new javax.swing.JPanel();
         AddressAdd1Panel = new javax.swing.JPanel();
-        NameField = new javax.swing.JTextField();
         ProvinceField = new javax.swing.JTextField();
-        EmailField = new javax.swing.JTextField();
         DistrictField = new javax.swing.JTextField();
         CityField = new javax.swing.JTextField();
         AddButton = new javax.swing.JButton();
@@ -51,6 +49,8 @@ public class EmployeeAddress extends javax.swing.JFrame {
         AddButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        EmailField = new javax.swing.JTextField();
+        NameField = new javax.swing.JTextField();
         SignOutPanel = new javax.swing.JPanel();
         SignOutButton = new javax.swing.JButton();
 
@@ -83,27 +83,19 @@ public class EmployeeAddress extends javax.swing.JFrame {
 
         BodyPanel.setLayout(new java.awt.BorderLayout());
 
-        AddressAdd1Panel.setPreferredSize(new java.awt.Dimension(808, 250));
-
-        NameField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        NameField.setText("Name");
+        AddressAdd1Panel.setPreferredSize(new java.awt.Dimension(808, 150));
 
         ProvinceField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         ProvinceField.setText("Enter Province");
-
-        EmailField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        EmailField.setText("E-mail");
-        EmailField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailFieldActionPerformed(evt);
-            }
-        });
+        ProvinceField.setPreferredSize(new java.awt.Dimension(87, 30));
 
         DistrictField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         DistrictField.setText("Enter District");
+        DistrictField.setPreferredSize(new java.awt.Dimension(87, 30));
 
         CityField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         CityField.setText("Enter City");
+        CityField.setPreferredSize(new java.awt.Dimension(87, 30));
         CityField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CityFieldActionPerformed(evt);
@@ -119,40 +111,28 @@ public class EmployeeAddress extends javax.swing.JFrame {
             AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddressAdd1PanelLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addGroup(AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NameField)
-                    .addComponent(ProvinceField))
+                .addComponent(ProvinceField, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                 .addGap(122, 122, 122)
-                .addGroup(AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmailField)
-                    .addComponent(DistrictField))
+                .addComponent(DistrictField, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                 .addGap(170, 170, 170))
             .addGroup(AddressAdd1PanelLayout.createSequentialGroup()
-                .addGap(235, 235, 235)
+                .addGap(217, 217, 217)
                 .addComponent(CityField, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-                .addGap(123, 123, 123)
+                .addGap(141, 141, 141)
                 .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
         );
         AddressAdd1PanelLayout.setVerticalGroup(
             AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddressAdd1PanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NameField, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                    .addComponent(EmailField))
-                .addGap(51, 51, 51)
-                .addGroup(AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DistrictField)
-                    .addComponent(ProvinceField, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
-                .addGroup(AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AddressAdd1PanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(CityField)
-                        .addGap(27, 27, 27))
-                    .addGroup(AddressAdd1PanelLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(22, 22, 22)
+                .addGroup(AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(ProvinceField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DistrictField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGroup(AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CityField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23))
         );
 
@@ -164,12 +144,15 @@ public class EmployeeAddress extends javax.swing.JFrame {
 
         DistrictComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         DistrictComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        DistrictComboBox.setPreferredSize(new java.awt.Dimension(74, 35));
 
         CityComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         CityComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CityComboBox.setPreferredSize(new java.awt.Dimension(74, 35));
 
         ProvinceComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         ProvinceComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ProvinceComboBox.setPreferredSize(new java.awt.Dimension(74, 35));
 
         ProvinceLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         ProvinceLabel.setText("Select Province");
@@ -182,9 +165,16 @@ public class EmployeeAddress extends javax.swing.JFrame {
 
         AddressLine1Field.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         AddressLine1Field.setText("Address Line 01");
+        AddressLine1Field.setPreferredSize(new java.awt.Dimension(109, 35));
 
         AddressLine2Field.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         AddressLine2Field.setText("Address Line 02");
+        AddressLine2Field.setPreferredSize(new java.awt.Dimension(109, 35));
+        AddressLine2Field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddressLine2FieldActionPerformed(evt);
+            }
+        });
 
         AddButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         AddButton2.setText("Add");
@@ -197,80 +187,92 @@ public class EmployeeAddress extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton4.setText("Clear");
 
+        EmailField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        EmailField.setText("E-mail");
+        EmailField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailFieldActionPerformed(evt);
+            }
+        });
+
+        NameField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        NameField.setText("Name");
+
         javax.swing.GroupLayout AddressAdd2PanelLayout = new javax.swing.GroupLayout(AddressAdd2Panel);
         AddressAdd2Panel.setLayout(AddressAdd2PanelLayout);
         AddressAdd2PanelLayout.setHorizontalGroup(
             AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddressAdd2PanelLayout.createSequentialGroup()
+                .addGap(154, 154, 154)
+                .addComponent(NameField, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                .addGap(74, 74, 74)
+                .addComponent(EmailField, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                .addGap(156, 156, 156))
             .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                        .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                                .addGap(209, 209, 209)
-                                .addComponent(CityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(CityComboBox, 0, 132, Short.MAX_VALUE)
-                                .addGap(17, 17, 17))
-                            .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                                .addComponent(ProvinceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ProvinceComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(52, 52, 52)
-                                .addComponent(DistrictLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(DistrictComboBox, 0, 125, Short.MAX_VALUE)
-                        .addGap(138, 138, 138))
+                        .addComponent(ProvinceLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ProvinceComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(42, 42, 42)
+                        .addComponent(DistrictLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DistrictComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                        .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AddressLine1Field, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addComponent(AddressLine2Field, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
-                        .addGap(321, 321, 321)
-                        .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(68, 68, 68))))
-            .addComponent(jSeparator1)
+                        .addComponent(AddressLine1Field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(73, 73, 73)
+                        .addComponent(AddressLine2Field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(73, 73, 73))))
+            .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CityComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddressAdd2PanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(AddButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         AddressAdd2PanelLayout.setVerticalGroup(
             AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DistrictLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                            .addComponent(DistrictComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)))
-                    .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ProvinceComboBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                            .addComponent(ProvinceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE))))
-                .addGap(35, 35, 35)
-                .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(CityLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
-                    .addComponent(CityComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
+                .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EmailField, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ProvinceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ProvinceLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(DistrictLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(DistrictComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CityComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
                 .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddressLine1Field, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(AddButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
-                .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AddressAdd2PanelLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(AddressLine2Field, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                        .addGap(16, 16, 16))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddressAdd2PanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                    .addComponent(AddressLine2Field, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addGroup(AddressAdd2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(AddButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jPanel4.add(AddressAdd2Panel, java.awt.BorderLayout.PAGE_START);
 
-        SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        SignOutPanel.setPreferredSize(new java.awt.Dimension(808, 50));
+
+        SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         SignOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SignOutButtonActionPerformed(evt);
@@ -289,7 +291,7 @@ public class EmployeeAddress extends javax.swing.JFrame {
         SignOutPanelLayout.setVerticalGroup(
             SignOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SignOutPanelLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addComponent(SignOutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -319,6 +321,10 @@ public class EmployeeAddress extends javax.swing.JFrame {
     private void EmailFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EmailFieldActionPerformed
+
+    private void AddressLine2FieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressLine2FieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddressLine2FieldActionPerformed
 
     /**
      * @param args the command line arguments

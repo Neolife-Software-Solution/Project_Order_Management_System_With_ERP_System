@@ -34,38 +34,43 @@ public class AddEmployee extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BackToDashboardPanel = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        bodyPanel = new javax.swing.JPanel();
+        employeeIdLabel = new javax.swing.JLabel();
+        employeeIdTextField = new javax.swing.JTextField();
+        generateButton = new javax.swing.JButton();
+        fNameLabel = new javax.swing.JLabel();
+        fNameTextField = new javax.swing.JTextField();
+        dOBLabel = new javax.swing.JLabel();
+        emailLabel = new javax.swing.JLabel();
+        emailTextField = new javax.swing.JTextField();
+        lNameLabel = new javax.swing.JLabel();
+        lNameTextField = new javax.swing.JTextField();
+        contactNoLabel = new javax.swing.JLabel();
+        contactNoTextField = new javax.swing.JTextField();
+        dateOfHireLabel = new javax.swing.JLabel();
+        employeeTypeLabel = new javax.swing.JLabel();
+        fullTimeRadio = new javax.swing.JRadioButton();
+        partTimeRadio = new javax.swing.JRadioButton();
+        internRadio = new javax.swing.JRadioButton();
+        addButton = new javax.swing.JButton();
+        updateButton = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
+        dateOfBirthDayChooser = new com.toedter.calendar.JDateChooser();
+        dateOfHireDayChooser = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
 
-        HeaderPanel.setPreferredSize(new java.awt.Dimension(732, 50));
+        HeaderPanel.setPreferredSize(new java.awt.Dimension(732, 60));
 
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Add Employee");
+        jLabel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                jLabel1ComponentHidden(evt);
+            }
+        });
 
         javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(HeaderPanel);
         HeaderPanel.setLayout(HeaderPanelLayout);
@@ -79,9 +84,9 @@ public class AddEmployee extends javax.swing.JFrame {
         HeaderPanelLayout.setVerticalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(14, 14, 14)
                 .addComponent(jLabel1)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         getContentPane().add(HeaderPanel, java.awt.BorderLayout.PAGE_START);
@@ -114,180 +119,194 @@ public class AddEmployee extends javax.swing.JFrame {
 
         getContentPane().add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        bodyPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel2.setText("Employee ID");
+        employeeIdLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        employeeIdLabel.setText("Employee ID");
 
-        jTextField1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        employeeIdTextField.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/generate.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        generateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/generate.png"))); // NOI18N
+        generateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                generateButtonActionPerformed(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel3.setText("First Name");
+        fNameLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        fNameLabel.setText("First Name");
 
-        jTextField2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        fNameTextField.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel4.setText("Date Of Birth");
+        dOBLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        dOBLabel.setText("Date Of Birth");
 
-        jTextField3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        emailLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        emailLabel.setText("Email");
 
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel5.setText("Email");
+        emailTextField.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        jTextField4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lNameLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        lNameLabel.setText("Last Name");
 
-        jLabel6.setText("Last Name");
+        lNameTextField.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        jLabel7.setText("Contact Number");
+        contactNoLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        contactNoLabel.setText("Contact Number");
 
-        jLabel8.setText("Date Of Hire");
+        contactNoTextField.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel9.setText("Employee Type");
+        dateOfHireLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        dateOfHireLabel.setText("Date Of Hire");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jRadioButton1.setText("Full Time");
+        employeeTypeLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        employeeTypeLabel.setText("Employee Type");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jRadioButton2.setText("Part Time");
+        buttonGroup1.add(fullTimeRadio);
+        fullTimeRadio.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        fullTimeRadio.setText("Full Time");
 
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jRadioButton3.setText("Intern");
+        buttonGroup1.add(partTimeRadio);
+        partTimeRadio.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        partTimeRadio.setText("Part Time");
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton3.setText("Add");
+        buttonGroup1.add(internRadio);
+        internRadio.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        internRadio.setText("Intern");
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton4.setText("Update");
+        addButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        addButton.setText("Add");
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        updateButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        updateButton.setText("Update");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+
+        javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
+        bodyPanel.setLayout(bodyPanelLayout);
+        bodyPanelLayout.setHorizontalGroup(
+            bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bodyPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(employeeIdLabel)
+                    .addGroup(bodyPanelLayout.createSequentialGroup()
+                        .addComponent(employeeIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(generateButton))
+                    .addGroup(bodyPanelLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                                .addComponent(jLabel4)
-                                .addComponent(jTextField3)
-                                .addComponent(jLabel5)
-                                .addComponent(jTextField4))
-                            .addComponent(jLabel9)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton3)))
-                        .addGap(150, 150, 150)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField7)
-                            .addComponent(jTextField6)
-                            .addComponent(jTextField5)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel6))
+                        .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(emailTextField)
+                            .addGroup(bodyPanelLayout.createSequentialGroup()
+                                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fNameLabel)
+                                    .addComponent(dOBLabel)
+                                    .addComponent(emailLabel)
+                                    .addComponent(employeeTypeLabel)
+                                    .addGroup(bodyPanelLayout.createSequentialGroup()
+                                        .addComponent(fullTimeRadio)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(partTimeRadio)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(internRadio)))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                                .addComponent(jButton3)
+                            .addComponent(dateOfBirthDayChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bodyPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(addButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton5)))))
+                                .addComponent(updateButton)
+                                .addGap(12, 12, 12)
+                                .addComponent(refreshButton))
+                            .addGroup(bodyPanelLayout.createSequentialGroup()
+                                .addGap(150, 150, 150)
+                                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dateOfHireDayChooser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(contactNoTextField)
+                                    .addComponent(lNameTextField)
+                                    .addGroup(bodyPanelLayout.createSequentialGroup()
+                                        .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(dateOfHireLabel)
+                                            .addComponent(contactNoLabel)
+                                            .addComponent(lNameLabel))
+                                        .addGap(0, 120, Short.MAX_VALUE)))))))
                 .addGap(68, 68, 68))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        bodyPanelLayout.setVerticalGroup(
+            bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bodyPanelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel2)
+                .addComponent(employeeIdLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(employeeIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fNameLabel)
+                    .addComponent(lNameLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6))
+                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(lNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dOBLabel)
+                    .addComponent(contactNoLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(contactNoTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
+                    .addComponent(dateOfBirthDayChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel8))
+                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(emailLabel)
+                    .addComponent(dateOfHireLabel))
                 .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jRadioButton3)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dateOfHireDayChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(emailTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bodyPanelLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(10, 10, 10))
+                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bodyPanelLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(employeeTypeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fullTimeRadio)
+                            .addComponent(partTimeRadio)
+                            .addComponent(internRadio)))
+                    .addGroup(bodyPanelLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(17, 17, 17))
         );
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_generateButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
         System.exit(0);
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jLabel1ComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jLabel1ComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1ComponentHidden
 
     /**
      * @param args the command line arguments
@@ -308,31 +327,31 @@ public class AddEmployee extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel HeaderPanel;
+    private javax.swing.JButton addButton;
+    private javax.swing.JPanel bodyPanel;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel contactNoLabel;
+    private javax.swing.JTextField contactNoTextField;
+    private javax.swing.JLabel dOBLabel;
+    private com.toedter.calendar.JDateChooser dateOfBirthDayChooser;
+    private com.toedter.calendar.JDateChooser dateOfHireDayChooser;
+    private javax.swing.JLabel dateOfHireLabel;
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JTextField emailTextField;
+    private javax.swing.JLabel employeeIdLabel;
+    private javax.swing.JTextField employeeIdTextField;
+    private javax.swing.JLabel employeeTypeLabel;
+    private javax.swing.JLabel fNameLabel;
+    private javax.swing.JTextField fNameTextField;
+    private javax.swing.JRadioButton fullTimeRadio;
+    private javax.swing.JButton generateButton;
+    private javax.swing.JRadioButton internRadio;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JLabel lNameLabel;
+    private javax.swing.JTextField lNameTextField;
+    private javax.swing.JRadioButton partTimeRadio;
+    private javax.swing.JButton refreshButton;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

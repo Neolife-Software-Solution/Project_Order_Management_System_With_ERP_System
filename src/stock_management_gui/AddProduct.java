@@ -83,7 +83,7 @@ public class AddProduct extends javax.swing.JFrame {
 
         logOutPanel.setPreferredSize(new java.awt.Dimension(50, 50));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         jButton1.setPreferredSize(new java.awt.Dimension(75, 75));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

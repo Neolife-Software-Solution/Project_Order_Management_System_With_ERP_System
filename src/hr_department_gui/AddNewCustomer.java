@@ -61,7 +61,7 @@ public class AddNewCustomer extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        HeaderPanel.setPreferredSize(new java.awt.Dimension(656, 80));
+        HeaderPanel.setPreferredSize(new java.awt.Dimension(656, 60));
 
         Header.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
         Header.setText("New Customer");
@@ -80,7 +80,7 @@ public class AddNewCustomer extends javax.swing.JFrame {
             .addGroup(HeaderPanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(Header)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         getContentPane().add(HeaderPanel, java.awt.BorderLayout.PAGE_START);
@@ -90,7 +90,7 @@ public class AddNewCustomer extends javax.swing.JFrame {
         LogOutPanel.setPreferredSize(new java.awt.Dimension(656, 50));
         LogOutPanel.setLayout(new java.awt.BorderLayout());
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -321,7 +321,7 @@ public class AddNewCustomer extends javax.swing.JFrame {
                         .addComponent(EmpNameTextfield3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
                 .addGap(10, 10, 10))
         );
 

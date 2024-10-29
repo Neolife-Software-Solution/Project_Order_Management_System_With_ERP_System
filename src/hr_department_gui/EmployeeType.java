@@ -33,9 +33,9 @@ public class EmployeeType extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BodyPanel = new javax.swing.JPanel();
         AddTypePanel = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        addNewTypeTextField = new javax.swing.JTextField();
+        refreshButton = new javax.swing.JButton();
+        addTypeButton = new javax.swing.JButton();
         TableUpdatePanel = new javax.swing.JPanel();
         ButtonPanel = new javax.swing.JPanel();
         UpdateButton = new javax.swing.JButton();
@@ -78,13 +78,13 @@ public class EmployeeType extends javax.swing.JFrame {
 
         AddTypePanel.setPreferredSize(new java.awt.Dimension(757, 70));
 
-        jTextField1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jTextField1.setText("Add New Types");
+        addNewTypeTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        addNewTypeTextField.setText("Add New Types");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jButton2.setText("Add Type");
+        addTypeButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        addTypeButton.setText("Add Type");
 
         javax.swing.GroupLayout AddTypePanelLayout = new javax.swing.GroupLayout(AddTypePanel);
         AddTypePanel.setLayout(AddTypePanelLayout);
@@ -92,11 +92,11 @@ public class EmployeeType extends javax.swing.JFrame {
             AddTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddTypePanelLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
-                .addGap(245, 245, 245)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                .addGap(38, 38, 38)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(addNewTypeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addTypeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(271, 271, 271)
+                .addComponent(refreshButton)
                 .addGap(20, 20, 20))
         );
         AddTypePanelLayout.setVerticalGroup(
@@ -104,9 +104,10 @@ public class EmployeeType extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddTypePanelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(AddTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(addNewTypeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                        .addComponent(addTypeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -152,9 +153,9 @@ public class EmployeeType extends javax.swing.JFrame {
 
         TableUpdatePanel.add(ButtonPanel, java.awt.BorderLayout.PAGE_START);
 
-        SignOutPanel.setPreferredSize(new java.awt.Dimension(757, 55));
+        SignOutPanel.setPreferredSize(new java.awt.Dimension(757, 50));
 
-        SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logout.png"))); // NOI18N
+        SignOutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         SignOutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SignOutButtonActionPerformed(evt);
@@ -204,17 +205,17 @@ public class EmployeeType extends javax.swing.JFrame {
         TableViewPanel.setLayout(TableViewPanelLayout);
         TableViewPanelLayout.setHorizontalGroup(
             TableViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TableViewPanelLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+            .addGroup(TableViewPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
         TableViewPanelLayout.setVerticalGroup(
             TableViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TableViewPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
         );
 
         TableUpdatePanel.add(TableViewPanel, java.awt.BorderLayout.CENTER);
@@ -285,11 +286,11 @@ public class EmployeeType extends javax.swing.JFrame {
     private javax.swing.JPanel TableUpdatePanel;
     private javax.swing.JPanel TableViewPanel;
     private javax.swing.JButton UpdateButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField addNewTypeTextField;
+    private javax.swing.JButton addTypeButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton refreshButton;
     // End of variables declaration//GEN-END:variables
 }
