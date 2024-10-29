@@ -49,8 +49,8 @@ public class AddNewCompany extends javax.swing.JFrame {
         SearchCompanyNameTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         CompanyRegistrationTable = new javax.swing.JTable();
-        BackPanel = new javax.swing.JPanel();
-        BackButton = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -196,30 +196,31 @@ public class AddNewCompany extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        CompanyRegistrationTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(CompanyRegistrationTable);
 
-        BackPanel.setPreferredSize(new java.awt.Dimension(1025, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(1025, 50));
 
-        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        BackButton.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackButtonActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout BackPanelLayout = new javax.swing.GroupLayout(BackPanel);
-        BackPanel.setLayout(BackPanelLayout);
-        BackPanelLayout.setHorizontalGroup(
-            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BackButton)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        BackPanelLayout.setVerticalGroup(
-            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackPanelLayout.createSequentialGroup()
-                .addComponent(BackButton)
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
+                .addComponent(BackToDashboardButton)
                 .addGap(6, 6, 6))
         );
 
@@ -239,7 +240,7 @@ public class AddNewCompany extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tablePanelLayout.createSequentialGroup()
                         .addComponent(jScrollPane1)
                         .addGap(134, 134, 134))))
-            .addComponent(BackPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1009, Short.MAX_VALUE)
+            .addComponent(BackToDashboardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1009, Short.MAX_VALUE)
         );
         tablePanelLayout.setVerticalGroup(
             tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,7 +254,7 @@ public class AddNewCompany extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(BackPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(BackToDashboardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout buttonTableViewPanelLayout = new javax.swing.GroupLayout(buttonTableViewPanel);
@@ -291,9 +292,9 @@ public class AddNewCompany extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CompanyAddressTextfieldActionPerformed
 
-    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_BackButtonActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -312,8 +313,8 @@ public class AddNewCompany extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
-    private javax.swing.JButton BackButton;
-    private javax.swing.JPanel BackPanel;
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JTextField CompanyAddressTextfield;
     private javax.swing.JTextField CompanyEmailTextfield;
     private javax.swing.JTextField CompanyHotlineNumberTextfield;

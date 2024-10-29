@@ -172,7 +172,16 @@ public class Takeaway extends javax.swing.JFrame {
             new String [] {
                 "Order ID", "Food Name", "Portion", "Cokking Status", "Status", "Action"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        OrderTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(OrderTable);
 
         javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);

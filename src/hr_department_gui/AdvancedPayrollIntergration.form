@@ -303,7 +303,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="Backpanel">
+        <Container class="javax.swing.JPanel" name="BackToDashboardPanel">
           <Properties>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[894, 50]"/>

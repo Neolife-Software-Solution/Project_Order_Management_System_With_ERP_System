@@ -43,7 +43,7 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
         tablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         PayrollTable = new javax.swing.JTable();
-        Backpanel = new javax.swing.JPanel();
+        BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -192,7 +192,7 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
 
         bodyPanal.add(tablePanel, java.awt.BorderLayout.CENTER);
 
-        Backpanel.setPreferredSize(new java.awt.Dimension(894, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(894, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
@@ -201,24 +201,24 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
             }
         });
 
-        javax.swing.GroupLayout BackpanelLayout = new javax.swing.GroupLayout(Backpanel);
-        Backpanel.setLayout(BackpanelLayout);
-        BackpanelLayout.setHorizontalGroup(
-            BackpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackpanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(850, Short.MAX_VALUE))
         );
-        BackpanelLayout.setVerticalGroup(
-            BackpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackpanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BackToDashboardButton)
                 .addContainerGap())
         );
 
-        bodyPanal.add(Backpanel, java.awt.BorderLayout.PAGE_END);
+        bodyPanal.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(bodyPanal, java.awt.BorderLayout.CENTER);
 
@@ -256,7 +256,7 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
     private javax.swing.JButton AddButton;
     private javax.swing.JTextField AdvanceAmountTextfield;
     private javax.swing.JButton BackToDashboardButton;
-    private javax.swing.JPanel Backpanel;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JTextField EmployeeIDTextfield;
     private javax.swing.JTextField EmployeeNameTextfield;
     private javax.swing.JTextField PayrollIDTextfield;

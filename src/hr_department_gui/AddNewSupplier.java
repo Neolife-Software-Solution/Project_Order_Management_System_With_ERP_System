@@ -52,8 +52,8 @@ public class AddNewSupplier extends javax.swing.JFrame {
         tablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         SupplierTable = new javax.swing.JTable();
-        BackPanel = new javax.swing.JPanel();
-        BackButton = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -240,32 +240,32 @@ public class AddNewSupplier extends javax.swing.JFrame {
 
         bodyPanel.add(tablePanel, java.awt.BorderLayout.CENTER);
 
-        BackPanel.setPreferredSize(new java.awt.Dimension(946, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(946, 50));
 
-        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        BackButton.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackButtonActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout BackPanelLayout = new javax.swing.GroupLayout(BackPanel);
-        BackPanel.setLayout(BackPanelLayout);
-        BackPanelLayout.setHorizontalGroup(
-            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BackButton)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap(898, Short.MAX_VALUE))
         );
-        BackPanelLayout.setVerticalGroup(
-            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackPanelLayout.createSequentialGroup()
-                .addComponent(BackButton)
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
+                .addComponent(BackToDashboardButton)
                 .addGap(6, 6, 6))
         );
 
-        bodyPanel.add(BackPanel, java.awt.BorderLayout.PAGE_END);
+        bodyPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
 
@@ -281,9 +281,9 @@ public class AddNewSupplier extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EmailTextfieldActionPerformed
 
-    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
        System.exit(0);
-    }//GEN-LAST:event_BackButtonActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,8 +301,8 @@ public class AddNewSupplier extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BackButton;
-    private javax.swing.JPanel BackPanel;
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JComboBox<String> CompanyComboBox;
     private javax.swing.JTextField ContactTextfield;
     private javax.swing.JTextField EmailTextfield;

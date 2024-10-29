@@ -53,7 +53,7 @@ public class AddNewUser extends javax.swing.JFrame {
         tablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         AddNewUserTable = new javax.swing.JTable();
-        BackPanel = new javax.swing.JPanel();
+        BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -260,7 +260,7 @@ public class AddNewUser extends javax.swing.JFrame {
 
         bodyPanel.add(tableAndDepartmentPanel, java.awt.BorderLayout.CENTER);
 
-        BackPanel.setPreferredSize(new java.awt.Dimension(1007, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(1007, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
@@ -269,23 +269,23 @@ public class AddNewUser extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout BackPanelLayout = new javax.swing.GroupLayout(BackPanel);
-        BackPanel.setLayout(BackPanelLayout);
-        BackPanelLayout.setHorizontalGroup(
-            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
                 .addContainerGap(976, Short.MAX_VALUE))
         );
-        BackPanelLayout.setVerticalGroup(
-            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addComponent(BackToDashboardButton)
                 .addGap(0, 7, Short.MAX_VALUE))
         );
 
-        bodyPanel.add(BackPanel, java.awt.BorderLayout.PAGE_END);
+        bodyPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
 
@@ -322,8 +322,8 @@ public class AddNewUser extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AddNewUserTable;
-    private javax.swing.JPanel BackPanel;
     private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JComboBox<String> DepartmentComboBox;
     private javax.swing.JTextField EmployeeIdTextfield;
     private javax.swing.JTextField EmployeeNameTextfield;

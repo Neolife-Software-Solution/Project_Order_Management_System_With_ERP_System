@@ -100,13 +100,13 @@ public class DiningMenuOrder extends javax.swing.JDialog {
         Person1PriceLabel.setBackground(new java.awt.Color(255, 255, 255));
         Person1PriceLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         Person1PriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        Person1PriceLabel.setText("Price");
+        Person1PriceLabel.setText("0.00");
         Person1PriceLabel.setOpaque(true);
 
         Person2PriceLabel.setBackground(new java.awt.Color(255, 255, 255));
         Person2PriceLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         Person2PriceLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        Person2PriceLabel.setText("Price");
+        Person2PriceLabel.setText("0.00");
         Person2PriceLabel.setOpaque(true);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N

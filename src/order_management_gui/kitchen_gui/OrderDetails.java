@@ -129,7 +129,16 @@ public class OrderDetails extends javax.swing.JDialog {
             new String [] {
                 "Food Details", "Portion", "Note"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        KitchenOrderTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(KitchenOrderTable);
 
         javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);

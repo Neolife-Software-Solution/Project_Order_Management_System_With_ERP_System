@@ -37,8 +37,8 @@ public class AddDepartment extends javax.swing.JFrame {
         AddButton = new javax.swing.JButton();
         RefreshButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        logoutPanel = new javax.swing.JPanel();
-        BackButton = new javax.swing.JButton();
+        BackToDashboardPanel = new javax.swing.JPanel();
+        BackToDashboardButton = new javax.swing.JButton();
         tablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         departmentTable = new javax.swing.JTable();
@@ -105,32 +105,32 @@ public class AddDepartment extends javax.swing.JFrame {
 
         bodyPanal.add(departmentAddPanel, java.awt.BorderLayout.PAGE_START);
 
-        logoutPanel.setPreferredSize(new java.awt.Dimension(827, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(827, 50));
 
-        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        BackButton.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackButtonActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout logoutPanelLayout = new javax.swing.GroupLayout(logoutPanel);
-        logoutPanel.setLayout(logoutPanelLayout);
-        logoutPanelLayout.setHorizontalGroup(
-            logoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logoutPanelLayout.createSequentialGroup()
-                .addComponent(BackButton)
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
+                .addComponent(BackToDashboardButton)
                 .addGap(0, 789, Short.MAX_VALUE))
         );
-        logoutPanelLayout.setVerticalGroup(
-            logoutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logoutPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BackButton)
+                .addComponent(BackToDashboardButton)
                 .addContainerGap())
         );
 
-        bodyPanal.add(logoutPanel, java.awt.BorderLayout.PAGE_END);
+        bodyPanal.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         departmentTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         departmentTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -177,10 +177,10 @@ public class AddDepartment extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+    private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
         
         System.exit(0);
-    }//GEN-LAST:event_BackButtonActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,7 +199,8 @@ public class AddDepartment extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddButton;
-    private javax.swing.JButton BackButton;
+    private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JButton RefreshButton;
     private javax.swing.JPanel bodyPanal;
     private javax.swing.JPanel departmentAddPanel;
@@ -210,7 +211,6 @@ public class AddDepartment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JPanel logoutPanel;
     private javax.swing.JPanel tablePanel;
     // End of variables declaration//GEN-END:variables
 }

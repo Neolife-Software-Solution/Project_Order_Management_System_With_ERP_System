@@ -30,6 +30,7 @@ public class DeliveryGuyVehicleInformation extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         bodyPanel = new javax.swing.JPanel();
@@ -49,7 +50,7 @@ public class DeliveryGuyVehicleInformation extends javax.swing.JFrame {
         tableCenterPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         VehicleInformationTable = new javax.swing.JTable();
-        BackPanel = new javax.swing.JPanel();
+        BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -102,6 +103,7 @@ public class DeliveryGuyVehicleInformation extends javax.swing.JFrame {
         LicenseNoTextField.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         PrivateRadioButton.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(PrivateRadioButton);
         PrivateRadioButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         PrivateRadioButton.setText("Private");
         PrivateRadioButton.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +113,7 @@ public class DeliveryGuyVehicleInformation extends javax.swing.JFrame {
         });
 
         RestaurantRadioButton.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(RestaurantRadioButton);
         RestaurantRadioButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         RestaurantRadioButton.setText("Restaurant");
 
@@ -212,6 +215,7 @@ public class DeliveryGuyVehicleInformation extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        VehicleInformationTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(VehicleInformationTable);
 
         javax.swing.GroupLayout tableCenterPanelLayout = new javax.swing.GroupLayout(tableCenterPanel);
@@ -250,7 +254,7 @@ public class DeliveryGuyVehicleInformation extends javax.swing.JFrame {
 
         tableSignoutPanel.add(tablePanel, java.awt.BorderLayout.CENTER);
 
-        BackPanel.setPreferredSize(new java.awt.Dimension(1000, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(1000, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         BackToDashboardButton.setToolTipText("Sign Out");
@@ -263,23 +267,23 @@ public class DeliveryGuyVehicleInformation extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout BackPanelLayout = new javax.swing.GroupLayout(BackPanel);
-        BackPanel.setLayout(BackPanelLayout);
-        BackPanelLayout.setHorizontalGroup(
-            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addComponent(BackToDashboardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 680, Short.MAX_VALUE))
         );
-        BackPanelLayout.setVerticalGroup(
-            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tableSignoutPanel.add(BackPanel, java.awt.BorderLayout.PAGE_END);
+        tableSignoutPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         bodyPanel.add(tableSignoutPanel, java.awt.BorderLayout.CENTER);
 
@@ -315,8 +319,8 @@ public class DeliveryGuyVehicleInformation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel BackPanel;
     private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JTextField LicenseNoTextField;
     private javax.swing.JRadioButton PrivateRadioButton;
     private javax.swing.JButton RemoveButton;
@@ -325,6 +329,7 @@ public class DeliveryGuyVehicleInformation extends javax.swing.JFrame {
     private javax.swing.JTable VehicleInformationTable;
     private javax.swing.JComboBox<String> VehicleTypeComboBox;
     private javax.swing.JPanel bodyPanel;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

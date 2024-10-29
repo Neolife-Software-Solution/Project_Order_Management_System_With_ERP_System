@@ -116,7 +116,16 @@ public class TakeawayMenu extends javax.swing.JDialog {
             new String [] {
                 "ID", "Food Name", "Country", "Action"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        FoodTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(FoodTable);
 
         javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);

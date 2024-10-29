@@ -32,6 +32,7 @@ public class UpdateStatus extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         bodyPanel = new javax.swing.JPanel();
@@ -78,12 +79,15 @@ public class UpdateStatus extends javax.swing.JDialog {
         SubmitButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         SubmitButton.setText("Submit");
 
+        buttonGroup1.add(PendingRadioButton);
         PendingRadioButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         PendingRadioButton.setText("Dispatched");
 
+        buttonGroup1.add(DispatchedRadioButton);
         DispatchedRadioButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         DispatchedRadioButton.setText("Pending");
 
+        buttonGroup1.add(DeliveredRadioButton);
         DeliveredRadioButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         DeliveredRadioButton.setText("Delivered");
 
@@ -151,6 +155,7 @@ public class UpdateStatus extends javax.swing.JDialog {
     private javax.swing.JRadioButton PendingRadioButton;
     private javax.swing.JButton SubmitButton;
     private javax.swing.JPanel bodyPanel;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

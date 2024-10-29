@@ -73,7 +73,7 @@ public class DeliveryGuyAssign extends javax.swing.JFrame {
         searchButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         DiliverGuyTable = new javax.swing.JTable();
-        BackPanel = new javax.swing.JPanel();
+        BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -399,6 +399,7 @@ public class DeliveryGuyAssign extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        DiliverGuyTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(DiliverGuyTable);
 
         javax.swing.GroupLayout TableViewPanelLayout = new javax.swing.GroupLayout(TableViewPanel);
@@ -431,7 +432,7 @@ public class DeliveryGuyAssign extends javax.swing.JFrame {
 
         CustomerInformationPanel.add(SearchGuyPanel, java.awt.BorderLayout.CENTER);
 
-        BackPanel.setPreferredSize(new java.awt.Dimension(774, 50));
+        BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(774, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         BackToDashboardButton.setToolTipText("Sign Out");
@@ -444,23 +445,23 @@ public class DeliveryGuyAssign extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout BackPanelLayout = new javax.swing.GroupLayout(BackPanel);
-        BackPanel.setLayout(BackPanelLayout);
-        BackPanelLayout.setHorizontalGroup(
-            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackToDashboardPanelLayout = new javax.swing.GroupLayout(BackToDashboardPanel);
+        BackToDashboardPanel.setLayout(BackToDashboardPanelLayout);
+        BackToDashboardPanelLayout.setHorizontalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(749, Short.MAX_VALUE))
         );
-        BackPanelLayout.setVerticalGroup(
-            BackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BackPanelLayout.createSequentialGroup()
+        BackToDashboardPanelLayout.setVerticalGroup(
+            BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        CustomerInformationPanel.add(BackPanel, java.awt.BorderLayout.PAGE_END);
+        CustomerInformationPanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
         BodayPanel.add(CustomerInformationPanel, java.awt.BorderLayout.CENTER);
 
@@ -497,8 +498,8 @@ public class DeliveryGuyAssign extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea AddressTextArea;
-    private javax.swing.JPanel BackPanel;
     private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel BodayPanel;
     private javax.swing.JPanel ButtonPanel;
     private javax.swing.JTextField CityTextField;
