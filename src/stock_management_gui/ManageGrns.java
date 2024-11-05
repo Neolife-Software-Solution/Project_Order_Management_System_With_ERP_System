@@ -129,11 +129,11 @@ public class ManageGrns extends javax.swing.JFrame {
 
             },
             new String [] {
-                "GRN ID", "Supplier Name", "Paymnt Status", "Sub Total", "Paid", "Payment Due"
+                "GRN ID", "Company Name", "Supplier Name", "Adding Date", "Paymnt Status", "Sub Total", "Paid", "Payment Due"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
