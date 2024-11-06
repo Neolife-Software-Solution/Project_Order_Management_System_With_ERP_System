@@ -32,7 +32,7 @@ public class SignIn extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         headerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        logOutPanel = new javax.swing.JPanel();
+        FooterPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         bodyPanel = new javax.swing.JPanel();
@@ -72,8 +72,8 @@ public class SignIn extends javax.swing.JFrame {
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
-        logOutPanel.setBackground(new java.awt.Color(51, 51, 51));
-        logOutPanel.setPreferredSize(new java.awt.Dimension(468, 60));
+        FooterPanel.setBackground(new java.awt.Color(51, 51, 51));
+        FooterPanel.setPreferredSize(new java.awt.Dimension(468, 60));
 
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -83,24 +83,24 @@ public class SignIn extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("All Rights Reserved | NeoLife Software Solutions");
 
-        javax.swing.GroupLayout logOutPanelLayout = new javax.swing.GroupLayout(logOutPanel);
-        logOutPanel.setLayout(logOutPanelLayout);
-        logOutPanelLayout.setHorizontalGroup(
-            logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(logOutPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout FooterPanelLayout = new javax.swing.GroupLayout(FooterPanel);
+        FooterPanel.setLayout(FooterPanelLayout);
+        FooterPanelLayout.setHorizontalGroup(
+            FooterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FooterPanelLayout.createSequentialGroup()
                 .addGap(99, 99, 99)
-                .addGroup(logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logOutPanelLayout.createSequentialGroup()
+                .addGroup(FooterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FooterPanelLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(103, 103, 103))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logOutPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FooterPanelLayout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(87, 87, 87))))
         );
-        logOutPanelLayout.setVerticalGroup(
-            logOutPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logOutPanelLayout.createSequentialGroup()
+        FooterPanelLayout.setVerticalGroup(
+            FooterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FooterPanelLayout.createSequentialGroup()
                 .addContainerGap(10, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -108,7 +108,7 @@ public class SignIn extends javax.swing.JFrame {
                 .addGap(12, 12, 12))
         );
 
-        getContentPane().add(logOutPanel, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(FooterPanel, java.awt.BorderLayout.PAGE_END);
 
         signInLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         signInLabel.setText("User Name");
@@ -200,6 +200,7 @@ public class SignIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel FooterPanel;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel headerPanel;
@@ -208,7 +209,6 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JToggleButton jToggleButton1;
     private com.k33ptoo.components.KButton kButton1;
-    private javax.swing.JPanel logOutPanel;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel signInLabel;
     private javax.swing.JTextField signInTextField;
