@@ -8,3 +8,7 @@
 #### Details Of 2024/10/27
 - Design finalize is ending in 6.00 am in 2024/10/27 and re started in 2024/10/27 9.00 pm and all of done only in the Alpha, Charlie and beta branches have most design problems and hold the finalizing and the stop work in 2024/10/28 1.40 am
 - 2024/10/28 1.41 pm finalizing by Pasindu Nethsara and Sanjana Nisal Kumara
+#### Details Of 2024/10/28 - 2024/11/06
+- Do the design finalizing and creat database and gave that database to the ERP team (Kavindu(Supervise),Avishka,Hashen(i),NAvodya(i)) gave that design to the main branches
+- 2024/11/06 11.43 pm finalizing and uploded by Pasindu Nethsara and Sanjana Nisal Kumara
+
