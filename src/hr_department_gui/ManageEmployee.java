@@ -331,7 +331,7 @@ public class ManageEmployee extends javax.swing.JFrame {
                             .addComponent(EmployeeTypeLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(1, 1, 1)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(StatusLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                     .addComponent(StatusComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
@@ -354,7 +354,7 @@ public class ManageEmployee extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "First Name", "Last Name", "Contact Number", "Email", "Address", "Gender", "Date of Birth", "Department", "Job Title", "Employee Type", "Date of Hire", "Status"
+                "Employee ID", "First Name", "Last Name", "Contact Number", "Email", "Address", "Date of Birth", "Department", "Position", "Employee Type", "Status", "Date Of Hire", "Gender"
             }
         ) {
             boolean[] canEdit = new boolean [] {
