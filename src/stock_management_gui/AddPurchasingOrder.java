@@ -55,6 +55,16 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
         GRNSaddingTablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         GRNaddingtable = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        SubTotalTextField = new javax.swing.JTextField();
+        PayableAmountTextField = new javax.swing.JFormattedTextField();
+        PaymentDueTextField = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        PaymentStatusComboBox = new javax.swing.JComboBox<>();
         BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
 
@@ -72,7 +82,7 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addGap(350, 350, 350)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                 .addGap(342, 342, 342))
         );
         headerPanelLayout.setVerticalGroup(
@@ -147,31 +157,30 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BatchSelectComboBox, 0, 258, Short.MAX_VALUE)
+                        .addComponent(BatchSelectComboBox, 0, 263, Short.MAX_VALUE)
                         .addGap(11, 11, 11))
                     .addGroup(grnbatchAndStockaddingPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(NewBatchAddingButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(NewBatchAddingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         grnbatchAndStockaddingPanelLayout.setVerticalGroup(
             grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(grnbatchAndStockaddingPanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(grnbatchAndStockaddingPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel2)
                                 .addComponent(grnIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(BatchSelectComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                                .addComponent(jLabel3))))
+                                .addComponent(jLabel3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE))
                     .addGroup(grnbatchAndStockaddingPanelLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
                         .addComponent(grnIDGenerateButton)
-                        .addGap(0, 3, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(NewBatchAddingTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
@@ -202,7 +211,7 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel7.setText("Select Status");
 
-        GRNaddButton.setText("Add GRNS");
+        GRNaddButton.setText("Insert GRNS");
 
         GRNupdateButton.setText("Update GRNS");
 
@@ -230,10 +239,10 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
                         .addGap(15, 15, 15))
                     .addGroup(addProductToGRNSLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addComponent(GRNaddButton, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+                        .addComponent(GRNaddButton, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(GRNupdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                        .addContainerGap(121, Short.MAX_VALUE))))
+                        .addComponent(GRNupdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                        .addContainerGap(124, Short.MAX_VALUE))))
             .addComponent(jSeparator1)
         );
         addProductToGRNSLayout.setVerticalGroup(
@@ -261,14 +270,15 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
         GRNaddingtable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         GRNaddingtable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                " Product ID", "Product Name", "QTY", "Batch NO", "Receiving Status", "MFD", "EXP", "Buying Price", "Selling Price", "Discount", "Total"
+                "Product Name", "QTY", "Batch NO", "Receiving Status", "MFD", "EXP", "Buying Price", "Selling Price", "Discount", "Payment Status", "Total"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false
+                false, true, false, false, true, true, true, true, true, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -278,21 +288,100 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
         GRNaddingtable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(GRNaddingtable);
 
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel8.setText("Sub Total");
+
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel9.setText("Payable Amount");
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel10.setText("Payment Due");
+
+        PayableAmountTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        PayableAmountTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        PayableAmountTextField.setText("0.00");
+
+        PaymentDueTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        PaymentDueTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        PaymentDueTextField.setText("0.00");
+
+        jButton1.setText("Add GRNS");
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel11.setText("Payment Status");
+
+        PaymentStatusComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        PaymentStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(SubTotalTextField)
+                    .addComponent(PayableAmountTextField)
+                    .addComponent(PaymentDueTextField)
+                    .addComponent(PaymentStatusComboBox, 0, 207, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(244, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(192, 192, 192))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(SubTotalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(PayableAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(PaymentDueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(PaymentStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout GRNSaddingTablePanelLayout = new javax.swing.GroupLayout(GRNSaddingTablePanel);
         GRNSaddingTablePanel.setLayout(GRNSaddingTablePanelLayout);
         GRNSaddingTablePanelLayout.setHorizontalGroup(
             GRNSaddingTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GRNSaddingTablePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
+                .addGroup(GRNSaddingTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(GRNSaddingTablePanelLayout.createSequentialGroup()
+                        .addGap(0, 160, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         GRNSaddingTablePanelLayout.setVerticalGroup(
             GRNSaddingTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, GRNSaddingTablePanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(GRNSaddingTablePanelLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(42, 42, 42))
         );
 
         SupplierAndSelectProductAddingPanel.add(GRNSaddingTablePanel, java.awt.BorderLayout.CENTER);
@@ -313,7 +402,7 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
-                .addContainerGap(786, Short.MAX_VALUE))
+                .addContainerGap(794, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,6 +472,10 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> GrnStatusSelectComboBox;
     private javax.swing.JButton NewBatchAddingButton;
     private javax.swing.JTextField NewBatchAddingTextField;
+    private javax.swing.JFormattedTextField PayableAmountTextField;
+    private javax.swing.JFormattedTextField PaymentDueTextField;
+    private javax.swing.JComboBox<String> PaymentStatusComboBox;
+    private javax.swing.JTextField SubTotalTextField;
     private javax.swing.JPanel SupplierAndSelectProductAddingPanel;
     private javax.swing.JComboBox<String> SupplierSelectComboBox;
     private javax.swing.JPanel addProductToGRNS;
@@ -391,13 +484,19 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
     private javax.swing.JTextField grnIdTextField;
     private javax.swing.JPanel grnbatchAndStockaddingPanel;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
