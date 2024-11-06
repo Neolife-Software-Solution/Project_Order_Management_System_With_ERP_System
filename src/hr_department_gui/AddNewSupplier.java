@@ -207,7 +207,7 @@ public class AddNewSupplier extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Supplier ID", "First Name", "Last Name", "Gender", "Contact", "Email", "Company"
+                "Supplier ID", "First Name", "Last Name", "Contact", "Email", "Company", "Gender"
             }
         ) {
             boolean[] canEdit = new boolean [] {
