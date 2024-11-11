@@ -101,8 +101,8 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="ExpencesPriceTextField" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="296" max="-2" attributes="0"/>
+                              <Component id="ExpencesPriceTextField" min="-2" pref="310" max="-2" attributes="0"/>
+                              <EmptySpace pref="296" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="ExpencesSelectComboBox" pref="199" max="32767" attributes="0"/>

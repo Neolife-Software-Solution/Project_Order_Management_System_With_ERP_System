@@ -28,6 +28,7 @@ public class MarkAttendance extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         HeaderPane = new javax.swing.JPanel();
         Header = new javax.swing.JLabel();
         Date = new javax.swing.JLabel();
@@ -307,5 +308,6 @@ public class MarkAttendance extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

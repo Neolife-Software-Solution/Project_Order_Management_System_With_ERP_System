@@ -101,7 +101,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="NameField" alignment="0" max="32767" attributes="0"/>
-                          <Component id="DistrictField" alignment="0" pref="227" max="32767" attributes="0"/>
+                          <Component id="DistrictField" alignment="0" pref="230" max="32767" attributes="0"/>
                           <Component id="EmailField" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
@@ -112,7 +112,7 @@
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="ProvinceField" max="32767" attributes="0"/>
-                          <Component id="CityField" pref="213" max="32767" attributes="0"/>
+                          <Component id="CityField" pref="218" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   </Group>
@@ -173,7 +173,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Yu Gothic UI" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Search by Name"/>
+                <Property name="text" type="java.lang.String" value="Search by ID"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="ProvinceLabel">
@@ -181,7 +181,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Yu Gothic UI" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Search by Province"/>
+                <Property name="text" type="java.lang.String" value="Employee Name"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="DistrictLabel">
@@ -189,7 +189,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Yu Gothic UI" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Search by Distrcit"/>
+                <Property name="text" type="java.lang.String" value="Search by Province"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="CityLabel">
@@ -197,7 +197,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Yu Gothic UI" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Search by City"/>
+                <Property name="text" type="java.lang.String" value="Search by District"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="DistrictField">
@@ -222,7 +222,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Yu Gothic UI" size="14" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Search by Email"/>
+                <Property name="text" type="java.lang.String" value="Search by City"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="EmailField">

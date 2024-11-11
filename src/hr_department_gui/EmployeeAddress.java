@@ -55,6 +55,7 @@ public class EmployeeAddress extends javax.swing.JFrame {
         BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
 
         HeaderPanel.setPreferredSize(new java.awt.Dimension(780, 60));
 
@@ -109,26 +110,27 @@ public class EmployeeAddress extends javax.swing.JFrame {
         AddressAdd1Panel.setLayout(AddressAdd1PanelLayout);
         AddressAdd1PanelLayout.setHorizontalGroup(
             AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddressAdd1PanelLayout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(ProvinceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                .addGap(122, 122, 122)
-                .addComponent(DistrictTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                .addGap(170, 170, 170))
-            .addGroup(AddressAdd1PanelLayout.createSequentialGroup()
-                .addGap(217, 217, 217)
-                .addComponent(CityTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
-                .addGap(141, 141, 141)
-                .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddressAdd1PanelLayout.createSequentialGroup()
+                .addGroup(AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(AddressAdd1PanelLayout.createSequentialGroup()
+                        .addGap(286, 286, 286)
+                        .addComponent(CityTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                        .addGap(99, 99, 99)
+                        .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(AddressAdd1PanelLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(ProvinceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                        .addGap(323, 323, 323)
+                        .addComponent(DistrictTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)))
+                .addGap(25, 25, 25))
         );
         AddressAdd1PanelLayout.setVerticalGroup(
             AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddressAdd1PanelLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ProvinceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DistrictTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DistrictTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ProvinceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(AddressAdd1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,7 +190,7 @@ public class EmployeeAddress extends javax.swing.JFrame {
         EmployeeAddressClearButton.setText("Clear");
 
         EmailTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        EmailTextField.setText("E-mail");
+        EmailTextField.setText("Employee Name");
         EmailTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EmailTextFieldActionPerformed(evt);
@@ -196,7 +198,7 @@ public class EmployeeAddress extends javax.swing.JFrame {
         });
 
         NameTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        NameTextField.setText("Name");
+        NameTextField.setText("Employee ID");
 
         javax.swing.GroupLayout AddressAdd2PanelLayout = new javax.swing.GroupLayout(AddressAdd2Panel);
         AddressAdd2Panel.setLayout(AddressAdd2PanelLayout);

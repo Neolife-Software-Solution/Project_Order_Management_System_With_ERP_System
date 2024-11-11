@@ -94,16 +94,16 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         NameField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         NameLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        NameLabel.setText("Search by Name");
+        NameLabel.setText("Search by ID");
 
         ProvinceLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        ProvinceLabel.setText("Search by Province");
+        ProvinceLabel.setText("Employee Name");
 
         DistrictLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        DistrictLabel.setText("Search by Distrcit");
+        DistrictLabel.setText("Search by Province");
 
         CityLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        CityLabel.setText("Search by City");
+        CityLabel.setText("Search by District");
 
         DistrictField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         DistrictField.setPreferredSize(new java.awt.Dimension(92, 24));
@@ -111,7 +111,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         CityField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         EmailLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmailLabel.setText("Search by Email");
+        EmailLabel.setText("Search by City");
 
         EmailField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
@@ -128,7 +128,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(NameField)
-                    .addComponent(DistrictField, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                    .addComponent(DistrictField, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                     .addComponent(EmailField))
                 .addGap(53, 53, 53)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -137,7 +137,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ProvinceField)
-                    .addComponent(CityField, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
+                    .addComponent(CityField, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
                 .addGap(44, 44, 44))
             .addComponent(jSeparator1)
         );

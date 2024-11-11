@@ -111,7 +111,7 @@ public class AddNewUser extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("User Name");
+        jLabel6.setText("Password");
         jLabel6.setPreferredSize(new java.awt.Dimension(81, 32));
 
         UsernameTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N

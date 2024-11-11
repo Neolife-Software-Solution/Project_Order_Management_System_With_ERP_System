@@ -72,7 +72,7 @@ public class ManageGrns extends javax.swing.JFrame {
         GRNsearchPanal.setPreferredSize(new java.awt.Dimension(689, 60));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel2.setText("Search Product By Name");
+        jLabel2.setText("Search Product By Company Name");
 
         javax.swing.GroupLayout GRNsearchPanalLayout = new javax.swing.GroupLayout(GRNsearchPanal);
         GRNsearchPanal.setLayout(GRNsearchPanalLayout);
@@ -82,8 +82,8 @@ public class ManageGrns extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(GRNSearchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addComponent(GRNSearchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                .addContainerGap(139, Short.MAX_VALUE))
             .addComponent(jSeparator1)
         );
         GRNsearchPanalLayout.setVerticalGroup(
