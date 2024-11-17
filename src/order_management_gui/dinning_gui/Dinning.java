@@ -120,7 +120,7 @@ public class Dinning extends javax.swing.JFrame {
                 .addGroup(addDataPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addDataPanelLayout.createSequentialGroup()
                         .addComponent(CustomerNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 384, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 391, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(addDataPanelLayout.createSequentialGroup()
                         .addComponent(OngoingOrdersTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -164,13 +164,13 @@ public class Dinning extends javax.swing.JFrame {
         OrderTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         OrderTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Order ID", "Food Name", "Portion", "Cokking Status", "Status", "Action"
+                "Food Name", "Portion", "Cokking Status", "Status", "Action"
             }
         ));
         jScrollPane1.setViewportView(OrderTable);

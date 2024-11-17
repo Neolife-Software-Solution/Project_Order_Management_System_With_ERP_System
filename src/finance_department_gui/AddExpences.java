@@ -135,7 +135,7 @@ public class AddExpences extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(ExpencesAddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(ExpencesPriceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(ExpencesPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(ExpencesAddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ExpencesAddButton, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)

@@ -11,12 +11,12 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
  *
  * @author DELL
  */
-public class AddDepartment extends javax.swing.JFrame {
+public class EmployeePosition extends javax.swing.JFrame {
 
     /**
      * Creates new form EmployeeType
      */
-    public AddDepartment() {
+    public EmployeePosition() {
         initComponents();
     }
 
@@ -55,7 +55,7 @@ public class AddDepartment extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Add Department");
+        jLabel1.setText("Employee Position");
 
         javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(HeaderPanel);
         HeaderPanel.setLayout(HeaderPanelLayout);
@@ -101,7 +101,7 @@ public class AddDepartment extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Department");
+        jLabel2.setText("Position");
 
         javax.swing.GroupLayout AddTypePanelLayout = new javax.swing.GroupLayout(AddTypePanel);
         AddTypePanel.setLayout(AddTypePanelLayout);
@@ -109,9 +109,9 @@ public class AddDepartment extends javax.swing.JFrame {
             AddTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddTypePanelLayout.createSequentialGroup()
                 .addContainerGap(127, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(addNewTypeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                .addComponent(addNewTypeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
                 .addGap(12, 12, 12)
                 .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -221,7 +221,7 @@ public class AddDepartment extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Department ID", "Department"
+                "Position ID", "Position"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -287,16 +287,14 @@ public class AddDepartment extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddDepartment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeePosition.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddDepartment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeePosition.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddDepartment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeePosition.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddDepartment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeePosition.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         
@@ -306,7 +304,7 @@ public class AddDepartment extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddDepartment().setVisible(true);
+                new EmployeePosition().setVisible(true);
             }
         });
     }
