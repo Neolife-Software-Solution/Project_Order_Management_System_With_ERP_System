@@ -37,6 +37,8 @@ public class Invoice extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         OnlineOrdersButton = new javax.swing.JToggleButton();
         TakeawayOrdersButton = new javax.swing.JToggleButton();
+        SalesCountLable = new javax.swing.JLabel();
+        SaleseCount = new javax.swing.JTextField();
         OrderViewPanel = new javax.swing.JPanel();
         AddProductTextField = new javax.swing.JTextField();
         AddProductLable = new javax.swing.JLabel();
@@ -116,6 +118,12 @@ public class Invoice extends javax.swing.JFrame {
         TakeawayOrdersButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TakeawayOrdersButton.setText("Takeaway Orders");
 
+        SalesCountLable.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        SalesCountLable.setText("To Day Sales Count");
+
+        SaleseCount.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        SaleseCount.setText("10");
+
         javax.swing.GroupLayout SelectOrdersPanelLayout = new javax.swing.GroupLayout(SelectOrdersPanel);
         SelectOrdersPanel.setLayout(SelectOrdersPanelLayout);
         SelectOrdersPanelLayout.setHorizontalGroup(
@@ -125,7 +133,11 @@ public class Invoice extends javax.swing.JFrame {
                 .addComponent(OnlineOrdersButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TakeawayOrdersButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 339, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                .addComponent(SalesCountLable)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(SaleseCount, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
@@ -138,10 +150,14 @@ public class Invoice extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(SelectOrdersPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(OnlineOrdersButton)
-                            .addComponent(TakeawayOrdersButton))))
-                .addContainerGap(10, Short.MAX_VALUE))
+                        .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(OnlineOrdersButton)
+                                .addComponent(TakeawayOrdersButton))
+                            .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(SalesCountLable)
+                                .addComponent(SaleseCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         BodyPanel.add(SelectOrdersPanel, java.awt.BorderLayout.PAGE_START);
@@ -368,6 +384,8 @@ public class Invoice extends javax.swing.JFrame {
     private javax.swing.JLabel PayTypeLable;
     private javax.swing.JLabel QTYLable;
     private javax.swing.JTextField QTYTextField;
+    private javax.swing.JLabel SalesCountLable;
+    private javax.swing.JTextField SaleseCount;
     private javax.swing.JButton SeemysalesButton;
     private javax.swing.JPanel SelectOrdersPanel;
     private javax.swing.JToggleButton TakeawayOrdersButton;

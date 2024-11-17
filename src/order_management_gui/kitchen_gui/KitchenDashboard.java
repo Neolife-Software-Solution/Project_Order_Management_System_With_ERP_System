@@ -122,7 +122,7 @@ public class KitchenDashboard extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Order ID", "Table NO", "Order_type", "Ordered Time", "Delivered Time", "Status"
+                "Order ID", "Table Name", "Order_type", "Ordered Time", "Delivered Time", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {

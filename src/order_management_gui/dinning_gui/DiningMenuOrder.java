@@ -116,11 +116,6 @@ public class DiningMenuOrder extends javax.swing.JDialog {
 
         MakeAnOrderButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         MakeAnOrderButton.setText("Make an Order");
-        MakeAnOrderButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MakeAnOrderButtonActionPerformed(evt);
-            }
-        });
 
         CancelButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CancelButton.setText("Cancel");
@@ -192,10 +187,6 @@ public class DiningMenuOrder extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void MakeAnOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MakeAnOrderButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MakeAnOrderButtonActionPerformed
 
     /**
      * @param args the command line arguments
