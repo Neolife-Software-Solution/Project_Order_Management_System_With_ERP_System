@@ -18,13 +18,16 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-28,0,0,4,102"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-86,0,0,4,12"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
     <Container class="javax.swing.JPanel" name="headerPanel">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[896, 60]"/>
         </Property>
@@ -39,8 +42,8 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="281" max="-2" attributes="0"/>
-                  <Component id="jLabel1" pref="565" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
+                  <Component id="jLabel1" pref="476" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -69,6 +72,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="BackToDashboardPanel">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[896, 50]"/>
         </Property>
@@ -85,7 +91,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="BackToDashboardButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="1082" max="32767" attributes="0"/>
+                  <EmptySpace pref="992" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -104,6 +110,9 @@
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/back-arrow.png"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
             </Property>
           </Properties>
           <Events>
@@ -130,7 +139,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanel3">
+            <Container class="javax.swing.JPanel" name="searchPanel">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                   <BorderConstraints direction="First"/>
@@ -140,12 +149,9 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="1126" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="1036" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="SearchPanel" min="-2" pref="1076" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="50" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="SearchPanel" alignment="0" pref="1036" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -155,8 +161,8 @@
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="SearchPanel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="SearchPanel" min="-2" pref="121" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -173,50 +179,57 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace pref="164" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Component id="EmployeeStatusLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="EmployeeStatusComboBox" pref="253" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                      <Component id="EmployeeStatusComboBox" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="EmployeeSearchField" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel2" min="-2" pref="80" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                      <Component id="EmployeeSearchField" min="-2" pref="338" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="SearchButton" pref="199" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                              <Component id="RefreshButton" min="-2" pref="58" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="184" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="searchButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Component id="RefreshButton" min="-2" pref="58" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="addButton" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="163" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="jSeparator2" alignment="1" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="SearchButton" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                                      <Component id="EmployeeSearchField" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="RefreshButton" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                              <EmptySpace pref="15" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="EmployeeStatusComboBox" pref="0" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="EmployeeSearchField" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Component id="jLabel2" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                                          <Component id="searchButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="EmployeeStatusLabel" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="RefreshButton" alignment="1" min="-2" pref="32" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="EmployeeStatusLabel" max="32767" attributes="0"/>
+                                  <Component id="EmployeeStatusComboBox" max="32767" attributes="0"/>
+                                  <Component id="addButton" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                              <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -227,15 +240,6 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Verdana" size="14" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Search by Name or ID"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="SearchButton">
-                      <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Tahoma" size="12" style="0"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Search"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="EmployeeStatusComboBox">
@@ -274,6 +278,74 @@
                         </Property>
                       </Properties>
                     </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel2">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Yu Gothic UI" size="14" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Name or ID"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JSeparator" name="jSeparator2">
+                    </Component>
+                    <Component class="com.k33ptoo.components.KButton" name="searchButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Search"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="1"/>
+                        </Property>
+                        <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cc" green="cc" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="kHoverEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="99" green="66" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="kHoverForeGround" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="kHoverStartColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cc" green="cc" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="kPressedColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="99" green="66" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="kSelectedColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="99" green="66" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="kStartColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="99" green="66" red="0" type="rgb"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                    <Component class="com.k33ptoo.components.KButton" name="addButton">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Add"/>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="1"/>
+                        </Property>
+                        <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cc" green="cc" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="kHoverEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="99" green="66" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="kHoverForeGround" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="kHoverStartColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="cc" green="cc" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="kPressedColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="99" green="66" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="kSelectedColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="99" green="66" red="0" type="rgb"/>
+                        </Property>
+                        <Property name="kStartColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="99" green="66" red="0" type="rgb"/>
+                        </Property>
+                      </Properties>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
@@ -293,94 +365,87 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="UpdateButton2" min="-2" pref="211" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                                  <Component id="DeleteButton2" min="-2" pref="189" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="DepartmentLabel2" min="-2" pref="144" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="StatusLabel2" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                                              <Component id="DateOfHireLabel2" alignment="0" min="-2" pref="144" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="DateOfHireComboBox2" alignment="0" pref="222" max="32767" attributes="0"/>
-                                      <Component id="StatusComboBox2" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="DepartmentComboBox2" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="EmployeeTypeLabel2" alignment="0" pref="152" max="32767" attributes="0"/>
-                                      <Component id="JobTitleLabel2" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="JobTitleComboBox2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="EmployeeTypeComboBox2" alignment="0" pref="222" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-                      </Group>
                       <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace pref="320" max="32767" attributes="0"/>
+                          <Component id="updateButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="deleteButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="320" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="StatusLabel2" min="-2" pref="127" max="-2" attributes="0"/>
+                              <Component id="DateOfHireLabel2" min="-2" pref="155" max="-2" attributes="0"/>
+                              <Component id="DepartmentLabel2" min="-2" pref="144" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="employeeTypeComboBox" max="32767" attributes="0"/>
+                              <Component id="DepartmentComboBox" max="32767" attributes="0"/>
+                              <Component id="positionComboBox" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="EmployeeTypeLabel2" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Component id="JobTitleLabel2" min="-2" pref="112" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jDateChooser1" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" min="-2" pref="27" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  <Component id="jDateChooser2" min="-2" pref="123" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="statusComboBox" min="-2" pref="296" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="DepartmentComboBox" alignment="3" max="32767" attributes="0"/>
+                              <Component id="DepartmentLabel2" alignment="3" max="32767" attributes="0"/>
+                              <Component id="JobTitleLabel2" alignment="3" max="32767" attributes="0"/>
+                              <Component id="statusComboBox" alignment="3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="DepartmentComboBox2" alignment="3" max="32767" attributes="0"/>
-                                      <Component id="DepartmentLabel2" alignment="3" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="DateOfHireComboBox2" alignment="3" max="32767" attributes="0"/>
+                                      <Component id="employeeTypeComboBox" alignment="3" max="32767" attributes="0"/>
                                       <Component id="DateOfHireLabel2" alignment="3" max="32767" attributes="0"/>
                                   </Group>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="JobTitleLabel2" alignment="3" max="32767" attributes="0"/>
-                                      <Component id="JobTitleComboBox2" alignment="3" max="32767" attributes="0"/>
+                                      <Component id="StatusLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="positionComboBox" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="EmployeeTypeComboBox2" alignment="3" max="32767" attributes="0"/>
-                                      <Component id="EmployeeTypeLabel2" alignment="3" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="EmployeeTypeLabel2" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Component id="jDateChooser2" min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Component id="jDateChooser1" min="-2" pref="32" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="StatusLabel2" alignment="3" pref="54" max="32767" attributes="0"/>
-                              <Component id="StatusComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="updateButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="deleteButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="9" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="UpdateButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="DeleteButton2" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="jSeparator1" min="-2" pref="4" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -397,7 +462,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="DepartmentComboBox2">
+                <Component class="javax.swing.JComboBox" name="DepartmentComboBox">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="12" style="0"/>
@@ -415,7 +480,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DepartmentComboBox2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DepartmentComboBoxActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -426,7 +491,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Sort By Date of Hire"/>
+                    <Property name="text" type="java.lang.String" value="Sort By Employee Type"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[122, 32]"/>
                     </Property>
@@ -437,13 +502,13 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Sort By Status"/>
+                    <Property name="text" type="java.lang.String" value="Sort By Position"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[86, 32]"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="StatusComboBox2">
+                <Component class="javax.swing.JComboBox" name="positionComboBox">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="12" style="0"/>
@@ -461,27 +526,13 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StatusComboBox2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="positionComboBoxActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="UpdateButton2">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Update"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[72, 32]"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateButton2ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="DateOfHireComboBox2">
+                <Component class="javax.swing.JComboBox" name="employeeTypeComboBox">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="12" style="0"/>
@@ -499,7 +550,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DateOfHireComboBox2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="employeeTypeComboBoxActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -510,13 +561,13 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Sort By Job Title"/>
+                    <Property name="text" type="java.lang.String" value="Sort By Status"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[98, 32]"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="JobTitleComboBox2">
+                <Component class="javax.swing.JComboBox" name="statusComboBox">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Verdana" size="12" style="0"/>
@@ -542,48 +593,81 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Sort By Employee Type"/>
+                    <Property name="text" type="java.lang.String" value="Sort By Date of Hire"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[140, 32]"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="EmployeeTypeComboBox2">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Verdana" size="12" style="0"/>
-                    </Property>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
-                    </Property>
-                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[72, 25]"/>
-                    </Property>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[75, 32]"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JButton" name="DeleteButton2">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Delete"/>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[72, 32]"/>
-                    </Property>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator1">
+                </Component>
+                <Component class="com.k33ptoo.components.KButton" name="updateButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Update"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="12" style="1"/>
+                    </Property>
+                    <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="cc" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="kHoverEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="66" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="kHoverForeGround" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="kHoverStartColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="cc" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="kPressedColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="66" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="kSelectedColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="66" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="kStartColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="66" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="com.k33ptoo.components.KButton" name="deleteButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Delete"/>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="12" style="1"/>
+                    </Property>
+                    <Property name="kEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="cc" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="kHoverEndColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="66" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="kHoverForeGround" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="kHoverStartColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="cc" green="cc" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="kPressedColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="66" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="kSelectedColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="66" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="kStartColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="99" green="66" red="0" type="rgb"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel3">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="to"/>
+                  </Properties>
+                </Component>
+                <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
                 </Component>
               </SubComponents>
             </Container>
@@ -604,19 +688,19 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="1094" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" pref="892" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="246" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" pref="180" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

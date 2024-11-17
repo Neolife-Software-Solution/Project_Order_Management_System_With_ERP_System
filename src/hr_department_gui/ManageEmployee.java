@@ -35,33 +35,39 @@ public class ManageEmployee extends javax.swing.JFrame {
         BackToDashboardButton = new javax.swing.JButton();
         bodyPanel = new javax.swing.JPanel();
         addingPanel = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        searchPanel = new javax.swing.JPanel();
         SearchPanel = new javax.swing.JPanel();
         EmployeeSearchField = new javax.swing.JTextField();
-        SearchButton = new javax.swing.JButton();
         EmployeeStatusComboBox = new javax.swing.JComboBox<>();
         EmployeeStatusLabel = new javax.swing.JLabel();
         RefreshButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        searchButton = new com.k33ptoo.components.KButton();
+        addButton = new com.k33ptoo.components.KButton();
         jPanel4 = new javax.swing.JPanel();
         DepartmentLabel2 = new javax.swing.JLabel();
-        DepartmentComboBox2 = new javax.swing.JComboBox<>();
+        DepartmentComboBox = new javax.swing.JComboBox<>();
         DateOfHireLabel2 = new javax.swing.JLabel();
         StatusLabel2 = new javax.swing.JLabel();
-        StatusComboBox2 = new javax.swing.JComboBox<>();
-        UpdateButton2 = new javax.swing.JButton();
-        DateOfHireComboBox2 = new javax.swing.JComboBox<>();
+        positionComboBox = new javax.swing.JComboBox<>();
+        employeeTypeComboBox = new javax.swing.JComboBox<>();
         JobTitleLabel2 = new javax.swing.JLabel();
-        JobTitleComboBox2 = new javax.swing.JComboBox<>();
+        statusComboBox = new javax.swing.JComboBox<>();
         EmployeeTypeLabel2 = new javax.swing.JLabel();
-        EmployeeTypeComboBox2 = new javax.swing.JComboBox<>();
-        DeleteButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        updateButton = new com.k33ptoo.components.KButton();
+        deleteButton = new com.k33ptoo.components.KButton();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel3 = new javax.swing.JLabel();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         ManageEmployeeTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        headerPanel.setBackground(new java.awt.Color(153, 153, 153));
         headerPanel.setPreferredSize(new java.awt.Dimension(896, 60));
 
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
@@ -73,8 +79,8 @@ public class ManageEmployee extends javax.swing.JFrame {
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
+                .addGap(280, 280, 280)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                 .addGap(280, 280, 280))
         );
         headerPanelLayout.setVerticalGroup(
@@ -87,9 +93,11 @@ public class ManageEmployee extends javax.swing.JFrame {
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
+        BackToDashboardPanel.setBackground(new java.awt.Color(153, 153, 153));
         BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(896, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackToDashboardButtonActionPerformed(evt);
@@ -103,7 +111,7 @@ public class ManageEmployee extends javax.swing.JFrame {
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
-                .addContainerGap(1082, Short.MAX_VALUE))
+                .addContainerGap(992, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,10 +130,6 @@ public class ManageEmployee extends javax.swing.JFrame {
         SearchPanel.setPreferredSize(new java.awt.Dimension(803, 130));
 
         EmployeeSearchField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        EmployeeSearchField.setText("Search by Name or ID");
-
-        SearchButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        SearchButton.setText("Search");
 
         EmployeeStatusComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         EmployeeStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -136,67 +140,94 @@ public class ManageEmployee extends javax.swing.JFrame {
 
         RefreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
 
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel2.setText("Name or ID");
+
+        searchButton.setText("Search");
+        searchButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        searchButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        searchButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        searchButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        searchButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        searchButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        searchButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        searchButton.setkStartColor(new java.awt.Color(0, 102, 153));
+
+        addButton.setText("Add");
+        addButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        addButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        addButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        addButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        addButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        addButton.setkStartColor(new java.awt.Color(0, 102, 153));
+
         javax.swing.GroupLayout SearchPanelLayout = new javax.swing.GroupLayout(SearchPanel);
         SearchPanel.setLayout(SearchPanelLayout);
         SearchPanelLayout.setHorizontalGroup(
             SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SearchPanelLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchPanelLayout.createSequentialGroup()
+                .addContainerGap(164, Short.MAX_VALUE)
+                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(SearchPanelLayout.createSequentialGroup()
                         .addComponent(EmployeeStatusLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EmployeeStatusComboBox, 0, 253, Short.MAX_VALUE)
-                        .addGap(184, 184, 184))
+                        .addGap(12, 12, 12)
+                        .addComponent(EmployeeStatusComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(SearchPanelLayout.createSequentialGroup()
-                        .addComponent(EmployeeSearchField)
-                        .addGap(100, 100, 100)))
-                .addComponent(SearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                .addGap(41, 41, 41)
-                .addComponent(RefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(184, 184, 184))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(EmployeeSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SearchPanelLayout.createSequentialGroup()
+                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(RefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(163, Short.MAX_VALUE))
+            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         SearchPanelLayout.setVerticalGroup(
             SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SearchPanelLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(SearchPanelLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(EmployeeSearchField))
-                    .addComponent(RefreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(22, 22, 22)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SearchPanelLayout.createSequentialGroup()
-                        .addComponent(EmployeeStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(31, 31, 31))
-                    .addGroup(SearchPanelLayout.createSequentialGroup()
-                        .addComponent(EmployeeStatusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(38, 38, 38))))
+                        .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(EmployeeSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(1, 1, 1))
+                    .addComponent(RefreshButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(EmployeeStatusLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EmployeeStatusComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1126, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addComponent(SearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1076, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 50, Short.MAX_VALUE)))
+        javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
+        searchPanel.setLayout(searchPanelLayout);
+        searchPanelLayout.setHorizontalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1036, Short.MAX_VALUE)
+            .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(SearchPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1036, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        searchPanelLayout.setVerticalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 142, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(SearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(SearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(15, 15, 15)))
         );
 
-        addingPanel.add(jPanel3, java.awt.BorderLayout.PAGE_START);
+        addingPanel.add(searchPanel, java.awt.BorderLayout.PAGE_START);
 
         jPanel4.setPreferredSize(new java.awt.Dimension(1026, 230));
 
@@ -204,142 +235,145 @@ public class ManageEmployee extends javax.swing.JFrame {
         DepartmentLabel2.setText("Sort By Department");
         DepartmentLabel2.setPreferredSize(new java.awt.Dimension(122, 32));
 
-        DepartmentComboBox2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        DepartmentComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        DepartmentComboBox2.setPreferredSize(new java.awt.Dimension(75, 32));
-        DepartmentComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        DepartmentComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        DepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        DepartmentComboBox.setPreferredSize(new java.awt.Dimension(75, 32));
+        DepartmentComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DepartmentComboBox2ActionPerformed(evt);
+                DepartmentComboBoxActionPerformed(evt);
             }
         });
 
         DateOfHireLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        DateOfHireLabel2.setText("Sort By Date of Hire");
+        DateOfHireLabel2.setText("Sort By Employee Type");
         DateOfHireLabel2.setPreferredSize(new java.awt.Dimension(122, 32));
 
         StatusLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        StatusLabel2.setText("Sort By Status");
+        StatusLabel2.setText("Sort By Position");
         StatusLabel2.setPreferredSize(new java.awt.Dimension(86, 32));
 
-        StatusComboBox2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        StatusComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        StatusComboBox2.setPreferredSize(new java.awt.Dimension(75, 32));
-        StatusComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        positionComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        positionComboBox.setPreferredSize(new java.awt.Dimension(75, 32));
+        positionComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StatusComboBox2ActionPerformed(evt);
+                positionComboBoxActionPerformed(evt);
             }
         });
 
-        UpdateButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        UpdateButton2.setText("Update");
-        UpdateButton2.setPreferredSize(new java.awt.Dimension(72, 32));
-        UpdateButton2.addActionListener(new java.awt.event.ActionListener() {
+        employeeTypeComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        employeeTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        employeeTypeComboBox.setPreferredSize(new java.awt.Dimension(75, 32));
+        employeeTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdateButton2ActionPerformed(evt);
-            }
-        });
-
-        DateOfHireComboBox2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        DateOfHireComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        DateOfHireComboBox2.setPreferredSize(new java.awt.Dimension(75, 32));
-        DateOfHireComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DateOfHireComboBox2ActionPerformed(evt);
+                employeeTypeComboBoxActionPerformed(evt);
             }
         });
 
         JobTitleLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        JobTitleLabel2.setText("Sort By Job Title");
+        JobTitleLabel2.setText("Sort By Status");
         JobTitleLabel2.setPreferredSize(new java.awt.Dimension(98, 32));
 
-        JobTitleComboBox2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        JobTitleComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        JobTitleComboBox2.setPreferredSize(new java.awt.Dimension(72, 32));
+        statusComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        statusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        statusComboBox.setPreferredSize(new java.awt.Dimension(72, 32));
 
         EmployeeTypeLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmployeeTypeLabel2.setText("Sort By Employee Type");
+        EmployeeTypeLabel2.setText("Sort By Date of Hire");
         EmployeeTypeLabel2.setPreferredSize(new java.awt.Dimension(140, 32));
 
-        EmployeeTypeComboBox2.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        EmployeeTypeComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        EmployeeTypeComboBox2.setMinimumSize(new java.awt.Dimension(72, 25));
-        EmployeeTypeComboBox2.setPreferredSize(new java.awt.Dimension(75, 32));
+        updateButton.setText("Update");
+        updateButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        updateButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        updateButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        updateButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        updateButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        updateButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        updateButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        updateButton.setkStartColor(new java.awt.Color(0, 102, 153));
 
-        DeleteButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        DeleteButton2.setText("Delete");
-        DeleteButton2.setPreferredSize(new java.awt.Dimension(72, 32));
+        deleteButton.setText("Delete");
+        deleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        deleteButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        deleteButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        deleteButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        deleteButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        deleteButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        deleteButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        deleteButton.setkStartColor(new java.awt.Color(0, 102, 153));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("to");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(UpdateButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(88, 88, 88)
-                        .addComponent(DeleteButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(DepartmentLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(72, 72, 72)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(StatusLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(DateOfHireLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)))
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DateOfHireComboBox2, 0, 222, Short.MAX_VALUE)
-                            .addComponent(StatusComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DepartmentComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(210, 210, 210)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(EmployeeTypeLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                            .addComponent(JobTitleLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JobTitleComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(EmployeeTypeComboBox2, 0, 222, Short.MAX_VALUE))
-                .addGap(68, 68, 68))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(320, Short.MAX_VALUE)
+                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(320, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(StatusLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DateOfHireLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DepartmentLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(employeeTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DepartmentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(positionComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EmployeeTypeLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JobTitleLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(statusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(72, 72, 72))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DepartmentComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DepartmentLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JobTitleLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(statusComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DepartmentComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DepartmentLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DateOfHireComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DateOfHireLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(JobTitleLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(JobTitleComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(employeeTypeComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(DateOfHireLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(EmployeeTypeComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EmployeeTypeLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(1, 1, 1)))
+                            .addComponent(StatusLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(positionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EmployeeTypeLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(StatusLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
-                    .addComponent(StatusComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(UpdateButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DeleteButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         addingPanel.add(jPanel4, java.awt.BorderLayout.CENTER);
@@ -373,16 +407,16 @@ public class ManageEmployee extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1094, Short.MAX_VALUE)
-                .addGap(26, 26, 26))
+                .addGap(72, 72, 72)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 892, Short.MAX_VALUE)
+                .addGap(72, 72, 72))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                .addGap(15, 15, 15))
         );
 
         bodyPanel.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -397,21 +431,17 @@ public class ManageEmployee extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
-    private void DepartmentComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentComboBox2ActionPerformed
+    private void DepartmentComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DepartmentComboBox2ActionPerformed
+    }//GEN-LAST:event_DepartmentComboBoxActionPerformed
 
-    private void StatusComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusComboBox2ActionPerformed
+    private void positionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_StatusComboBox2ActionPerformed
+    }//GEN-LAST:event_positionComboBoxActionPerformed
 
-    private void UpdateButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButton2ActionPerformed
+    private void employeeTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeTypeComboBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UpdateButton2ActionPerformed
-
-    private void DateOfHireComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateOfHireComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DateOfHireComboBox2ActionPerformed
+    }//GEN-LAST:event_employeeTypeComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -430,33 +460,38 @@ public class ManageEmployee extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackToDashboardButton;
     private javax.swing.JPanel BackToDashboardPanel;
-    private javax.swing.JComboBox<String> DateOfHireComboBox2;
     private javax.swing.JLabel DateOfHireLabel2;
-    private javax.swing.JButton DeleteButton2;
-    private javax.swing.JComboBox<String> DepartmentComboBox2;
+    private javax.swing.JComboBox<String> DepartmentComboBox;
     private javax.swing.JLabel DepartmentLabel2;
     private javax.swing.JTextField EmployeeSearchField;
     private javax.swing.JComboBox<String> EmployeeStatusComboBox;
     private javax.swing.JLabel EmployeeStatusLabel;
-    private javax.swing.JComboBox<String> EmployeeTypeComboBox2;
     private javax.swing.JLabel EmployeeTypeLabel2;
-    private javax.swing.JComboBox<String> JobTitleComboBox2;
     private javax.swing.JLabel JobTitleLabel2;
     private javax.swing.JTable ManageEmployeeTable;
     private javax.swing.JButton RefreshButton;
-    private javax.swing.JButton SearchButton;
     private javax.swing.JPanel SearchPanel;
-    private javax.swing.JComboBox<String> StatusComboBox2;
     private javax.swing.JLabel StatusLabel2;
-    private javax.swing.JButton UpdateButton2;
+    private com.k33ptoo.components.KButton addButton;
     private javax.swing.JPanel addingPanel;
     private javax.swing.JPanel bodyPanel;
+    private com.k33ptoo.components.KButton deleteButton;
+    private javax.swing.JComboBox<String> employeeTypeComboBox;
     private javax.swing.JPanel headerPanel;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JComboBox<String> positionComboBox;
+    private com.k33ptoo.components.KButton searchButton;
+    private javax.swing.JPanel searchPanel;
+    private javax.swing.JComboBox<String> statusComboBox;
+    private com.k33ptoo.components.KButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

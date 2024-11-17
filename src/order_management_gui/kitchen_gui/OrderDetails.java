@@ -35,7 +35,6 @@ public class OrderDetails extends javax.swing.JDialog {
         searchPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         OrderIdLabel = new javax.swing.JLabel();
-        WaiterComboBox = new javax.swing.JComboBox<>();
         CookingStatusComboBox = new javax.swing.JComboBox<>();
         tablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -84,9 +83,6 @@ public class OrderDetails extends javax.swing.JDialog {
         OrderIdLabel.setText("    001");
         OrderIdLabel.setOpaque(true);
 
-        WaiterComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        WaiterComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kamal", "Sunil", "Senarathna" }));
-
         CookingStatusComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         CookingStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cooking", "On the Way", "Delivered" }));
 
@@ -99,9 +95,7 @@ public class OrderDetails extends javax.swing.JDialog {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(OrderIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
-                .addComponent(WaiterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 418, Short.MAX_VALUE)
                 .addComponent(CookingStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -112,7 +106,6 @@ public class OrderDetails extends javax.swing.JDialog {
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(OrderIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(WaiterComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                     .addComponent(CookingStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
@@ -222,7 +215,6 @@ public class OrderDetails extends javax.swing.JDialog {
     private javax.swing.JTable KitchenOrderTable;
     private javax.swing.JButton OKButton;
     private javax.swing.JLabel OrderIdLabel;
-    private javax.swing.JComboBox<String> WaiterComboBox;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel footerPanel;
     private javax.swing.JPanel headerPanel;
