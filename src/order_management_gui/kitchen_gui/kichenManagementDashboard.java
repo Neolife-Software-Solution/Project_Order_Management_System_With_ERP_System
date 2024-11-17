@@ -2,8 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package finance_department_gui;
+package order_management_gui.kitchen_gui;
 
+import order_management_gui.*;
+import stock_management_gui.*;
+import finance_department_gui.*;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.formdev.flatlaf.util.SwingUtils;
@@ -17,12 +20,12 @@ import javax.swing.SwingUtilities;
  *
  * @author GOLDEN FIELD
  */
-public class FinanceDepartmentDashboard extends javax.swing.JFrame {
+public class kichenManagementDashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form FinanceDepartmentDashboard
      */
-    public FinanceDepartmentDashboard() {
+    public kichenManagementDashboard() {
         initComponents();
     }
 
@@ -69,11 +72,8 @@ public class FinanceDepartmentDashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         SideBarButtonPanel = new javax.swing.JPanel();
-        incomeManageButton = new com.k33ptoo.components.KButton();
-        companyPromotionButton = new com.k33ptoo.components.KButton();
-        productPromotionButton = new com.k33ptoo.components.KButton();
-        addExpencesButton = new com.k33ptoo.components.KButton();
-        payrollManagementButton = new com.k33ptoo.components.KButton();
+        diningButton = new com.k33ptoo.components.KButton();
+        takeawayButton = new com.k33ptoo.components.KButton();
         MainDashboardPanel = new javax.swing.JPanel();
         FooterPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -183,70 +183,31 @@ public class FinanceDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.setPreferredSize(new java.awt.Dimension(240, 549));
         SideBarButtonPanel.setLayout(new java.awt.GridLayout(13, 1, 6, 6));
 
-        incomeManageButton.setText("Income Management");
-        incomeManageButton.setAlignmentY(0.0F);
-        incomeManageButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        incomeManageButton.setkBorderRadius(0);
-        incomeManageButton.setkEndColor(new java.awt.Color(51, 51, 51));
-        incomeManageButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        incomeManageButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        incomeManageButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        incomeManageButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        incomeManageButton.setkPressedColor(new java.awt.Color(51, 51, 51));
-        incomeManageButton.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(incomeManageButton);
+        diningButton.setText("Kichen Dashboard");
+        diningButton.setAlignmentY(0.0F);
+        diningButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        diningButton.setkBorderRadius(0);
+        diningButton.setkEndColor(new java.awt.Color(51, 51, 51));
+        diningButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
+        diningButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        diningButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        diningButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
+        diningButton.setkPressedColor(new java.awt.Color(51, 51, 51));
+        diningButton.setkStartColor(new java.awt.Color(153, 153, 153));
+        SideBarButtonPanel.add(diningButton);
 
-        companyPromotionButton.setText("Company Promotion");
-        companyPromotionButton.setAlignmentY(0.0F);
-        companyPromotionButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        companyPromotionButton.setkBorderRadius(0);
-        companyPromotionButton.setkEndColor(new java.awt.Color(51, 51, 51));
-        companyPromotionButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        companyPromotionButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        companyPromotionButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        companyPromotionButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        companyPromotionButton.setkPressedColor(new java.awt.Color(51, 51, 51));
-        companyPromotionButton.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(companyPromotionButton);
-
-        productPromotionButton.setText("Product Promotion");
-        productPromotionButton.setAlignmentY(0.0F);
-        productPromotionButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        productPromotionButton.setkBorderRadius(0);
-        productPromotionButton.setkEndColor(new java.awt.Color(51, 51, 51));
-        productPromotionButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        productPromotionButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        productPromotionButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        productPromotionButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        productPromotionButton.setkPressedColor(new java.awt.Color(51, 51, 51));
-        productPromotionButton.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(productPromotionButton);
-
-        addExpencesButton.setText("Add Expences");
-        addExpencesButton.setAlignmentY(0.0F);
-        addExpencesButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        addExpencesButton.setkBorderRadius(0);
-        addExpencesButton.setkEndColor(new java.awt.Color(51, 51, 51));
-        addExpencesButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        addExpencesButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        addExpencesButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        addExpencesButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        addExpencesButton.setkPressedColor(new java.awt.Color(51, 51, 51));
-        addExpencesButton.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(addExpencesButton);
-
-        payrollManagementButton.setText("Payroll Management");
-        payrollManagementButton.setAlignmentY(0.0F);
-        payrollManagementButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        payrollManagementButton.setkBorderRadius(0);
-        payrollManagementButton.setkEndColor(new java.awt.Color(51, 51, 51));
-        payrollManagementButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        payrollManagementButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        payrollManagementButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        payrollManagementButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        payrollManagementButton.setkPressedColor(new java.awt.Color(51, 51, 51));
-        payrollManagementButton.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(payrollManagementButton);
+        takeawayButton.setText("Order Details");
+        takeawayButton.setAlignmentY(0.0F);
+        takeawayButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        takeawayButton.setkBorderRadius(0);
+        takeawayButton.setkEndColor(new java.awt.Color(51, 51, 51));
+        takeawayButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
+        takeawayButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        takeawayButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        takeawayButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
+        takeawayButton.setkPressedColor(new java.awt.Color(51, 51, 51));
+        takeawayButton.setkStartColor(new java.awt.Color(153, 153, 153));
+        SideBarButtonPanel.add(takeawayButton);
 
         sideBarMainPanel.add(SideBarButtonPanel, java.awt.BorderLayout.CENTER);
 
@@ -339,7 +300,7 @@ public class FinanceDepartmentDashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FinanceDepartmentDashboard().setVisible(true);
+                new kichenManagementDashboard().setVisible(true);
             }
         });
     }
@@ -349,9 +310,7 @@ public class FinanceDepartmentDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JPanel MainDashboardPanel;
     private javax.swing.JPanel SideBarButtonPanel;
-    private com.k33ptoo.components.KButton addExpencesButton;
-    private com.k33ptoo.components.KButton companyPromotionButton;
-    private com.k33ptoo.components.KButton incomeManageButton;
+    private com.k33ptoo.components.KButton diningButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -361,9 +320,8 @@ public class FinanceDepartmentDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private com.k33ptoo.components.KButton payrollManagementButton;
-    private com.k33ptoo.components.KButton productPromotionButton;
     private javax.swing.JPanel sideBarIconPanel;
     private com.k33ptoo.components.KGradientPanel sideBarMainPanel;
+    private com.k33ptoo.components.KButton takeawayButton;
     // End of variables declaration//GEN-END:variables
 }

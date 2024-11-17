@@ -11,12 +11,12 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
  *
  * @author DELL
  */
-public class EmployeeType extends javax.swing.JFrame {
+public class EmployeePosition extends javax.swing.JFrame {
 
     /**
      * Creates new form EmployeeType
      */
-    public EmployeeType() {
+    public EmployeePosition() {
         initComponents();
     }
 
@@ -35,12 +35,13 @@ public class EmployeeType extends javax.swing.JFrame {
         AddTypePanel = new javax.swing.JPanel();
         addNewTypeTextField = new javax.swing.JTextField();
         refreshButton = new javax.swing.JButton();
-        addTypeButton = new javax.swing.JButton();
+        addButton = new com.k33ptoo.components.KButton();
+        jLabel2 = new javax.swing.JLabel();
         TableUpdatePanel = new javax.swing.JPanel();
         ButtonPanel = new javax.swing.JPanel();
-        UpdateButton = new javax.swing.JButton();
-        DeleteButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        updateButton = new com.k33ptoo.components.KButton();
+        deleteButton = new com.k33ptoo.components.KButton();
         BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
         TableViewPanel = new javax.swing.JPanel();
@@ -49,19 +50,20 @@ public class EmployeeType extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        HeaderPanel.setBackground(new java.awt.Color(153, 153, 153));
         HeaderPanel.setPreferredSize(new java.awt.Dimension(757, 60));
 
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Employee Type");
+        jLabel1.setText("Employee Position");
 
         javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(HeaderPanel);
         HeaderPanel.setLayout(HeaderPanelLayout);
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addGap(273, 273, 273)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                .addGap(278, 278, 278)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                 .addGap(278, 278, 278))
         );
         HeaderPanelLayout.setVerticalGroup(
@@ -79,36 +81,57 @@ public class EmployeeType extends javax.swing.JFrame {
         AddTypePanel.setPreferredSize(new java.awt.Dimension(757, 70));
 
         addNewTypeTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        addNewTypeTextField.setText("Add New Types");
+        addNewTypeTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNewTypeTextFieldActionPerformed(evt);
+            }
+        });
 
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
 
-        addTypeButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        addTypeButton.setText("Add Type");
+        addButton.setText("Add");
+        addButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        addButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        addButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        addButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        addButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        addButton.setkStartColor(new java.awt.Color(0, 102, 153));
+
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Position");
 
         javax.swing.GroupLayout AddTypePanelLayout = new javax.swing.GroupLayout(AddTypePanel);
         AddTypePanel.setLayout(AddTypePanelLayout);
         AddTypePanelLayout.setHorizontalGroup(
             AddTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddTypePanelLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(addNewTypeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addTypeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(271, 271, 271)
+                .addContainerGap(127, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(addNewTypeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                .addGap(12, 12, 12)
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(refreshButton)
-                .addGap(20, 20, 20))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         AddTypePanelLayout.setVerticalGroup(
             AddTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddTypePanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
+            .addGroup(AddTypePanelLayout.createSequentialGroup()
                 .addGroup(AddTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(addNewTypeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                        .addComponent(addTypeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                    .addGroup(AddTypePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddTypePanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(AddTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addNewTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18))
         );
 
         BodyPanel.add(AddTypePanel, java.awt.BorderLayout.PAGE_START);
@@ -117,45 +140,56 @@ public class EmployeeType extends javax.swing.JFrame {
 
         ButtonPanel.setPreferredSize(new java.awt.Dimension(755, 60));
 
-        UpdateButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        UpdateButton.setText("Update");
-        UpdateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdateButtonActionPerformed(evt);
-            }
-        });
+        updateButton.setText("Update");
+        updateButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        updateButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        updateButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        updateButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        updateButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        updateButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        updateButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        updateButton.setkStartColor(new java.awt.Color(0, 102, 153));
 
-        DeleteButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        DeleteButton.setText("Delete");
+        deleteButton.setText("Delete");
+        deleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        deleteButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        deleteButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        deleteButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        deleteButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        deleteButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        deleteButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        deleteButton.setkStartColor(new java.awt.Color(0, 102, 153));
 
         javax.swing.GroupLayout ButtonPanelLayout = new javax.swing.GroupLayout(ButtonPanel);
         ButtonPanel.setLayout(ButtonPanelLayout);
         ButtonPanelLayout.setHorizontalGroup(
             ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ButtonPanelLayout.createSequentialGroup()
-                .addContainerGap(247, Short.MAX_VALUE)
-                .addComponent(UpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                .addGap(43, 43, 43)
-                .addComponent(DeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                .addContainerGap(222, Short.MAX_VALUE))
             .addComponent(jSeparator1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
+                .addContainerGap(240, Short.MAX_VALUE)
+                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(240, Short.MAX_VALUE))
         );
         ButtonPanelLayout.setVerticalGroup(
             ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ButtonPanelLayout.createSequentialGroup()
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(UpdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(DeleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12))
         );
 
         TableUpdatePanel.add(ButtonPanel, java.awt.BorderLayout.PAGE_START);
 
+        BackToDashboardPanel.setBackground(new java.awt.Color(153, 153, 153));
         BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(757, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackToDashboardButtonActionPerformed(evt);
@@ -169,7 +203,7 @@ public class EmployeeType extends javax.swing.JFrame {
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(713, Short.MAX_VALUE))
+                .addContainerGap(818, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,7 +221,7 @@ public class EmployeeType extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Employee Type ID", "Employee Type"
+                "Position ID", "Position"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -206,16 +240,16 @@ public class EmployeeType extends javax.swing.JFrame {
         TableViewPanelLayout.setHorizontalGroup(
             TableViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TableViewPanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)
-                .addGap(39, 39, 39))
+                .addGap(95, 95, 95)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 672, Short.MAX_VALUE)
+                .addGap(95, 95, 95))
         );
         TableViewPanelLayout.setVerticalGroup(
             TableViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TableViewPanelLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                .addGap(19, 19, 19))
         );
 
         TableUpdatePanel.add(TableViewPanel, java.awt.BorderLayout.CENTER);
@@ -228,13 +262,13 @@ public class EmployeeType extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UpdateButtonActionPerformed
-
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
          System.exit(0);
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
+
+    private void addNewTypeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewTypeTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addNewTypeTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,14 +287,15 @@ public class EmployeeType extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EmployeeType.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeePosition.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EmployeeType.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeePosition.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EmployeeType.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeePosition.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EmployeeType.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EmployeePosition.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
         
         FlatMacLightLaf.setup();
@@ -269,7 +304,7 @@ public class EmployeeType extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmployeeType().setVisible(true);
+                new EmployeePosition().setVisible(true);
             }
         });
     }
@@ -280,17 +315,18 @@ public class EmployeeType extends javax.swing.JFrame {
     private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JPanel ButtonPanel;
-    private javax.swing.JButton DeleteButton;
     private javax.swing.JTable EmployeeTypeTable;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JPanel TableUpdatePanel;
     private javax.swing.JPanel TableViewPanel;
-    private javax.swing.JButton UpdateButton;
+    private com.k33ptoo.components.KButton addButton;
     private javax.swing.JTextField addNewTypeTextField;
-    private javax.swing.JButton addTypeButton;
+    private com.k33ptoo.components.KButton deleteButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton refreshButton;
+    private com.k33ptoo.components.KButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -116,17 +116,17 @@ public class KitchenDashboard extends javax.swing.JFrame {
         KitchenDashboardTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         KitchenDashboardTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Order ID", "Table Name", "Order_type", "Ordered Time", "Delivered Time", "Watier", "Status"
+                "Order ID", "Table Name", "Order_type", "Ordered Time", "Delivered Time", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
