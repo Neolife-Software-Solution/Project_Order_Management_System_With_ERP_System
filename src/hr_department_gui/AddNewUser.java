@@ -4,7 +4,22 @@
  */
 package hr_department_gui;
 
+import java.sql.ResultSet;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import com.mysql.cj.util.DnsSrv;
+import java.awt.event.ItemEvent;
+import java.util.HashMap;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import model.MySql;
 
 /**
  *
@@ -12,11 +27,143 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
  */
 public class AddNewUser extends javax.swing.JFrame {
 
+    private static HashMap<String, String> departmentMap = new HashMap<>();
+    private static HashMap<String, String> positionMap = new HashMap<>();
+
     /**
      * Creates new form AddNewUser
      */
     public AddNewUser() {
+
         initComponents();
+        loadDearpement();
+        loadPosition();
+        loadEmployee();
+        loadDearpement2();
+
+    }
+
+    private void loadDearpement() {
+
+//        load Dearpement Start
+        try {
+
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `department`");
+
+            Vector<String> vector = new Vector<>();
+            vector.add("select");
+
+            while (resultSet.next()) {
+
+                vector.add(resultSet.getString("department_name"));
+                departmentMap.put(resultSet.getString("department_name"), resultSet.getString("department_id"));
+
+            }
+
+            DefaultComboBoxModel model = new DefaultComboBoxModel(vector);
+            employeeDepartmentComboBox.setModel(model);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+        //        load Dearpement End
+
+    }
+
+    private void loadDearpement2() {
+
+//        load Dearpement Start
+        try {
+
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `department`");
+
+            Vector<String> vector = new Vector<>();
+            vector.add("select");
+
+            while (resultSet.next()) {
+
+                vector.add(resultSet.getString("department_name"));
+                departmentMap.put(resultSet.getString("department_name"), resultSet.getString("department_id"));
+
+            }
+
+            DefaultComboBoxModel model = new DefaultComboBoxModel(vector);
+            departmentComboBox.setModel(model);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+        //        load Dearpement End
+
+    }
+
+    public void loadPosition() {
+
+        try {
+
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee_position` ");
+
+            Vector<String> vector = new Vector<>();
+            vector.add("Select");
+
+            while (resultSet.next()) {
+
+                vector.add(resultSet.getString("position_name"));
+                positionMap.put(resultSet.getString("position_name"), resultSet.getString("employee_position_id"));
+
+            }
+
+            DefaultComboBoxModel model = new DefaultComboBoxModel(vector);
+            positionComboBox.setModel(model);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }
+
+//    DefaultTableModel Goloble Variable
+    DefaultTableModel model;
+
+    public void loadEmployee() {
+
+        try {
+
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee` "
+                    + "INNER JOIN `employee_user` ON `employee`.`employee_id` = `employee_user`.`employee_employee_id`"
+                    + "INNER JOIN `department` ON `department`.`department_id` = `employee`.`department_department_id` "
+                    + "INNER JOIN `employee_position` ON `employee_position`.`employee_position_id` = `employee`.`employee_position_employee_position_id` ");
+
+            model = (DefaultTableModel) NewuserTable.getModel();
+            model.setRowCount(0);
+
+            while (resultSet.next()) {
+
+                Vector<String> vector = new Vector<>();
+                vector.add(resultSet.getString("employee.employee_id"));
+                vector.add(resultSet.getString("employee.first_name"));
+                vector.add(resultSet.getString("employee.last_name"));
+                vector.add(resultSet.getString("employee_user.user_name"));
+                vector.add(resultSet.getString("department.department_name"));
+                vector.add(resultSet.getString("employee_position.position_name"));
+                vector.add(resultSet.getString("employee_user.user_password"));
+
+                model.addRow(vector);
+
+            }
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
+
+        }
+
     }
 
     /**
@@ -43,13 +190,13 @@ public class AddNewUser extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         userNameTextField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        passwordTextField = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         employeeDepartmentComboBox = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         positionComboBox = new javax.swing.JComboBox<>();
         kButton1 = new com.k33ptoo.components.KButton();
         kButton2 = new com.k33ptoo.components.KButton();
+        PasswordField = new javax.swing.JPasswordField();
         jSeparator1 = new javax.swing.JSeparator();
         buttonPanel = new javax.swing.JPanel();
         addButton = new com.k33ptoo.components.KButton();
@@ -61,7 +208,7 @@ public class AddNewUser extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         departmentComboBox = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        NewuserTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -113,8 +260,22 @@ public class AddNewUser extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel8.setText("Employee ID");
 
+        employeeIDTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                employeeIDTextFieldActionPerformed(evt);
+            }
+        });
+        employeeIDTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                employeeIDTextFieldKeyReleased(evt);
+            }
+        });
+
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel9.setText("Department");
+
+        employeeNameTextField.setEditable(false);
+        employeeNameTextField.setToolTipText("");
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel10.setText("User Name");
@@ -126,11 +287,21 @@ public class AddNewUser extends javax.swing.JFrame {
         jLabel12.setText("Employee Name");
 
         employeeDepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        employeeDepartmentComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                employeeDepartmentComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel13.setText("Position");
 
         positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        positionComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                positionComboBoxActionPerformed(evt);
+            }
+        });
 
         kButton1.setText("ADD");
         kButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -160,17 +331,17 @@ public class AddNewUser extends javax.swing.JFrame {
                 .addContainerGap(100, Short.MAX_VALUE)
                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(userNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(detailsPanelLayout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(12, 12, 12)
-                        .addComponent(employeeIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(employeeIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanelLayout.createSequentialGroup()
+                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(userNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                            .addComponent(PasswordField, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))))
                 .addGap(59, 59, 59)
                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,10 +381,10 @@ public class AddNewUser extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(positionComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -226,6 +397,11 @@ public class AddNewUser extends javax.swing.JFrame {
         addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         addButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         updateButton.setText("Update");
         updateButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -236,6 +412,11 @@ public class AddNewUser extends javax.swing.JFrame {
         updateButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateButtonMouseClicked(evt);
+            }
+        });
 
         deleteButton.setText("Delete");
         deleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -248,6 +429,11 @@ public class AddNewUser extends javax.swing.JFrame {
         deleteButton.setkStartColor(new java.awt.Color(0, 102, 153));
 
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout buttonPanelLayout = new javax.swing.GroupLayout(buttonPanel);
         buttonPanel.setLayout(buttonPanelLayout);
@@ -280,27 +466,43 @@ public class AddNewUser extends javax.swing.JFrame {
         jLabel2.setText("Department");
 
         departmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        departmentComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                departmentComboBoxItemStateChanged(evt);
+            }
+        });
+        departmentComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                departmentComboBoxActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        NewuserTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Employee ID", "First Name", "Last Name", "User Name", "Department", "Position"
+                "Employee ID", "First Name", "Last Name", "User Name", "Department", "Position", "Password"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        NewuserTable.getTableHeader().setReorderingAllowed(false);
+        NewuserTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NewuserTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(NewuserTable);
 
         javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);
         tablePanel.setLayout(tablePanelLayout);
@@ -364,12 +566,310 @@ public class AddNewUser extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+
+        //    Add Button Start
+        try {
+
+            String employeeId = employeeIDTextField.getText();
+            String employeeName = employeeNameTextField.getText();
+            String userName = userNameTextField.getText();
+            String password = String.valueOf(PasswordField.getPassword());
+            String department = String.valueOf(employeeDepartmentComboBox.getSelectedItem());
+            String position = String.valueOf(positionComboBox.getSelectedItem());
+
+            if (employeeId.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please Enter Your Employee ID", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (employeeName.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please Enter Your Employee Name", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (userName.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please Enter User Name", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (password.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please Enter Password", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (!password.matches(" ^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$ ")) {
+
+                JOptionPane.showMessageDialog(this, "Please Enter Minimum eight characters, at least one letter, one number and one special character", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (department.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please Select Department", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (position.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please Select Position", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+
+//                Query
+                MySql.executeUpdate(" INSERT INTO `employee_user` (`employee_employee_id`,`user_name`,`user_password`,`employee_name`,`department_department_id`,`employee_position_employee_position_id`) "
+                        + "VALUES ('" + employeeId + "' , '" + userName + "','" + password + "','" + employeeName + "','" + departmentMap.get(department) + "','" + positionMap.get(position) + "') ");
+
+//                Load Employee
+                loadEmployee();
+
+//                Clear All
+                reset();
+                
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+        //    Add Button End
+
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void employeeDepartmentComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeDepartmentComboBoxActionPerformed
+
+        String department = String.valueOf(employeeDepartmentComboBox.getSelectedItem());
+
+
+    }//GEN-LAST:event_employeeDepartmentComboBoxActionPerformed
+
+    private void positionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_positionComboBoxActionPerformed
+
+
+    }//GEN-LAST:event_positionComboBoxActionPerformed
+
+    private void employeeIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeIDTextFieldActionPerformed
+
+
+    }//GEN-LAST:event_employeeIDTextFieldActionPerformed
+
+
+    private void employeeIDTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeIDTextFieldKeyReleased
+
+//        Store a Employee Id AND Trim to remove Spaces
+        String empId = employeeIDTextField.getText();
+
+        try {
+
+//            check ID Field is empty and Clear textfield
+            if (empId.isEmpty()) {
+
+                employeeNameTextField.setText("");
+                return;
+
+            }
+
+//            Execute Databse Query
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee` WHERE `employee_id` = '" + empId + "' ");
+
+            if (resultSet.next()) {
+
+                String firstName = resultSet.getString("first_name");
+                String lastName = resultSet.getString("last_name");
+                String fullName = firstName + " " + lastName;
+
+                employeeNameTextField.setText(fullName);
+
+            } else {
+
+//                Clear Employee Name Text Field
+                employeeNameTextField.setText("");
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }//GEN-LAST:event_employeeIDTextFieldKeyReleased
+
+    private void departmentComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departmentComboBoxActionPerformed
+
+        try {
+
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `department`");
+
+            Vector<String> vector = new Vector<>();
+            vector.add("select");
+
+            while (resultSet.next()) {
+
+                vector.add(resultSet.getString("department_name"));
+                departmentMap.put(resultSet.getString("department_name"), resultSet.getString("department_id"));
+
+            }
+
+            DefaultComboBoxModel model = new DefaultComboBoxModel(vector);
+            departmentComboBox.setModel(model);
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }//GEN-LAST:event_departmentComboBoxActionPerformed
+
+    private void departmentComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_departmentComboBoxItemStateChanged
+
+//        ComboBox Select Change
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+
+            String department = String.valueOf(departmentComboBox.getSelectedItem());
+
+//            Check Valid Department is Selected
+            if (!department.equals("select")) {
+
+                try {
+
+//                    Retrieve departement ID From the Map
+                    String departmentID = departmentMap.get(department);
+
+//                    Query
+                    ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee_user` "
+                            + "INNER JOIN `employee` ON `employee`.`employee_id` = `employee_user`.`employee_employee_id` "
+                            + "INNER JOIN `department` ON `department`.`department_id` = `employee`.`department_department_id` "
+                            + "INNER JOIN `employee_position` ON `employee_position`.`employee_position_id` = `employee`.`employee_position_employee_position_id` ");
+
+//                    Clear and Update table
+                    DefaultTableModel tableModel = (DefaultTableModel) NewuserTable.getModel();
+                    tableModel.setRowCount(0);
+
+                    while (resultSet.next()) {
+
+                        String empID = resultSet.getString("`employee`.`employee_id`");
+                        String fName = resultSet.getString("`employee`.`first_name`");
+                        String lName = resultSet.getString("`employee`.`last_name`");
+                        String uName = resultSet.getString("`employee_user`.`user_name`");
+                        String departmentName = resultSet.getString("`department`.`department_name`");
+                        String position = resultSet.getString("`employee_position`.`position_name`");
+
+                        tableModel.addRow(new Object[]{empID, fName, lName, uName, departmentName, position});
+
+                    }
+
+                } catch (Exception e) {
+
+                }
+
+            }
+
+        }
+
+
+    }//GEN-LAST:event_departmentComboBoxItemStateChanged
+
+    private void NewuserTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewuserTableMouseClicked
+
+        if (evt.getClickCount() == 2) {
+
+            addButton.setVisible(false);
+
+            int row = NewuserTable.getSelectedRow();
+
+            String empID = String.valueOf(NewuserTable.getValueAt(row, 0));
+            employeeIDTextField.setText(empID);
+            employeeIDTextField.setEditable(false);
+
+            String userName = String.valueOf(NewuserTable.getValueAt(row, 3));
+            userNameTextField.setText(userName);
+
+            String password = String.valueOf(NewuserTable.getValueAt(row, 6));
+            PasswordField.setText(userName);
+
+            String fName = String.valueOf(NewuserTable.getValueAt(row, 1));
+            String lName = String.valueOf(NewuserTable.getValueAt(row, 2));
+            String fullname = fName + " " + lName;
+            employeeNameTextField.setText(fullname);
+
+            String department = String.valueOf(NewuserTable.getValueAt(row, 4));
+            employeeDepartmentComboBox.setSelectedItem(department);
+
+            String position = String.valueOf(NewuserTable.getValueAt(row, 5));
+            positionComboBox.setSelectedItem(position);
+
+        }
+
+
+    }//GEN-LAST:event_NewuserTableMouseClicked
+
+    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
+
+        addButton.setVisible(true);
+
+        try {
+
+            String employeeId = employeeIDTextField.getText();
+            String employeeName = employeeNameTextField.getText();
+            String userName = userNameTextField.getText();
+            String password = String.valueOf(PasswordField.getPassword());
+            String department = String.valueOf(employeeDepartmentComboBox.getSelectedItem());
+            String position = String.valueOf(positionComboBox.getSelectedItem());
+
+            if (employeeId.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please Enter Your Employee ID", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (employeeName.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please Enter Your Employee Name", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (userName.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please Enter User Name", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (password.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please Enter Password", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (!password.matches("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$")) {
+
+                JOptionPane.showMessageDialog(this, "Please Enter Minimum eight characters, at least one letter, one number and one special character", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (department.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please Select Department", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (position.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please Select Position", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+
+                MySql.executeUpdate("UPDATE `employee_user` SET `user_name` = '" + userName + "' , `user_password` = '" + password + "' , `department_department_id` = '" + departmentMap.get(department) + "' ,`employee_position_employee_position_id` = '" + positionMap.get(position) + "' WHERE `employee_employee_id` = '" + employeeId + "' ");
+
+                loadEmployee();
+
+                reset();
+                
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            
+        }
+
+    }//GEN-LAST:event_updateButtonMouseClicked
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        
+        reset();
+        
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-             FlatMacLightLaf.setup();
+        FlatMacLightLaf.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -382,6 +882,8 @@ public class AddNewUser extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackToDashboardButton;
     private javax.swing.JPanel BackToDashboardPanel;
+    private javax.swing.JTable NewuserTable;
+    private javax.swing.JPasswordField PasswordField;
     private com.k33ptoo.components.KButton addButton;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel buttonPanel;
@@ -405,14 +907,23 @@ public class AddNewUser extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
     private com.k33ptoo.components.KButton kButton1;
     private com.k33ptoo.components.KButton kButton2;
-    private javax.swing.JTextField passwordTextField;
     private javax.swing.JComboBox<String> positionComboBox;
     private javax.swing.JButton refreshButton;
     private javax.swing.JPanel tablePanel;
     private com.k33ptoo.components.KButton updateButton;
     private javax.swing.JTextField userNameTextField;
     // End of variables declaration//GEN-END:variables
+
+    private void reset() {
+        
+        employeeIDTextField.setText("");
+        userNameTextField.setText("");
+        PasswordField.setText("");
+        employeeNameTextField.setText("");
+        employeeDepartmentComboBox.setSelectedIndex(0);
+        positionComboBox.setSelectedIndex(0);
+        
+    }
 }

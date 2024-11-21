@@ -397,7 +397,7 @@ public class LeaveManage extends javax.swing.JFrame {
     }//GEN-LAST:event_employeeIDTextFieldActionPerformed
 
     private void holidayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_holidayButtonActionPerformed
-        Holidays leave = new Holidays(this, true);
+        HoliDays leave = new HoliDays(this, true);
         leave.setVisible(true);
     }//GEN-LAST:event_holidayButtonActionPerformed
 

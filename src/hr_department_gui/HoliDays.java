@@ -10,11 +10,11 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
  *
  * @author 2003k
  */
-public class Holidays extends javax.swing.JDialog {
+public class HoliDays extends javax.swing.JDialog {
 
     LeaveManage leave;
 
-    public Holidays(java.awt.Frame parent, boolean modal) {
+    public HoliDays(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -281,7 +281,7 @@ public class Holidays extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Holidays dialog = new Holidays(new javax.swing.JFrame(), true);
+                HoliDays dialog = new HoliDays(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
