@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -235,6 +236,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         tr.setRowFilter(RowFilter.regexFilter(searchID, 0));
 
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -248,7 +250,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BodyPanel = new javax.swing.JPanel();
         SearchPanel = new javax.swing.JPanel();
-        searchEmailField = new javax.swing.JTextField();
+        EmpId = new javax.swing.JTextField();
         NameLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         searchButton = new com.k33ptoo.components.KButton();
@@ -256,10 +258,10 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        AddressLine_01 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        AddressLine_02 = new javax.swing.JTextField();
         provinceComboBox = new javax.swing.JComboBox<>();
         DistricComboBox = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
@@ -311,10 +313,10 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
 
         SearchPanel.setPreferredSize(new java.awt.Dimension(780, 200));
 
-        searchEmailField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        searchEmailField.addKeyListener(new java.awt.event.KeyAdapter() {
+        EmpId.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        EmpId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchEmailFieldKeyReleased(evt);
+                EmpIdKeyReleased(evt);
             }
         });
 
@@ -339,7 +341,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel3.setText("District");
 
-        jTextField3.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        AddressLine_01.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel4.setText("Address Line 01");
@@ -347,7 +349,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel5.setText("Address Line 02");
 
-        jTextField4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        AddressLine_02.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         provinceComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
 
@@ -368,7 +370,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                 .addContainerGap(369, Short.MAX_VALUE)
                 .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(searchEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -395,8 +397,8 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(30, 30, 30)
                         .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4))))
+                            .addComponent(AddressLine_01)
+                            .addComponent(AddressLine_02))))
                 .addContainerGap(340, Short.MAX_VALUE))
         );
         SearchPanelLayout.setVerticalGroup(
@@ -406,7 +408,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(searchEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(EmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -423,11 +425,11 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AddressLine_01, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AddressLine_02, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
@@ -501,6 +503,11 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         updateButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         deleteButton.setText("Delete");
         deleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -591,19 +598,19 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
-    private void searchEmailFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchEmailFieldKeyReleased
+    private void EmpIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmpIdKeyReleased
 
-        String searchID = searchEmailField.getText();
+        String searchID = EmpId.getText();
         search(searchID);
 
-    }//GEN-LAST:event_searchEmailFieldKeyReleased
+    }//GEN-LAST:event_EmpIdKeyReleased
 
     private void ManageEmployeeAddressTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManageEmployeeAddressTableMouseClicked
-       
+
         if (evt.getClickCount() == 2) {
-            
-            int row = ManageEmployeeAddressTable.getRowCount();
-            
+
+            int row = ManageEmployeeAddressTable.getSelectedRow(); // Get the selected row from the table
+
             // Retrieve the Province name and set it in the provinceComboBox
             String Province = String.valueOf(ManageEmployeeAddressTable.getValueAt(row, 5));
             provinceComboBox.setSelectedItem(Province);
@@ -611,14 +618,118 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
             // Retrieve the District name and set it in the DistricComboBox
             String District = String.valueOf(ManageEmployeeAddressTable.getValueAt(row, 6));
             DistricComboBox.setSelectedItem(District);
-            
+
             // Retrieve the City name and set it in the CityComboBox
             String City = String.valueOf(ManageEmployeeAddressTable.getValueAt(row, 7));
             CityComboBox.setSelectedItem(City);
-            
+
+            // Retrieve the AddressLine_01 from the selected row and set it in the AddressLine_01 text field
+            String Address01 = String.valueOf(ManageEmployeeAddressTable.getValueAt(row, 3));
+            AddressLine_01.setText(Address01);
+
+            // Retrieve the AddressLine_02 from the selected row and set it in the AddressLine_02 text field
+            String Address02 = String.valueOf(ManageEmployeeAddressTable.getValueAt(row, 4));
+            AddressLine_02.setText(Address02);
+
+            // Retrieve the AddressLine_02 from the selected row and set it in the AddressLine_02 text field
+            String employeeId = String.valueOf(ManageEmployeeAddressTable.getValueAt(row, 0));
+            EmpId.setText(employeeId);
+
         }
-        
+
     }//GEN-LAST:event_ManageEmployeeAddressTableMouseClicked
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+
+        try {
+            // Get the values entered by the user in the form fields
+            String Province = String.valueOf(provinceComboBox.getSelectedItem());
+            String District = String.valueOf(DistricComboBox.getSelectedItem());
+            String City = String.valueOf(CityComboBox.getSelectedItem());
+            String Addres_line_01 = AddressLine_01.getText();
+            String Addres_line_02 = AddressLine_02.getText();
+            String employeeId = EmpId.getText();
+
+            // Validate the form fields to ensure that no required fields are empty
+            if (Province.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please Select Province", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (District.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please Select District", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (City.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please Select City", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (Addres_line_01.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please Enter Address Line 01", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else if (Addres_line_02.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please Enter Address Line 02", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+                // Query to fetch the original data
+                String query = "SELECT * FROM `employee_address` "
+                    + "INNER JOIN `employee` ON `employee`.`employee_address_em_address_id` = `employee_address`.`em_address_id` "
+                    + "INNER JOIN `city` ON `city`.`city_id` = `employee_address`.`city_city_id` "
+                    + "INNER JOIN `province` ON `province`.`province_id` = `employee_address`.`province_province_id` "
+                    + "INNER JOIN `district` ON `district`.`district_id` = `employee_address`.`district_district_id`";
+
+                ResultSet rs = MySql.executeSearch(query);
+
+                if (rs.next()) {
+                    // Fetch the original values from the database
+                    String originalProvince = rs.getString("province_name");
+                    String originalDistrict = rs.getString("district_name");
+                    String originalCity = rs.getString("city_name");
+                    String originalAddressLine1 = rs.getString("address_line01");
+                    String originalAddressLine2 = rs.getString("address_line02");
+
+                    // Build the dynamic update query
+                    StringBuilder updateQuery = new StringBuilder("UPDATE employee_address SET ");
+                    boolean hasChanges = false;
+
+                    if (!Province.equals(originalProvince)) {
+                        updateQuery.append("province_province_id = (SELECT province_id FROM province WHERE province_name = '")
+                                .append(Province).append("'), ");
+                        hasChanges = true;
+                    }
+
+                    if (!District.equals(originalDistrict)) {
+                        updateQuery.append("district_district_id = (SELECT district_id FROM district WHERE district_name = '")
+                                .append(District).append("'), ");
+                        hasChanges = true;
+                    }
+
+                    if (!City.equals(originalCity)) {
+                        updateQuery.append("city_city_id = (SELECT city_id FROM city WHERE city_name = '")
+                                .append(City).append("'), ");
+                        hasChanges = true;
+                    }
+
+                    if (!Addres_line_01.equals(originalAddressLine1)) {
+                        updateQuery.append("address_line01 = '").append(Addres_line_01).append("', ");
+                        hasChanges = true;
+                    }
+
+                    if (!Addres_line_02.equals(originalAddressLine2)) {
+                        updateQuery.append("address_line02 = '").append(Addres_line_02).append("', ");
+                        hasChanges = true;
+                    }
+
+                    // Execute the update query if there are changes
+                    if (hasChanges) {
+                        // Remove trailing comma and space
+                        updateQuery.setLength(updateQuery.length() - 2);
+                        updateQuery.append(" WHERE employee.employee_id = ").append(employeeId);
+
+                        MySql.executeUpdate(updateQuery.toString());
+                        JOptionPane.showMessageDialog(this, "Employee data updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "No changes detected.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error updating employee data.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_updateButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -637,6 +748,8 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField AddressLine_01;
+    private javax.swing.JTextField AddressLine_02;
     private javax.swing.JButton BackToDashboardButton;
     private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel BodyPanel;
@@ -644,6 +757,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
     private javax.swing.JLabel CityLabel;
     private javax.swing.JComboBox<String> DistricComboBox;
     private javax.swing.JLabel DistrictLabel;
+    private javax.swing.JTextField EmpId;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JTable ManageEmployeeAddressTable;
     private javax.swing.JLabel NameLabel;
@@ -664,12 +778,9 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JComboBox<String> provinceComboBox;
     private javax.swing.JComboBox<String> provinceComboBox2;
     private com.k33ptoo.components.KButton searchButton;
-    private javax.swing.JTextField searchEmailField;
     private com.k33ptoo.components.KButton updateButton;
     // End of variables declaration//GEN-END:variables
 }

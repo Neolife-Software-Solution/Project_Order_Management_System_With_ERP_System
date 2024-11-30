@@ -100,7 +100,7 @@
                       <EmptySpace pref="369" max="32767" attributes="0"/>
                       <Component id="NameLabel" min="-2" pref="104" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="searchEmailField" min="-2" pref="282" max="-2" attributes="0"/>
+                      <Component id="EmpId" min="-2" pref="282" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="searchButton" min="-2" pref="157" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -130,8 +130,8 @@
                               </Group>
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jTextField3" max="32767" attributes="0"/>
-                                  <Component id="jTextField4" max="32767" attributes="0"/>
+                                  <Component id="AddressLine_01" max="32767" attributes="0"/>
+                                  <Component id="AddressLine_02" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -146,7 +146,7 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="NameLabel" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                              <Component id="searchEmailField" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="EmpId" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="searchButton" alignment="3" pref="0" max="32767" attributes="0"/>
@@ -167,12 +167,12 @@
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="AddressLine_01" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="AddressLine_02" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jSeparator1" min="-2" pref="5" max="-2" attributes="0"/>
@@ -182,14 +182,14 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="searchEmailField">
+            <Component class="javax.swing.JTextField" name="EmpId">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="0"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="searchEmailFieldKeyReleased"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="EmpIdKeyReleased"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="NameLabel">
@@ -256,7 +256,7 @@
                 <Property name="text" type="java.lang.String" value="District"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="AddressLine_01">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="0"/>
@@ -279,7 +279,7 @@
                 <Property name="text" type="java.lang.String" value="Address Line 02"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField4">
+            <Component class="javax.swing.JTextField" name="AddressLine_02">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="0"/>
@@ -571,6 +571,9 @@
                       <Color blue="99" green="66" red="0" type="rgb"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateButtonActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="com.k33ptoo.components.KButton" name="deleteButton">
                   <Properties>
