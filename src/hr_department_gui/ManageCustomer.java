@@ -10,12 +10,12 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
  *
  * @author sanja
  */
-public class AddNewCustomer extends javax.swing.JFrame {
+public class ManageCustomer extends javax.swing.JFrame {
 
     /**
      * Creates new form Add_New_Customer
      */
-    public AddNewCustomer() {
+    public ManageCustomer() {
         initComponents();
     }
 
@@ -51,8 +51,9 @@ public class AddNewCustomer extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         customerIDTextField = new javax.swing.JTextField();
         generateButton = new javax.swing.JButton();
-        addButton = new com.k33ptoo.components.KButton();
+        deleteButton = new com.k33ptoo.components.KButton();
         refreshButton = new javax.swing.JButton();
+        updateButton2 = new com.k33ptoo.components.KButton();
         searchPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         searchTextField = new javax.swing.JTextField();
@@ -65,7 +66,7 @@ public class AddNewCustomer extends javax.swing.JFrame {
         Header.setBackground(new java.awt.Color(153, 153, 153));
         Header.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
         Header.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Header.setText("New Customer");
+        Header.setText("Manage Customer");
         Header.setPreferredSize(new java.awt.Dimension(194, 50));
 
         javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(HeaderPanel);
@@ -196,18 +197,18 @@ public class AddNewCustomer extends javax.swing.JFrame {
             }
         });
 
-        addButton.setText("Add");
-        addButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        addButton.setkEndColor(new java.awt.Color(0, 204, 204));
-        addButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
-        addButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        addButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
-        addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
-        addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
-        addButton.setkStartColor(new java.awt.Color(0, 102, 153));
-        addButton.addActionListener(new java.awt.event.ActionListener() {
+        deleteButton.setText("Delete");
+        deleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        deleteButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        deleteButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        deleteButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        deleteButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        deleteButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        deleteButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        deleteButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
+                deleteButtonActionPerformed(evt);
             }
         });
 
@@ -218,41 +219,57 @@ public class AddNewCustomer extends javax.swing.JFrame {
             }
         });
 
+        updateButton2.setText("Update");
+        updateButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        updateButton2.setkEndColor(new java.awt.Color(0, 204, 204));
+        updateButton2.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        updateButton2.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        updateButton2.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        updateButton2.setkPressedColor(new java.awt.Color(0, 102, 153));
+        updateButton2.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        updateButton2.setkStartColor(new java.awt.Color(0, 102, 153));
+        updateButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout AddCustomerPanelLayout = new javax.swing.GroupLayout(AddCustomerPanel);
         AddCustomerPanel.setLayout(AddCustomerPanelLayout);
         AddCustomerPanelLayout.setHorizontalGroup(
             AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(AddCustomerPanelLayout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addContainerGap(83, Short.MAX_VALUE)
                 .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(FirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(AddCustomerPanelLayout.createSequentialGroup()
-                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(refreshButton))
-                        .addGroup(AddCustomerPanelLayout.createSequentialGroup()
-                            .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(LastName, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(FirstNameTextfield, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1)
-                                        .addGroup(AddCustomerPanelLayout.createSequentialGroup()
-                                            .addComponent(customerIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(generateButton))))
-                                .addComponent(LastNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(26, 26, 26)
-                            .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(Email)
-                                .addComponent(Address)
-                                .addComponent(AddressTextfield)
-                                .addComponent(mobile)
-                                .addComponent(MobileTextfield)
-                                .addComponent(EmailAddressTextfield, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 80, Short.MAX_VALUE))
+                    .addGroup(AddCustomerPanelLayout.createSequentialGroup()
+                        .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LastName, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(FirstNameTextfield, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(AddCustomerPanelLayout.createSequentialGroup()
+                                        .addComponent(customerIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(generateButton))))
+                            .addComponent(LastNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(AddCustomerPanelLayout.createSequentialGroup()
+                                .addComponent(updateButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Email, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Address, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AddressTextfield, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mobile, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(MobileTextfield, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EmailAddressTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 83, Short.MAX_VALUE))
         );
         AddCustomerPanelLayout.setVerticalGroup(
             AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,7 +305,9 @@ public class AddNewCustomer extends javax.swing.JFrame {
                         .addComponent(EmailAddressTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
                 .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(updateButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -378,13 +397,17 @@ public class AddNewCustomer extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_customerIDTextFieldActionPerformed
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addButtonActionPerformed
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_refreshButtonActionPerformed
+
+    private void updateButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,7 +419,7 @@ public class AddNewCustomer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddNewCustomer().setVisible(true);
+                new ManageCustomer().setVisible(true);
             }
         });
     }
@@ -419,8 +442,8 @@ public class AddNewCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel LastName;
     private javax.swing.JTextField LastNameTextfield;
     private javax.swing.JTextField MobileTextfield;
-    private com.k33ptoo.components.KButton addButton;
     private javax.swing.JTextField customerIDTextField;
+    private com.k33ptoo.components.KButton deleteButton;
     private javax.swing.JButton generateButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -430,5 +453,6 @@ public class AddNewCustomer extends javax.swing.JFrame {
     private javax.swing.JButton refreshButton;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTextField;
+    private com.k33ptoo.components.KButton updateButton2;
     // End of variables declaration//GEN-END:variables
 }

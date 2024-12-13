@@ -428,7 +428,9 @@ public class ManageEmployee extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
-        System.exit(0);
+      
+        this.dispose();
+        
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void DepartmentComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentComboBoxActionPerformed

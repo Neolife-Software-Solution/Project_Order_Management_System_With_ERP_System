@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.RowFilter;
@@ -29,6 +30,8 @@ import model.MySql;
  */
 public class AddNewUser extends javax.swing.JFrame {
 
+    private JFrame currentWindow = null; // Keep track of the currently open window
+    
 //   Hashmap for Department and position 
     private static HashMap<String, String> departmentMap = new HashMap<>();
     private static HashMap<String, String> positionMap = new HashMap<>();
@@ -47,6 +50,25 @@ public class AddNewUser extends javax.swing.JFrame {
 
     }
 
+    private void openWindow(String windowType) {
+        if (currentWindow != null) {
+            currentWindow.dispose(); // Close the previous window if it's already open
+        }
+
+        switch (windowType) {
+            
+            case "AddDepartment":
+                currentWindow = new AddDepartment();
+                break;
+            case "EmployeePosition":
+                currentWindow = new EmployeePosition();
+                break;
+            
+        }
+
+        currentWindow.setVisible(true);
+    }
+    
     //    DefaultTableModel Goloble Variable
     DefaultTableModel model;
 
@@ -58,8 +80,10 @@ public class AddNewUser extends javax.swing.JFrame {
         employeeIDTextField.setForeground(Color.GRAY);
 
         // userNameTextField placeholder & color
-        userNameTextField.setText("Enter User Name");
+        userNameTextField.setText("Enter UserName");
         userNameTextField.setForeground(Color.GRAY);
+
+        PasswordField.setEchoChar((char) 0); // Initially show placeholder text
 
         // PasswordField placeholder & color
         PasswordField.setText("Enter Password");
@@ -78,7 +102,7 @@ public class AddNewUser extends javax.swing.JFrame {
 
             ResultSet resultSet = MySql.executeSearch("SELECT * FROM `department`");     // Execute a SQL query to retrieve all records from the 'department' table
 
-            Vector<String> vector = new Vector<>();     // Create a Vector to store department names (used to populate the JComboBox)
+            Vector<String> vector = new Vector<>();  // Create a Vector to store department names (used to populate the JComboBox)
 
             vector.add("select");  // Add a default "select" option as the first item in the combo box
 
@@ -98,7 +122,7 @@ public class AddNewUser extends javax.swing.JFrame {
         } catch (Exception e) {
 
             e.printStackTrace();
-            
+
         }
 
     }
@@ -189,7 +213,7 @@ public class AddNewUser extends javax.swing.JFrame {
 
                 Vector<String> vector = new Vector<>(); // Create a Vector to store a single row of data
 
-                vector.add(resultSet.getString("employee.employee_id"));            // Employee ID
+                vector.add(resultSet.getString("employee_user.employee_employee_id"));            // Employee ID
                 vector.add(resultSet.getString("employee.first_name"));             // First Name
                 vector.add(resultSet.getString("employee.last_name"));              // Last Name
                 vector.add(resultSet.getString("employee_user.user_name"));         // Username
@@ -507,9 +531,9 @@ public class AddNewUser extends javax.swing.JFrame {
         updateButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkStartColor(new java.awt.Color(0, 102, 153));
-        updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                updateButtonMouseClicked(evt);
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
             }
         });
 
@@ -596,6 +620,9 @@ public class AddNewUser extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 NewuserTableMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                NewuserTableMouseEntered(evt);
+            }
         });
         jScrollPane1.setViewportView(NewuserTable);
 
@@ -658,7 +685,9 @@ public class AddNewUser extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
-        System.exit(0);
+       
+        this.dispose();
+
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
 
@@ -674,6 +703,8 @@ public class AddNewUser extends javax.swing.JFrame {
             String password = String.valueOf(PasswordField.getPassword());
             String department = String.valueOf(employeeDepartmentComboBox.getSelectedItem());
             String position = String.valueOf(positionComboBox.getSelectedItem());
+
+            PasswordField.setEchoChar('*'); // Show password dots
 
             // Check if the employee ID is empty
             if (employeeId.isEmpty()) {
@@ -696,7 +727,7 @@ public class AddNewUser extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Please Enter Password", "Warning", JOptionPane.WARNING_MESSAGE);
 
             } // Validate the password using a regular expression for security (at least 8 characters, 1 letter, 1 number, 1 special character)
-            else if (!password.matches(" ^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$ ")) {
+            else if (!password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$!%*?&])[A-Za-z\\d@#$!%*?&]{8,}$")) {
 
                 JOptionPane.showMessageDialog(this, "Please Enter Minimum eight characters, at least one letter, one number and one special character", "Warning", JOptionPane.WARNING_MESSAGE);
 
@@ -713,8 +744,8 @@ public class AddNewUser extends javax.swing.JFrame {
             } else {
 
                 // If all fields are valid, execute the query to insert a new employee user into the database
-                MySql.executeUpdate(" INSERT INTO `employee_user` (`employee_employee_id`,`user_name`,`user_password`,`employee_name`,`department_department_id`,`employee_position_employee_position_id`) "
-                        + "VALUES ('" + employeeId + "' , '" + userName + "','" + password + "','" + employeeName + "','" + departmentMap.get(department) + "','" + positionMap.get(position) + "') ");
+                MySql.executeUpdate(" INSERT INTO `employee_user` (`employee_employee_id`,`user_name`,`user_password`,`department_department_id`,`employee_position_employee_position_id`) "
+                        + "VALUES ('" + employeeId + "' , '" + userName + "','" + password + "','" + departmentMap.get(department) + "','" + positionMap.get(position) + "') ");
 
                 // Reload the employee list to reflect the newly added employee
                 loadEmployee();
@@ -736,7 +767,7 @@ public class AddNewUser extends javax.swing.JFrame {
 
     private void employeeIDTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeIDTextFieldKeyReleased
 
-//        Store a Employee Id AND Trim to remove Spaces
+//        Store a Employee Id 
         String empId = employeeIDTextField.getText();
 
         try {
@@ -786,10 +817,10 @@ public class AddNewUser extends javax.swing.JFrame {
             String departmentID = departmentMap.get(department);
 
 //                    Query
-            String query = "SELECT * FROM `employee_user` "
+            String query = " SELECT * FROM `employee_user` "
                     + "INNER JOIN `employee` ON `employee`.`employee_id` = `employee_user`.`employee_employee_id` "
                     + "INNER JOIN `department` ON `department`.`department_id` = `employee`.`department_department_id` "
-                    + "INNER JOIN `employee_position` ON `employee_position`.`employee_position_id` = `employee`.`employee_position_employee_position_id`";
+                    + "INNER JOIN `employee_position` ON `employee_position`.`employee_position_id` = `employee`.`employee_position_employee_position_id` ";
 
             if (department.equals("select")) {
 
@@ -829,7 +860,6 @@ public class AddNewUser extends javax.swing.JFrame {
 
         }
 
-
     }//GEN-LAST:event_departmentComboBoxItemStateChanged
 
     private void NewuserTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewuserTableMouseClicked
@@ -851,9 +881,11 @@ public class AddNewUser extends javax.swing.JFrame {
             String userName = String.valueOf(NewuserTable.getValueAt(row, 3));
             userNameTextField.setText(userName);
 
+            PasswordField.setEchoChar('*'); // Show password dots
+
             // Retrieve the password from the selected row and set it in the password field
             String password = String.valueOf(NewuserTable.getValueAt(row, 6));
-            PasswordField.setText(userName);
+            PasswordField.setText(password);
 
             // Retrieve the first and last name, then combine them into a full name
             String fName = String.valueOf(NewuserTable.getValueAt(row, 1));
@@ -872,71 +904,6 @@ public class AddNewUser extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_NewuserTableMouseClicked
-
-    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
-
-        addButton.setVisible(true);
-
-        try {
-
-            // Get the values entered by the user in the form fields
-            String employeeId = employeeIDTextField.getText();
-            String employeeName = employeeNameTextField.getText();
-            String userName = userNameTextField.getText();
-            String password = String.valueOf(PasswordField.getPassword());
-            String department = String.valueOf(employeeDepartmentComboBox.getSelectedItem());
-            String position = String.valueOf(positionComboBox.getSelectedItem());
-
-            // Validate the form fields to ensure that no required fields are empty
-            if (employeeId.isEmpty()) {
-
-                JOptionPane.showMessageDialog(this, "Please Enter Your Employee ID", "Warning", JOptionPane.WARNING_MESSAGE);
-
-            } else if (employeeName.isEmpty()) {
-
-                JOptionPane.showMessageDialog(this, "Please Enter Your Employee Name", "Warning", JOptionPane.WARNING_MESSAGE);
-
-            } else if (userName.isEmpty()) {
-
-                JOptionPane.showMessageDialog(this, "Please Enter User Name", "Warning", JOptionPane.WARNING_MESSAGE);
-
-            } else if (password.isEmpty()) {
-
-                JOptionPane.showMessageDialog(this, "Please Enter Password", "Warning", JOptionPane.WARNING_MESSAGE);
-
-            } // Check if password meets the required format (at least 8 characters, 1 letter, 1 number, and 1 special character)
-            else if (!password.matches("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$")) {
-
-                JOptionPane.showMessageDialog(this, "Please Enter Minimum eight characters, at least one letter, one number and one special character", "Warning", JOptionPane.WARNING_MESSAGE);
-
-            } else if (department.isEmpty()) {
-
-                JOptionPane.showMessageDialog(this, "Please Select Department", "Warning", JOptionPane.WARNING_MESSAGE);
-
-            } else if (position.isEmpty()) {
-
-                JOptionPane.showMessageDialog(this, "Please Select Position", "Warning", JOptionPane.WARNING_MESSAGE);
-
-            } else {
-
-                // Update the employee details in the database with the new values
-                MySql.executeUpdate("UPDATE `employee_user` SET `user_name` = '" + userName + "' , `user_password` = '" + password + "' , `department_department_id` = '" + departmentMap.get(department) + "' ,`employee_position_employee_position_id` = '" + positionMap.get(position) + "' WHERE `employee_employee_id` = '" + employeeId + "' ");
-
-                // Reload the employee list to reflect the updated data
-                loadEmployee();
-
-                // Reset the form fields for the next operation
-                reset();
-
-            }
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-        }
-
-    }//GEN-LAST:event_updateButtonMouseClicked
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
 
@@ -986,19 +953,13 @@ public class AddNewUser extends javax.swing.JFrame {
 
     private void kButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton2ActionPerformed
 
-        // Create and display the AddDepartment window
-        AddDepartment addDepartment = new AddDepartment();
-        addDepartment.setVisible(true);
-
-//      this.dispose();
+        openWindow("AddDepartment");
 
     }//GEN-LAST:event_kButton2ActionPerformed
 
     private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
 
-        // Create and display the EmployeePosition window
-        EmployeePosition employeePosition = new EmployeePosition();
-        employeePosition.setVisible(true);
+        openWindow("EmployeePosition");
 
     }//GEN-LAST:event_kButton1ActionPerformed
 
@@ -1039,7 +1000,7 @@ public class AddNewUser extends javax.swing.JFrame {
     private void userNameTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userNameTextFieldFocusGained
 
         // Checks and set clear the current userNameTextField to enter data to it
-        if (userNameTextField.getText().equals("Enter User Name")) {
+        if (userNameTextField.getText().equals("Enter UserName")) {
 
             userNameTextField.setText("");
             userNameTextField.setForeground(Color.BLACK);
@@ -1053,7 +1014,7 @@ public class AddNewUser extends javax.swing.JFrame {
         // Sets back the placeholder of userNameTextField
         if (userNameTextField.getText().isEmpty()) {
 
-            userNameTextField.setText("Enter Employee ID");
+            userNameTextField.setText("Enter UserName");
             userNameTextField.setForeground(Color.GRAY);
 
         }
@@ -1121,7 +1082,7 @@ public class AddNewUser extends javax.swing.JFrame {
         // Sets back the placeholder of employeeNameTextField
         if (PasswordField.getPassword().equals(evt)) {
 
-            PasswordField.setText("Password");
+            PasswordField.setText("Enter Password");
             PasswordField.setForeground(Color.GRAY);
 
         }
@@ -1147,6 +1108,119 @@ public class AddNewUser extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_employeeDepartmentComboBoxKeyPressed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+
+        addButton.setVisible(true);
+
+        try {
+
+            // Get the values entered by the user in the form fields
+            String employeeId = employeeIDTextField.getText();
+            String employeeName = employeeNameTextField.getText();
+            String userName = userNameTextField.getText();
+            String password = String.valueOf(PasswordField.getPassword());
+            String department = String.valueOf(employeeDepartmentComboBox.getSelectedItem());
+            String position = String.valueOf(positionComboBox.getSelectedItem());
+
+            // Validate the form fields to ensure that no required fields are empty
+            if (employeeId.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Enter Your Employee ID", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            } else if (employeeName.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Enter Your Employee Name", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            } else if (userName.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Enter User Name", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            } else if (password.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Enter Password", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            } else if (!password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$!%*?&])[A-Za-z\\d@#$!%*?&]{8,}$")) {
+                
+                JOptionPane.showMessageDialog(this, "Please Enter Minimum eight characters, at least one letter, one number and one special character", "Warning", JOptionPane.WARNING_MESSAGE);
+            
+            } else if (department.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Select Department", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            } else if (position.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Select Position", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            } else {
+
+                // Fetch current data from the database for comparison
+                String query = "SELECT * FROM employee_user WHERE employee_employee_id = '" + employeeId + "'";
+                ResultSet rs = MySql.executeSearch(query);
+
+                if (rs.next()) {
+                    
+                    String originalUserName = rs.getString("user_name");
+                    String originalPassword = rs.getString("user_password");
+                    String originalDepartment = rs.getString("department_department_id");
+                    String originalPosition = rs.getString("employee_position_employee_position_id");
+
+                    // Check if there are any changes
+                    boolean hasChanges = false;
+                    StringBuilder updateQuery = new StringBuilder("UPDATE `employee_user` SET ");
+
+                    if (!userName.equals(originalUserName)) {
+                        updateQuery.append("`user_name` = '").append(userName).append("', ");
+                        hasChanges = true;
+                    }
+
+                    if (!password.equals(originalPassword)) {
+                        updateQuery.append("`user_password` = '").append(password).append("', ");
+                        hasChanges = true;
+                    }
+
+                    if (!departmentMap.get(department).equals(originalDepartment)) {
+                        updateQuery.append("`department_department_id` = '").append(departmentMap.get(department)).append("', ");
+                        hasChanges = true;
+                    }
+
+                    if (!positionMap.get(position).equals(originalPosition)) {
+                        updateQuery.append("`employee_position_employee_position_id` = '").append(positionMap.get(position)).append("', ");
+                        hasChanges = true;
+                    }
+
+                    // Execute update if there are changes
+                    if (hasChanges) { 
+                        // Remove the trailing comma and space
+                        updateQuery.setLength(updateQuery.length() - 2);
+                        updateQuery.append(" WHERE `employee_employee_id` = '").append(employeeId).append("'");
+
+                        MySql.executeUpdate(updateQuery.toString());
+                        JOptionPane.showMessageDialog(this, "Employee data updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                        // Reload the employee list to reflect the updated data
+                        loadEmployee();
+
+                        // Reset the form fields for the next operation
+                        reset();
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "No changes detected.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void NewuserTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewuserTableMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NewuserTableMouseEntered
 
     /**
      * @param args the command line arguments
@@ -1210,6 +1284,7 @@ public class AddNewUser extends javax.swing.JFrame {
         positionComboBox.setSelectedIndex(0);
         departmentComboBox.setSelectedIndex(0);
 
+        addPlaceholder();
     }
 
 }

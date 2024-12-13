@@ -14,11 +14,28 @@ import javax.swing.JFrame;
  */
 public class AddEmployee extends javax.swing.JFrame {
 
+    private JFrame currentWindow = null; // Keep track of the currently open window
+    
     /**
      * Creates new form AddEmployee
      */
     public AddEmployee() {
         initComponents();
+    }
+    
+    private void openWindow(String windowType) {
+        if (currentWindow != null) {
+            currentWindow.dispose(); // Close the previous window if it's already open
+        }
+
+        switch (windowType) {
+            case "EmployeeAddress":
+                currentWindow = new EmployeeAddress();
+                break;
+            
+        }
+
+        currentWindow.setVisible(true);
     }
 
     /**
@@ -407,9 +424,7 @@ public class AddEmployee extends javax.swing.JFrame {
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
         
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLayout(null);
-        System.exit(0);
+        this.dispose();
         
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
@@ -419,8 +434,8 @@ public class AddEmployee extends javax.swing.JFrame {
 
     private void addressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressButtonActionPerformed
         
-        EmployeeAddress address = new EmployeeAddress();
-        address.setVisible(true);
+        openWindow("EmployeeAddress");
+        
     }//GEN-LAST:event_addressButtonActionPerformed
 
     private void partTimeRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_partTimeRadioActionPerformed

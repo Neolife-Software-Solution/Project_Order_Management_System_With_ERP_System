@@ -10,15 +10,20 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.formdev.flatlaf.util.SwingUtils;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import order_management_gui.delivery_gui.DeliveryGuyRegistration;
+import order_management_gui.delivery_gui.DeliveryGuyVehicleInformation;
 
 /**
  *
  * @author GOLDEN FIELD
  */
 public class HRDepartmentDashboard extends javax.swing.JFrame {
+    
+    private JFrame currentWindow = null; // Keep track of the currently open window
 
     /**
      * Creates new form FinanceDepartmentDashboard
@@ -26,28 +31,108 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
     public HRDepartmentDashboard() {
         initComponents();
     }
-
+    
     public void changeimage(JLabel image, String resourceImage) {
-
+        
         ImageIcon imageIcon = new ImageIcon(getClass().getResource(resourceImage));
         image.setIcon(imageIcon);
-
+        
     }
-
+    
     boolean hide = true;
-
+    
     public void hidemenu(JPanel showmenu, boolean dashboard, JLabel icButton) {
-
+        
         if (dashboard == true) {
-
+            
             showmenu.setPreferredSize(new Dimension(60, showmenu.getHeight()));
             changeimage(icButton, "/resources/menu.png");
         } else {
-
+            
             showmenu.setPreferredSize(new Dimension(300, showmenu.getHeight()));
             changeimage(icButton, "/resources/back-arrow.png");
         }
+        
+    }
+    
+    private void openWindow(String windowType) {
+        
+        if (currentWindow != null) {
+            
+            currentWindow.dispose(); // Close the previous window if it's already open
 
+        }
+        
+        switch (windowType) {
+            
+            case "AddEmployee":
+                currentWindow = new AddEmployee();
+                break;
+            
+            case "AddDepartment":
+                currentWindow = new AddDepartment();
+                break;
+            
+            case "EmployeePosition":
+                currentWindow = new EmployeePosition();
+                break;
+            
+            case "AddEmployeeToDepartments":
+                currentWindow = new AddEmployeeToDepartments();
+                break;
+            
+            case "AddNewUser":
+                currentWindow = new AddNewUser();
+                break;
+            
+            case "ManageEmployee":
+                currentWindow = new ManageEmployee();
+                break;
+            
+            case "ManageEmployeeAddress":
+                currentWindow = new ManageEmployeeAddress();
+                break;
+            
+            case "LeaveManage":
+                currentWindow = new LeaveManage();
+                break;
+            
+            case "MarkAttendance":
+                currentWindow = new MarkAttendance();
+                break;
+            
+            case "PayrollIntegrations":
+                currentWindow = new PayrollIntegrations();
+                break;
+            
+            case "ManageAdvancedPayroll":
+                currentWindow = new ManageAdvancedPayroll();
+                break;
+            
+            case "ManageCustomer":
+                currentWindow = new ManageCustomer();
+                break;
+            
+            case "AddNewCompany":
+                currentWindow = new AddNewCompany();
+                break;
+            
+            case "AddNewSupplier":
+                currentWindow = new AddNewSupplier();
+                break;
+            
+            case "DeliveryGuyRegistration":
+                currentWindow = new DeliveryGuyRegistration();
+                break;
+            
+            case "DeliveryGuyVehicleInformation":
+                currentWindow = new DeliveryGuyVehicleInformation();
+                break;
+            
+        }
+        
+        currentWindow.setVisible(true);
+        
     }
 
     /**
@@ -78,15 +163,15 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         manageEmployeeButton = new com.k33ptoo.components.KButton();
         manageEmployeeAddressButton = new com.k33ptoo.components.KButton();
         leaveManageButton = new com.k33ptoo.components.KButton();
-        kButton4 = new com.k33ptoo.components.KButton();
-        kButton5 = new com.k33ptoo.components.KButton();
-        kButton6 = new com.k33ptoo.components.KButton();
-        kButton7 = new com.k33ptoo.components.KButton();
-        kButton8 = new com.k33ptoo.components.KButton();
-        kButton9 = new com.k33ptoo.components.KButton();
-        kButton10 = new com.k33ptoo.components.KButton();
-        kButton11 = new com.k33ptoo.components.KButton();
-        kButton12 = new com.k33ptoo.components.KButton();
+        MarkAttendenceButton = new com.k33ptoo.components.KButton();
+        PayrollIntegrationButton = new com.k33ptoo.components.KButton();
+        ManageAdvancedPayrollButton = new com.k33ptoo.components.KButton();
+        ManageCustomerButton = new com.k33ptoo.components.KButton();
+        AddNewCompanyButton = new com.k33ptoo.components.KButton();
+        AddNewSupplierButton = new com.k33ptoo.components.KButton();
+        DeliveryGuyRegisterButton = new com.k33ptoo.components.KButton();
+        DeliveryVehicalRegisterButton = new com.k33ptoo.components.KButton();
+        DeliveryAttendenceButton = new com.k33ptoo.components.KButton();
         MainDashboardPanel = new javax.swing.JPanel();
         FooterPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -337,112 +422,152 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         });
         SideBarButtonPanel.add(leaveManageButton);
 
-        kButton4.setText("Mark Attendance");
-        kButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        kButton4.setkBorderRadius(0);
-        kButton4.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton4.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        kButton4.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        kButton4.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        kButton4.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        kButton4.setkPressedColor(new java.awt.Color(51, 51, 51));
-        kButton4.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(kButton4);
+        MarkAttendenceButton.setText("Mark Attendance");
+        MarkAttendenceButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        MarkAttendenceButton.setkBorderRadius(0);
+        MarkAttendenceButton.setkEndColor(new java.awt.Color(51, 51, 51));
+        MarkAttendenceButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
+        MarkAttendenceButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        MarkAttendenceButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        MarkAttendenceButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
+        MarkAttendenceButton.setkPressedColor(new java.awt.Color(51, 51, 51));
+        MarkAttendenceButton.setkStartColor(new java.awt.Color(153, 153, 153));
+        MarkAttendenceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MarkAttendenceButtonActionPerformed(evt);
+            }
+        });
+        SideBarButtonPanel.add(MarkAttendenceButton);
 
-        kButton5.setText("Payroll Integration");
-        kButton5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        kButton5.setkBorderRadius(0);
-        kButton5.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton5.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        kButton5.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        kButton5.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        kButton5.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        kButton5.setkPressedColor(new java.awt.Color(51, 51, 51));
-        kButton5.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(kButton5);
+        PayrollIntegrationButton.setText("Payroll Integration");
+        PayrollIntegrationButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        PayrollIntegrationButton.setkBorderRadius(0);
+        PayrollIntegrationButton.setkEndColor(new java.awt.Color(51, 51, 51));
+        PayrollIntegrationButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
+        PayrollIntegrationButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        PayrollIntegrationButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        PayrollIntegrationButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
+        PayrollIntegrationButton.setkPressedColor(new java.awt.Color(51, 51, 51));
+        PayrollIntegrationButton.setkStartColor(new java.awt.Color(153, 153, 153));
+        PayrollIntegrationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PayrollIntegrationButtonActionPerformed(evt);
+            }
+        });
+        SideBarButtonPanel.add(PayrollIntegrationButton);
 
-        kButton6.setText("Add Advanced Payroll");
-        kButton6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        kButton6.setkBorderRadius(0);
-        kButton6.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton6.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        kButton6.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        kButton6.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        kButton6.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        kButton6.setkPressedColor(new java.awt.Color(51, 51, 51));
-        kButton6.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(kButton6);
+        ManageAdvancedPayrollButton.setText("Manage Advanced Payroll");
+        ManageAdvancedPayrollButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ManageAdvancedPayrollButton.setkBorderRadius(0);
+        ManageAdvancedPayrollButton.setkEndColor(new java.awt.Color(51, 51, 51));
+        ManageAdvancedPayrollButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
+        ManageAdvancedPayrollButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        ManageAdvancedPayrollButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        ManageAdvancedPayrollButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
+        ManageAdvancedPayrollButton.setkPressedColor(new java.awt.Color(51, 51, 51));
+        ManageAdvancedPayrollButton.setkStartColor(new java.awt.Color(153, 153, 153));
+        ManageAdvancedPayrollButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageAdvancedPayrollButtonActionPerformed(evt);
+            }
+        });
+        SideBarButtonPanel.add(ManageAdvancedPayrollButton);
 
-        kButton7.setText("Manage Customer");
-        kButton7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        kButton7.setkBorderRadius(0);
-        kButton7.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton7.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        kButton7.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        kButton7.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        kButton7.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        kButton7.setkPressedColor(new java.awt.Color(51, 51, 51));
-        kButton7.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(kButton7);
+        ManageCustomerButton.setText("Manage Customer");
+        ManageCustomerButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ManageCustomerButton.setkBorderRadius(0);
+        ManageCustomerButton.setkEndColor(new java.awt.Color(51, 51, 51));
+        ManageCustomerButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
+        ManageCustomerButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        ManageCustomerButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        ManageCustomerButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
+        ManageCustomerButton.setkPressedColor(new java.awt.Color(51, 51, 51));
+        ManageCustomerButton.setkStartColor(new java.awt.Color(153, 153, 153));
+        ManageCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageCustomerButtonActionPerformed(evt);
+            }
+        });
+        SideBarButtonPanel.add(ManageCustomerButton);
 
-        kButton8.setText("Add New Company");
-        kButton8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        kButton8.setkBorderRadius(0);
-        kButton8.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton8.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        kButton8.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        kButton8.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        kButton8.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        kButton8.setkPressedColor(new java.awt.Color(51, 51, 51));
-        kButton8.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(kButton8);
+        AddNewCompanyButton.setText("Add New Company");
+        AddNewCompanyButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        AddNewCompanyButton.setkBorderRadius(0);
+        AddNewCompanyButton.setkEndColor(new java.awt.Color(51, 51, 51));
+        AddNewCompanyButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
+        AddNewCompanyButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        AddNewCompanyButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        AddNewCompanyButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
+        AddNewCompanyButton.setkPressedColor(new java.awt.Color(51, 51, 51));
+        AddNewCompanyButton.setkStartColor(new java.awt.Color(153, 153, 153));
+        AddNewCompanyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddNewCompanyButtonActionPerformed(evt);
+            }
+        });
+        SideBarButtonPanel.add(AddNewCompanyButton);
 
-        kButton9.setText("Add New Supplier");
-        kButton9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        kButton9.setkBorderRadius(0);
-        kButton9.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton9.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        kButton9.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        kButton9.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        kButton9.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        kButton9.setkPressedColor(new java.awt.Color(51, 51, 51));
-        kButton9.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(kButton9);
+        AddNewSupplierButton.setText("Add New Supplier");
+        AddNewSupplierButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        AddNewSupplierButton.setkBorderRadius(0);
+        AddNewSupplierButton.setkEndColor(new java.awt.Color(51, 51, 51));
+        AddNewSupplierButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
+        AddNewSupplierButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        AddNewSupplierButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        AddNewSupplierButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
+        AddNewSupplierButton.setkPressedColor(new java.awt.Color(51, 51, 51));
+        AddNewSupplierButton.setkStartColor(new java.awt.Color(153, 153, 153));
+        AddNewSupplierButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddNewSupplierButtonActionPerformed(evt);
+            }
+        });
+        SideBarButtonPanel.add(AddNewSupplierButton);
 
-        kButton10.setText("Delivery Guy Register");
-        kButton10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        kButton10.setkBorderRadius(0);
-        kButton10.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton10.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        kButton10.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        kButton10.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        kButton10.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        kButton10.setkPressedColor(new java.awt.Color(51, 51, 51));
-        kButton10.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(kButton10);
+        DeliveryGuyRegisterButton.setText("Delivery Guy Register");
+        DeliveryGuyRegisterButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        DeliveryGuyRegisterButton.setkBorderRadius(0);
+        DeliveryGuyRegisterButton.setkEndColor(new java.awt.Color(51, 51, 51));
+        DeliveryGuyRegisterButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
+        DeliveryGuyRegisterButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        DeliveryGuyRegisterButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        DeliveryGuyRegisterButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
+        DeliveryGuyRegisterButton.setkPressedColor(new java.awt.Color(51, 51, 51));
+        DeliveryGuyRegisterButton.setkStartColor(new java.awt.Color(153, 153, 153));
+        DeliveryGuyRegisterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeliveryGuyRegisterButtonActionPerformed(evt);
+            }
+        });
+        SideBarButtonPanel.add(DeliveryGuyRegisterButton);
 
-        kButton11.setText("Delivery Vehical Register");
-        kButton11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        kButton11.setkBorderRadius(0);
-        kButton11.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton11.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        kButton11.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        kButton11.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        kButton11.setkPressedColor(new java.awt.Color(51, 51, 51));
-        kButton11.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(kButton11);
+        DeliveryVehicalRegisterButton.setText("Delivery Vehical Register");
+        DeliveryVehicalRegisterButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        DeliveryVehicalRegisterButton.setkBorderRadius(0);
+        DeliveryVehicalRegisterButton.setkEndColor(new java.awt.Color(51, 51, 51));
+        DeliveryVehicalRegisterButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
+        DeliveryVehicalRegisterButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        DeliveryVehicalRegisterButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        DeliveryVehicalRegisterButton.setkPressedColor(new java.awt.Color(51, 51, 51));
+        DeliveryVehicalRegisterButton.setkStartColor(new java.awt.Color(153, 153, 153));
+        DeliveryVehicalRegisterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeliveryVehicalRegisterButtonActionPerformed(evt);
+            }
+        });
+        SideBarButtonPanel.add(DeliveryVehicalRegisterButton);
 
-        kButton12.setText("Delivery Attendance");
-        kButton12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        kButton12.setkBorderRadius(0);
-        kButton12.setkEndColor(new java.awt.Color(51, 51, 51));
-        kButton12.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        kButton12.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        kButton12.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        kButton12.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        kButton12.setkPressedColor(new java.awt.Color(51, 51, 51));
-        kButton12.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(kButton12);
+        DeliveryAttendenceButton.setText("Delivery Attendance");
+        DeliveryAttendenceButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        DeliveryAttendenceButton.setkBorderRadius(0);
+        DeliveryAttendenceButton.setkEndColor(new java.awt.Color(51, 51, 51));
+        DeliveryAttendenceButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
+        DeliveryAttendenceButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
+        DeliveryAttendenceButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
+        DeliveryAttendenceButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
+        DeliveryAttendenceButton.setkPressedColor(new java.awt.Color(51, 51, 51));
+        DeliveryAttendenceButton.setkStartColor(new java.awt.Color(153, 153, 153));
+        SideBarButtonPanel.add(DeliveryAttendenceButton);
 
         sideBarMainPanel.add(SideBarButtonPanel, java.awt.BorderLayout.CENTER);
 
@@ -506,76 +631,126 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
-
+        
         if (hide == true) {
-
+            
             hidemenu(sideBarMainPanel, hide, jLabel4);
             SwingUtilities.updateComponentTreeUI(this);
-
+            
             hide = false;
-
+            
         } else {
-
+            
             hidemenu(sideBarMainPanel, hide, jLabel4);
             SwingUtilities.updateComponentTreeUI(this);
-
+            
             hide = true;
-
+            
         }
     }//GEN-LAST:event_jLabel4MousePressed
 
     private void addEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeButtonActionPerformed
-
-        AddEmployee employee = new AddEmployee();
-        employee.setVisible(true);
+        
+        openWindow("AddEmployee");
 
     }//GEN-LAST:event_addEmployeeButtonActionPerformed
 
     private void addDepartmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDepartmentButtonActionPerformed
-
-        AddDepartment department = new AddDepartment();
-        department.setVisible(true);
+        
+        openWindow("AddDepartment");
 
     }//GEN-LAST:event_addDepartmentButtonActionPerformed
 
     private void productPromotionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productPromotionButtonActionPerformed
-        EmployeePosition position = new EmployeePosition();
-        position.setVisible(true);
+        
+        openWindow("EmployeePosition");
 
     }//GEN-LAST:event_productPromotionButtonActionPerformed
 
     private void addEmployeeToDepartmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeToDepartmentButtonActionPerformed
-        AddEmployeeToDepartments department = new AddEmployeeToDepartments();
-        department.setVisible(true);
+        
+        openWindow("AddEmployeeToDepartments");
 
     }//GEN-LAST:event_addEmployeeToDepartmentButtonActionPerformed
 
     private void addNewUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewUserButtonActionPerformed
-        AddNewUser user = new AddNewUser();
-        user.setVisible(true);
+        
+        openWindow("AddNewUser");
+
     }//GEN-LAST:event_addNewUserButtonActionPerformed
 
     private void manageEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeButtonActionPerformed
-        ManageEmployee employee = new ManageEmployee();
-        employee.setVisible(true);
+        
+        openWindow("ManageEmployee");
+
     }//GEN-LAST:event_manageEmployeeButtonActionPerformed
 
     private void manageEmployeeAddressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeAddressButtonActionPerformed
-        ManageEmployeeAddress employeeAddress = new ManageEmployeeAddress();
-        employeeAddress.setVisible(true);
+        
+        openWindow("ManageEmployeeAddress");
+
     }//GEN-LAST:event_manageEmployeeAddressButtonActionPerformed
 
     private void leaveManageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveManageButtonActionPerformed
-        LeaveManage leave = new LeaveManage();
-        leave.setVisible(true);
+        
+        openWindow("LeaveManage");
+
     }//GEN-LAST:event_leaveManageButtonActionPerformed
+
+    private void MarkAttendenceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarkAttendenceButtonActionPerformed
+        
+        openWindow("MarkAttendance");
+
+    }//GEN-LAST:event_MarkAttendenceButtonActionPerformed
+
+    private void PayrollIntegrationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayrollIntegrationButtonActionPerformed
+        
+        openWindow("PayrollIntegrations");
+
+    }//GEN-LAST:event_PayrollIntegrationButtonActionPerformed
+
+    private void ManageAdvancedPayrollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageAdvancedPayrollButtonActionPerformed
+        
+        openWindow("ManageAdvancedPayroll");
+
+    }//GEN-LAST:event_ManageAdvancedPayrollButtonActionPerformed
+
+    private void ManageCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCustomerButtonActionPerformed
+        
+        openWindow("ManageCustomer");
+        
+    }//GEN-LAST:event_ManageCustomerButtonActionPerformed
+
+    private void AddNewCompanyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewCompanyButtonActionPerformed
+        
+        openWindow("AddNewCompany");
+
+    }//GEN-LAST:event_AddNewCompanyButtonActionPerformed
+
+    private void AddNewSupplierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewSupplierButtonActionPerformed
+        
+        openWindow("AddNewSupplier");
+
+    }//GEN-LAST:event_AddNewSupplierButtonActionPerformed
+
+    private void DeliveryGuyRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeliveryGuyRegisterButtonActionPerformed
+        
+        openWindow("DeliveryGuyRegistration");
+
+    }//GEN-LAST:event_DeliveryGuyRegisterButtonActionPerformed
+
+    private void DeliveryVehicalRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeliveryVehicalRegisterButtonActionPerformed
+        
+        openWindow("DeliveryGuyVehicleInformation");
+
+    }//GEN-LAST:event_DeliveryVehicalRegisterButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-
+        
         FlatMacLightLaf.setup();
 
         /* Create and display the form */
@@ -587,9 +762,18 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.k33ptoo.components.KButton AddNewCompanyButton;
+    private com.k33ptoo.components.KButton AddNewSupplierButton;
+    private com.k33ptoo.components.KButton DeliveryAttendenceButton;
+    private com.k33ptoo.components.KButton DeliveryGuyRegisterButton;
+    private com.k33ptoo.components.KButton DeliveryVehicalRegisterButton;
     private javax.swing.JPanel FooterPanel;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JPanel MainDashboardPanel;
+    private com.k33ptoo.components.KButton ManageAdvancedPayrollButton;
+    private com.k33ptoo.components.KButton ManageCustomerButton;
+    private com.k33ptoo.components.KButton MarkAttendenceButton;
+    private com.k33ptoo.components.KButton PayrollIntegrationButton;
     private javax.swing.JPanel SideBarButtonPanel;
     private com.k33ptoo.components.KButton addDepartmentButton;
     private com.k33ptoo.components.KButton addEmployeeButton;
@@ -604,15 +788,6 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private com.k33ptoo.components.KButton kButton10;
-    private com.k33ptoo.components.KButton kButton11;
-    private com.k33ptoo.components.KButton kButton12;
-    private com.k33ptoo.components.KButton kButton4;
-    private com.k33ptoo.components.KButton kButton5;
-    private com.k33ptoo.components.KButton kButton6;
-    private com.k33ptoo.components.KButton kButton7;
-    private com.k33ptoo.components.KButton kButton8;
-    private com.k33ptoo.components.KButton kButton9;
     private com.k33ptoo.components.KButton leaveManageButton;
     private com.k33ptoo.components.KButton manageEmployeeAddressButton;
     private com.k33ptoo.components.KButton manageEmployeeButton;

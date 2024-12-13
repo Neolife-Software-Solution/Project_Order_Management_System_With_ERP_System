@@ -6,6 +6,12 @@ package hr_department_gui;
 
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import java.awt.Color;
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.MySql;
 
 /**
  *
@@ -18,10 +24,46 @@ public class AddDepartment extends javax.swing.JFrame {
      */
     public AddDepartment() {
         initComponents();
+        addPlaceholder(); //placeholder to textfield
+        loadDepartments();
+
     }
 
-    
-    
+    //addplaceholder method
+    private void addPlaceholder() {
+
+        //Department textfield placeholder and color
+        addNewDepartmentTextField.setText("New Department");
+        addNewDepartmentTextField.setForeground(Color.GRAY);
+    }
+
+    //load departments to table
+    private void loadDepartments() {
+        try {
+
+            // Execute an SQL query to fetch all records from the "department" table
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `department` ");
+
+            DefaultTableModel model = (DefaultTableModel) DepartmentTable.getModel();
+            model.setRowCount(0);  // Clear any existing rows in the table 
+
+            // Loop through the result set to extract department data
+            while (resultSet.next()) {
+
+                Vector<String> vector = new Vector<>();
+                vector.add(resultSet.getString("department_id"));
+                vector.add(resultSet.getString("department_name"));
+
+                model.addRow(vector); // Add the vector as a new row to the table model
+
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,7 +77,7 @@ public class AddDepartment extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BodyPanel = new javax.swing.JPanel();
         AddTypePanel = new javax.swing.JPanel();
-        addNewTypeTextField = new javax.swing.JTextField();
+        addNewDepartmentTextField = new javax.swing.JTextField();
         refreshButton = new javax.swing.JButton();
         addButton = new com.k33ptoo.components.KButton();
         jLabel2 = new javax.swing.JLabel();
@@ -48,7 +90,7 @@ public class AddDepartment extends javax.swing.JFrame {
         BackToDashboardButton = new javax.swing.JButton();
         TableViewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        EmployeeTypeTable = new javax.swing.JTable();
+        DepartmentTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -82,14 +124,27 @@ public class AddDepartment extends javax.swing.JFrame {
 
         AddTypePanel.setPreferredSize(new java.awt.Dimension(757, 70));
 
-        addNewTypeTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        addNewTypeTextField.addActionListener(new java.awt.event.ActionListener() {
+        addNewDepartmentTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        addNewDepartmentTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                addNewDepartmentTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                addNewDepartmentTextFieldFocusLost(evt);
+            }
+        });
+        addNewDepartmentTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addNewTypeTextFieldActionPerformed(evt);
+                addNewDepartmentTextFieldActionPerformed(evt);
             }
         });
 
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
 
         addButton.setText("Add");
         addButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -100,6 +155,11 @@ public class AddDepartment extends javax.swing.JFrame {
         addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         addButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -113,7 +173,7 @@ public class AddDepartment extends javax.swing.JFrame {
                 .addContainerGap(127, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(12, 12, 12)
-                .addComponent(addNewTypeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                .addComponent(addNewDepartmentTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
                 .addGap(12, 12, 12)
                 .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
@@ -130,7 +190,7 @@ public class AddDepartment extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddTypePanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(AddTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addNewTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addNewDepartmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18))
@@ -151,6 +211,11 @@ public class AddDepartment extends javax.swing.JFrame {
         updateButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         deleteButton.setText("Delete");
         deleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -161,6 +226,11 @@ public class AddDepartment extends javax.swing.JFrame {
         deleteButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         deleteButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         deleteButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ButtonPanelLayout = new javax.swing.GroupLayout(ButtonPanel);
         ButtonPanel.setLayout(ButtonPanelLayout);
@@ -217,8 +287,8 @@ public class AddDepartment extends javax.swing.JFrame {
 
         TableUpdatePanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
-        EmployeeTypeTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        EmployeeTypeTable.setModel(new javax.swing.table.DefaultTableModel(
+        DepartmentTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DepartmentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -234,8 +304,13 @@ public class AddDepartment extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        EmployeeTypeTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(EmployeeTypeTable);
+        DepartmentTable.getTableHeader().setReorderingAllowed(false);
+        DepartmentTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DepartmentTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(DepartmentTable);
 
         javax.swing.GroupLayout TableViewPanelLayout = new javax.swing.GroupLayout(TableViewPanel);
         TableViewPanel.setLayout(TableViewPanelLayout);
@@ -265,45 +340,280 @@ public class AddDepartment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
-         System.exit(0);
+     
+        this.dispose();
+
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
-    private void addNewTypeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewTypeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addNewTypeTextFieldActionPerformed
+    private void addNewDepartmentTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewDepartmentTextFieldActionPerformed
+
+    }//GEN-LAST:event_addNewDepartmentTextFieldActionPerformed
+
+    //add button function
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        try {
+
+            // Get the text entered in the department text field
+            String departmentname = addNewDepartmentTextField.getText(); //Select department textfield
+
+            // Check if the department name is empty
+            if (departmentname.isEmpty()|| departmentname.equals("New Department")) {
+
+                // Show a warning message if no department name is entered
+                JOptionPane.showMessageDialog(this, "Please enter Department", "Warning", JOptionPane.WARNING_MESSAGE);
+            } else {
+
+                // Check if the department name already exists in the database
+                ResultSet resultSet = MySql.executeSearch("SELECT * FROM `department` WHERE `department_name`= '" + departmentname + "'");
+
+                if (resultSet.next()) {
+
+                    // Show a warning if the department name is already used
+                    JOptionPane.showMessageDialog(this, "Department Name Already Used", "Warning", JOptionPane.WARNING_MESSAGE);
+                } else {
+
+                    // Reset AUTO_INCREMENT value
+                    MySql.executeUpdate("ALTER TABLE `department` AUTO_INCREMENT = 1");
+
+                    //Insert new department
+                    MySql.executeUpdate("INSERT INTO `department` (`department_name` ) VALUES ('" + departmentname + "')");
+
+                    loadDepartments();  //load to table
+
+                    reset();  // Clear the text field for the next entry
+
+                    addNewDepartmentTextField.grabFocus(); //focus on textfield again after adding the department
+
+                    //success message
+                    JOptionPane.showMessageDialog(this, "Department Added Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+                }
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            // Show an error message if the operation fails
+            JOptionPane.showMessageDialog(this, "Error occurred while adding the Department", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        
+        reset(); //refresh the frame
+
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
+    //update button function
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+
+        // Get the index of the selected row in the table
+        int row = DepartmentTable.getSelectedRow(); //Row selected
+
+        //Check if no row selected
+        if (row == -1) {
+
+            // Show a warning message if no row is selected
+            JOptionPane.showMessageDialog(this, "Please Select a Row", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+
+            // Get the department name from the text field
+            String departmentname = addNewDepartmentTextField.getText();
+
+            // Get the selected department ID and name from the table
+            String selectedDepartmentid = String.valueOf(DepartmentTable.getValueAt(row, 0));
+            String selectedDepartment = String.valueOf(DepartmentTable.getValueAt(row, 1));
+
+            // Check if the department name field is empty
+            if (departmentname.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please enter Department", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                // Check if the new department name matches the current name
+            } else if (selectedDepartment.equals(departmentname)) {
+                
+                JOptionPane.showMessageDialog(this, "Please change Department name to update", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+
+                try {
+
+                    //Search from Database
+                    ResultSet resultSet = MySql.executeSearch("SELECT * FROM `department` WHERE (`department_name`='" + departmentname + "') AND `department_id` != '" + selectedDepartmentid + "'");
+
+                    if (resultSet.next()) {
+
+                        JOptionPane.showMessageDialog(this, "Department Name Already Used", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                    } else {
+
+                        //Update the Database
+                        MySql.executeUpdate("UPDATE `department` SET `department_name` = '" + departmentname + "' WHERE `department_id` = '" + selectedDepartmentid + "' ");
+
+                        //load to table
+                        loadDepartments();
+                        reset(); // Clear the text field for the next entry
+
+                        //success message
+                        JOptionPane.showMessageDialog(this, "Department Updated Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    // Show an error message if the operation fails
+                    JOptionPane.showMessageDialog(this, "Error occurred while updating the Department", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+
+        }
+        
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    //delete button function
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+
+        // Get the index of the selected row in the jtable
+        int selectedRow = DepartmentTable.getSelectedRow(); //Row selected
+
+        //Check if no row selected
+        if (selectedRow == -1) {
+
+            JOptionPane.showMessageDialog(this, "Please Select a Row to delete Department ", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+
+            try {
+
+                // Get the department ID of the selected row
+                String selectedDepartmentid = String.valueOf(DepartmentTable.getValueAt(selectedRow, 0));
+
+                // Confirm before the deletion
+                int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this department?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+                
+                if (confirm == JOptionPane.YES_OPTION) {
+
+                    // Delete the selected department from the database
+                    MySql.executeUpdate("DELETE FROM `department` WHERE `department_id`='" + selectedDepartmentid + "' ");
+
+                    // Renumber remaining rows
+                    MySql.executeUpdate("SET @row_number = 0");
+                    MySql.executeUpdate("UPDATE `department` "
+                            + "SET `department_id` = (@row_number := @row_number + 1) "
+                            + "ORDER BY `department_id`");
+
+                    // Reset AUTO_INCREMENT value
+                    MySql.executeUpdate("ALTER TABLE `department` AUTO_INCREMENT = 1");
+
+                    //load to table
+                    loadDepartments();
+                    reset(); // Clear the text field for the next entry
+
+                    //success message
+                    JOptionPane.showMessageDialog(this, "Department Deleted Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+                }
+                
+            } catch (Exception e) {
+
+                e.printStackTrace();
+                // Show an error message if the operation fails
+                JOptionPane.showMessageDialog(this, "Error occurred while deleting the Department.", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+
+        }
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    //Handle mouse clicks on the DepartmentTable
+    private void DepartmentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DepartmentTableMouseClicked
+
+        // Get the index of the selected row in the table
+        int row = DepartmentTable.getSelectedRow();
+
+        // Display the department name of the selected row in the text field
+        addNewDepartmentTextField.setText(String.valueOf(DepartmentTable.getValueAt(row, 1)));
+
+        // Disable the Add button while deleting
+        addButton.setEnabled(false);
+
+        // Check if the user double-clicked on a row
+        if (evt.getClickCount() == 2) {
+
+            String selectedDepartmentID = String.valueOf(DepartmentTable.getValueAt(row, 0));
+            String selectedDepartment = String.valueOf(DepartmentTable.getValueAt(row, 1));
+
+            // Asking to confirm before the deletion
+            int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this department?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+
+            //If user confirms the deletion
+            if (confirm == JOptionPane.YES_OPTION) {
+
+                try {
+
+                    // Delete the selected department from the database
+                    MySql.executeUpdate("DELETE FROM `department` WHERE `department_id`='" + selectedDepartmentID + "' ");
+
+                    // Renumber remaining rows
+                    MySql.executeUpdate("SET @row_number = 0");
+                    MySql.executeUpdate("UPDATE `department` "
+                            + "SET `department_id` = (@row_number := @row_number + 1) "
+                            + "ORDER BY `department_id`");
+
+                    // Reset AUTO_INCREMENT value
+                    MySql.executeUpdate("ALTER TABLE `department` AUTO_INCREMENT = 1");
+
+                    // Reload the department table 
+                    loadDepartments();
+                    reset(); // Clear the text field for the next entry
+
+                    //success message
+                    JOptionPane.showMessageDialog(this, "Department Deleted Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+                    // Show an error message if the operation fails
+                    JOptionPane.showMessageDialog(this, "Error occurred while deleting the Department", "Error", JOptionPane.ERROR_MESSAGE);
+
+                }
+                
+            }
+
+        }
+        
+    }//GEN-LAST:event_DepartmentTableMouseClicked
+
+    private void addNewDepartmentTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_addNewDepartmentTextFieldFocusGained
+
+        //check and set clear the current department textfield to enter data
+        if (addNewDepartmentTextField.getText().equals("New Department")) {
+            
+            addNewDepartmentTextField.setText("");
+            addNewDepartmentTextField.setForeground(Color.BLACK);
+            
+        }
+    }//GEN-LAST:event_addNewDepartmentTextFieldFocusGained
+
+    private void addNewDepartmentTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_addNewDepartmentTextFieldFocusLost
+
+        //set back the placeholder
+        if (addNewDepartmentTextField.getText().isEmpty()) {
+            
+            addNewDepartmentTextField.setText("New Department");
+            addNewDepartmentTextField.setForeground(Color.GRAY);
+            
+        }
+
+    }//GEN-LAST:event_addNewDepartmentTextFieldFocusLost
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddDepartment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddDepartment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddDepartment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddDepartment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        
-        FlatMacLightLaf.setup();
+    public static void main(String args[]) {       
 
+        FlatMacLightLaf.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -319,12 +629,12 @@ public class AddDepartment extends javax.swing.JFrame {
     private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JPanel ButtonPanel;
-    private javax.swing.JTable EmployeeTypeTable;
+    private javax.swing.JTable DepartmentTable;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JPanel TableUpdatePanel;
     private javax.swing.JPanel TableViewPanel;
     private com.k33ptoo.components.KButton addButton;
-    private javax.swing.JTextField addNewTypeTextField;
+    private javax.swing.JTextField addNewDepartmentTextField;
     private com.k33ptoo.components.KButton deleteButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -333,4 +643,16 @@ public class AddDepartment extends javax.swing.JFrame {
     private javax.swing.JButton refreshButton;
     private com.k33ptoo.components.KButton updateButton;
     // End of variables declaration//GEN-END:variables
+
+    // Function to reset the input fields and table selection
+    private void reset() {
+
+        addNewDepartmentTextField.setText("");
+        addButton.setEnabled(true);
+        DepartmentTable.clearSelection();
+
+        //Re-add the placeholder to refreshed textfield
+        addPlaceholder();
+    }
+
 }

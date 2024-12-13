@@ -34,13 +34,18 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
      * Creates new form ManageEmployeeAddress
      */
     public ManageEmployeeAddress() {
+
         initComponents();
         loadAddress();
         loadProvinces();
+        loadProvinces2();
         provinceComboBox.addActionListener(e -> loadDistricts());
+        provinceComboBox2.addActionListener(e -> loadDistricts2());
         DistricComboBox.addActionListener(e -> loadCities());
+        districtComboBox2.addActionListener(e -> loadCities2());
 //        loadDistricts();
 //        loadDearpement();
+
     }
 
     DefaultTableModel model;
@@ -50,7 +55,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         try {
 
             ResultSet resultSet = MySql.executeSearch(" SELECT * FROM `employee_address` "
-                    + "INNER JOIN `employee` ON `employee`.`employee_address_em_address_id` = `employee_address`.`em_address_id` "
+                    + "INNER JOIN `employee` ON `employee`.`employee_id` = `employee_address`.`employee_employee_id` "
                     + "INNER JOIN `city` ON `city`.`city_id` = `employee_address`.`city_city_id` "
                     + "INNER JOIN `province` ON `province`.`province_id` = `employee_address`.`province_province_id` "
                     + "INNER JOIN `district` ON `district`.`district_id` = `employee_address`.`district_district_id` ");
@@ -119,6 +124,42 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         }
     }
 
+// Load provinces from the database and populate the provinceComboBox
+    private void loadProvinces2() {
+
+        try {
+
+            // Fetch all provinces from the database
+            ResultSet rs = MySql.executeSearch("SELECT * FROM province");
+
+            // Clear existing items from the combo box and map
+            provinceComboBox2.removeAllItems();
+
+            provinceMap.clear();
+
+            // Add "Select" as the first item in the combo box
+            provinceComboBox2.addItem("Select");
+
+            // Add each province to the combo box and map
+            while (rs.next()) {
+
+                String provinceName = rs.getString("province_name");
+
+                int provinceId = rs.getInt("province_id");
+
+                provinceComboBox2.addItem(provinceName);
+
+                provinceMap.put(provinceName, provinceId); // Store province ID for lookup
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+    }
+
 // Load districts based on the selected province
     private void loadDistricts() {
 
@@ -148,6 +189,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         }
 
         try {
+
             // Query to fetch districts related to the selected province
             String query = "SELECT * FROM district WHERE province_province_id = " + provinceId;
 
@@ -176,10 +218,73 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
             e.printStackTrace();
 
         }
+
+    }
+
+// Load districts2 based on the selected province
+    private void loadDistricts2() {
+
+        // Get the selected province name
+        String selectedProvince = (String) provinceComboBox2.getSelectedItem();
+
+        // Check if a province is selected
+        if (selectedProvince == null || "Select".equals(selectedProvince)) {
+
+            System.out.println("No province selected.");
+            districtComboBox2.removeAllItems();
+            cityComboBox2.removeAllItems();
+            districtComboBox2.addItem("Select");
+            cityComboBox2.addItem("Select");
+            return;
+
+        }
+
+        // Retrieve the province ID from the map
+        Integer provinceId = provinceMap.get(selectedProvince);
+
+        if (provinceId == null) {
+
+            System.out.println("Province not found in the map: " + selectedProvince);
+            return;
+
+        }
+
+        try {
+
+            // Query to fetch districts related to the selected province
+            String query = "SELECT * FROM district WHERE province_province_id = " + provinceId;
+
+            ResultSet rs = MySql.executeSearch(query);
+
+            // Clear existing items from the district combobox and map
+            districtComboBox2.removeAllItems();
+
+            districtMap.clear();
+
+            // Add each district to the combo box and map
+            while (rs.next()) {
+
+                String districtName = rs.getString("district_name");
+
+                int districtId = rs.getInt("district_id");
+
+                districtComboBox2.addItem(districtName);
+
+                districtMap.put(districtName, districtId); // Store district ID for lookup
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
     }
 
 // Load cities based on the selected district
     private void loadCities() {
+
         // Get the selected district name
         String selectedDistrict = (String) DistricComboBox.getSelectedItem();
 
@@ -204,6 +309,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         }
 
         try {
+
             // Query to fetch cities related to the selected district
             String query = "SELECT * FROM city WHERE district_district_id = " + districtId;
 
@@ -226,6 +332,60 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
             e.printStackTrace();
 
         }
+
+    }
+
+// Load cities2 based on the selected district
+    private void loadCities2() {
+
+        // Get the selected district name
+        String selectedDistrict = (String) districtComboBox2.getSelectedItem();
+
+        // Check if a district is selected
+        if (selectedDistrict == null) {
+
+            System.out.println("No district selected.");
+
+            return;
+
+        }
+
+        // Retrieve the district ID from the map
+        Integer districtId = districtMap.get(selectedDistrict);
+
+        if (districtId == null) {
+
+            System.out.println("District not found in the map: " + selectedDistrict);
+
+            return;
+
+        }
+
+        try {
+
+            // Query to fetch cities related to the selected district
+            String query = "SELECT * FROM city WHERE district_district_id = " + districtId;
+
+            ResultSet rs = MySql.executeSearch(query);
+
+            // Clear existing items from the city combo box
+            cityComboBox2.removeAllItems();
+
+            // Add each city to the combo box
+            while (rs.next()) {
+
+                String cityName = rs.getString("city_name");
+
+                cityComboBox2.addItem(cityName);
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
     }
 
     private void search(String searchID) {
@@ -334,6 +494,11 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         searchButton.setkStartColor(new java.awt.Color(0, 102, 153));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("Province");
@@ -518,13 +683,33 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         deleteButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         deleteButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         deleteButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
-        districtComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        districtComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        districtComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                districtComboBox2ItemStateChanged(evt);
+            }
+        });
 
         DistrictLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         DistrictLabel.setText("Sort by Distrcit");
 
-        provinceComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        provinceComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        provinceComboBox2.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                provinceComboBox2ItemStateChanged(evt);
+            }
+        });
+        provinceComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                provinceComboBox2ActionPerformed(evt);
+            }
+        });
 
         ProvinceLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         ProvinceLabel.setText("Sort by Province");
@@ -532,7 +717,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         CityLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         CityLabel.setText("Sort by City");
 
-        cityComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cityComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
 
         javax.swing.GroupLayout TableViewPanelLayout = new javax.swing.GroupLayout(TableViewPanel);
         TableViewPanel.setLayout(TableViewPanelLayout);
@@ -595,12 +780,15 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
-        System.exit(0);
+
+        this.dispose();
+
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void EmpIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmpIdKeyReleased
 
         String searchID = EmpId.getText();
+
         search(searchID);
 
     }//GEN-LAST:event_EmpIdKeyReleased
@@ -642,6 +830,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
 
         try {
+
             // Get the values entered by the user in the form fields
             String Province = String.valueOf(provinceComboBox.getSelectedItem());
             String District = String.valueOf(DistricComboBox.getSelectedItem());
@@ -652,26 +841,38 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
 
             // Validate the form fields to ensure that no required fields are empty
             if (Province.isEmpty()) {
+
                 JOptionPane.showMessageDialog(this, "Please Select Province", "Warning", JOptionPane.WARNING_MESSAGE);
+
             } else if (District.isEmpty()) {
+
                 JOptionPane.showMessageDialog(this, "Please Select District", "Warning", JOptionPane.WARNING_MESSAGE);
+
             } else if (City.isEmpty()) {
+
                 JOptionPane.showMessageDialog(this, "Please Select City", "Warning", JOptionPane.WARNING_MESSAGE);
+
             } else if (Addres_line_01.isEmpty()) {
+
                 JOptionPane.showMessageDialog(this, "Please Enter Address Line 01", "Warning", JOptionPane.WARNING_MESSAGE);
+
             } else if (Addres_line_02.isEmpty()) {
+
                 JOptionPane.showMessageDialog(this, "Please Enter Address Line 02", "Warning", JOptionPane.WARNING_MESSAGE);
+
             } else {
+
                 // Query to fetch the original data
                 String query = "SELECT * FROM `employee_address` "
-                    + "INNER JOIN `employee` ON `employee`.`employee_address_em_address_id` = `employee_address`.`em_address_id` "
-                    + "INNER JOIN `city` ON `city`.`city_id` = `employee_address`.`city_city_id` "
-                    + "INNER JOIN `province` ON `province`.`province_id` = `employee_address`.`province_province_id` "
-                    + "INNER JOIN `district` ON `district`.`district_id` = `employee_address`.`district_district_id`";
+                        + "INNER JOIN `employee` ON `employee`.`employee_id` = `employee_address`.`employee_employee_id` "
+                        + "INNER JOIN `city` ON `city`.`city_id` = `employee_address`.`city_city_id` "
+                        + "INNER JOIN `province` ON `province`.`province_id` = `employee_address`.`province_province_id` "
+                        + "INNER JOIN `district` ON `district`.`district_id` = `employee_address`.`district_district_id`";
 
                 ResultSet rs = MySql.executeSearch(query);
 
                 if (rs.next()) {
+
                     // Fetch the original values from the database
                     String originalProvince = rs.getString("province_name");
                     String originalDistrict = rs.getString("district_name");
@@ -684,52 +885,180 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                     boolean hasChanges = false;
 
                     if (!Province.equals(originalProvince)) {
+
                         updateQuery.append("province_province_id = (SELECT province_id FROM province WHERE province_name = '")
                                 .append(Province).append("'), ");
                         hasChanges = true;
+
                     }
 
                     if (!District.equals(originalDistrict)) {
+
                         updateQuery.append("district_district_id = (SELECT district_id FROM district WHERE district_name = '")
                                 .append(District).append("'), ");
                         hasChanges = true;
+
                     }
 
                     if (!City.equals(originalCity)) {
+
                         updateQuery.append("city_city_id = (SELECT city_id FROM city WHERE city_name = '")
                                 .append(City).append("'), ");
                         hasChanges = true;
+
                     }
 
                     if (!Addres_line_01.equals(originalAddressLine1)) {
+
                         updateQuery.append("address_line01 = '").append(Addres_line_01).append("', ");
                         hasChanges = true;
+
                     }
 
                     if (!Addres_line_02.equals(originalAddressLine2)) {
+
                         updateQuery.append("address_line02 = '").append(Addres_line_02).append("', ");
                         hasChanges = true;
+
                     }
 
                     // Execute the update query if there are changes
                     if (hasChanges) {
+
                         // Remove trailing comma and space
                         updateQuery.setLength(updateQuery.length() - 2);
-                        updateQuery.append(" WHERE employee.employee_id = ").append(employeeId);
+                        updateQuery.append(" WHERE employee_address.employee_employee_id = ").append(employeeId);
 
                         MySql.executeUpdate(updateQuery.toString());
                         JOptionPane.showMessageDialog(this, "Employee data updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                        loadAddress();
+
                     } else {
+
                         JOptionPane.showMessageDialog(this, "No changes detected.", "Info", JOptionPane.INFORMATION_MESSAGE);
+
                     }
+
                 }
+
             }
+
         } catch (Exception e) {
+
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error updating employee data.", "Error", JOptionPane.ERROR_MESSAGE);
+
         }
 
     }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        reset();
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void provinceComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_provinceComboBox2ItemStateChanged
+
+        //        ComboBox Select Change
+        String Province = String.valueOf(provinceComboBox2.getSelectedItem());
+
+        try {
+
+//                    Retrieve departement ID From the Map
+            Integer ProvinceID = provinceMap.get(Province);
+
+//                    Query
+            String query = "SELECT * FROM `employee_address` "
+                    + "INNER JOIN `employee` ON `employee`.`employee_id` = `employee_address`.`employee_employee_id` "
+                    + "INNER JOIN `city` ON `city`.`city_id` = `employee_address`.`city_city_id` "
+                    + "INNER JOIN `province` ON `province`.`province_id` = `employee_address`.`province_province_id` "
+                    + "INNER JOIN `district` ON `district`.`district_id` = `employee_address`.`district_district_id`";
+
+            if (Province.equals("Select")) {
+
+                query += "";
+
+            } else if (Province.equals(Province)) {
+
+                String departmentid = String.valueOf(provinceComboBox2.getSelectedIndex());
+                query += " WHERE `province`.`province_id` = '" + ProvinceID + "' ";
+
+            }
+
+            ResultSet resultSet = MySql.executeSearch(query);
+
+//                    Clear and Update table
+            model = (DefaultTableModel) ManageEmployeeAddressTable.getModel();
+            model.setRowCount(0);
+
+            while (resultSet.next()) {
+
+                Vector<String> vector = new Vector<>();
+                vector.add(resultSet.getString("employee.employee_id"));
+                vector.add(resultSet.getString("employee.first_name"));
+                vector.add(resultSet.getString("employee.last_name"));
+                vector.add(resultSet.getString("employee_address.address_line01"));
+                vector.add(resultSet.getString("employee_address.address_line02"));
+                vector.add(resultSet.getString("province.province_name"));
+                vector.add(resultSet.getString("district.district_name"));
+                vector.add(resultSet.getString("city.city_name"));
+                vector.add(resultSet.getString("employee.email"));
+
+                model.addRow(vector);
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }//GEN-LAST:event_provinceComboBox2ItemStateChanged
+
+    private void districtComboBox2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_districtComboBox2ItemStateChanged
+
+
+    }//GEN-LAST:event_districtComboBox2ItemStateChanged
+
+    private void provinceComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provinceComboBox2ActionPerformed
+
+//        loadProvinces2();
+
+    }//GEN-LAST:event_provinceComboBox2ActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+
+        try {
+
+            String searchID = EmpId.getText();
+
+            int response = JOptionPane.showConfirmDialog(
+                    null,
+                    "Are you sure you want to delete this record?",
+                    "Confirm Deletion",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE
+            );
+
+            if (response == JOptionPane.YES_OPTION) {
+
+                MySql.executeUpdate("DELETE FROM `employee_address` WHERE `employee_employee_id` = '" + searchID + "' ");
+
+                JOptionPane.showMessageDialog(this, "Delete Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                loadAddress();
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -783,4 +1112,19 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
     private com.k33ptoo.components.KButton searchButton;
     private com.k33ptoo.components.KButton updateButton;
     // End of variables declaration//GEN-END:variables
+
+    private void reset() {
+
+        EmpId.setText("");
+        provinceComboBox.setSelectedIndex(0);
+        DistricComboBox.setSelectedIndex(0);
+        CityComboBox.setSelectedIndex(0);
+        provinceComboBox2.setSelectedIndex(0);
+        cityComboBox2.setSelectedIndex(0);
+        districtComboBox2.setSelectedIndex(0);
+        AddressLine_01.setText("");
+        AddressLine_02.setText("");
+        ManageEmployeeAddressTable.clearSelection();
+
+    }
 }

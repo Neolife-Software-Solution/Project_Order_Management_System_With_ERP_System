@@ -529,7 +529,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="leaveManageButtonActionPerformed"/>
               </Events>
             </Component>
-            <Component class="com.k33ptoo.components.KButton" name="kButton4">
+            <Component class="com.k33ptoo.components.KButton" name="MarkAttendenceButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mark Attendance"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -558,8 +558,11 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MarkAttendenceButtonActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="com.k33ptoo.components.KButton" name="kButton5">
+            <Component class="com.k33ptoo.components.KButton" name="PayrollIntegrationButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Payroll Integration"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -588,10 +591,13 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PayrollIntegrationButtonActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="com.k33ptoo.components.KButton" name="kButton6">
+            <Component class="com.k33ptoo.components.KButton" name="ManageAdvancedPayrollButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Add Advanced Payroll"/>
+                <Property name="text" type="java.lang.String" value="Manage Advanced Payroll"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="1"/>
                 </Property>
@@ -618,8 +624,11 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ManageAdvancedPayrollButtonActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="com.k33ptoo.components.KButton" name="kButton7">
+            <Component class="com.k33ptoo.components.KButton" name="ManageCustomerButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Manage Customer"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -648,8 +657,11 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ManageCustomerButtonActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="com.k33ptoo.components.KButton" name="kButton8">
+            <Component class="com.k33ptoo.components.KButton" name="AddNewCompanyButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add New Company"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -678,8 +690,11 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddNewCompanyButtonActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="com.k33ptoo.components.KButton" name="kButton9">
+            <Component class="com.k33ptoo.components.KButton" name="AddNewSupplierButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add New Supplier"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -708,8 +723,11 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddNewSupplierButtonActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="com.k33ptoo.components.KButton" name="kButton10">
+            <Component class="com.k33ptoo.components.KButton" name="DeliveryGuyRegisterButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Delivery Guy Register"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -738,8 +756,11 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeliveryGuyRegisterButtonActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="com.k33ptoo.components.KButton" name="kButton11">
+            <Component class="com.k33ptoo.components.KButton" name="DeliveryVehicalRegisterButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Delivery Vehical Register"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -765,8 +786,11 @@
                   <Color blue="99" green="99" red="99" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeliveryVehicalRegisterButtonActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="com.k33ptoo.components.KButton" name="kButton12">
+            <Component class="com.k33ptoo.components.KButton" name="DeliveryAttendenceButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Delivery Attendance"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

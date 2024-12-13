@@ -339,7 +339,8 @@ public class EmployeeAddress extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
-         System.exit(0);
+         
+        this.dispose();
          
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
@@ -392,6 +393,7 @@ public class EmployeeAddress extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(EmployeeAddress.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         FlatMacLightLaf.setup();

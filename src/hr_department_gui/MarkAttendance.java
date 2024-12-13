@@ -5,6 +5,21 @@
 package hr_department_gui;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Date;
+import java.util.Vector;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
+import model.MySql;
 
 /**
  *
@@ -17,6 +32,97 @@ public class MarkAttendance extends javax.swing.JFrame {
      */
     public MarkAttendance() {
         initComponents();
+        loadAttendance2();
+        dateLoad();
+        timeLoade();
+
+    }
+
+    public void dateLoad() {
+
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy - MM - dd");
+        String dateformat = dateFormat.format(date);
+        DateLabel.setText(dateformat);
+
+    }
+
+    Timer t;
+    SimpleDateFormat format;
+
+    public void timeLoade() {
+
+        t = new Timer(0, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Date dt = new Date();
+                format = new SimpleDateFormat("hh : mm : ss");
+
+                String ti = format.format(dt);
+                TimeLabel.setText(ti);
+
+            }
+        });
+
+        t.start();
+
+    }
+
+    DefaultTableModel model;
+
+    private void loadAttendance2() {
+
+        try {
+
+            // Execute the query to fetch data from the employee table
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee`");
+
+            // Get the table model
+            model = (DefaultTableModel) AttendanceTable.getModel();
+
+            // Clear existing rows in the model
+            model.setRowCount(0);
+
+            // Get current date
+            java.util.Date currentDate = new java.util.Date();
+            java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
+            String currentDateStr = dateFormat.format(currentDate);
+
+            // Iterate through the ResultSet
+            while (resultSet.next()) {
+
+                // Fetch employee details from the ResultSet
+                String EmpID = resultSet.getString("employee.employee_id");
+                String firstName = resultSet.getString("employee.first_name");
+                String lastName = resultSet.getString("employee.last_name");
+                String fullName = firstName + " " + lastName;
+
+                // Add a new row with EmpID, fullName, current date, and a placeholder for current time
+                model.addRow(new Object[]{null, EmpID, fullName, currentDateStr, null, "Absent", 0, 0});
+                
+            }
+
+            // Update time column dynamically using a timer
+//            new javax.swing.Timer(1000, e -> {
+//                
+//                java.text.SimpleDateFormat timeFormat = new java.text.SimpleDateFormat("HH:mm:ss");
+//                String currentTimeStr = timeFormat.format(new java.util.Date());
+//
+//                for (int i = 0; i < model.getRowCount(); i++) {
+//                    model.setValueAt(currentTimeStr, i, 4); // Update time column (index 4)
+//                    
+//                }
+//                
+//            }).start();
+
+        } catch (Exception e) {
+
+            // Print the stack trace for any exceptions
+            e.printStackTrace();
+
+        }
+
     }
 
     /**
@@ -28,231 +134,299 @@ public class MarkAttendance extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        HeaderPane = new javax.swing.JPanel();
-        Header = new javax.swing.JLabel();
-        Date = new javax.swing.JLabel();
-        Time = new javax.swing.JLabel();
-        BodyPanel = new javax.swing.JPanel();
-        AddEmployeePanel = new javax.swing.JPanel();
-        EmpIDTextfield = new javax.swing.JTextField();
-        EmpNameTextfield = new javax.swing.JTextField();
-        EmpID = new javax.swing.JLabel();
-        EmpName = new javax.swing.JLabel();
-        AttendancePanel = new javax.swing.JPanel();
-        SearchEmployeePanel = new javax.swing.JPanel();
-        EmpID_Name = new javax.swing.JLabel();
-        EmpID_NameTextfield = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel5 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        EmployeeAttendanceView = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        AttendanceView = new javax.swing.JTable();
+        headPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        DateLabel = new javax.swing.JLabel();
+        TimeLabel = new javax.swing.JLabel();
+        footerPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
+        bodyPanel = new javax.swing.JPanel();
+        attendanceMarkPanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        employeeIDTextField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        employeeNameTextField = new javax.swing.JTextField();
+        addButton = new com.k33ptoo.components.KButton();
+        refreshButton = new javax.swing.JButton();
+        sortPanel = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel8 = new javax.swing.JLabel();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        tablePanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        AttendanceTable = new javax.swing.JTable();
+        SearchButton = new com.k33ptoo.components.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        Header.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
-        Header.setText("Attendance");
+        headPanel.setBackground(new java.awt.Color(153, 153, 153));
+        headPanel.setPreferredSize(new java.awt.Dimension(944, 50));
 
-        Date.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
-        Date.setText("DD / MM / YYYY");
+        jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
+        jLabel1.setText("Attendance");
 
-        Time.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
-        Time.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Time.setText("HH :: MM :: SS");
+        DateLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        DateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DateLabel.setText("DD / MM / YYYY");
 
-        javax.swing.GroupLayout HeaderPaneLayout = new javax.swing.GroupLayout(HeaderPane);
-        HeaderPane.setLayout(HeaderPaneLayout);
-        HeaderPaneLayout.setHorizontalGroup(
-            HeaderPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderPaneLayout.createSequentialGroup()
-                .addContainerGap(319, Short.MAX_VALUE)
-                .addComponent(Header)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
-                .addGroup(HeaderPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Time, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(41, 41, 41))
+        TimeLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        TimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TimeLabel.setText("HH :: MM :: SS");
+
+        javax.swing.GroupLayout headPanelLayout = new javax.swing.GroupLayout(headPanel);
+        headPanel.setLayout(headPanelLayout);
+        headPanelLayout.setHorizontalGroup(
+            headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headPanelLayout.createSequentialGroup()
+                .addContainerGap(448, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 304, Short.MAX_VALUE)
+                .addGroup(headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(DateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(64, 64, 64))
         );
-        HeaderPaneLayout.setVerticalGroup(
-            HeaderPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderPaneLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(HeaderPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Header)
-                    .addGroup(HeaderPaneLayout.createSequentialGroup()
-                        .addComponent(Date)
+        headPanelLayout.setVerticalGroup(
+            headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headPanelLayout.createSequentialGroup()
+                .addGroup(headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(headPanelLayout.createSequentialGroup()
+                        .addComponent(DateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Time)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addComponent(TimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(HeaderPane, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(headPanel, java.awt.BorderLayout.PAGE_START);
 
-        BodyPanel.setLayout(new java.awt.BorderLayout());
-
-        AddEmployeePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        EmpIDTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
-        EmpNameTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
-        EmpID.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpID.setText("Employee ID");
-
-        EmpName.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpName.setText("Employee Name");
-
-        javax.swing.GroupLayout AddEmployeePanelLayout = new javax.swing.GroupLayout(AddEmployeePanel);
-        AddEmployeePanel.setLayout(AddEmployeePanelLayout);
-        AddEmployeePanelLayout.setHorizontalGroup(
-            AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddEmployeePanelLayout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
-                .addGroup(AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpID)
-                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpName)
-                    .addComponent(EmpNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(234, Short.MAX_VALUE))
-        );
-        AddEmployeePanelLayout.setVerticalGroup(
-            AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddEmployeePanelLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addGroup(AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpName, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(EmpID, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EmpNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
-        );
-
-        BodyPanel.add(AddEmployeePanel, java.awt.BorderLayout.PAGE_START);
-
-        AttendancePanel.setLayout(new java.awt.BorderLayout());
-
-        EmpID_Name.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpID_Name.setText("Employee ID / Name");
-
-        EmpID_NameTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        EmpID_NameTextfield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmpID_NameTextfieldActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel4.setText("Date");
-
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel5.setText("To");
-
-        javax.swing.GroupLayout SearchEmployeePanelLayout = new javax.swing.GroupLayout(SearchEmployeePanel);
-        SearchEmployeePanel.setLayout(SearchEmployeePanelLayout);
-        SearchEmployeePanelLayout.setHorizontalGroup(
-            SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SearchEmployeePanelLayout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
-                .addGroup(SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpID_Name)
-                    .addGroup(SearchEmployeePanelLayout.createSequentialGroup()
-                        .addComponent(EmpID_NameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(83, Short.MAX_VALUE))
-        );
-        SearchEmployeePanelLayout.setVerticalGroup(
-            SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SearchEmployeePanelLayout.createSequentialGroup()
-                .addGroup(SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, SearchEmployeePanelLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(EmpID_Name)
-                        .addGroup(SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(EmpID_NameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4))
-                            .addGroup(SearchEmployeePanelLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel5))))
-                    .addGroup(SearchEmployeePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(23, 23, 23))
-        );
-
-        AttendancePanel.add(SearchEmployeePanel, java.awt.BorderLayout.PAGE_START);
-
-        AttendanceView.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        AttendanceView.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Attendance_ID", "Employee_ID", "Employee_Name", "Date", "Time", "Present", "Absent"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        AttendanceView.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(AttendanceView);
+        footerPanel.setBackground(new java.awt.Color(153, 153, 153));
+        footerPanel.setPreferredSize(new java.awt.Dimension(944, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackToDashboardButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout EmployeeAttendanceViewLayout = new javax.swing.GroupLayout(EmployeeAttendanceView);
-        EmployeeAttendanceView.setLayout(EmployeeAttendanceViewLayout);
-        EmployeeAttendanceViewLayout.setHorizontalGroup(
-            EmployeeAttendanceViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EmployeeAttendanceViewLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
-                .addGap(21, 21, 21))
-            .addGroup(EmployeeAttendanceViewLayout.createSequentialGroup()
+        javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
+        footerPanel.setLayout(footerPanelLayout);
+        footerPanelLayout.setHorizontalGroup(
+            footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(footerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BackToDashboardButton)
+                .addGap(909, 909, 909))
+        );
+        footerPanelLayout.setVerticalGroup(
+            footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(footerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        EmployeeAttendanceViewLayout.setVerticalGroup(
-            EmployeeAttendanceViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EmployeeAttendanceViewLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
-                .addGap(23, 23, 23)
-                .addComponent(BackToDashboardButton)
-                .addContainerGap())
+
+        getContentPane().add(footerPanel, java.awt.BorderLayout.PAGE_END);
+
+        bodyPanel.setLayout(new java.awt.BorderLayout());
+
+        attendanceMarkPanel.setPreferredSize(new java.awt.Dimension(984, 100));
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel4.setText("Employee ID");
+
+        employeeIDTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                employeeIDTextFieldActionPerformed(evt);
+            }
+        });
+        employeeIDTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                employeeIDTextFieldKeyReleased(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel5.setText("Employee Name");
+
+        employeeNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                employeeNameTextFieldKeyReleased(evt);
+            }
+        });
+
+        addButton.setText("Add");
+        addButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        addButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        addButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        addButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        addButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        addButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+
+        javax.swing.GroupLayout attendanceMarkPanelLayout = new javax.swing.GroupLayout(attendanceMarkPanel);
+        attendanceMarkPanel.setLayout(attendanceMarkPanelLayout);
+        attendanceMarkPanelLayout.setHorizontalGroup(
+            attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(attendanceMarkPanelLayout.createSequentialGroup()
+                .addContainerGap(134, Short.MAX_VALUE)
+                .addGroup(attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(employeeIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addGroup(attendanceMarkPanelLayout.createSequentialGroup()
+                        .addComponent(employeeNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(refreshButton)))
+                .addContainerGap(134, Short.MAX_VALUE))
+        );
+        attendanceMarkPanelLayout.setVerticalGroup(
+            attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(attendanceMarkPanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, attendanceMarkPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(employeeIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(employeeNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        AttendancePanel.add(EmployeeAttendanceView, java.awt.BorderLayout.PAGE_END);
+        bodyPanel.add(attendanceMarkPanel, java.awt.BorderLayout.PAGE_START);
 
-        BodyPanel.add(AttendancePanel, java.awt.BorderLayout.CENTER);
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel6.setText("Employee ID / Name");
 
-        getContentPane().add(BodyPanel, java.awt.BorderLayout.CENTER);
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel7.setText("Date");
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel8.setText("To");
+
+        AttendanceTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Attendance_ID", "Employee_ID", "Employee_Name", "Date", "Time", "Status", "Present", "Absent"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        AttendanceTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(AttendanceTable);
+
+        javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);
+        tablePanel.setLayout(tablePanelLayout);
+        tablePanelLayout.setHorizontalGroup(
+            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tablePanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 918, Short.MAX_VALUE)
+                .addGap(83, 83, 83))
+        );
+        tablePanelLayout.setVerticalGroup(
+            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tablePanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
+        );
+
+        SearchButton.setText("Search");
+        SearchButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        SearchButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        SearchButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        SearchButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        SearchButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        SearchButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        SearchButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        SearchButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        SearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout sortPanelLayout = new javax.swing.GroupLayout(sortPanel);
+        sortPanel.setLayout(sortPanelLayout);
+        sortPanelLayout.setHorizontalGroup(
+            sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
+            .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(sortPanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addGroup(sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sortPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(sortPanelLayout.createSequentialGroup()
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74))))
+        );
+        sortPanelLayout.setVerticalGroup(
+            sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sortPanelLayout.createSequentialGroup()
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(sortPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField3)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)))
+                    .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        bodyPanel.add(sortPanel, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
@@ -260,14 +434,218 @@ public class MarkAttendance extends javax.swing.JFrame {
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
 
-//        LogOut Button
-        System.exit(0);
-        
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLayout(null);
+        this.dispose();
+
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
-    private void EmpID_NameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpID_NameTextfieldActionPerformed
+    private void employeeIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_employeeIDTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EmpID_NameTextfieldActionPerformed
+    }//GEN-LAST:event_employeeIDTextFieldActionPerformed
+
+    private void employeeIDTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeIDTextFieldKeyReleased
+
+        String EmplyeeId = employeeIDTextField.getText();
+
+        try {
+
+            if (EmplyeeId.isEmpty()) {
+
+                employeeNameTextField.setText("");
+                employeeIDTextField.setEditable(true);
+                employeeNameTextField.setEditable(false);
+                return;
+
+            }
+
+            ResultSet rs = MySql.executeSearch("SELECT * FROM `employee` WHERE `employee_id` = '" + EmplyeeId + "' ");
+
+            if (rs.next()) {
+
+                String fname = rs.getString("first_name");
+                String lname = rs.getString("last_name");
+                String fullname = fname + " " + lname;
+
+                employeeNameTextField.setText(fullname);
+
+            } else {
+
+                employeeNameTextField.setText("");
+                employeeNameTextField.setEditable(false);
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }//GEN-LAST:event_employeeIDTextFieldKeyReleased
+
+    private void employeeNameTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeNameTextFieldKeyReleased
+
+        String EmpName = employeeNameTextField.getText();
+
+        try {
+            if (EmpName.isEmpty()) {
+
+                employeeIDTextField.setText("");
+                employeeNameTextField.setEditable(true);
+                employeeIDTextField.setEditable(false);
+                return;
+
+            }
+
+            // SQL query updated to handle both first name and last name correctly
+            ResultSet rs = MySql.executeSearch(
+                    "SELECT `employee_id` FROM `employee` WHERE "
+                    + "`first_name` = '" + EmpName + "' OR "
+                    + "`last_name` = '" + EmpName + "' OR "
+                    + "CONCAT(`first_name`, ' ', `last_name`) = '" + EmpName + "'"
+            );
+
+            if (rs.next()) {
+
+                String employeeId = rs.getString("employee_id");
+                employeeIDTextField.setText(employeeId);
+
+            } else {
+
+                employeeIDTextField.setText("");
+                employeeIDTextField.setEditable(false);
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+
+    }//GEN-LAST:event_employeeNameTextFieldKeyReleased
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+
+        try {
+            // Getting current date and time
+            Date date = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String currentDate = dateFormat.format(date);
+
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+            String currentTime = timeFormat.format(date);
+
+            // Fetching inputs from text fields
+            String employeeId = employeeIDTextField.getText().trim();
+            String employeeName = employeeNameTextField.getText().trim();
+
+            // Input validation
+            if (employeeId.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter Employee ID", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            if (employeeName.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter Employee Name", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Query to check if attendance for the employee on the current date already exists
+            String checkQuery = "SELECT COUNT(*) AS count FROM employee_attendance WHERE employee_employee_id = '"
+                    + employeeId + "' AND date = '" + currentDate + "'";
+            ResultSet resultSet = MySql.executeSearch(checkQuery);
+
+            if (resultSet.next()) {
+                int count = resultSet.getInt("count");
+
+                if (count > 0) {
+                    JOptionPane.showMessageDialog(this, "Attendance for this employee is already recorded for today.", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return; // Stop further execution if record exists
+                }
+            }
+
+            // Query to insert attendance
+            String query = "INSERT INTO employee_attendance (date, time, attendance_type_attendance_type_id, employee_employee_id) VALUES ('"
+                    + currentDate + "', '" + currentTime + "', 1, '" + employeeId + "')";
+
+            // Execute query using the MySql class
+            int rowsAffected = MySql.executeUpdate(query);
+//            loadAttendance();
+
+            // Feedback based on the execution result
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(this, "Attendance successfully added", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Failed to add attendance", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            // Display error stack trace for debugging
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
+
+        loadAttendanceDetailsByDateRange();
+
+    }//GEN-LAST:event_SearchButtonActionPerformed
+
+    private void loadAttendanceDetailsByDateRange() {
+        try {
+            // Fetching date range from input fields
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String startDate = dateFormat.format(jDateChooser1.getDate()); // Assuming you have a start date chooser
+            String endDate = dateFormat.format(jDateChooser2.getDate()); // Assuming you have an end date chooser
+
+            // Validation: Check if dates are empty or invalid
+            if (startDate.isEmpty() || endDate.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please select both start and end dates.", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Query to fetch data based on date range
+            String query = "SELECT ea.attendance_id, ea.employee_employee_id, e.name AS employee_name, ea.date, ea.time, at.attendance_type_name "
+                    + "FROM employee_attendance ea "
+                    + "INNER JOIN employee e ON ea.employee_employee_id = e.employee_id "
+                    + "INNER JOIN attendance_type at ON ea.attendance_type_attendance_type_id = at.attendance_type_id "
+                    + "WHERE ea.date BETWEEN '" + startDate + "' AND '" + endDate + "' "
+                    + "ORDER BY ea.date, ea.time";
+
+            // Fetching data from the database
+            ResultSet resultSet = MySql.executeSearch(query);
+
+            // Clear the table before adding new rows
+            DefaultTableModel tableModel = (DefaultTableModel) AttendanceTable.getModel();
+            tableModel.setRowCount(0);
+
+            // Populating the table with fetched data
+            while (resultSet.next()) {
+                int attendanceId = resultSet.getInt("attendance_id");
+                String employeeId = resultSet.getString("employee_employee_id");
+                String employeeName = resultSet.getString("employee_name");
+                String date = resultSet.getString("date");
+                String time = resultSet.getString("time");
+                String status = resultSet.getString("attendance_type_name");
+
+                // Adding a row to the table
+                tableModel.addRow(new Object[]{attendanceId, employeeId, employeeName, date, time, status});
+            }
+
+            // Notify user if no records found
+            if (tableModel.getRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "No records found for the selected date range.", "Info", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "An error occurred while fetching data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -285,27 +663,39 @@ public class MarkAttendance extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel AddEmployeePanel;
-    private javax.swing.JPanel AttendancePanel;
-    private javax.swing.JTable AttendanceView;
+    private javax.swing.JTable AttendanceTable;
     private javax.swing.JButton BackToDashboardButton;
-    private javax.swing.JPanel BodyPanel;
-    private javax.swing.JLabel Date;
-    private javax.swing.JLabel EmpID;
-    private javax.swing.JTextField EmpIDTextfield;
-    private javax.swing.JLabel EmpID_Name;
-    private javax.swing.JTextField EmpID_NameTextfield;
-    private javax.swing.JLabel EmpName;
-    private javax.swing.JTextField EmpNameTextfield;
-    private javax.swing.JPanel EmployeeAttendanceView;
-    private javax.swing.JLabel Header;
-    private javax.swing.JPanel HeaderPane;
-    private javax.swing.JPanel SearchEmployeePanel;
-    private javax.swing.JLabel Time;
+    private javax.swing.JLabel DateLabel;
+    private com.k33ptoo.components.KButton SearchButton;
+    private javax.swing.JLabel TimeLabel;
+    private com.k33ptoo.components.KButton addButton;
+    private javax.swing.JPanel attendanceMarkPanel;
+    private javax.swing.JPanel bodyPanel;
+    private javax.swing.JTextField employeeIDTextField;
+    private javax.swing.JTextField employeeNameTextField;
+    private javax.swing.JPanel footerPanel;
+    private javax.swing.JPanel headPanel;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton refreshButton;
+    private javax.swing.JPanel sortPanel;
+    private javax.swing.JPanel tablePanel;
     // End of variables declaration//GEN-END:variables
+
+    private void reset() {
+
+        employeeIDTextField.setText("");
+        employeeNameTextField.setText("");
+        AttendanceTable.clearSelection();
+
+    }
 }

@@ -6,17 +6,121 @@ package hr_department_gui;
 
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.MySql;
+
 /**
  *
  * @author DELL
  */
 public class AddEmployeeToDepartments extends javax.swing.JFrame {
+    
+    private static HashMap<String, String> departmentMap = new HashMap<>();
+    
+    private JFrame currentWindow = null; // Keep track of the currently open window
 
     /**
      * Creates new form AddEmployeeDepartments
      */
     public AddEmployeeToDepartments() {
+        
         initComponents();
+        Hidebutton();
+        LoadTable();
+        loadDearpement();
+        
+    }
+    
+    DefaultTableModel model;
+    
+    private void Hidebutton() {
+        
+        updateButton.setVisible(false);
+        deleteButton.setVisible(false);
+        
+    }
+    
+    private void openWindow(String windowType) {
+        if (currentWindow != null) {
+            currentWindow.dispose(); // Close the previous window if it's already open
+        }
+        
+        switch (windowType) {
+            case "AddDepartment":
+                currentWindow = new AddDepartment();
+                break;
+            
+        }
+        
+        currentWindow.setVisible(true);
+    }
+
+    //      Loading Dearpemnt Names For JcomboBox
+    private void loadDearpement() {
+        
+        try {
+            
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `department`");     // Execute a SQL query to retrieve all records from the 'department' table
+
+            Vector<String> vector = new Vector<>();  // Create a Vector to store department names (used to populate the JComboBox)
+
+            // Iterate through the ResultSet to fetch department details
+            while (resultSet.next()) {
+                
+                vector.add(resultSet.getString("department_name")); // Add the department name to the Vector (for display in the combo box)
+
+                departmentMap.put(resultSet.getString("department_name"), resultSet.getString("department_id")); // Store the department name and ID in a Map for later use
+            }
+
+            // Create a DefaultComboBoxModel using the Vector of department names
+            DefaultComboBoxModel model = new DefaultComboBoxModel(vector);
+            
+            DepartmentComboBox.setModel(model);     // Set the created model to the JComboBox to display the department names
+
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+            
+        }
+        
+    }
+    
+    private void LoadTable() {
+        
+        try {
+            
+            ResultSet resultSet = MySql.executeSearch(" SELECT * FROM `employee` "
+                    + "INNER JOIN `department` ON `employee`.`department_department_id` = `department`.`department_id` ");
+            
+            model = (DefaultTableModel) AddEmployeeDepartmentsTable.getModel();
+            model.setRowCount(0);
+            
+            while (resultSet.next()) {
+                
+                Vector<String> vector = new Vector<>();
+                vector.add(resultSet.getString("employee.employee_id"));
+                vector.add(resultSet.getString("employee.first_name"));
+                vector.add(resultSet.getString("employee.last_name"));
+                vector.add(resultSet.getString("employee.contact_number"));
+                vector.add(resultSet.getString("employee.email"));
+                vector.add(resultSet.getString("department.department_name"));
+                
+                model.addRow(vector);
+                
+            }
+            
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+            
+        }
+        
     }
 
     /**
@@ -42,14 +146,15 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Emp_id = new javax.swing.JTextField();
         searchButton = new com.k33ptoo.components.KButton();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        DepartmentComboBox = new javax.swing.JComboBox<>();
         addButton = new com.k33ptoo.components.KButton();
         newDepartmentButton = new com.k33ptoo.components.KButton();
         jSeparator2 = new javax.swing.JSeparator();
+        Emp_Name = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -65,9 +170,9 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addContainerGap(157, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         HeaderPanelLayout.setVerticalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +207,7 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
-                .addContainerGap(834, Short.MAX_VALUE))
+                .addContainerGap(752, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,6 +237,11 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
             }
         });
         AddEmployeeDepartmentsTable.getTableHeader().setReorderingAllowed(false);
+        AddEmployeeDepartmentsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddEmployeeDepartmentsTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(AddEmployeeDepartmentsTable);
 
         updateButton.setText("Update");
@@ -143,6 +253,11 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         updateButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         deleteButton.setText("Delete");
         deleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -153,6 +268,11 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         deleteButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         deleteButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         deleteButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout TablePanelLayout = new javax.swing.GroupLayout(TablePanel);
         TablePanel.setLayout(TablePanelLayout);
@@ -160,7 +280,7 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
             TablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TablePanelLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
                 .addGap(45, 45, 45))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TablePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -191,9 +311,14 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Employee ID");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        Emp_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                Emp_idActionPerformed(evt);
+            }
+        });
+        Emp_id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Emp_idKeyReleased(evt);
             }
         });
 
@@ -208,11 +333,16 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         searchButton.setkStartColor(new java.awt.Color(0, 102, 153));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel3.setText("Select Department");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        DepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
 
         addButton.setText("Add");
         addButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -223,6 +353,11 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         addButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         newDepartmentButton.setText("New Department");
         newDepartmentButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -239,53 +374,63 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
             }
         });
 
+        Emp_Name.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        Emp_Name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Emp_Name.setText("Employee Name");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(9, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(12, 12, 12)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(DepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(newDepartmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(newDepartmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Emp_Name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Emp_id, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE))
+                        .addGap(12, 12, 12)
+                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jButton1)))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Emp_id, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Emp_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newDepartmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         BodyPanel.add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -297,17 +442,268 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
-        System.exit(0);
+        
+        this.dispose();
+        
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void Emp_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Emp_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_Emp_idActionPerformed
 
     private void newDepartmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDepartmentButtonActionPerformed
-        AddDepartment department = new AddDepartment();
-        department.setVisible(true);   
+        
+        openWindow("AddDepartment");
+        
     }//GEN-LAST:event_newDepartmentButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        reset();
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void Emp_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Emp_idKeyReleased
+
+        //        Store a Employee Id AND Trim to remove Spaces
+        String empId = Emp_id.getText();
+        
+        try {
+
+//            check ID Field is empty and Clear textfield
+            if (empId.isEmpty()) {
+                
+                Emp_Name.setText("");
+                return;
+                
+            }
+
+//            Execute Databse Query
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee` WHERE `employee_id` = '" + empId + "' ");
+            
+            if (resultSet.next()) {
+                
+                String firstName = resultSet.getString("first_name");
+                String lastName = resultSet.getString("last_name");
+                String fullName = firstName + " " + lastName;
+                
+                Emp_Name.setText(fullName);
+                
+            } else {
+
+//                Clear Employee Name Text Field
+                Emp_Name.setText("");
+                
+            }
+            
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+            
+        }
+
+    }//GEN-LAST:event_Emp_idKeyReleased
+
+    private void AddEmployeeDepartmentsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddEmployeeDepartmentsTableMouseClicked
+        
+        if (evt.getClickCount() == 1) {
+            
+            updateButton.setVisible(true);
+            deleteButton.setVisible(true);
+            
+            int row = AddEmployeeDepartmentsTable.getSelectedRow();
+
+            // Retrieve the Employee ID from the selected row and set it in the employee ID text field
+            String empID = String.valueOf(AddEmployeeDepartmentsTable.getValueAt(row, 0));
+            Emp_id.setText(empID);
+            Emp_id.setEditable(false);// Make Employee ID field non-editable
+
+            // Retrieve the first and last name, then combine them into a full name
+            String fName = String.valueOf(AddEmployeeDepartmentsTable.getValueAt(row, 1));
+            String lName = String.valueOf(AddEmployeeDepartmentsTable.getValueAt(row, 2));
+            String fullname = fName + " " + lName;
+            Emp_Name.setText(fullname);
+
+            // Retrieve the department name and set it in the department combo box
+            String department = String.valueOf(AddEmployeeDepartmentsTable.getValueAt(row, 5));
+            DepartmentComboBox.setSelectedItem(department);
+            
+        }
+
+    }//GEN-LAST:event_AddEmployeeDepartmentsTableMouseClicked
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        
+        try {
+
+//            String EmpId = Emp_id.getText().trim();
+            String department = String.valueOf(DepartmentComboBox.getSelectedItem());
+            String departmentId = departmentMap.get(department);
+            String EmpId = Emp_id.getText();
+//            String department = String.valueOf(Department.getSelectedItem());
+
+            // Validate the form fields to ensure that no required fields are empty
+            if (EmpId.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Enter Employee ID", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            } else if (department.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Select Department", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            } else {
+                
+                ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee` WHERE `employee_id` = '" + EmpId + "' ");
+                
+                if (resultSet.next()) {
+
+                    // Department is already assigned
+                    JOptionPane.showMessageDialog(null, "This employee is already assigned to a department.", "Error", JOptionPane.ERROR_MESSAGE);
+                    
+                } else {
+                    
+                    MySql.executeUpdate("INSERT INTO `employee`(`department_department_id`) VALUES ('" + departmentMap.get(department) + "') WHERE `employee_id`='" + EmpId + "' ");
+                    
+                    JOptionPane.showMessageDialog(null, "Department assigned successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    
+                }
+                
+            }
+            
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+            
+        }
+        
+
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        
+        try {
+            
+            String empId = Emp_id.getText();
+            
+            int response = JOptionPane.showConfirmDialog(
+                    null,
+                    "Are you sure you want to delete this record?",
+                    "Confirm Deletion",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE
+            );
+            
+            if (response == JOptionPane.YES_OPTION) {
+                
+                MySql.executeUpdate("UPDATE employee SET `department_department_id`   = '" + 1 + "' WHERE `employee_id` = '" + empId + "' ");
+                
+                DepartmentComboBox.setSelectedIndex(0);
+                
+                JOptionPane.showMessageDialog(this, "Delete Successfully", "Warnning", JOptionPane.WARNING_MESSAGE);
+                
+                LoadTable();
+                
+            }
+            
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+            
+        }
+
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        
+        try {
+            // Get the values entered by the user in the form fields
+            String Employee_ID = Emp_id.getText();
+            
+            String Department = String.valueOf(DepartmentComboBox.getSelectedItem());
+
+            // Validate the form fields to ensure that no required fields are empty
+            if (Employee_ID.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Enter Employee ID", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            } else if (Department.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Select Department", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            } else {
+
+                // Query to fetch the original data
+                String query = "SELECT employee.employee_id, department.department_name "
+                        + "FROM employee "
+                        + "INNER JOIN department ON employee.department_department_id = department.department_id "
+                        + "WHERE employee.employee_id = '" + Employee_ID + "'";
+                
+                ResultSet rs = MySql.executeSearch(query);
+                
+                if (rs.next()) {
+
+                    // Fetch the original values from the database
+                    String originalEmployeeID = rs.getString("employee_id");
+                    String originalDepartment = rs.getString("department_name");
+
+                    // Build the dynamic update query
+                    StringBuilder updateQuery = new StringBuilder("UPDATE employee SET ");
+                    boolean hasChanges = false;
+
+                    // Check for changes
+                    if (!Department.equals(originalDepartment)) {
+
+                        // Fetch the department_id based on the department name
+                        String departmentQuery = "SELECT department_id FROM department WHERE department_name = '" + Department + "'";
+                        ResultSet deptRs = MySql.executeSearch(departmentQuery);
+                        
+                        if (deptRs.next()) {
+                            
+                            int departmentId = deptRs.getInt("department_id");
+                            
+                            updateQuery.append("department_department_id = ").append(departmentId).append(", ");
+                            
+                            hasChanges = true;
+                            
+                        }
+                        
+                    }
+
+                    // Execute the update query if there are changes
+                    if (hasChanges) {
+
+                        // Remove the trailing comma and space
+                        updateQuery.setLength(updateQuery.length() - 2);
+                        
+                        updateQuery.append(" WHERE employee_id = '").append(Employee_ID).append("'");
+                        
+                        MySql.executeUpdate(updateQuery.toString());
+                        
+                        JOptionPane.showMessageDialog(this, "Employee data updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        
+                        LoadTable(); // Refresh table with updated data
+
+                    } else {
+                        
+                        JOptionPane.showMessageDialog(this, "No changes detected.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                        
+                    }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(this, "Employee not found.", "Error", JOptionPane.ERROR_MESSAGE);
+                    
+                }
+                
+            }
+            
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+            
+        }
+
+    }//GEN-LAST:event_updateButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -336,7 +732,9 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        
+        //</editor-fold>
+        //</editor-fold>
+
         FlatMacLightLaf.setup();
 
         /* Create and display the form */
@@ -352,13 +750,15 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
     private javax.swing.JButton BackToDashboardButton;
     private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel BodyPanel;
+    private javax.swing.JComboBox<String> DepartmentComboBox;
+    private javax.swing.JLabel Emp_Name;
+    private javax.swing.JTextField Emp_id;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JPanel TablePanel;
     private javax.swing.JPanel TableUpdatePanel;
     private com.k33ptoo.components.KButton addButton;
     private com.k33ptoo.components.KButton deleteButton;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -366,9 +766,18 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
     private com.k33ptoo.components.KButton newDepartmentButton;
     private com.k33ptoo.components.KButton searchButton;
     private com.k33ptoo.components.KButton updateButton;
     // End of variables declaration//GEN-END:variables
+
+    private void reset() {
+        
+        Emp_id.setText("");
+        DepartmentComboBox.setSelectedIndex(0);
+        Emp_Name.setText("Employee Name");
+        
+        Hidebutton();
+        
+    }
 }
