@@ -34,22 +34,23 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         bodyPanal = new javax.swing.JPanel();
         ExpencesAddSectionPanal = new javax.swing.JPanel();
         ExpencesTypeTextField = new javax.swing.JTextField();
-        addTypeButton = new javax.swing.JButton();
-        updateTypeButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
-        TypeSearchPanal = new javax.swing.JPanel();
-        ExpencesTypeSearchPanal = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        kButton1 = new com.k33ptoo.components.KButton();
+        kButton2 = new com.k33ptoo.components.KButton();
+        TypeSearchPanal = new javax.swing.JPanel();
         ExpencesTablePanal = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         ExpencesTypeTable = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        headerPanal.setBackground(new java.awt.Color(153, 153, 153));
         headerPanal.setPreferredSize(new java.awt.Dimension(720, 60));
 
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
@@ -60,28 +61,20 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         headerPanal.setLayout(headerPanalLayout);
         headerPanalLayout.setHorizontalGroup(
             headerPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanalLayout.createSequentialGroup()
-                .addGap(266, 266, 266)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
-                .addGap(229, 229, 229))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1115, Short.MAX_VALUE)
         );
         headerPanalLayout.setVerticalGroup(
             headerPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanalLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(15, 15, 15))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
         getContentPane().add(headerPanal, java.awt.BorderLayout.PAGE_START);
 
         bodyPanal.setLayout(new java.awt.BorderLayout());
 
-        ExpencesAddSectionPanal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         ExpencesAddSectionPanal.setPreferredSize(new java.awt.Dimension(720, 90));
 
         ExpencesTypeTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        ExpencesTypeTextField.setText("Add Expences Types");
         ExpencesTypeTextField.setToolTipText("Add Expences Type");
         ExpencesTypeTextField.setName(""); // NOI18N
         ExpencesTypeTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -90,79 +83,73 @@ public class AddExpencesTypes extends javax.swing.JFrame {
             }
         });
 
-        addTypeButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        addTypeButton.setText("Add Type");
-
-        updateTypeButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        updateTypeButton.setText("Update Type");
-
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
         refreshButton.setToolTipText("Refresh");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel3.setText("Add Expences Type");
+
+        kButton1.setText("Type Update");
+        kButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        kButton1.setkEndColor(new java.awt.Color(0, 204, 204));
+        kButton1.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton1.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        kButton1.setkPressedColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkStartColor(new java.awt.Color(0, 102, 153));
+
+        kButton2.setText("Add Type");
+        kButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        kButton2.setkEndColor(new java.awt.Color(0, 204, 204));
+        kButton2.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        kButton2.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton2.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        kButton2.setkPressedColor(new java.awt.Color(0, 102, 153));
+        kButton2.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        kButton2.setkStartColor(new java.awt.Color(0, 102, 153));
 
         javax.swing.GroupLayout ExpencesAddSectionPanalLayout = new javax.swing.GroupLayout(ExpencesAddSectionPanal);
         ExpencesAddSectionPanal.setLayout(ExpencesAddSectionPanalLayout);
         ExpencesAddSectionPanalLayout.setHorizontalGroup(
             ExpencesAddSectionPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ExpencesAddSectionPanalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ExpencesTypeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-                .addGap(143, 143, 143)
-                .addComponent(addTypeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(updateTypeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(refreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
+                .addContainerGap(151, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(12, 12, 12)
+                .addComponent(ExpencesTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(refreshButton)
+                .addContainerGap(151, Short.MAX_VALUE))
+            .addComponent(jSeparator1)
         );
         ExpencesAddSectionPanalLayout.setVerticalGroup(
             ExpencesAddSectionPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ExpencesAddSectionPanalLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addGroup(ExpencesAddSectionPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(refreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                    .addComponent(ExpencesTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(ExpencesAddSectionPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ExpencesTypeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                        .addComponent(addTypeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                        .addComponent(updateTypeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         bodyPanal.add(ExpencesAddSectionPanal, java.awt.BorderLayout.PAGE_START);
 
         TypeSearchPanal.setLayout(new java.awt.BorderLayout());
-
-        ExpencesTypeSearchPanal.setPreferredSize(new java.awt.Dimension(720, 60));
-
-        jTextField1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        jTextField1.setToolTipText("Search Expences Type By Name");
-
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel2.setText("Search  By Type Name");
-
-        javax.swing.GroupLayout ExpencesTypeSearchPanalLayout = new javax.swing.GroupLayout(ExpencesTypeSearchPanal);
-        ExpencesTypeSearchPanal.setLayout(ExpencesTypeSearchPanalLayout);
-        ExpencesTypeSearchPanalLayout.setHorizontalGroup(
-            ExpencesTypeSearchPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ExpencesTypeSearchPanalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
-                .addGap(391, 391, 391))
-            .addComponent(jSeparator1)
-        );
-        ExpencesTypeSearchPanalLayout.setVerticalGroup(
-            ExpencesTypeSearchPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ExpencesTypeSearchPanalLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(ExpencesTypeSearchPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                .addGap(9, 9, 9)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        TypeSearchPanal.add(ExpencesTypeSearchPanal, java.awt.BorderLayout.PAGE_START);
 
         ExpencesTypeTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         ExpencesTypeTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -184,25 +171,42 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         ExpencesTypeTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(ExpencesTypeTable);
 
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel2.setText("Search  By Type Name");
+
+        jTextField1.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jTextField1.setToolTipText("Search Expences Type By Name");
+
         javax.swing.GroupLayout ExpencesTablePanalLayout = new javax.swing.GroupLayout(ExpencesTablePanal);
         ExpencesTablePanal.setLayout(ExpencesTablePanalLayout);
         ExpencesTablePanalLayout.setHorizontalGroup(
             ExpencesTablePanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ExpencesTablePanalLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addGroup(ExpencesTablePanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ExpencesTablePanalLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(12, 12, 12)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(ExpencesTablePanalLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1045, Short.MAX_VALUE)
+                        .addGap(35, 35, 35))))
         );
         ExpencesTablePanalLayout.setVerticalGroup(
             ExpencesTablePanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ExpencesTablePanalLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGroup(ExpencesTablePanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
         );
 
         TypeSearchPanal.add(ExpencesTablePanal, java.awt.BorderLayout.CENTER);
 
+        BackToDashboardPanel.setBackground(new java.awt.Color(153, 153, 153));
         BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(826, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
@@ -220,7 +224,7 @@ public class AddExpencesTypes extends javax.swing.JFrame {
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
-                .addContainerGap(782, Short.MAX_VALUE))
+                .addContainerGap(1071, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,6 +260,10 @@ public class AddExpencesTypes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ExpencesTypeTextFieldActionPerformed
 
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -277,19 +285,19 @@ public class AddExpencesTypes extends javax.swing.JFrame {
     private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel ExpencesAddSectionPanal;
     private javax.swing.JPanel ExpencesTablePanal;
-    private javax.swing.JPanel ExpencesTypeSearchPanal;
     private javax.swing.JTable ExpencesTypeTable;
     private javax.swing.JTextField ExpencesTypeTextField;
     private javax.swing.JPanel TypeSearchPanal;
-    private javax.swing.JButton addTypeButton;
     private javax.swing.JPanel bodyPanal;
     private javax.swing.JPanel headerPanal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
+    private com.k33ptoo.components.KButton kButton1;
+    private com.k33ptoo.components.KButton kButton2;
     private javax.swing.JButton refreshButton;
-    private javax.swing.JButton updateTypeButton;
     // End of variables declaration//GEN-END:variables
 }
