@@ -7,11 +7,14 @@ package hr_department_gui;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimerTask;
 import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -33,9 +36,10 @@ public class MarkAttendance extends javax.swing.JFrame {
      */
     public MarkAttendance() {
         initComponents();
-        loadAttendance2();
+        loadAttendanceTable();
         dateLoad();
         timeLoade();
+        scheduleDailyReset();
 
     }
 
@@ -48,12 +52,12 @@ public class MarkAttendance extends javax.swing.JFrame {
 
     }
 
-    Timer t;
+//    Timer t;
     SimpleDateFormat format;
 
     public void timeLoade() {
 
-        t = new Timer(0, new ActionListener() {
+        Timer t = new Timer(0, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -72,39 +76,39 @@ public class MarkAttendance extends javax.swing.JFrame {
 
     DefaultTableModel model;
 
-    private void loadAttendance2() {
-
-        try {
-
-            // Execute the query to fetch data from the employee table
-            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee`");
-
-            // Get the table model
-            model = (DefaultTableModel) AttendanceTable.getModel();
-
-            // Clear existing rows in the model
-            model.setRowCount(0);
-
-            // Get current date
-            java.util.Date currentDate = new java.util.Date();
-            java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
-            String currentDateStr = dateFormat.format(currentDate);
-
-            // Iterate through the ResultSet
-            while (resultSet.next()) {
-
-                // Fetch employee details from the ResultSet
-                String EmpID = resultSet.getString("employee.employee_id");
-                String firstName = resultSet.getString("employee.first_name");
-                String lastName = resultSet.getString("employee.last_name");
-                String fullName = firstName + " " + lastName;
-
-                // Add a new row with EmpID, fullName, current date, and a placeholder for current time
-                model.addRow(new Object[]{null, EmpID, fullName, currentDateStr, null, "Absent", 0, 0});
-
-            }
-
-            // Update time column dynamically using a timer
+//    private void loadAttendance2() {
+//
+//        try {
+//
+//            // Execute the query to fetch data from the employee table
+//            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee`");
+//
+//            // Get the table model
+//            model = (DefaultTableModel) AttendanceTable.getModel();
+//
+//            // Clear existing rows in the model
+//            model.setRowCount(0);
+//
+//            // Get current date
+//            java.util.Date currentDate = new java.util.Date();
+//            java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
+//            String currentDateStr = dateFormat.format(currentDate);
+//
+//            // Iterate through the ResultSet
+//            while (resultSet.next()) {
+//
+//                // Fetch employee details from the ResultSet
+//                String EmpID = resultSet.getString("employee.employee_id");
+//                String firstName = resultSet.getString("employee.first_name");
+//                String lastName = resultSet.getString("employee.last_name");
+//                String fullName = firstName + " " + lastName;
+//
+//                // Add a new row with EmpID, fullName, current date, and a placeholder for current time
+//                model.addRow(new Object[]{null, EmpID, fullName, currentDateStr, null, "Absent", 0, 0});
+//
+//            }
+//
+//            // Update time column dynamically using a timer
 //            new javax.swing.Timer(1000, e -> {
 //                
 //                java.text.SimpleDateFormat timeFormat = new java.text.SimpleDateFormat("HH:mm:ss");
@@ -116,15 +120,14 @@ public class MarkAttendance extends javax.swing.JFrame {
 //                }
 //                
 //            }).start();
-        } catch (Exception e) {
-
-            // Print the stack trace for any exceptions
-            e.printStackTrace();
-
-        }
-
-    }
-
+//        } catch (Exception e) {
+//
+//            // Print the stack trace for any exceptions
+//            e.printStackTrace();
+//
+//        }
+//
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -247,6 +250,9 @@ public class MarkAttendance extends javax.swing.JFrame {
             }
         });
         employeeIDTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                employeeIDTextFieldKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 employeeIDTextFieldKeyReleased(evt);
             }
@@ -275,8 +281,18 @@ public class MarkAttendance extends javax.swing.JFrame {
                 addButtonActionPerformed(evt);
             }
         });
+        addButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                addButtonKeyPressed(evt);
+            }
+        });
 
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout attendanceMarkPanelLayout = new javax.swing.GroupLayout(attendanceMarkPanel);
         attendanceMarkPanel.setLayout(attendanceMarkPanelLayout);
@@ -544,6 +560,8 @@ public class MarkAttendance extends javax.swing.JFrame {
         // Refresh the JTable view
         loadAttendanceTable();
 
+        reset();
+
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void addAttendance(String employeeId, String employeeName) {
@@ -572,7 +590,7 @@ public class MarkAttendance extends javax.swing.JFrame {
             int presentCount = 1;
 
             String insertQuery = "INSERT INTO employee_attendance (employee_employee_id,employee_name, date, time, attendance_type_attendance_type_id, present_count) "
-                    + "VALUES ('" + employeeId + "','" +  employeeName + "', '" + currentDate + "', '" + currentTime + "', '" + presentId + "', " + presentCount + ")";
+                    + "VALUES ('" + employeeId + "','" + employeeName + "', '" + currentDate + "', '" + currentTime + "', '" + presentId + "', " + presentCount + ")";
             int rows = MySql.executeUpdate(insertQuery);
 
             if (rows > 0) {
@@ -677,9 +695,100 @@ public class MarkAttendance extends javax.swing.JFrame {
 
     private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
 
-        loadAttendanceDetailsByDateRange();
+//        loadAttendanceDetailsByDateRange();
 
     }//GEN-LAST:event_SearchButtonActionPerformed
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+
+        reset();
+
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
+    private void addButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addButtonKeyPressed
+
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+
+            // Get the values from the text fields
+            String employeeId = employeeIDTextField.getText().trim();
+            String employeeName = employeeNameTextField.getText().trim();
+
+            // Validate the inputs
+            if (employeeId.isEmpty() || employeeName.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter both Employee ID and Employee Name.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Call the method to add the attendance
+            addAttendance(employeeId, employeeName);
+
+            // Refresh the JTable view
+            loadAttendanceTable();
+
+            reset();
+
+        }
+
+    }//GEN-LAST:event_addButtonKeyPressed
+
+    private void employeeIDTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeIDTextFieldKeyPressed
+
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+
+            // Get the values from the text fields
+            String employeeId = employeeIDTextField.getText().trim();
+            String employeeName = employeeNameTextField.getText().trim();
+
+            // Validate the inputs
+            if (employeeId.isEmpty() || employeeName.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter both Employee ID and Employee Name.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Call the method to add the attendance
+            addAttendance(employeeId, employeeName);
+
+            // Refresh the JTable view
+            loadAttendanceTable();
+
+            reset();
+
+        }
+
+    }//GEN-LAST:event_employeeIDTextFieldKeyPressed
+
+    private static void scheduleDailyReset() {
+        java.util.Timer timer = new java.util.Timer();
+        TimerTask resetTask = new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    resetAttendanceTable();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 21); // 9 PM
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+
+        // If the time has already passed today, schedule for tomorrow
+        if (calendar.getTime().before(new java.util.Date())) {
+            calendar.add(Calendar.DAY_OF_MONTH, 1);
+        }
+
+        // Schedule the task to run daily at 9 PM
+        timer.scheduleAtFixedRate(resetTask, calendar.getTime(), 24 * 60 * 60 * 1000);
+    }
+
+    private static void resetAttendanceTable() throws Exception {
+        String query = "TRUNCATE TABLE employee_attendance";
+        MySql.executeUpdate(query);
+        System.out.println("Attendance table reset successfully at 9 PM.");
+    }
 
     private void loadAttendanceDetailsByDateRange() {
         try {
