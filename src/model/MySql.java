@@ -16,16 +16,20 @@ public class MySql {
    
     private static Connection connection;
     
+//    Create Connection
+    
     public static void CreatConnection () throws Exception {
         
         if (connection == null) {
             
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/order_management_system_with_erp_db","root","Sanjana123!$");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/order_management_system_with_erp_db","root","Judemysql@2004");
             
         }
         
     }
+    
+//    Update
     
     public static ResultSet executeSearch (String query) throws Exception {
     
@@ -33,6 +37,8 @@ public class MySql {
         return connection.createStatement().executeQuery(query);
     
     }
+    
+//   Insert , Delete
     
     public static Integer executeUpdate (String query) throws Exception {
     

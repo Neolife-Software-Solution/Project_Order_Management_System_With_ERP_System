@@ -5,6 +5,7 @@
 package hr_department_gui;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import javax.swing.JFrame;
 
 /**
  *
@@ -28,178 +29,177 @@ public class MarkAttendance extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        HeaderPane = new javax.swing.JPanel();
-        Header = new javax.swing.JLabel();
-        Date = new javax.swing.JLabel();
-        Time = new javax.swing.JLabel();
-        BodyPanel = new javax.swing.JPanel();
-        AddEmployeePanel = new javax.swing.JPanel();
-        EmpIDTextfield = new javax.swing.JTextField();
-        EmpNameTextfield = new javax.swing.JTextField();
-        EmpID = new javax.swing.JLabel();
-        EmpName = new javax.swing.JLabel();
-        AttendancePanel = new javax.swing.JPanel();
-        SearchEmployeePanel = new javax.swing.JPanel();
-        EmpID_Name = new javax.swing.JLabel();
-        EmpID_NameTextfield = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel5 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        EmployeeAttendanceView = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        AttendanceView = new javax.swing.JTable();
+        headPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        DateLabel = new javax.swing.JLabel();
+        TimeLabel = new javax.swing.JLabel();
+        footerPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
+        bodyPanel = new javax.swing.JPanel();
+        attendanceMarkPanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        employeeIDTextField = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        employeeNameTextField = new javax.swing.JTextField();
+        addButton = new com.k33ptoo.components.KButton();
+        refreshButton = new javax.swing.JButton();
+        sortPanel = new javax.swing.JPanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel8 = new javax.swing.JLabel();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        tablePanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        Header.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
-        Header.setText("Attendance");
+        headPanel.setBackground(new java.awt.Color(153, 153, 153));
+        headPanel.setPreferredSize(new java.awt.Dimension(944, 50));
 
-        Date.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
-        Date.setText("DD / MM / YYYY");
+        jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
+        jLabel1.setText("Attendance");
 
-        Time.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
-        Time.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Time.setText("HH :: MM :: SS");
+        DateLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        DateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DateLabel.setText("DD / MM / YYYY");
 
-        javax.swing.GroupLayout HeaderPaneLayout = new javax.swing.GroupLayout(HeaderPane);
-        HeaderPane.setLayout(HeaderPaneLayout);
-        HeaderPaneLayout.setHorizontalGroup(
-            HeaderPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderPaneLayout.createSequentialGroup()
-                .addContainerGap(319, Short.MAX_VALUE)
-                .addComponent(Header)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
-                .addGroup(HeaderPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Date, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Time, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(41, 41, 41))
+        TimeLabel.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        TimeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TimeLabel.setText("HH :: MM :: SS");
+
+        javax.swing.GroupLayout headPanelLayout = new javax.swing.GroupLayout(headPanel);
+        headPanel.setLayout(headPanelLayout);
+        headPanelLayout.setHorizontalGroup(
+            headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headPanelLayout.createSequentialGroup()
+                .addContainerGap(402, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
+                .addGroup(headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(DateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TimeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(64, 64, 64))
         );
-        HeaderPaneLayout.setVerticalGroup(
-            HeaderPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderPaneLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(HeaderPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Header)
-                    .addGroup(HeaderPaneLayout.createSequentialGroup()
-                        .addComponent(Date)
+        headPanelLayout.setVerticalGroup(
+            headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headPanelLayout.createSequentialGroup()
+                .addGroup(headPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(headPanelLayout.createSequentialGroup()
+                        .addComponent(DateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Time)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addComponent(TimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(HeaderPane, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(headPanel, java.awt.BorderLayout.PAGE_START);
 
-        BodyPanel.setLayout(new java.awt.BorderLayout());
+        footerPanel.setBackground(new java.awt.Color(153, 153, 153));
+        footerPanel.setPreferredSize(new java.awt.Dimension(944, 50));
 
-        AddEmployeePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        EmpIDTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
-        EmpNameTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
-        EmpID.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpID.setText("Employee ID");
-
-        EmpName.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpName.setText("Employee Name");
-
-        javax.swing.GroupLayout AddEmployeePanelLayout = new javax.swing.GroupLayout(AddEmployeePanel);
-        AddEmployeePanel.setLayout(AddEmployeePanelLayout);
-        AddEmployeePanelLayout.setHorizontalGroup(
-            AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddEmployeePanelLayout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
-                .addGroup(AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpID)
-                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpName)
-                    .addComponent(EmpNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(234, Short.MAX_VALUE))
-        );
-        AddEmployeePanelLayout.setVerticalGroup(
-            AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddEmployeePanelLayout.createSequentialGroup()
-                .addContainerGap(10, Short.MAX_VALUE)
-                .addGroup(AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpName, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(EmpID, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(AddEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EmpNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
-        );
-
-        BodyPanel.add(AddEmployeePanel, java.awt.BorderLayout.PAGE_START);
-
-        AttendancePanel.setLayout(new java.awt.BorderLayout());
-
-        EmpID_Name.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpID_Name.setText("Employee ID / Name");
-
-        EmpID_NameTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        EmpID_NameTextfield.addActionListener(new java.awt.event.ActionListener() {
+        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmpID_NameTextfieldActionPerformed(evt);
+                BackToDashboardButtonActionPerformed(evt);
             }
         });
 
+        javax.swing.GroupLayout footerPanelLayout = new javax.swing.GroupLayout(footerPanel);
+        footerPanel.setLayout(footerPanelLayout);
+        footerPanelLayout.setHorizontalGroup(
+            footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(footerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BackToDashboardButton)
+                .addGap(909, 909, 909))
+        );
+        footerPanelLayout.setVerticalGroup(
+            footerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(footerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BackToDashboardButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(footerPanel, java.awt.BorderLayout.PAGE_END);
+
+        bodyPanel.setLayout(new java.awt.BorderLayout());
+
+        attendanceMarkPanel.setPreferredSize(new java.awt.Dimension(984, 100));
+
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel4.setText("Date");
+        jLabel4.setText("Employee ID");
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel5.setText("To");
+        jLabel5.setText("Employee Name");
 
-        javax.swing.GroupLayout SearchEmployeePanelLayout = new javax.swing.GroupLayout(SearchEmployeePanel);
-        SearchEmployeePanel.setLayout(SearchEmployeePanelLayout);
-        SearchEmployeePanelLayout.setHorizontalGroup(
-            SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SearchEmployeePanelLayout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
-                .addGroup(SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EmpID_Name)
-                    .addGroup(SearchEmployeePanelLayout.createSequentialGroup()
-                        .addComponent(EmpID_NameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(83, Short.MAX_VALUE))
+        addButton.setText("Add");
+        addButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        addButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        addButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        addButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        addButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        addButton.setkStartColor(new java.awt.Color(0, 102, 153));
+
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+
+        javax.swing.GroupLayout attendanceMarkPanelLayout = new javax.swing.GroupLayout(attendanceMarkPanel);
+        attendanceMarkPanel.setLayout(attendanceMarkPanelLayout);
+        attendanceMarkPanelLayout.setHorizontalGroup(
+            attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(attendanceMarkPanelLayout.createSequentialGroup()
+                .addContainerGap(87, Short.MAX_VALUE)
+                .addGroup(attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(employeeIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addGroup(attendanceMarkPanelLayout.createSequentialGroup()
+                        .addComponent(employeeNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(refreshButton)))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
-        SearchEmployeePanelLayout.setVerticalGroup(
-            SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SearchEmployeePanelLayout.createSequentialGroup()
-                .addGroup(SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, SearchEmployeePanelLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(EmpID_Name)
-                        .addGroup(SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(EmpID_NameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4))
-                            .addGroup(SearchEmployeePanelLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel5))))
-                    .addGroup(SearchEmployeePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(SearchEmployeePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(23, 23, 23))
+        attendanceMarkPanelLayout.setVerticalGroup(
+            attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(attendanceMarkPanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, attendanceMarkPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(attendanceMarkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(employeeIDTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(employeeNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        AttendancePanel.add(SearchEmployeePanel, java.awt.BorderLayout.PAGE_START);
+        bodyPanel.add(attendanceMarkPanel, java.awt.BorderLayout.PAGE_START);
 
-        AttendanceView.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        AttendanceView.setModel(new javax.swing.table.DefaultTableModel(
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel6.setText("Employee ID / Name");
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel7.setText("Date");
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel8.setText("To");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -215,44 +215,68 @@ public class MarkAttendance extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        AttendanceView.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(AttendanceView);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable1);
 
-        BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackToDashboardButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout EmployeeAttendanceViewLayout = new javax.swing.GroupLayout(EmployeeAttendanceView);
-        EmployeeAttendanceView.setLayout(EmployeeAttendanceViewLayout);
-        EmployeeAttendanceViewLayout.setHorizontalGroup(
-            EmployeeAttendanceViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EmployeeAttendanceViewLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 821, Short.MAX_VALUE)
-                .addGap(21, 21, 21))
-            .addGroup(EmployeeAttendanceViewLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BackToDashboardButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);
+        tablePanel.setLayout(tablePanelLayout);
+        tablePanelLayout.setHorizontalGroup(
+            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tablePanelLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jScrollPane1)
+                .addGap(83, 83, 83))
         );
-        EmployeeAttendanceViewLayout.setVerticalGroup(
-            EmployeeAttendanceViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(EmployeeAttendanceViewLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
-                .addGap(23, 23, 23)
-                .addComponent(BackToDashboardButton)
-                .addContainerGap())
+        tablePanelLayout.setVerticalGroup(
+            tablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tablePanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
         );
 
-        AttendancePanel.add(EmployeeAttendanceView, java.awt.BorderLayout.PAGE_END);
+        javax.swing.GroupLayout sortPanelLayout = new javax.swing.GroupLayout(sortPanel);
+        sortPanel.setLayout(sortPanelLayout);
+        sortPanelLayout.setHorizontalGroup(
+            sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1)
+            .addGroup(sortPanelLayout.createSequentialGroup()
+                .addContainerGap(84, Short.MAX_VALUE)
+                .addGroup(sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(sortPanelLayout.createSequentialGroup()
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(84, Short.MAX_VALUE))
+            .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        sortPanelLayout.setVerticalGroup(
+            sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sortPanelLayout.createSequentialGroup()
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(sortPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        BodyPanel.add(AttendancePanel, java.awt.BorderLayout.CENTER);
+        bodyPanel.add(sortPanel, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(BodyPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
@@ -260,14 +284,11 @@ public class MarkAttendance extends javax.swing.JFrame {
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
 
-//        LogOut Button
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLayout(null);
         System.exit(0);
-        
-    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
-    private void EmpID_NameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpID_NameTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EmpID_NameTextfieldActionPerformed
+    }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,27 +306,30 @@ public class MarkAttendance extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel AddEmployeePanel;
-    private javax.swing.JPanel AttendancePanel;
-    private javax.swing.JTable AttendanceView;
     private javax.swing.JButton BackToDashboardButton;
-    private javax.swing.JPanel BodyPanel;
-    private javax.swing.JLabel Date;
-    private javax.swing.JLabel EmpID;
-    private javax.swing.JTextField EmpIDTextfield;
-    private javax.swing.JLabel EmpID_Name;
-    private javax.swing.JTextField EmpID_NameTextfield;
-    private javax.swing.JLabel EmpName;
-    private javax.swing.JTextField EmpNameTextfield;
-    private javax.swing.JPanel EmployeeAttendanceView;
-    private javax.swing.JLabel Header;
-    private javax.swing.JPanel HeaderPane;
-    private javax.swing.JPanel SearchEmployeePanel;
-    private javax.swing.JLabel Time;
+    private javax.swing.JLabel DateLabel;
+    private javax.swing.JLabel TimeLabel;
+    private com.k33ptoo.components.KButton addButton;
+    private javax.swing.JPanel attendanceMarkPanel;
+    private javax.swing.JPanel bodyPanel;
+    private javax.swing.JTextField employeeIDTextField;
+    private javax.swing.JTextField employeeNameTextField;
+    private javax.swing.JPanel footerPanel;
+    private javax.swing.JPanel headPanel;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton refreshButton;
+    private javax.swing.JPanel sortPanel;
+    private javax.swing.JPanel tablePanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,15 @@ package hr_department_gui;
 
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
+import java.util.Vector;
+import java.util.HashMap;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.MySql;
 
 /**
  *
@@ -13,11 +22,81 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
  */
 public class EmployeePosition extends javax.swing.JFrame {
 
+    // HashMap to store department names and theircIDs 
+    private static HashMap<String, String> employeeDepartmentMap = new HashMap<>();
+
     /**
      * Creates new form EmployeeType
      */
     public EmployeePosition() {
         initComponents();
+        addPlaceholder(); //add textfield plcaeholder
+        loadPositions();
+        loadDepartments();
+    }
+
+    //addplaceholder method
+    private void addPlaceholder() {
+
+        //Position Textfield placeholder and color
+        addNewPositionTextField.setText("Position Name");
+        addNewPositionTextField.setForeground(Color.GRAY);
+    }
+
+    // Load departments into the combo box
+    private void loadDepartments() {
+        try {
+
+            // Execute an SQL query to fetch all records from the "department" table
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `department` ");
+            Vector<String> vector = new Vector<>();
+            vector.add("Select Department");// Placeholder item in combobox
+
+            while (resultSet.next()) {
+                vector.add(resultSet.getString("department_name"));// Add department name to the vector
+                employeeDepartmentMap.put(resultSet.getString("department_name"), resultSet.getString("department_id"));// Map department name to ID
+            }
+
+            // Show the combo box with department names
+            DefaultComboBoxModel model = new DefaultComboBoxModel(vector);
+            departmentComboBox.setModel(model);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    //load to Positions into table
+    private void loadPositions() {
+        try {
+
+            DefaultTableModel model = (DefaultTableModel) PositionTable.getModel();
+            model.setRowCount(0);
+            
+            //Get data from databse table 
+            
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee_position` INNER JOIN `department` "
+                    + "ON `employee_position`.`department_department_id` = `department`.`department_id` ");            
+
+            //Show in the table
+            while (resultSet.next()) {
+
+                Vector<String> vector = new Vector<>();
+                vector.add(resultSet.getString("employee_position_id"));
+                vector.add(resultSet.getString("position_name"));
+                vector.add(resultSet.getString("department.department_name"));
+
+                //Add the row to the table
+                
+                model.addRow(vector);
+
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
     }
 
     /**
@@ -33,20 +112,22 @@ public class EmployeePosition extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BodyPanel = new javax.swing.JPanel();
         AddTypePanel = new javax.swing.JPanel();
-        addNewTypeTextField = new javax.swing.JTextField();
+        addNewPositionTextField = new javax.swing.JTextField();
         refreshButton = new javax.swing.JButton();
         addButton = new com.k33ptoo.components.KButton();
         jLabel2 = new javax.swing.JLabel();
+        departmentComboBox = new javax.swing.JComboBox<>();
         TableUpdatePanel = new javax.swing.JPanel();
         ButtonPanel = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         updateButton = new com.k33ptoo.components.KButton();
         deleteButton = new com.k33ptoo.components.KButton();
+        newDepartmentButton = new javax.swing.JButton();
         BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
         TableViewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        EmployeeTypeTable = new javax.swing.JTable();
+        PositionTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -80,14 +161,27 @@ public class EmployeePosition extends javax.swing.JFrame {
 
         AddTypePanel.setPreferredSize(new java.awt.Dimension(757, 70));
 
-        addNewTypeTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        addNewTypeTextField.addActionListener(new java.awt.event.ActionListener() {
+        addNewPositionTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        addNewPositionTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                addNewPositionTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                addNewPositionTextFieldFocusLost(evt);
+            }
+        });
+        addNewPositionTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addNewTypeTextFieldActionPerformed(evt);
+                addNewPositionTextFieldActionPerformed(evt);
             }
         });
 
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
 
         addButton.setText("Add");
         addButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -98,25 +192,39 @@ public class EmployeePosition extends javax.swing.JFrame {
         addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         addButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Position");
+
+        departmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        departmentComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                departmentComboBoxKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout AddTypePanelLayout = new javax.swing.GroupLayout(AddTypePanel);
         AddTypePanel.setLayout(AddTypePanelLayout);
         AddTypePanelLayout.setHorizontalGroup(
             AddTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddTypePanelLayout.createSequentialGroup()
-                .addContainerGap(127, Short.MAX_VALUE)
+                .addContainerGap(97, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(addNewTypeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
-                .addGap(12, 12, 12)
+                .addComponent(addNewPositionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(departmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
                 .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(refreshButton)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         AddTypePanelLayout.setVerticalGroup(
             AddTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,9 +236,10 @@ public class EmployeePosition extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddTypePanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(AddTypePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addNewTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addNewPositionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(departmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18))
         );
 
@@ -149,6 +258,11 @@ public class EmployeePosition extends javax.swing.JFrame {
         updateButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         deleteButton.setText("Delete");
         deleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -159,6 +273,18 @@ public class EmployeePosition extends javax.swing.JFrame {
         deleteButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         deleteButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         deleteButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
+        newDepartmentButton.setText("New Department");
+        newDepartmentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newDepartmentButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout ButtonPanelLayout = new javax.swing.GroupLayout(ButtonPanel);
         ButtonPanel.setLayout(ButtonPanelLayout);
@@ -166,21 +292,25 @@ public class EmployeePosition extends javax.swing.JFrame {
             ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ButtonPanelLayout.createSequentialGroup()
-                .addContainerGap(240, Short.MAX_VALUE)
+                .addContainerGap(135, Short.MAX_VALUE)
+                .addComponent(newDepartmentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
                 .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         ButtonPanelLayout.setVerticalGroup(
             ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ButtonPanelLayout.createSequentialGroup()
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addGroup(ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(ButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newDepartmentButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         TableUpdatePanel.add(ButtonPanel, java.awt.BorderLayout.PAGE_START);
@@ -215,25 +345,30 @@ public class EmployeePosition extends javax.swing.JFrame {
 
         TableUpdatePanel.add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
-        EmployeeTypeTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        EmployeeTypeTable.setModel(new javax.swing.table.DefaultTableModel(
+        PositionTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        PositionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Position ID", "Position"
+                "Position ID", "Position", "Department"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        EmployeeTypeTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(EmployeeTypeTable);
+        PositionTable.getTableHeader().setReorderingAllowed(false);
+        PositionTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PositionTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(PositionTable);
 
         javax.swing.GroupLayout TableViewPanelLayout = new javax.swing.GroupLayout(TableViewPanel);
         TableViewPanel.setLayout(TableViewPanelLayout);
@@ -263,43 +398,264 @@ public class EmployeePosition extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
-         System.exit(0);
+
+        dispose();
+
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
-    private void addNewTypeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewTypeTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addNewTypeTextFieldActionPerformed
+    private void addNewPositionTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewPositionTextFieldActionPerformed
+
+        //Press Enter key will focus on combobox from texfield
+        departmentComboBox.grabFocus();
+    }//GEN-LAST:event_addNewPositionTextFieldActionPerformed
+
+    //add button function
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+
+        try {
+
+            // Get input values
+            String positionname = addNewPositionTextField.getText(); //Select department textfield
+            String department = String.valueOf(departmentComboBox.getSelectedItem());
+
+            // Check if position name is empty
+            if (positionname.isEmpty()|| positionname.equals("Position Name")) {
+
+                JOptionPane.showMessageDialog(this, "Please enter Position", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                // Validate department selection
+            } else if (department.equals("Select Department")) {
+                // Check if the user has selected a department
+                JOptionPane.showMessageDialog(this, "Please select a Department", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+
+                // Get the department ID based on the selected department name from the combo box
+                String departmentId = employeeDepartmentMap.get(department);
+
+                //Select from Database
+                
+                ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee_position` WHERE `position_name`= '" + positionname + "' AND `department_department_id`= '" + employeeDepartmentMap.get(department) + "'");
+
+                if (resultSet.next()) {
+                    JOptionPane.showMessageDialog(this, "Position Name Already Used in this Department", "Warning", JOptionPane.WARNING_MESSAGE);
+                } else {
+
+                    // Reset AUTO_INCREMENT value
+                    MySql.executeUpdate("ALTER TABLE `employee_position` AUTO_INCREMENT = 1");
+
+                    //Insert new position
+                    MySql.executeUpdate("INSERT INTO `employee_position` (`position_name`,`department_department_id` ) VALUES ('" + positionname + "','" + employeeDepartmentMap.get(department) + "')");
+
+                    //load to table
+                    loadPositions();
+                    reset();// Clear the text field for the next entry
+
+                    //focus on the textfield again aftr adding the position
+                    addNewPositionTextField.grabFocus();
+
+                    //success message
+                    JOptionPane.showMessageDialog(this, "Position Added Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+                }
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error occurred while adding the Position", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    //update button function
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+
+        int row = PositionTable.getSelectedRow(); //Get the selected row from jtable
+
+        //Check if no row selected
+        if (row == -1) {
+
+            JOptionPane.showMessageDialog(this, "Please Select a Row", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+
+            //Get input values
+            String positionname = addNewPositionTextField.getText();
+            String department = String.valueOf(departmentComboBox.getSelectedItem());
+
+            // Get data from the selected row
+            String selectedPositionid = String.valueOf(PositionTable.getValueAt(row, 0));
+            String selectedPosition = String.valueOf(PositionTable.getValueAt(row, 1));
+            String selectedDepartment = String.valueOf(PositionTable.getValueAt(row, 2));
+
+            // Update combo box to show the selected department
+            
+            departmentComboBox.setSelectedItem(selectedDepartment);
+
+            // Validate inputs
+            if (positionname.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please enter Position", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else if (department.equals("Select Department")) {
+                
+                JOptionPane.showMessageDialog(this, "Please select Depatment", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+
+                try {
+                    //Search from Database
+                    ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee_position` WHERE `position_name` = '" + positionname + "' AND `department_department_id` = '" + employeeDepartmentMap.get(department) + "'");
+
+                    if (resultSet.next()) {
+
+                        JOptionPane.showMessageDialog(this, "Change Position Name or Department to update", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                    } else {
+                        MySql.executeUpdate("UPDATE `employee_position` SET `department_department_id` = '" + employeeDepartmentMap.get(department) + "' , `position_name` = '" + positionname + "' "
+                                + "WHERE `employee_position_id` = '" + selectedPositionid + "'");
+
+                        //load to table
+                        loadPositions();
+                        reset();// Clear the text field for the next entry
+
+                        //success message
+                        JOptionPane.showMessageDialog(this, "Position Updated Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(this, "Error occurred while updating the Position", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+
+        }
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    //delete button function
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+
+        // Get the index of the selected row in the jtable
+        int selectedRow = PositionTable.getSelectedRow(); //Row selected
+
+        //None row selected
+        if (selectedRow == -1) {
+
+            JOptionPane.showMessageDialog(this, "Please Select a Row to delete Position ", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+
+            try {
+
+                // Get the position ID and the department name of the selected row
+                String selectedPositionid = String.valueOf(PositionTable.getValueAt(selectedRow, 0));
+                String selectedDepartment = String.valueOf(PositionTable.getValueAt(selectedRow, 2));
+
+                // Confirm before the deletion
+                int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this position?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+                if (confirm == JOptionPane.YES_OPTION) {
+
+                    //Delete from database
+                    MySql.executeUpdate("DELETE FROM `employee_position` WHERE `employee_position_id`='" + selectedPositionid + "' ");
+
+                    // Renumber remaining rows
+                    MySql.executeUpdate("SET @row_number = 0");
+                    MySql.executeUpdate("UPDATE `employee_position` " + "SET `employee_position_id` = (@row_number := @row_number + 1) "
+                            + "ORDER BY `employee_position_id`");
+
+                    // Reset AUTO_INCREMENT value
+                    MySql.executeUpdate("ALTER TABLE `employee_position` AUTO_INCREMENT = 1");
+
+                    //load to table
+                    loadPositions();
+                    reset();
+                    //success message
+                    JOptionPane.showMessageDialog(this, "Position Deleted Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+                }
+            } catch (Exception e) {
+
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error occurred while deleting the Position", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        reset(); //refresh the frame
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
+    //Handle mouse clicks on the PositionTable
+    private void PositionTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PositionTableMouseClicked
+                              
+        // Check if the user double-clicked on a row
+        if (evt.getClickCount() == 1) {
+            
+            // Disable the Add button while deleting
+            addButton.setEnabled(false);
+            
+            // Get the index of the selected row in the table
+            int row = PositionTable.getSelectedRow();
+            
+            if (row == -1) {
+                
+                JOptionPane.showMessageDialog(this, "Please select a row", "Warning", JOptionPane.WARNING_MESSAGE);
+                
+            }else{
+                
+                String position = String.valueOf(PositionTable.getValueAt(row, 1));
+                addNewPositionTextField.setText(position);
+                
+                String department = String.valueOf(PositionTable.getValueAt(row, 2));
+                departmentComboBox.setSelectedItem(department);
+                
+            }                                                                                    
+            
+        }
+    }//GEN-LAST:event_PositionTableMouseClicked
+
+    //AddDepartment frame open button in the current frame
+    private void newDepartmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDepartmentButtonActionPerformed
+        AddDepartment department = new AddDepartment();
+        department.setVisible(true); // Set the AddDepartment GUI to be visible
+    }//GEN-LAST:event_newDepartmentButtonActionPerformed
+
+    private void departmentComboBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_departmentComboBoxKeyPressed
+
+        //Press Enter will then focus on textfield from combobox
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            addNewPositionTextField.grabFocus();
+        }
+
+    }//GEN-LAST:event_departmentComboBoxKeyPressed
+
+    private void addNewPositionTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_addNewPositionTextFieldFocusGained
+
+        //check and set clear the current position textfield to enter data
+        if (addNewPositionTextField.getText().equals("Position Name")) {
+            addNewPositionTextField.setText("");
+            addNewPositionTextField.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_addNewPositionTextFieldFocusGained
+
+    private void addNewPositionTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_addNewPositionTextFieldFocusLost
+
+        //set back the placeholder
+        if (addNewPositionTextField.getText().isEmpty()) {
+            addNewPositionTextField.setText("Position Name");
+            addNewPositionTextField.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_addNewPositionTextFieldFocusLost
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EmployeePosition.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EmployeePosition.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EmployeePosition.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EmployeePosition.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        
-        FlatMacLightLaf.setup();
+    public static void main(String args[]) {        
 
+        FlatMacLightLaf.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -315,18 +671,33 @@ public class EmployeePosition extends javax.swing.JFrame {
     private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JPanel ButtonPanel;
-    private javax.swing.JTable EmployeeTypeTable;
     private javax.swing.JPanel HeaderPanel;
+    private javax.swing.JTable PositionTable;
     private javax.swing.JPanel TableUpdatePanel;
     private javax.swing.JPanel TableViewPanel;
     private com.k33ptoo.components.KButton addButton;
-    private javax.swing.JTextField addNewTypeTextField;
+    private javax.swing.JTextField addNewPositionTextField;
     private com.k33ptoo.components.KButton deleteButton;
+    private javax.swing.JComboBox<String> departmentComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton newDepartmentButton;
     private javax.swing.JButton refreshButton;
     private com.k33ptoo.components.KButton updateButton;
     // End of variables declaration//GEN-END:variables
+
+    // Function to reset the input fields and table selection
+    private void reset() {
+
+        addNewPositionTextField.setText("");
+        addButton.setEnabled(true);
+        departmentComboBox.setSelectedIndex(0);
+        PositionTable.clearSelection();
+
+        //Re-add the placeholder to refreshed textfield
+        addPlaceholder();
+    }
+
 }
