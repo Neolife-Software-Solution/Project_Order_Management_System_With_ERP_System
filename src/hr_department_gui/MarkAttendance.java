@@ -35,12 +35,15 @@ public class MarkAttendance extends javax.swing.JFrame {
      * Creates new form Mark_Attendance
      */
     public MarkAttendance() {
+
         initComponents();
         loadAttendanceTable();
         dateLoad();
         timeLoade();
         scheduleDailyReset();
-
+        
+        emp_id_name_fields.addActionListener(e -> loadAttendanceDetailsByDateRange());  // Handles Enter key press For Empname Serarch Fields
+        
     }
 
     public void dateLoad() {
@@ -76,58 +79,44 @@ public class MarkAttendance extends javax.swing.JFrame {
 
     DefaultTableModel model;
 
-//    private void loadAttendance2() {
-//
-//        try {
-//
-//            // Execute the query to fetch data from the employee table
-//            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee`");
-//
-//            // Get the table model
-//            model = (DefaultTableModel) AttendanceTable.getModel();
-//
-//            // Clear existing rows in the model
-//            model.setRowCount(0);
-//
-//            // Get current date
-//            java.util.Date currentDate = new java.util.Date();
-//            java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
-//            String currentDateStr = dateFormat.format(currentDate);
-//
-//            // Iterate through the ResultSet
-//            while (resultSet.next()) {
-//
-//                // Fetch employee details from the ResultSet
-//                String EmpID = resultSet.getString("employee.employee_id");
-//                String firstName = resultSet.getString("employee.first_name");
-//                String lastName = resultSet.getString("employee.last_name");
-//                String fullName = firstName + " " + lastName;
-//
-//                // Add a new row with EmpID, fullName, current date, and a placeholder for current time
-//                model.addRow(new Object[]{null, EmpID, fullName, currentDateStr, null, "Absent", 0, 0});
-//
-//            }
-//
-//            // Update time column dynamically using a timer
-//            new javax.swing.Timer(1000, e -> {
-//                
-//                java.text.SimpleDateFormat timeFormat = new java.text.SimpleDateFormat("HH:mm:ss");
-//                String currentTimeStr = timeFormat.format(new java.util.Date());
-//
-//                for (int i = 0; i < model.getRowCount(); i++) {
-//                    model.setValueAt(currentTimeStr, i, 4); // Update time column (index 4)
-//                    
-//                }
-//                
-//            }).start();
-//        } catch (Exception e) {
-//
-//            // Print the stack trace for any exceptions
-//            e.printStackTrace();
-//
-//        }
-//
-//    }
+    // Load the attendance table data into JTable
+    private void loadAttendanceTable() {
+
+        try {
+
+            // Clear the existing table data
+            DefaultTableModel model = (DefaultTableModel) AttendanceTable.getModel();
+            model.setRowCount(0);
+
+            // Fetch the data from the database
+            String query = "SELECT * FROM temp_employee_attendance";
+            ResultSet rs = MySql.executeSearch(query);
+
+            // Iterate through the ResultSet
+            while (rs.next()) {
+
+                // Fetch employee details from the ResultSet
+                int attendanceId = rs.getInt("attendance_id");
+                String EmpID = rs.getString("employee_employee_id");
+                String fullName = rs.getString("employee_name");
+                String date = rs.getString("date");
+                String time = rs.getString("time");
+                String status = rs.getString("attendence_type_type_id").equals("1") ? "Present" : "Absent";
+
+                // Add a new row with EmpID, fullName, current date, and a placeholder for current time
+                model.addRow(new Object[]{attendanceId, EmpID, fullName, date, time, status});
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -154,7 +143,7 @@ public class MarkAttendance extends javax.swing.JFrame {
         sortPanel = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        emp_id_name_fields = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
@@ -348,11 +337,11 @@ public class MarkAttendance extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Attendance_ID", "Employee_ID", "Employee_Name", "Date", "Time", "Status", "Present", "Absent"
+                "Attendance_ID", "Employee_ID", "Employee_Name", "Date", "Time", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -407,7 +396,7 @@ public class MarkAttendance extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(sortPanelLayout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(emp_id_name_fields, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -433,7 +422,7 @@ public class MarkAttendance extends javax.swing.JFrame {
                             .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField3)
+                            .addComponent(emp_id_name_fields)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)))
                     .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -550,8 +539,10 @@ public class MarkAttendance extends javax.swing.JFrame {
 
         // Validate the inputs
         if (employeeId.isEmpty() || employeeName.isEmpty()) {
+
             JOptionPane.showMessageDialog(null, "Please enter both Employee ID and Employee Name.", "Input Error", JOptionPane.ERROR_MESSAGE);
             return;
+
         }
 
         // Call the method to add the attendance
@@ -567,135 +558,74 @@ public class MarkAttendance extends javax.swing.JFrame {
     private void addAttendance(String employeeId, String employeeName) {
 
         try {
+
             // Get current date and time
             Date now = new Date();
+
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
             SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+
             String currentDate = dateFormat.format(now);
+
             String currentTime = timeFormat.format(now);
 
-            // Check if attendance already exists for the same employee and date
-            String checkQuery = "SELECT * FROM employee_attendance WHERE employee_employee_id = '" + employeeId + "' AND date = '" + currentDate + "'";
+            // Check if attendance already exists for the same employee and date in temp_employee_attendance table
+            String checkQuery = "SELECT * FROM `temp_employee_attendance` WHERE `employee_employee_id` = '" + employeeId + "' AND date = '" + currentDate + "'";
+
             ResultSet rs = MySql.executeSearch(checkQuery);
 
             if (rs.next()) {
+
                 // If record exists, show a message and exit
-                JOptionPane.showMessageDialog(null, "Attendance already marked for This Employee ", "Duplicate Entry", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Attendance already marked for This Employee on this date.", "Duplicate Entry", JOptionPane.WARNING_MESSAGE);
                 return;
+
             }
 
-            // If no record exists, proceed to insert
+            // If no record exists, proceed to insert data in both tables
+            // Define the attendance status
             String status = "Present";
-            int presentId = 1;
-            int presentCount = 1;
 
-            String insertQuery = "INSERT INTO employee_attendance (employee_employee_id,employee_name, date, time, attendance_type_attendance_type_id, present_count) "
-                    + "VALUES ('" + employeeId + "','" + employeeName + "', '" + currentDate + "', '" + currentTime + "', '" + presentId + "', " + presentCount + ")";
-            int rows = MySql.executeUpdate(insertQuery);
+            int attendencetype = 1;  // Presumably for "Present" status
 
+            // Insert Data into employee_attendance table
+            String insertQuery = "INSERT INTO employee_attendence (employee_employee_id, employee_name, date, time, status, attendence_type_type_id) "
+                    + "VALUES ('" + employeeId + "','" + employeeName + "', '" + currentDate + "', '" + currentTime + "','" + status + "', '" + attendencetype + "')";
+
+            MySql.executeUpdate(insertQuery);
+
+            // Insert Data into temp_employee_attendance table
+            String insertQuery2 = "INSERT INTO temp_employee_attendance (employee_employee_id, employee_name, date, time, attendence_type_type_id) "
+                    + "VALUES ('" + employeeId + "','" + employeeName + "', '" + currentDate + "', '" + currentTime + "', '" + attendencetype + "')";
+
+            int rows = MySql.executeUpdate(insertQuery2);
+
+            // Show success or failure message
             if (rows > 0) {
+
                 JOptionPane.showMessageDialog(null, "Attendance marked successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
             } else {
+
                 JOptionPane.showMessageDialog(null, "Failed to mark attendance.", "Error", JOptionPane.ERROR_MESSAGE);
+
             }
 
             // Refresh the JTable view
             loadAttendanceTable();
 
         } catch (Exception e) {
+
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
         }
+
     }
-
-    // Load the attendance table data into JTable
-    private void loadAttendanceTable() {
-        try {
-            // Clear the existing table data
-            DefaultTableModel model = (DefaultTableModel) AttendanceTable.getModel();
-            model.setRowCount(0);
-
-            // Fetch the data from the database
-            String query = "SELECT * FROM employee_attendance";
-            ResultSet rs = MySql.executeSearch(query);
-
-            // Iterate through the ResultSet
-            while (rs.next()) {
-
-                // Fetch employee details from the ResultSet
-                int attendanceId = rs.getInt("attendance_id");
-                String EmpID = rs.getString("employee_employee_id");
-                String fullName = rs.getString("employee_name");
-                String date = rs.getString("date");
-                String time = rs.getString("time");
-                String status = rs.getString("attendance_type_attendance_type_id").equals("1") ? "Present" : "Absent";
-                int presentCount = rs.getInt("present_count");
-
-                // Add a new row with EmpID, fullName, current date, and a placeholder for current time
-                model.addRow(new Object[]{attendanceId, EmpID, fullName, date, time, status, presentCount, 0});
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-//    private void addAttendance() {
-//        
-//        String employeeID = employeeIDTextField.getText();
-//        String employeeName = employeeNameTextField.getText();
-//
-//        if (employeeID.isEmpty() && employeeName.isEmpty()) {
-//            
-//            JOptionPane.showMessageDialog(this, "Please enter Employee ID or Name", "Error", JOptionPane.ERROR_MESSAGE);
-//            return;
-//            
-//        }
-//
-//        LocalTime currentTime = LocalTime.now();
-//        boolean isPresent = currentTime.isBefore(LocalTime.of(9, 0));
-//        String status = isPresent ? "Present" : "Absent";
-//
-//        try {
-//            
-//            // Correct column names based on your database schema
-//            String query = "SELECT * FROM employee WHERE id = '" + employeeID + "' OR name = '" + employeeName + "'";
-//            ResultSet rs = MySql.executeSearch(query);
-//
-//            if (rs.next()) {
-//                
-//                int presentCount = isPresent ? 1 : 0;
-//                int absentCount = isPresent ? 0 : 1;
-//
-//                String updateQuery = "INSERT INTO employee_attendance (employee_id, employee_name, date, time, status, present_count, absent_count) VALUES ('"
-//                        + rs.getString("id") + "', '" + rs.getString("name") + "', CURDATE(), CURTIME(), '"
-//                        + status + "', " + presentCount + ", " + absentCount + ") WHERE `employee_employee_id` ";
-//
-//                MySql.executeUpdate(updateQuery);
-//                
-//                JOptionPane.showMessageDialog(this, "Attendance added successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-//                
-//            } else {
-//                
-//                JOptionPane.showMessageDialog(this, "Employee not found.", "Error", JOptionPane.ERROR_MESSAGE);
-//                
-//            }
-//            
-//        } catch (Exception ex) {
-//            
-//            ex.printStackTrace();
-//            
-//            JOptionPane.showMessageDialog(this, "Database error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-//            
-//        }
-//        
-//    }
 
     private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
 
-//        loadAttendanceDetailsByDateRange();
+        loadAttendanceDetailsByDateRange();
 
     }//GEN-LAST:event_SearchButtonActionPerformed
 
@@ -715,7 +645,7 @@ public class MarkAttendance extends javax.swing.JFrame {
 
             // Validate the inputs
             if (employeeId.isEmpty() || employeeName.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please enter both Employee ID and Employee Name.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter Valide Employee ID and Employee Name.", "Input Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -741,7 +671,7 @@ public class MarkAttendance extends javax.swing.JFrame {
 
             // Validate the inputs
             if (employeeId.isEmpty() || employeeName.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Please enter both Employee ID and Employee Name.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please enter Valide Employee ID and Employee Name.", "Input Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -758,87 +688,117 @@ public class MarkAttendance extends javax.swing.JFrame {
     }//GEN-LAST:event_employeeIDTextFieldKeyPressed
 
     private static void scheduleDailyReset() {
+
         java.util.Timer timer = new java.util.Timer();
+
         TimerTask resetTask = new TimerTask() {
+
             @Override
+
             public void run() {
+
                 try {
+
                     resetAttendanceTable();
+
                 } catch (Exception e) {
+
                     e.printStackTrace();
+
                 }
+
             }
+
         };
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, 21); // 9 PM
+
+        calendar.set(Calendar.HOUR_OF_DAY, 9); // 9 AM
+
         calendar.set(Calendar.MINUTE, 0);
+
         calendar.set(Calendar.SECOND, 0);
 
         // If the time has already passed today, schedule for tomorrow
         if (calendar.getTime().before(new java.util.Date())) {
+
             calendar.add(Calendar.DAY_OF_MONTH, 1);
+
         }
 
         // Schedule the task to run daily at 9 PM
         timer.scheduleAtFixedRate(resetTask, calendar.getTime(), 24 * 60 * 60 * 1000);
+
     }
 
     private static void resetAttendanceTable() throws Exception {
-        String query = "TRUNCATE TABLE employee_attendance";
+
+        String query = "TRUNCATE TABLE temp_employee_attendance";
+
         MySql.executeUpdate(query);
-        System.out.println("Attendance table reset successfully at 9 PM.");
+
+        System.out.println("Attendance table reset successfully at 9 AM.");
+
     }
 
     private void loadAttendanceDetailsByDateRange() {
         try {
-            // Fetching date range from input fields
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String startDate = dateFormat.format(jDateChooser1.getDate()); // Assuming you have a start date chooser
-            String endDate = dateFormat.format(jDateChooser2.getDate()); // Assuming you have an end date chooser
-
-            // Validation: Check if dates are empty or invalid
-            if (startDate.isEmpty() || endDate.isEmpty()) {
+            // Ensure date choosers are not null
+            if (jDateChooser1.getDate() == null || jDateChooser2.getDate() == null) {
                 JOptionPane.showMessageDialog(this, "Please select both start and end dates.", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
-            // Query to fetch data based on date range
-            String query = "SELECT ea.attendance_id, ea.employee_employee_id, e.name AS employee_name, ea.date, ea.time, at.attendance_type_name "
-                    + "FROM employee_attendance ea "
-                    + "INNER JOIN employee e ON ea.employee_employee_id = e.employee_id "
-                    + "INNER JOIN attendance_type at ON ea.attendance_type_attendance_type_id = at.attendance_type_id "
-                    + "WHERE ea.date BETWEEN '" + startDate + "' AND '" + endDate + "' "
-                    + "ORDER BY ea.date, ea.time";
+            // Fetching date range from input fields
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String startDate = dateFormat.format(jDateChooser1.getDate());
+            String endDate = dateFormat.format(jDateChooser2.getDate());
 
-            // Fetching data from the database
+            // Get the employee ID or name from the input field
+            String searchValue = emp_id_name_fields.getText().trim();
+
+            // Build the base query
+            String query = "SELECT * FROM `employee_attendence` "
+                    + "INNER JOIN `employee` ON `employee_attendence`.`employee_employee_id` = `employee`.`employee_id` "
+                    + "INNER JOIN `attendence_type` ON `employee_attendence`.`attendence_type_type_id` = `attendence_type`.`type_id` "
+                    + "WHERE `employee_attendence`.`date` BETWEEN '" + startDate + "' AND '" + endDate + "'";
+
+            // If search value is provided, extend query to filter by employee ID or name
+            if (!searchValue.isEmpty()) {
+                query += " AND (`employee`.`employee_id` LIKE '" + searchValue + "' OR `employee_attendence`.`employee_name` LIKE '" + searchValue + "')";
+            }
+
+            query += " ORDER BY `employee_attendence`.`date`";
+
+            // Execute the query and fetch results
             ResultSet resultSet = MySql.executeSearch(query);
 
             // Clear the table before adding new rows
             DefaultTableModel tableModel = (DefaultTableModel) AttendanceTable.getModel();
             tableModel.setRowCount(0);
 
-            // Populating the table with fetched data
+            // Populate the table with fetched data
             while (resultSet.next()) {
-                int attendanceId = resultSet.getInt("attendance_id");
+                int attendanceId = resultSet.getInt("emp_id");
                 String employeeId = resultSet.getString("employee_employee_id");
                 String employeeName = resultSet.getString("employee_name");
                 String date = resultSet.getString("date");
                 String time = resultSet.getString("time");
-                String status = resultSet.getString("attendance_type_name");
+                String status = resultSet.getString("status");
 
-                // Adding a row to the table
+                // Add a row to the table
                 tableModel.addRow(new Object[]{attendanceId, employeeId, employeeName, date, time, status});
             }
 
             // Notify user if no records found
             if (tableModel.getRowCount() == 0) {
-                JOptionPane.showMessageDialog(this, "No records found for the selected date range.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No records found for the selected criteria.", "Info", JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (Exception e) {
+
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "An error occurred while fetching data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
         }
     }
 
@@ -866,6 +826,7 @@ public class MarkAttendance extends javax.swing.JFrame {
     private com.k33ptoo.components.KButton addButton;
     private javax.swing.JPanel attendanceMarkPanel;
     private javax.swing.JPanel bodyPanel;
+    private javax.swing.JTextField emp_id_name_fields;
     private javax.swing.JTextField employeeIDTextField;
     private javax.swing.JTextField employeeNameTextField;
     private javax.swing.JPanel footerPanel;
@@ -880,7 +841,6 @@ public class MarkAttendance extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton refreshButton;
     private javax.swing.JPanel sortPanel;
     private javax.swing.JPanel tablePanel;
@@ -891,6 +851,8 @@ public class MarkAttendance extends javax.swing.JFrame {
         employeeIDTextField.setText("");
         employeeNameTextField.setText("");
         AttendanceTable.clearSelection();
+        jDateChooser1.setDate(null);
+        jDateChooser2.setDate(null);
 
     }
 }

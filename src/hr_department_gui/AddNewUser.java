@@ -387,6 +387,11 @@ public class AddNewUser extends javax.swing.JFrame {
         jLabel12.setText("Employee Name");
 
         employeeDepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        employeeDepartmentComboBox.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                employeeDepartmentComboBoxComponentAdded(evt);
+            }
+        });
         employeeDepartmentComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 employeeDepartmentComboBoxKeyPressed(evt);
@@ -1221,6 +1226,10 @@ public class AddNewUser extends javax.swing.JFrame {
     private void NewuserTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewuserTableMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_NewuserTableMouseEntered
+
+    private void employeeDepartmentComboBoxComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_employeeDepartmentComboBoxComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_employeeDepartmentComboBoxComponentAdded
 
     /**
      * @param args the command line arguments
