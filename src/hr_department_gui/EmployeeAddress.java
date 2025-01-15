@@ -5,12 +5,16 @@
 package hr_department_gui;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.AbstractAction;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 import model.MySql;
 
 /**
@@ -48,6 +52,8 @@ public class EmployeeAddress extends javax.swing.JDialog {
         } else {
             addemp = null; // Or handle as needed
         }
+        
+        configureKeyBindings(); // For Frame Key Controls
 
     }
 
@@ -1041,7 +1047,7 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
             switch (keyCode) {
 
-                case KeyEvent.VK_ENTER ->
+                case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
                     districtComboBox.grabFocus();
 
                 case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A -> {
@@ -1082,7 +1088,7 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
             switch (keyCode) {
 
-                case KeyEvent.VK_ENTER ->
+                case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
                     cityComboBox.grabFocus();
 
                 case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A -> {
@@ -1342,4 +1348,38 @@ public class EmployeeAddress extends javax.swing.JDialog {
         addPlaceholder();
 
     }
+    
+    private void configureKeyBindings() {
+        
+        // Bind ESC key to dispose the frame
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("ESCAPE"), "disposeFrame");
+        
+        getRootPane().getActionMap().put("disposeFrame", new AbstractAction() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                BackToDashboardButton.grabFocus();
+                BackToDashboardButton.doClick(); // Simulate Exit button press
+                
+            }
+            
+        });
+
+        // Bind F5 key to refresh
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("F5"), "refreshFrame");
+        
+        getRootPane().getActionMap().put("refreshFrame", new AbstractAction() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                reset();
+                
+            }
+            
+        });
+        
+    }
+    
 }

@@ -7,13 +7,17 @@ package hr_department_gui;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import model.MySql;
 
@@ -32,7 +36,7 @@ public class AddEmployee extends javax.swing.JFrame {
         addressId = id;
 
     }
-  
+
     // Method to load the addressId into the text field
     private void loadAddressId() {
 
@@ -45,10 +49,11 @@ public class AddEmployee extends javax.swing.JFrame {
 
     // private global ManageEmployee Frame
     private ManageEmployee manageEmployee;
-    
+
     /**
      * Creates new form AddEmployee
      *
+     * @param manageEmployee
      * @param empId
      */
     public AddEmployee(ManageEmployee manageEmployee, String empId) {
@@ -56,28 +61,36 @@ public class AddEmployee extends javax.swing.JFrame {
         initComponents(); // components intialize
 
         addPlaceholder();  // call textfields placeholder method
+        
         dateChooserListeners(); // call this method to activate datechooser key press 
 
         this.empId = empId; // Assign employee id to the private variable
 
         this.manageEmployee = manageEmployee; // Assign ManageEmployee Object to the private variable
-        
+
         ComponentsHide();  // call this method to Hide necessary Components
 
-        manageEmployeeIdSettingsLoad();
+        manageEmployeeIdSettingsLoad();  // call to manage old employee data
+        
+        configureKeyBindings(); // For Frame Key Controls
 
     }
 
     // Placeholders add method
     private void addPlaceholder() {
 
-        // employeeIdTextField placeholder & color
-        employeeIdTextField.setText("Click to Generate ID");
-        employeeIdTextField.setForeground(Color.GRAY);
+        // checks if constructor pass ManageEmployee 
+        if (manageEmployee == null) {
 
-        // nicTextField placeholder & color
-        nicTextField.setText("NIC Number");
-        nicTextField.setForeground(Color.GRAY);
+            // employeeIdTextField placeholder & color
+            employeeIdTextField.setText("Click to Generate ID");
+            employeeIdTextField.setForeground(Color.GRAY);
+
+            // nicTextField placeholder & color
+            nicTextField.setText("NIC Number");
+            nicTextField.setForeground(Color.GRAY);
+
+        }
 
         // fNameTextField placeholder & color
         fNameTextField.setText("First Name");
@@ -844,7 +857,10 @@ public class AddEmployee extends javax.swing.JFrame {
             String existingType = rs.getString("type_name");
 
             // Compare and construct the UPDATE query
-            StringBuilder updateQuery = new StringBuilder("UPDATE `employee` SET ");
+            StringBuilder updateQuery = new StringBuilder("UPDATE `employee` "
+                    + "INNER JOIN `gender`  ON `employee`.`gender_gender_id` = `gender`.`gender_id` "
+                    + "INNER JOIN `employee_type`  ON `employee`.`employee_type_employee_type_id` = `employee_type`.`employee_type_id` "
+                    + "SET ");
 
             // variable to check if there's an change to update
             boolean changesMade = false;
@@ -1058,51 +1074,53 @@ public class AddEmployee extends javax.swing.JFrame {
 
                 }
 
+            } else {
+
+                // get new gender value
+                String newGender = Male ? "Male" : (Female ? "Female" : null);
+
+                if (newGender == null ? existingGender != null : !newGender.equals(existingGender)) {
+                    // Update query String Build Gender
+
+                    updateQuery.append("`gender_name` = '").append(newGender).append("', ");
+
+                    changesMade = true;
+
+                }
+
+                // get new type value
+                String newType = FullTime ? "Full Time" : (PartTime ? "Part Time" : (Intern ? "Intern" : null));
+
+                if (newType == null ? existingType != null : !newType.equals(existingType)) {
+                    // Update query String Build Type
+
+                    updateQuery.append("`type_name` = '").append(newType).append("', ");
+
+                    changesMade = true;
+
+                }
+
+                if (!changesMade) {
+                    // if no changes happenned
+
+                    JOptionPane.showMessageDialog(this, "No changes detected to Update!", "Info: No New Data", JOptionPane.INFORMATION_MESSAGE);
+
+                    return;
+
+                }
+
+                // Remove the trailing comma and space, and add the WHERE clause
+                updateQuery.setLength(updateQuery.length() - 2); // Remove last comma and space
+
+                updateQuery.append(" WHERE `employee_id` = '").append(employeeID).append("'");
+
+                // Execute the UPDATE query
+                MySql.executeUpdate(updateQuery.toString());
+
+                // Success
+                JOptionPane.showMessageDialog(this, "Employee updated successfully!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+
             }
-
-            // get new gender value
-            String newGender = Male ? "Male" : (Female ? "Female" : null);
-
-            if (newGender == null ? existingGender != null : !newGender.equals(existingGender)) {
-                // Update query String Build Gender
-
-                updateQuery.append("`gender_name` = ").append(newGender).append(", ");
-
-                changesMade = true;
-
-            }
-
-            // get new type value
-            String newType = FullTime ? "Full Time" : (PartTime ? "Part Time" : (Intern ? "Intern" : null));
-
-            if (newType == null ? existingType != null : !newType.equals(existingType)) {
-                // Update query String Build Type
-
-                updateQuery.append("`type_name` = ").append(newType).append(", ");
-
-                changesMade = true;
-
-            }
-
-            if (!changesMade) {
-                // if no changes happenned
-
-                JOptionPane.showMessageDialog(this, "No changes detected to Update!", "Info: No New Data", JOptionPane.INFORMATION_MESSAGE);
-
-                return;
-
-            }
-
-            // Remove the trailing comma and space, and add the WHERE clause
-            updateQuery.setLength(updateQuery.length() - 2); // Remove last comma and space
-
-            updateQuery.append(" WHERE `employee_id` = '").append(employeeID).append("'");
-
-            // Execute the UPDATE query
-            MySql.executeUpdate(updateQuery.toString());
-
-            // Success
-            JOptionPane.showMessageDialog(this, "Employee updated successfully!", "Success!", JOptionPane.INFORMATION_MESSAGE);
 
             if (addressloadId.isEmpty()) {
                 // Check if the emailinput is empty OR matches the placeholder text "Email Address"
@@ -1552,6 +1570,7 @@ public class AddEmployee extends javax.swing.JFrame {
         AddressLine1ViewTextField.setEditable(false);
         AddressLine1ViewTextField.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         AddressLine1ViewTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        AddressLine1ViewTextField.setToolTipText("To Edit, Use Manage Employee Address!");
         AddressLine1ViewTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         AddressLine1ViewTextField.setEnabled(false);
         AddressLine1ViewTextField.setFocusable(false);
@@ -1564,6 +1583,7 @@ public class AddEmployee extends javax.swing.JFrame {
         AddressLine2ViewTextField.setEditable(false);
         AddressLine2ViewTextField.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         AddressLine2ViewTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        AddressLine2ViewTextField.setToolTipText("To Edit, Use Manage Employee Address!");
         AddressLine2ViewTextField.setEnabled(false);
         AddressLine2ViewTextField.setFocusable(false);
         AddressLine2ViewTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1575,6 +1595,7 @@ public class AddEmployee extends javax.swing.JFrame {
         ProvinceViewTextField.setEditable(false);
         ProvinceViewTextField.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         ProvinceViewTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ProvinceViewTextField.setToolTipText("To Edit, Use Manage Employee Address!");
         ProvinceViewTextField.setEnabled(false);
         ProvinceViewTextField.setFocusable(false);
         ProvinceViewTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1586,6 +1607,7 @@ public class AddEmployee extends javax.swing.JFrame {
         DistrictViewTextField.setEditable(false);
         DistrictViewTextField.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         DistrictViewTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        DistrictViewTextField.setToolTipText("To Edit, Use Manage Employee Address!");
         DistrictViewTextField.setEnabled(false);
         DistrictViewTextField.setFocusable(false);
         DistrictViewTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1597,6 +1619,7 @@ public class AddEmployee extends javax.swing.JFrame {
         CityViewTextField.setEditable(false);
         CityViewTextField.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         CityViewTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CityViewTextField.setToolTipText("To Edit, Use Manage Employee Address!");
         CityViewTextField.setEnabled(false);
         CityViewTextField.setFocusable(false);
         CityViewTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1631,6 +1654,7 @@ public class AddEmployee extends javax.swing.JFrame {
 
         postalcodeViewTextField.setEditable(false);
         postalcodeViewTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        postalcodeViewTextField.setToolTipText("To Edit, Use Manage Employee Address!");
         postalcodeViewTextField.setEnabled(false);
         postalcodeViewTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1897,16 +1921,18 @@ public class AddEmployee extends javax.swing.JFrame {
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
 
-        // checks if String employeeData = null
-        if (empId == null) {
+        if (manageEmployee != null) {
+
+            // Refresh the main GUI
+            manageEmployee.refreshData();
 
             // Show the main GUI
             manageEmployee.setVisible(true);
 
         }
-        
+
         // To Close AddEmployee(this JFrame) and go back to HR Dashboard(main JFrame)  
-        this.dispose();        
+        this.dispose();
 
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
@@ -3003,7 +3029,14 @@ public class AddEmployee extends javax.swing.JFrame {
     private void reset() {
 
         // Reset all components to default values
-        employeeIdTextField.setText("");
+        // checks if constructor pass ManageEmployee 
+        if (manageEmployee == null) {
+
+            employeeIdTextField.setText("");
+            nicTextField.setText("");
+
+        }
+
         dateOfBirthDayChooser.setDate(null);
         fNameTextField.setText("");
         lNameTextField.setText("");
@@ -3017,12 +3050,50 @@ public class AddEmployee extends javax.swing.JFrame {
         // Re-add the placeholders to refreshed TextFields
         addPlaceholder();
 
-        // Grabs generateButton focus 
-        generateButton.grabFocus();
+        // checks if constructor pass ManageEmployee 
+        if (manageEmployee == null) {
 
-        // delete current added address
-        deleteAddress();
+            // Grabs generateButton focus 
+            generateButton.grabFocus();
 
+            // delete current added address
+            deleteAddress();
+
+        }
+
+    }
+    
+    private void configureKeyBindings() {
+        
+        // Bind ESC key to dispose the frame
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("ESCAPE"), "disposeFrame");
+        
+        getRootPane().getActionMap().put("disposeFrame", new AbstractAction() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                BackToDashboardButton.grabFocus();
+                BackToDashboardButton.doClick(); // Simulate Exit button press
+                
+            }
+            
+        });
+
+        // Bind F5 key to refresh
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("F5"), "refreshFrame");
+        
+        getRootPane().getActionMap().put("refreshFrame", new AbstractAction() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                refreshButton.doClick(); // Simulate Refresh button press
+                
+            }
+            
+        });
+        
     }
 
 }

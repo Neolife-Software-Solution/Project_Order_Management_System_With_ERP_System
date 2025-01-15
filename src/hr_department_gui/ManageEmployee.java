@@ -6,6 +6,8 @@ package hr_department_gui;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
@@ -14,7 +16,10 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import javax.swing.AbstractAction;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComponent;
+import javax.swing.KeyStroke;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -35,13 +40,20 @@ public class ManageEmployee extends javax.swing.JFrame {
     public ManageEmployee() {
 
         initComponents();     // Initialize components
+
         addPlaceholder();     // call textfields placeholder method
+
+        dateChooserListeners(); // call this method to activate datechooser key press 
+
         initializeRowSorter(); // call table row sorter method
+
         loadEmployeeData();   // call table data load method
         loadEmployeeStatus(); // call employee status combobox load method
         loadDepartment();     // call employee department combobox load method
         loadEmployeeType();   // call employee type combobox load method
         loadPosition();       // call employee position combobox load method
+        
+        configureKeyBindings(); // For Frame Key Controls
 
     }
 
@@ -348,6 +360,9 @@ public class ManageEmployee extends javax.swing.JFrame {
                 if (newStatus == null || newStatus.equals("Select Status")) {
 
                     JOptionPane.showMessageDialog(this, "Please select a valid status!", "Validation Error", JOptionPane.WARNING_MESSAGE);
+                    
+                    EmployeeStatusComboBox.grabFocus();
+                    
                     return;
 
                 }
@@ -693,6 +708,8 @@ public class ManageEmployee extends javax.swing.JFrame {
                 if (!found) {
 
                     JOptionPane.showMessageDialog(this, "No data found!", "No Results!", JOptionPane.INFORMATION_MESSAGE);
+                    
+                    EmployeeSearchField.grabFocus();
 
                 }
 
@@ -717,6 +734,8 @@ public class ManageEmployee extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Please enter an Employee ID or Name!", "Validation Error!", JOptionPane.WARNING_MESSAGE);
 
+            EmployeeSearchField.grabFocus();
+            
             // Show all rows if EmployeeSearchField is empty
             rowSorter.setRowFilter(null);
             return;
@@ -727,6 +746,9 @@ public class ManageEmployee extends javax.swing.JFrame {
         if (!search.matches("\\d+") && !search.matches("[a-zA-Z\\s]+")) {
 
             JOptionPane.showMessageDialog(this, "Invalid input! Enter only numeric Employee ID or alphabetic Name.", "Validation Error!", JOptionPane.WARNING_MESSAGE);
+            
+            EmployeeSearchField.grabFocus();
+            
             return;
 
         }
@@ -844,6 +866,32 @@ public class ManageEmployee extends javax.swing.JFrame {
 
         // Check if the selected date is not after today
         return !selectedLocalDate.isAfter(today);
+
+    }
+
+    private void dateChooserListeners() {
+
+        dateOfHireFromDayChooser.getDateEditor().getUiComponent().addKeyListener(new java.awt.event.KeyAdapter() {
+            
+            @Override
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                
+                dateOfHireFromDayChooserKeyPressed(evt);
+                
+            }
+            
+        });
+
+        dateOfHireToDayChooser.getDateEditor().getUiComponent().addKeyListener(new java.awt.event.KeyAdapter() {
+            
+            @Override
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                
+                dateOfHireToDayChooserKeyPressed(evt);
+                
+            }
+            
+        });
 
     }
 
@@ -965,11 +1013,21 @@ public class ManageEmployee extends javax.swing.JFrame {
                 EmployeeSearchFieldFocusLost(evt);
             }
         });
+        EmployeeSearchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EmployeeSearchFieldKeyPressed(evt);
+            }
+        });
 
         EmployeeStatusComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         EmployeeStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
         EmployeeStatusComboBox.setToolTipText("Please Choose Employee Status for Update Employee!");
         EmployeeStatusComboBox.setPreferredSize(new java.awt.Dimension(75, 32));
+        EmployeeStatusComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EmployeeStatusComboBoxKeyPressed(evt);
+            }
+        });
 
         EmployeeStatusLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         EmployeeStatusLabel.setText("Employee Status");
@@ -979,6 +1037,11 @@ public class ManageEmployee extends javax.swing.JFrame {
         RefreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RefreshButtonActionPerformed(evt);
+            }
+        });
+        RefreshButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RefreshButtonKeyPressed(evt);
             }
         });
 
@@ -998,6 +1061,11 @@ public class ManageEmployee extends javax.swing.JFrame {
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
+            }
+        });
+        searchButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchButtonKeyPressed(evt);
             }
         });
 
@@ -1077,6 +1145,11 @@ public class ManageEmployee extends javax.swing.JFrame {
                 DepartmentComboBoxActionPerformed(evt);
             }
         });
+        DepartmentComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                DepartmentComboBoxKeyPressed(evt);
+            }
+        });
 
         DateOfHireLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         DateOfHireLabel2.setText("Sort By Employee Type");
@@ -1094,6 +1167,11 @@ public class ManageEmployee extends javax.swing.JFrame {
                 positionComboBoxActionPerformed(evt);
             }
         });
+        positionComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                positionComboBoxKeyPressed(evt);
+            }
+        });
 
         employeeTypeComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         employeeTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
@@ -1101,6 +1179,11 @@ public class ManageEmployee extends javax.swing.JFrame {
         employeeTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 employeeTypeComboBoxActionPerformed(evt);
+            }
+        });
+        employeeTypeComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                employeeTypeComboBoxKeyPressed(evt);
             }
         });
 
@@ -1114,6 +1197,11 @@ public class ManageEmployee extends javax.swing.JFrame {
         statusComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 statusComboBoxActionPerformed(evt);
+            }
+        });
+        statusComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                statusComboBoxKeyPressed(evt);
             }
         });
 
@@ -1135,6 +1223,11 @@ public class ManageEmployee extends javax.swing.JFrame {
                 updateButtonActionPerformed(evt);
             }
         });
+        updateButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                updateButtonKeyPressed(evt);
+            }
+        });
 
         deleteButton.setText("Delete");
         deleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -1150,10 +1243,20 @@ public class ManageEmployee extends javax.swing.JFrame {
                 deleteButtonActionPerformed(evt);
             }
         });
+        deleteButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                deleteButtonKeyPressed(evt);
+            }
+        });
 
         dateOfHireFromDayChooser.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 dateOfHireFromDayChooserPropertyChange(evt);
+            }
+        });
+        dateOfHireFromDayChooser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                dateOfHireFromDayChooserKeyPressed(evt);
             }
         });
 
@@ -1163,6 +1266,11 @@ public class ManageEmployee extends javax.swing.JFrame {
         dateOfHireToDayChooser.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 dateOfHireToDayChooserPropertyChange(evt);
+            }
+        });
+        dateOfHireToDayChooser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                dateOfHireToDayChooserKeyPressed(evt);
             }
         });
 
@@ -1264,6 +1372,11 @@ public class ManageEmployee extends javax.swing.JFrame {
         ManageEmployeeTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ManageEmployeeTableMouseClicked(evt);
+            }
+        });
+        ManageEmployeeTable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ManageEmployeeTableKeyPressed(evt);
             }
         });
         jScrollPane2.setViewportView(ManageEmployeeTable);
@@ -1399,12 +1512,10 @@ public class ManageEmployee extends javax.swing.JFrame {
 
                 // Get data from selected row
                 String empId = ManageEmployeeTable.getValueAt(row, 0).toString();
-                
+
                 // call openAddEmployeeGUI
                 openAddEmployeeGUI(empId);
-                
-                this.setVisible(false); // Hide Manage Employee (this) Frame
-                
+
             }
 
         }
@@ -1441,12 +1552,468 @@ public class ManageEmployee extends javax.swing.JFrame {
 
     }//GEN-LAST:event_dateOfHireToDayChooserPropertyChange
 
+    private void EmployeeSearchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmployeeSearchFieldKeyPressed
+        // code to add key controls for EmployeeSearchField
+
+        int keyCode = evt.getKeyCode();
+
+        switch (keyCode) {
+
+            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT -> {
+
+                searchButton.grabFocus();
+                searchButton.doClick();
+
+            }
+
+            case KeyEvent.VK_DOWN ->
+                EmployeeStatusComboBox.grabFocus();
+
+            case KeyEvent.VK_DELETE ->
+                EmployeeSearchField.setText("");
+
+        }
+
+    }//GEN-LAST:event_EmployeeSearchFieldKeyPressed
+
+    private void searchButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchButtonKeyPressed
+        // code to add key controls for searchButton
+
+        int keyCode = evt.getKeyCode();
+
+        switch (keyCode) {
+
+            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
+                searchButton.doClick();
+
+            case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A, KeyEvent.VK_BACK_SPACE, KeyEvent.VK_HOME ->
+                EmployeeSearchField.grabFocus();
+
+            case KeyEvent.VK_DOWN, KeyEvent.VK_S ->
+                EmployeeStatusComboBox.grabFocus();
+
+            case KeyEvent.VK_RIGHT, KeyEvent.VK_D ->
+                RefreshButton.grabFocus();
+
+            case KeyEvent.VK_DELETE ->
+                RefreshButton.doClick();
+
+        }
+
+    }//GEN-LAST:event_searchButtonKeyPressed
+
+    private void RefreshButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RefreshButtonKeyPressed
+        // code to add key controls for RefreshButton
+
+        int keyCode = evt.getKeyCode();
+
+        switch (keyCode) {
+
+            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT, KeyEvent.VK_DELETE ->
+                RefreshButton.doClick();
+
+            case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A, KeyEvent.VK_BACK_SPACE ->
+                searchButton.grabFocus();
+
+            case KeyEvent.VK_DOWN, KeyEvent.VK_S, KeyEvent.VK_RIGHT, KeyEvent.VK_D ->
+                EmployeeStatusComboBox.grabFocus();
+
+            case KeyEvent.VK_HOME ->
+                EmployeeSearchField.grabFocus();
+
+        }
+
+    }//GEN-LAST:event_RefreshButtonKeyPressed
+
+    private void EmployeeStatusComboBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmployeeStatusComboBoxKeyPressed
+        // code to add key controls for EmployeeStatusComboBox
+
+        int keyCode = evt.getKeyCode();
+        int selectedIndex = EmployeeStatusComboBox.getSelectedIndex();
+
+        if (selectedIndex >= 0) {
+
+            switch (keyCode) {
+
+                case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT -> {
+
+                    updateButton.grabFocus();
+                    updateButton.doClick();
+
+                }
+
+                case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A -> {
+
+                    if (selectedIndex > 0) { // Prevent selecting an index less than 0
+                        EmployeeStatusComboBox.setSelectedIndex(selectedIndex - 1);
+                    }
+
+                }
+
+                case KeyEvent.VK_DOWN, KeyEvent.VK_S, KeyEvent.VK_RIGHT, KeyEvent.VK_D -> {
+
+                    if (selectedIndex < EmployeeStatusComboBox.getItemCount() - 1) { // Prevent exceeding last index
+                        EmployeeStatusComboBox.setSelectedIndex(selectedIndex + 1);
+                    }
+
+                }
+
+                case KeyEvent.VK_BACK_SPACE, KeyEvent.VK_HOME ->
+                    EmployeeSearchField.grabFocus();
+
+                case KeyEvent.VK_SPACE, KeyEvent.VK_PAGE_DOWN, KeyEvent.VK_TAB ->
+                    DepartmentComboBox.grabFocus();
+
+                case KeyEvent.VK_DELETE ->
+                    EmployeeStatusComboBox.setSelectedIndex(0);
+
+            }
+
+        }
+
+    }//GEN-LAST:event_EmployeeStatusComboBoxKeyPressed
+
+    private void DepartmentComboBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DepartmentComboBoxKeyPressed
+        // code to add key controls for DepartmentComboBox
+
+        int keyCode = evt.getKeyCode();
+        int selectedIndex = DepartmentComboBox.getSelectedIndex();
+
+        if (selectedIndex >= 0) {
+
+            switch (keyCode) {
+
+                case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
+                    statusComboBox.grabFocus();
+
+                case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A -> {
+
+                    if (selectedIndex > 0) { // Prevent selecting an index less than 0
+                        DepartmentComboBox.setSelectedIndex(selectedIndex - 1);
+                    }
+
+                }
+
+                case KeyEvent.VK_DOWN, KeyEvent.VK_S, KeyEvent.VK_RIGHT, KeyEvent.VK_D -> {
+
+                    if (selectedIndex < DepartmentComboBox.getItemCount() - 1) { // Prevent exceeding last index
+                        DepartmentComboBox.setSelectedIndex(selectedIndex + 1);
+                    }
+
+                }
+
+                case KeyEvent.VK_BACK_SPACE, KeyEvent.VK_PAGE_UP, KeyEvent.VK_TAB ->
+                    EmployeeStatusComboBox.grabFocus();
+
+                case KeyEvent.VK_HOME ->
+                    EmployeeSearchField.grabFocus();
+
+                case KeyEvent.VK_DELETE ->
+                    DepartmentComboBox.setSelectedIndex(0);
+
+            }
+
+        }
+
+    }//GEN-LAST:event_DepartmentComboBoxKeyPressed
+
+    private void statusComboBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_statusComboBoxKeyPressed
+        // code to add key controls for statusComboBox
+
+        int keyCode = evt.getKeyCode();
+        int selectedIndex = statusComboBox.getSelectedIndex();
+
+        if (selectedIndex >= 0) {
+
+            switch (keyCode) {
+
+                case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
+                    employeeTypeComboBox.grabFocus();
+
+                case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A -> {
+
+                    if (selectedIndex > 0) { // Prevent selecting an index less than 0
+                        statusComboBox.setSelectedIndex(selectedIndex - 1);
+                    }
+
+                }
+
+                case KeyEvent.VK_DOWN, KeyEvent.VK_S, KeyEvent.VK_RIGHT, KeyEvent.VK_D -> {
+
+                    if (selectedIndex < statusComboBox.getItemCount() - 1) { // Prevent exceeding last index
+                        statusComboBox.setSelectedIndex(selectedIndex + 1);
+                    }
+
+                }
+
+                case KeyEvent.VK_BACK_SPACE ->
+                    DepartmentComboBox.grabFocus();
+
+                case KeyEvent.VK_HOME ->
+                    EmployeeSearchField.grabFocus();
+
+                case KeyEvent.VK_DELETE ->
+                    statusComboBox.setSelectedIndex(0);
+
+            }
+
+        }
+
+    }//GEN-LAST:event_statusComboBoxKeyPressed
+
+    private void employeeTypeComboBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeTypeComboBoxKeyPressed
+        // code to add key controls for statusComboBox
+
+        int keyCode = evt.getKeyCode();
+        int selectedIndex = employeeTypeComboBox.getSelectedIndex();
+
+        if (selectedIndex >= 0) {
+
+            switch (keyCode) {
+
+                case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
+                    positionComboBox.grabFocus();
+
+                case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A -> {
+
+                    if (selectedIndex > 0) { // Prevent selecting an index less than 0
+                        employeeTypeComboBox.setSelectedIndex(selectedIndex - 1);
+                    }
+
+                }
+
+                case KeyEvent.VK_DOWN, KeyEvent.VK_S, KeyEvent.VK_RIGHT, KeyEvent.VK_D -> {
+
+                    if (selectedIndex < employeeTypeComboBox.getItemCount() - 1) { // Prevent exceeding last index
+                        employeeTypeComboBox.setSelectedIndex(selectedIndex + 1);
+                    }
+
+                }
+
+                case KeyEvent.VK_BACK_SPACE ->
+                    DepartmentComboBox.grabFocus();
+
+                case KeyEvent.VK_HOME ->
+                    EmployeeSearchField.grabFocus();
+
+                case KeyEvent.VK_DELETE ->
+                    employeeTypeComboBox.setSelectedIndex(0);
+
+            }
+
+        }
+
+    }//GEN-LAST:event_employeeTypeComboBoxKeyPressed
+
+    private void positionComboBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_positionComboBoxKeyPressed
+        // code to add key controls for positionComboBox
+
+        int keyCode = evt.getKeyCode();
+        int selectedIndex = positionComboBox.getSelectedIndex();
+
+        if (selectedIndex >= 0) {
+
+            switch (keyCode) {
+
+                case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
+                    // select dateOfHireFromDayChooser
+                    dateOfHireFromDayChooser.getDateEditor().getUiComponent().requestFocusInWindow();
+
+                case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A -> {
+
+                    if (selectedIndex > 0) { // Prevent selecting an index less than 0
+                        positionComboBox.setSelectedIndex(selectedIndex - 1);
+                    }
+
+                }
+
+                case KeyEvent.VK_DOWN, KeyEvent.VK_S, KeyEvent.VK_RIGHT, KeyEvent.VK_D -> {
+
+                    if (selectedIndex < positionComboBox.getItemCount() - 1) { // Prevent exceeding last index
+                        positionComboBox.setSelectedIndex(selectedIndex + 1);
+                    }
+
+                }
+
+                case KeyEvent.VK_BACK_SPACE ->
+                    employeeTypeComboBox.grabFocus();
+
+                case KeyEvent.VK_HOME ->
+                    EmployeeSearchField.grabFocus();
+
+                case KeyEvent.VK_DELETE ->
+                    positionComboBox.setSelectedIndex(0);
+
+            }
+
+        }
+
+    }//GEN-LAST:event_positionComboBoxKeyPressed
+
+    private void dateOfHireFromDayChooserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dateOfHireFromDayChooserKeyPressed
+        // code to add key controls for dateOfHireFromDayChooser
+
+        int keyCode = evt.getKeyCode();
+
+        switch (keyCode) {
+
+            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
+                // select dateOfHireToDayChooser
+                dateOfHireToDayChooser.getDateEditor().getUiComponent().requestFocusInWindow();
+
+            case KeyEvent.VK_DOWN ->
+                ManageEmployeeTable.requestFocusInWindow();
+
+            case KeyEvent.VK_UP ->
+                statusComboBox.grabFocus();
+
+            case KeyEvent.VK_HOME ->
+                EmployeeSearchField.grabFocus();
+
+            case KeyEvent.VK_DELETE ->
+                dateOfHireFromDayChooser.setDate(null);
+
+        }
+
+    }//GEN-LAST:event_dateOfHireFromDayChooserKeyPressed
+
+    private void dateOfHireToDayChooserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dateOfHireToDayChooserKeyPressed
+        // code to add key controls for dateOfHireToDayChooser
+
+        int keyCode = evt.getKeyCode();
+
+        switch (keyCode) {
+
+            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT, KeyEvent.VK_DOWN ->
+                ManageEmployeeTable.requestFocusInWindow();
+
+            case KeyEvent.VK_UP ->
+                statusComboBox.grabFocus();
+
+            case KeyEvent.VK_HOME ->
+                EmployeeSearchField.grabFocus();
+
+            case KeyEvent.VK_DELETE ->
+                dateOfHireFromDayChooser.setDate(null);
+
+        }
+
+    }//GEN-LAST:event_dateOfHireToDayChooserKeyPressed
+
+    private void updateButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_updateButtonKeyPressed
+        // code to add key controls for updateButton
+
+        int keyCode = evt.getKeyCode();
+
+        switch (keyCode) {
+
+            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
+                updateButton.doClick();
+
+            case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A ->
+                positionComboBox.grabFocus();
+
+            case KeyEvent.VK_BACK_SPACE ->
+                EmployeeStatusComboBox.grabFocus();
+
+            case KeyEvent.VK_RIGHT, KeyEvent.VK_D ->
+                deleteButton.grabFocus();
+
+            case KeyEvent.VK_DOWN, KeyEvent.VK_S ->
+                ManageEmployeeTable.requestFocusInWindow();
+
+            case KeyEvent.VK_HOME ->
+                EmployeeSearchField.grabFocus();
+
+            case KeyEvent.VK_DELETE -> {
+
+                RefreshButton.grabFocus();
+                RefreshButton.doClick();
+
+            }
+
+        }
+
+    }//GEN-LAST:event_updateButtonKeyPressed
+
+    private void deleteButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_deleteButtonKeyPressed
+        // code to add key controls for deleteButton
+
+        int keyCode = evt.getKeyCode();
+
+        switch (keyCode) {
+
+            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
+                deleteButton.doClick();
+
+            case KeyEvent.VK_UP, KeyEvent.VK_W ->
+                // select dateOfHireFromDayChooser
+                dateOfHireFromDayChooser.getDateEditor().getUiComponent().requestFocusInWindow();
+
+            case KeyEvent.VK_LEFT, KeyEvent.VK_A, KeyEvent.VK_BACK_SPACE ->
+                updateButton.grabFocus();
+
+            case KeyEvent.VK_RIGHT, KeyEvent.VK_D ->
+                // select dateOfHireToDayChooser
+                dateOfHireToDayChooser.getDateEditor().getUiComponent().requestFocusInWindow();
+
+            case KeyEvent.VK_DOWN, KeyEvent.VK_S ->
+                ManageEmployeeTable.requestFocusInWindow();
+
+            case KeyEvent.VK_HOME ->
+                EmployeeSearchField.grabFocus();
+
+            case KeyEvent.VK_DELETE -> {
+
+                RefreshButton.grabFocus();
+                RefreshButton.doClick();
+
+            }
+
+        }
+
+    }//GEN-LAST:event_deleteButtonKeyPressed
+
+    private void ManageEmployeeTableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ManageEmployeeTableKeyPressed
+        // code to add key controls for ManageEmployeeTable
+
+        int keyCode = evt.getKeyCode();
+        
+        int row = ManageEmployeeTable.getSelectedRow();
+
+        if (row != -1) {
+            
+            if (keyCode == KeyEvent.VK_DELETE) {
+                
+                // Call delete method
+                deleteEmployeeStatus();
+                
+            } else if (keyCode == KeyEvent.VK_ENTER) {
+                
+                // Open update GUI
+                String empId = ManageEmployeeTable.getValueAt(row, 0).toString();
+                openAddEmployeeGUI(empId);
+                
+            }
+            
+        }
+
+    }//GEN-LAST:event_ManageEmployeeTableKeyPressed
+
     private void openAddEmployeeGUI(String empId) {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new AddEmployee(this, empId).setVisible(true);
+            this.setVisible(false); // Hide Manage Employee (this) Frame
         });
+
+    }
+
+    // Method to refresh the ManageEmployee GUI From AddEmployee GUI
+    public void refreshData() {
+
+        reset(); // reset gui
 
     }
 
@@ -1522,4 +2089,38 @@ public class ManageEmployee extends javax.swing.JFrame {
         EmployeeSearchField.grabFocus();
 
     }
+    
+    private void configureKeyBindings() {
+        
+        // Bind ESC key to dispose the frame
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("ESCAPE"), "disposeFrame");
+        
+        getRootPane().getActionMap().put("disposeFrame", new AbstractAction() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                BackToDashboardButton.grabFocus();
+                BackToDashboardButton.doClick(); // Simulate Exit button press
+                
+            }
+            
+        });
+
+        // Bind F5 key to refresh
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("F5"), "refreshFrame");
+        
+        getRootPane().getActionMap().put("refreshFrame", new AbstractAction() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                RefreshButton.doClick(); // Simulate Refresh button press
+                
+            }
+            
+        });
+        
+    }
+    
 }
