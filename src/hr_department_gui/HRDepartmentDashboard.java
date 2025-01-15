@@ -7,10 +7,15 @@ package hr_department_gui;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import order_management_gui.delivery_gui.DeliveryGuyRegistration;
@@ -30,6 +35,10 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
     public HRDepartmentDashboard() {
         
         initComponents();
+        
+        fullScreenCenter(); // call Dashboad fullscreen & center
+        
+        configureKeyBindings();   // For Default Frame Key Controls
         
     }
     
@@ -55,6 +64,15 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
             changeimage(icButton, "/resources/back-arrow.png");
             
         }
+        
+    }
+    
+    // method to Dashboad fullscreen & center
+    private void fullScreenCenter() {
+        
+        this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
+        
+        setLocationRelativeTo(this);
         
     }
     
@@ -253,6 +271,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.setLayout(new java.awt.GridLayout(17, 1, 6, 6));
 
         addEmployeeButton.setText("Add Employee");
+        addEmployeeButton.setToolTipText("Click Here to Add New Employee!");
         addEmployeeButton.setAlignmentY(0.0F);
         addEmployeeButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         addEmployeeButton.setkBorderRadius(0);
@@ -271,6 +290,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(addEmployeeButton);
 
         addDepartmentButton.setText("Add Department");
+        addDepartmentButton.setToolTipText("Click Here to Add New Department!");
         addDepartmentButton.setAlignmentY(0.0F);
         addDepartmentButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         addDepartmentButton.setkBorderRadius(0);
@@ -289,6 +309,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(addDepartmentButton);
 
         productPromotionButton.setText("Employee Position");
+        productPromotionButton.setToolTipText("Click Here to Add New Employee Position!");
         productPromotionButton.setAlignmentY(0.0F);
         productPromotionButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         productPromotionButton.setkBorderRadius(0);
@@ -307,6 +328,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(productPromotionButton);
 
         addEmployeeToDepartmentButton.setText("Add Employee to Department");
+        addEmployeeToDepartmentButton.setToolTipText("Click Here to Assign Employee to Department");
         addEmployeeToDepartmentButton.setAlignmentY(0.0F);
         addEmployeeToDepartmentButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         addEmployeeToDepartmentButton.setkBorderRadius(0);
@@ -325,6 +347,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(addEmployeeToDepartmentButton);
 
         addNewUserButton.setText("Add New User");
+        addNewUserButton.setToolTipText("Click Here to Add New User!");
         addNewUserButton.setAlignmentY(0.0F);
         addNewUserButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         addNewUserButton.setkBorderRadius(0);
@@ -343,6 +366,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(addNewUserButton);
 
         manageEmployeeButton.setText("Manage Employee");
+        manageEmployeeButton.setToolTipText("Click Here to Manage Employee!");
         manageEmployeeButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         manageEmployeeButton.setkBorderRadius(0);
         manageEmployeeButton.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -360,6 +384,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(manageEmployeeButton);
 
         manageEmployeeAddressButton.setText("Manage Employee Address");
+        manageEmployeeAddressButton.setToolTipText("Click Here to Manage Employee Address!");
         manageEmployeeAddressButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         manageEmployeeAddressButton.setkBorderRadius(0);
         manageEmployeeAddressButton.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -377,6 +402,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(manageEmployeeAddressButton);
 
         leaveManageButton.setText("Leave Manage");
+        leaveManageButton.setToolTipText("Click Here to Manage Employee Leave!");
         leaveManageButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         leaveManageButton.setkBorderRadius(0);
         leaveManageButton.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -394,6 +420,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(leaveManageButton);
 
         MarkAttendenceButton.setText("Mark Attendance");
+        MarkAttendenceButton.setToolTipText("Click Here to Mark Employee Attendance!");
         MarkAttendenceButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         MarkAttendenceButton.setkBorderRadius(0);
         MarkAttendenceButton.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -411,6 +438,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(MarkAttendenceButton);
 
         PayrollIntegrationButton.setText("Payroll Integration");
+        PayrollIntegrationButton.setToolTipText("Click Here to Manage Employee Payroll Integration!");
         PayrollIntegrationButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         PayrollIntegrationButton.setkBorderRadius(0);
         PayrollIntegrationButton.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -428,6 +456,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(PayrollIntegrationButton);
 
         ManageAdvancedPayrollButton.setText("Manage Advanced Payroll");
+        ManageAdvancedPayrollButton.setToolTipText("Click Here to Manage Employee Advanced Payroll!");
         ManageAdvancedPayrollButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ManageAdvancedPayrollButton.setkBorderRadius(0);
         ManageAdvancedPayrollButton.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -445,6 +474,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(ManageAdvancedPayrollButton);
 
         ManageCustomerButton.setText("Manage Customer");
+        ManageCustomerButton.setToolTipText("Click Here to Manage Customer!");
         ManageCustomerButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ManageCustomerButton.setkBorderRadius(0);
         ManageCustomerButton.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -462,6 +492,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(ManageCustomerButton);
 
         AddNewCompanyButton.setText("Add New Company");
+        AddNewCompanyButton.setToolTipText("Click Here to Add New Company!");
         AddNewCompanyButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         AddNewCompanyButton.setkBorderRadius(0);
         AddNewCompanyButton.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -479,6 +510,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(AddNewCompanyButton);
 
         AddNewSupplierButton.setText("Add New Supplier");
+        AddNewSupplierButton.setToolTipText("Click Here to Add New Supplier!");
         AddNewSupplierButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         AddNewSupplierButton.setkBorderRadius(0);
         AddNewSupplierButton.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -496,6 +528,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(AddNewSupplierButton);
 
         DeliveryGuyRegisterButton.setText("Delivery Guy Register");
+        DeliveryGuyRegisterButton.setToolTipText("Click Here to Register New Delivery Guy!");
         DeliveryGuyRegisterButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         DeliveryGuyRegisterButton.setkBorderRadius(0);
         DeliveryGuyRegisterButton.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -513,6 +546,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(DeliveryGuyRegisterButton);
 
         DeliveryVehicalRegisterButton.setText("Delivery Vehical Register");
+        DeliveryVehicalRegisterButton.setToolTipText("Click Here to Register New Delivery Vehicle!");
         DeliveryVehicalRegisterButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         DeliveryVehicalRegisterButton.setkBorderRadius(0);
         DeliveryVehicalRegisterButton.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -529,6 +563,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.add(DeliveryVehicalRegisterButton);
 
         DeliveryAttendenceButton.setText("Delivery Attendance");
+        DeliveryAttendenceButton.setToolTipText("Click Here to Mark Delivery Attendance!");
         DeliveryAttendenceButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         DeliveryAttendenceButton.setkBorderRadius(0);
         DeliveryAttendenceButton.setkEndColor(new java.awt.Color(51, 51, 51));
@@ -587,18 +622,19 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         MainDashboardPanelLayout.setVerticalGroup(
             MainDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainDashboardPanelLayout.createSequentialGroup()
-                .addGap(0, 422, Short.MAX_VALUE)
+                .addGap(0, 473, Short.MAX_VALUE)
                 .addComponent(FooterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(MainDashboardPanel, java.awt.BorderLayout.CENTER);
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        
         System.exit(0);
+        
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
@@ -618,6 +654,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
             hide = true;
             
         }
+        
     }//GEN-LAST:event_jLabel4MousePressed
 
     private void addEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeButtonActionPerformed
@@ -769,4 +806,24 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel sideBarIconPanel;
     private com.k33ptoo.components.KGradientPanel sideBarMainPanel;
     // End of variables declaration//GEN-END:variables
+
+     
+    private void configureKeyBindings() {
+        
+        // Bind ESC key to dispose the frame
+        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("ESCAPE"), "disposeFrame");
+        
+        getRootPane().getActionMap().put("disposeFrame", new AbstractAction() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                System.exit(0);
+                
+            }
+            
+        });
+        
+    }
+    
 }

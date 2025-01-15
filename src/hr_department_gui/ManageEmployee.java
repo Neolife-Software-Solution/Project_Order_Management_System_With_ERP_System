@@ -53,7 +53,7 @@ public class ManageEmployee extends javax.swing.JFrame {
         loadEmployeeType();   // call employee type combobox load method
         loadPosition();       // call employee position combobox load method
         
-        configureKeyBindings(); // For Frame Key Controls
+        configureKeyBindings(); // For Default Frame Key Controls
 
     }
 
@@ -971,6 +971,7 @@ public class ManageEmployee extends javax.swing.JFrame {
         BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(896, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.setToolTipText("Go Back!");
         BackToDashboardButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1033,7 +1034,7 @@ public class ManageEmployee extends javax.swing.JFrame {
         EmployeeStatusLabel.setText("Employee Status");
 
         RefreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
-        RefreshButton.setToolTipText("");
+        RefreshButton.setToolTipText("Click Here to Refresh & Clear All Data You Filled!");
         RefreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RefreshButtonActionPerformed(evt);
@@ -1139,6 +1140,7 @@ public class ManageEmployee extends javax.swing.JFrame {
 
         DepartmentComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         DepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        DepartmentComboBox.setToolTipText("Please Choose Employee Department for Sort Manage Employee Table!");
         DepartmentComboBox.setPreferredSize(new java.awt.Dimension(75, 32));
         DepartmentComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1161,6 +1163,7 @@ public class ManageEmployee extends javax.swing.JFrame {
 
         positionComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         positionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        positionComboBox.setToolTipText("Please Choose Employee Position for Sort Manage Employee Table!");
         positionComboBox.setPreferredSize(new java.awt.Dimension(75, 32));
         positionComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1175,6 +1178,7 @@ public class ManageEmployee extends javax.swing.JFrame {
 
         employeeTypeComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         employeeTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        employeeTypeComboBox.setToolTipText("Please Choose Employee Type for Sort Manage Employee Table!");
         employeeTypeComboBox.setPreferredSize(new java.awt.Dimension(75, 32));
         employeeTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1193,6 +1197,7 @@ public class ManageEmployee extends javax.swing.JFrame {
 
         statusComboBox.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         statusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select" }));
+        statusComboBox.setToolTipText("Please Choose Employee Status for Sort Manage Employee Table!");
         statusComboBox.setPreferredSize(new java.awt.Dimension(72, 32));
         statusComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1210,6 +1215,7 @@ public class ManageEmployee extends javax.swing.JFrame {
         EmployeeTypeLabel2.setPreferredSize(new java.awt.Dimension(140, 32));
 
         updateButton.setText("Update");
+        updateButton.setToolTipText("Click Here to Update Current Employee Status!");
         updateButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         updateButton.setkEndColor(new java.awt.Color(0, 204, 204));
         updateButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
@@ -1230,6 +1236,7 @@ public class ManageEmployee extends javax.swing.JFrame {
         });
 
         deleteButton.setText("Delete");
+        deleteButton.setToolTipText("Click Here to Delete Current Selected Employee Data Row!");
         deleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         deleteButton.setkEndColor(new java.awt.Color(0, 204, 204));
         deleteButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
@@ -1249,6 +1256,7 @@ public class ManageEmployee extends javax.swing.JFrame {
             }
         });
 
+        dateOfHireFromDayChooser.setDateFormatString("yyyy-MM-dd");
         dateOfHireFromDayChooser.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 dateOfHireFromDayChooserPropertyChange(evt);
@@ -1263,6 +1271,7 @@ public class ManageEmployee extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("to");
 
+        dateOfHireToDayChooser.setDateFormatString("yyyy-MM-dd");
         dateOfHireToDayChooser.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 dateOfHireToDayChooserPropertyChange(evt);
@@ -1368,6 +1377,7 @@ public class ManageEmployee extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        ManageEmployeeTable.setToolTipText("Single Click for Load & Delete Employ Data or Double Click for Update Employee Data!");
         ManageEmployeeTable.getTableHeader().setReorderingAllowed(false);
         ManageEmployeeTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

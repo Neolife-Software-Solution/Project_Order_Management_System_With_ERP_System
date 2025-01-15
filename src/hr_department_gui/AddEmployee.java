@@ -72,7 +72,7 @@ public class AddEmployee extends javax.swing.JFrame {
 
         manageEmployeeIdSettingsLoad();  // call to manage old employee data
         
-        configureKeyBindings(); // For Frame Key Controls
+        configureKeyBindings(); // For Default Frame Key Controls
 
     }
 
@@ -1869,6 +1869,7 @@ public class AddEmployee extends javax.swing.JFrame {
         BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(732, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
+        BackToDashboardButton.setToolTipText("Go Back!");
         BackToDashboardButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
