@@ -40,7 +40,7 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
         BatchSelectComboBox = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         NewBatchAddingTextField = new javax.swing.JTextField();
-        NewBatchAddingButton = new javax.swing.JButton();
+        kButton1 = new com.k33ptoo.components.KButton();
         SupplierAndSelectProductAddingPanel = new javax.swing.JPanel();
         addProductToGRNS = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -49,9 +49,9 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
         AddProductComboBox = new javax.swing.JTextField();
         GrnStatusSelectComboBox = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        GRNaddButton = new javax.swing.JButton();
-        GRNupdateButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        kButton3 = new com.k33ptoo.components.KButton();
+        kButton4 = new com.k33ptoo.components.KButton();
         GRNSaddingTablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         GRNaddingtable = new javax.swing.JTable();
@@ -62,16 +62,18 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
         SubTotalTextField = new javax.swing.JTextField();
         PayableAmountTextField = new javax.swing.JFormattedTextField();
         PaymentDueTextField = new javax.swing.JFormattedTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         PaymentStatusComboBox = new javax.swing.JComboBox<>();
+        kButton2 = new com.k33ptoo.components.KButton();
         BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        headerPanel.setBackground(new java.awt.Color(153, 153, 153));
         headerPanel.setPreferredSize(new java.awt.Dimension(805, 60));
 
+        jLabel1.setBackground(new java.awt.Color(153, 153, 153));
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Add GRNS");
@@ -80,25 +82,18 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(350, 350, 350)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
-                .addGap(342, 342, 342))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1391, Short.MAX_VALUE)
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
         bodyPanel.setLayout(new java.awt.BorderLayout());
 
-        grnbatchAndStockaddingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        grnbatchAndStockaddingPanel.setPreferredSize(new java.awt.Dimension(783, 132));
+        grnbatchAndStockaddingPanel.setPreferredSize(new java.awt.Dimension(783, 70));
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("GRN ID");
@@ -129,63 +124,61 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
 
         NewBatchAddingTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
-        NewBatchAddingButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        NewBatchAddingButton.setText("Add New Batch");
-        NewBatchAddingButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewBatchAddingButtonActionPerformed(evt);
-            }
-        });
+        kButton1.setText("Add New Batch");
+        kButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        kButton1.setkEndColor(new java.awt.Color(0, 204, 204));
+        kButton1.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton1.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        kButton1.setkPressedColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkStartColor(new java.awt.Color(0, 102, 153));
 
         javax.swing.GroupLayout grnbatchAndStockaddingPanelLayout = new javax.swing.GroupLayout(grnbatchAndStockaddingPanel);
         grnbatchAndStockaddingPanel.setLayout(grnbatchAndStockaddingPanelLayout);
         grnbatchAndStockaddingPanelLayout.setHorizontalGroup(
             grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(grnbatchAndStockaddingPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2))
+                .addGap(24, 24, 24)
+                .addComponent(jLabel2)
+                .addGap(58, 58, 58)
+                .addComponent(grnIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(NewBatchAddingTextField)
-                    .addComponent(grnIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))
-                .addGroup(grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(grnbatchAndStockaddingPanelLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(grnIDGenerateButton)
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BatchSelectComboBox, 0, 263, Short.MAX_VALUE)
-                        .addGap(11, 11, 11))
-                    .addGroup(grnbatchAndStockaddingPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(NewBatchAddingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addComponent(grnIDGenerateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel3)
+                .addGap(12, 12, 12)
+                .addComponent(BatchSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addGap(12, 12, 12)
+                .addComponent(NewBatchAddingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         grnbatchAndStockaddingPanelLayout.setVerticalGroup(
             grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(grnbatchAndStockaddingPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(grnbatchAndStockaddingPanelLayout.createSequentialGroup()
                         .addGroup(grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2)
-                                .addComponent(grnIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(BatchSelectComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                                .addComponent(jLabel3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE))
+                                .addComponent(grnIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(grnIDGenerateButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20))
                     .addGroup(grnbatchAndStockaddingPanelLayout.createSequentialGroup()
-                        .addComponent(grnIDGenerateButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(NewBatchAddingTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(NewBatchAddingButton, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addGroup(grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(NewBatchAddingTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, grnbatchAndStockaddingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(BatchSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, 0))))
         );
 
         bodyPanel.add(grnbatchAndStockaddingPanel, java.awt.BorderLayout.PAGE_START);
@@ -211,58 +204,75 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel7.setText("Select Status");
 
-        GRNaddButton.setText("Insert GRNS");
+        kButton3.setText("Insert GRNS");
+        kButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        kButton3.setkEndColor(new java.awt.Color(0, 204, 204));
+        kButton3.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        kButton3.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton3.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        kButton3.setkPressedColor(new java.awt.Color(0, 102, 153));
+        kButton3.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        kButton3.setkStartColor(new java.awt.Color(0, 102, 153));
 
-        GRNupdateButton.setText("Update GRNS");
+        kButton4.setText("Update GRNS");
+        kButton4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        kButton4.setkEndColor(new java.awt.Color(0, 204, 204));
+        kButton4.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        kButton4.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton4.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        kButton4.setkPressedColor(new java.awt.Color(0, 102, 153));
+        kButton4.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        kButton4.setkStartColor(new java.awt.Color(0, 102, 153));
 
         javax.swing.GroupLayout addProductToGRNSLayout = new javax.swing.GroupLayout(addProductToGRNS);
         addProductToGRNS.setLayout(addProductToGRNSLayout);
         addProductToGRNSLayout.setHorizontalGroup(
             addProductToGRNSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addProductToGRNSLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
+                .addGroup(addProductToGRNSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7))
+                .addGap(12, 12, 12)
                 .addGroup(addProductToGRNSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(addProductToGRNSLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SupplierSelectComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(addProductToGRNSLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addComponent(GrnStatusSelectComboBox, 0, 269, Short.MAX_VALUE)))
+                    .addComponent(GrnStatusSelectComboBox, 0, 276, Short.MAX_VALUE)
+                    .addComponent(SupplierSelectComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(addProductToGRNSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addProductToGRNSLayout.createSequentialGroup()
-                        .addGap(71, 71, 71)
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(AddProductComboBox)
-                        .addGap(15, 15, 15))
+                        .addGap(12, 12, 12)
+                        .addComponent(AddProductComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 851, Short.MAX_VALUE))
                     .addGroup(addProductToGRNSLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(GRNaddButton, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(GRNupdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                        .addContainerGap(124, Short.MAX_VALUE))))
-            .addComponent(jSeparator1)
+                        .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(24, 24, 24))
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         addProductToGRNSLayout.setVerticalGroup(
             addProductToGRNSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addProductToGRNSLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(0, 0, 0)
                 .addGroup(addProductToGRNSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(SupplierSelectComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(jLabel6)
-                    .addComponent(AddProductComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+                    .addComponent(SupplierSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddProductComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(addProductToGRNSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(GrnStatusSelectComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(jLabel7)
-                    .addComponent(GRNaddButton, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(GRNupdateButton, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(addProductToGRNSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(addProductToGRNSLayout.createSequentialGroup()
+                        .addGroup(addProductToGRNSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GrnStatusSelectComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(addProductToGRNSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(kButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(3, 3, 3)))
+                .addGap(16, 16, 16)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         SupplierAndSelectProductAddingPanel.add(addProductToGRNS, java.awt.BorderLayout.PAGE_START);
@@ -307,13 +317,21 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
         PaymentDueTextField.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         PaymentDueTextField.setText("0.00");
 
-        jButton1.setText("Add GRNS");
-
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel11.setText("Payment Status");
 
         PaymentStatusComboBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         PaymentStatusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        kButton2.setText("Add GRNS");
+        kButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        kButton2.setkEndColor(new java.awt.Color(0, 204, 204));
+        kButton2.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        kButton2.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton2.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        kButton2.setkPressedColor(new java.awt.Color(0, 102, 153));
+        kButton2.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        kButton2.setkStartColor(new java.awt.Color(0, 102, 153));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -322,21 +340,18 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(SubTotalTextField)
-                    .addComponent(PayableAmountTextField)
-                    .addComponent(PaymentDueTextField)
-                    .addComponent(PaymentStatusComboBox, 0, 207, Short.MAX_VALUE))
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel9))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PaymentStatusComboBox, 0, 241, Short.MAX_VALUE)
+                    .addComponent(PayableAmountTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(PaymentDueTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SubTotalTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(kButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(244, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(192, 192, 192))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,22 +359,28 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SubTotalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(27, 27, 27)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(PayableAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(PaymentDueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(PaymentStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(PayableAmountTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(PaymentDueTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(PaymentStatusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6))
         );
 
         javax.swing.GroupLayout GRNSaddingTablePanelLayout = new javax.swing.GroupLayout(GRNSaddingTablePanel);
@@ -367,25 +388,27 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
         GRNSaddingTablePanelLayout.setHorizontalGroup(
             GRNSaddingTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GRNSaddingTablePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(GRNSaddingTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(GRNSaddingTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(GRNSaddingTablePanelLayout.createSequentialGroup()
-                        .addGap(0, 160, Short.MAX_VALUE)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1341, Short.MAX_VALUE))
+                    .addGroup(GRNSaddingTablePanelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(25, 25, 25))
         );
         GRNSaddingTablePanelLayout.setVerticalGroup(
             GRNSaddingTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(GRNSaddingTablePanelLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(42, 42, 42))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         SupplierAndSelectProductAddingPanel.add(GRNSaddingTablePanel, java.awt.BorderLayout.CENTER);
 
+        BackToDashboardPanel.setBackground(new java.awt.Color(153, 153, 153));
         BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(833, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
@@ -402,7 +425,7 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
-                .addContainerGap(794, Short.MAX_VALUE))
+                .addContainerGap(1347, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,10 +448,6 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
     private void BatchSelectComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BatchSelectComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BatchSelectComboBoxActionPerformed
-
-    private void NewBatchAddingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewBatchAddingButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NewBatchAddingButtonActionPerformed
 
     private void grnIDGenerateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grnIDGenerateButtonActionPerformed
         // TODO add your handling code here:
@@ -466,11 +485,8 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
     private javax.swing.JPanel BackToDashboardPanel;
     private javax.swing.JComboBox<String> BatchSelectComboBox;
     private javax.swing.JPanel GRNSaddingTablePanel;
-    private javax.swing.JButton GRNaddButton;
     private javax.swing.JTable GRNaddingtable;
-    private javax.swing.JButton GRNupdateButton;
     private javax.swing.JComboBox<String> GrnStatusSelectComboBox;
-    private javax.swing.JButton NewBatchAddingButton;
     private javax.swing.JTextField NewBatchAddingTextField;
     private javax.swing.JFormattedTextField PayableAmountTextField;
     private javax.swing.JFormattedTextField PaymentDueTextField;
@@ -484,7 +500,6 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
     private javax.swing.JTextField grnIdTextField;
     private javax.swing.JPanel grnbatchAndStockaddingPanel;
     private javax.swing.JPanel headerPanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -499,5 +514,9 @@ public class AddPurchasingOrder extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private com.k33ptoo.components.KButton kButton1;
+    private com.k33ptoo.components.KButton kButton2;
+    private com.k33ptoo.components.KButton kButton3;
+    private com.k33ptoo.components.KButton kButton4;
     // End of variables declaration//GEN-END:variables
 }

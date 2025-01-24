@@ -5,6 +5,14 @@
 package hr_department_gui;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import java.sql.ResultSet;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.event.KeyEvent;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.MySql;
 
 /**
  *
@@ -17,6 +25,37 @@ public class AddNewCompany extends javax.swing.JFrame {
      */
     public AddNewCompany() {
         initComponents();
+        RegenarateButton.grabFocus();
+        CompanyIdTextfield.setEditable(false);
+    }
+    //load company to table
+
+    private void loadCompanys() {
+        try {
+
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `company` ORDER BY `company_id` ASC "); 
+
+            DefaultTableModel model = (DefaultTableModel) CompanyRegistrationTable.getModel();
+            model.setRowCount(0);  // Clear any existing rows in the table 
+
+            // Loop through the result set to extract company data
+            while (resultSet.next()) {
+
+                Vector<String> vector = new Vector<>();
+                vector.add(resultSet.getString("company_id"));
+                vector.add(resultSet.getString("company_name"));
+                vector.add(resultSet.getString("company_address"));
+                vector.add(resultSet.getString("hotline_number"));
+                vector.add(resultSet.getString("company_email"));
+
+                model.addRow(vector); // Add the vector as a new row to the table model
+
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
     }
 
     /**
@@ -48,6 +87,7 @@ public class AddNewCompany extends javax.swing.JFrame {
         addButton = new com.k33ptoo.components.KButton();
         deleteButton = new com.k33ptoo.components.KButton();
         updateButton = new com.k33ptoo.components.KButton();
+        RefreshButton = new javax.swing.JButton();
         tablePanel = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
@@ -58,6 +98,11 @@ public class AddNewCompany extends javax.swing.JFrame {
         BackToDashboardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         headerPanal.setBackground(new java.awt.Color(153, 153, 153));
         headerPanal.setPreferredSize(new java.awt.Dimension(936, 45));
@@ -84,8 +129,23 @@ public class AddNewCompany extends javax.swing.JFrame {
                 CompanyEmailTextfieldActionPerformed(evt);
             }
         });
+        CompanyEmailTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CompanyEmailTextfieldKeyPressed(evt);
+            }
+        });
 
         RegenarateButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/generate.png"))); // NOI18N
+        RegenarateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegenarateButtonActionPerformed(evt);
+            }
+        });
+        RegenarateButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                RegenarateButtonKeyPressed(evt);
+            }
+        });
 
         CompanyNameTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         CompanyNameTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -94,13 +154,28 @@ public class AddNewCompany extends javax.swing.JFrame {
                 CompanyNameTextfieldActionPerformed(evt);
             }
         });
+        CompanyNameTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CompanyNameTextfieldKeyPressed(evt);
+            }
+        });
 
         CompanyIdTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         CompanyIdTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CompanyIdTextfield.setPreferredSize(new java.awt.Dimension(106, 32));
+        CompanyIdTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CompanyIdTextfieldKeyPressed(evt);
+            }
+        });
 
         CompanyHotlineNumberTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         CompanyHotlineNumberTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CompanyHotlineNumberTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CompanyHotlineNumberTextfieldKeyPressed(evt);
+            }
+        });
 
         CompanyAddressTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         CompanyAddressTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -108,6 +183,11 @@ public class AddNewCompany extends javax.swing.JFrame {
         CompanyAddressTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CompanyAddressTextfieldActionPerformed(evt);
+            }
+        });
+        CompanyAddressTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CompanyAddressTextfieldKeyPressed(evt);
             }
         });
 
@@ -131,7 +211,7 @@ public class AddNewCompany extends javax.swing.JFrame {
         companyRegisterPanelLayout.setHorizontalGroup(
             companyRegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(companyRegisterPanelLayout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addGroup(companyRegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -144,7 +224,7 @@ public class AddNewCompany extends javax.swing.JFrame {
                         .addComponent(RegenarateButton))
                     .addComponent(CompanyAddressTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CompanyEmailTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(companyRegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(companyRegisterPanelLayout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,7 +234,7 @@ public class AddNewCompany extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addGap(12, 12, 12)
                         .addComponent(CompanyHotlineNumberTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         companyRegisterPanelLayout.setVerticalGroup(
             companyRegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,6 +280,11 @@ public class AddNewCompany extends javax.swing.JFrame {
         addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         addButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         deleteButton.setText("Delete");
         deleteButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -210,6 +295,11 @@ public class AddNewCompany extends javax.swing.JFrame {
         deleteButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         deleteButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         deleteButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         updateButton.setText("Update");
         updateButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -220,6 +310,18 @@ public class AddNewCompany extends javax.swing.JFrame {
         updateButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+
+        RefreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/generate.png"))); // NOI18N
+        RefreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RefreshButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout buttonPanelLayout = new javax.swing.GroupLayout(buttonPanel);
         buttonPanel.setLayout(buttonPanelLayout);
@@ -227,10 +329,12 @@ public class AddNewCompany extends javax.swing.JFrame {
             buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(RefreshButton)
+                .addGap(18, 18, 18)
                 .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
                 .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
+                .addGap(113, 113, 113)
                 .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -238,11 +342,15 @@ public class AddNewCompany extends javax.swing.JFrame {
             buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(buttonPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(RefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(buttonPanelLayout.createSequentialGroup()
+                        .addGroup(buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -255,11 +363,11 @@ public class AddNewCompany extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Company Name", "Company Address", "Hotline Number"
+                "ID", "Company Name", "Company Address", "Hotline Number", "Email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -267,6 +375,11 @@ public class AddNewCompany extends javax.swing.JFrame {
             }
         });
         CompanyRegistrationTable.getTableHeader().setReorderingAllowed(false);
+        CompanyRegistrationTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CompanyRegistrationTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(CompanyRegistrationTable);
 
         BackToDashboardPanel.setBackground(new java.awt.Color(153, 153, 153));
@@ -322,7 +435,7 @@ public class AddNewCompany extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SearchCompanyNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(BackToDashboardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -364,17 +477,342 @@ public class AddNewCompany extends javax.swing.JFrame {
     }//GEN-LAST:event_CompanyAddressTextfieldActionPerformed
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
-       
+
         this.dispose();
-        
+
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        try {
+            String companyID = CompanyIdTextfield.getText();
+            String companyName = CompanyNameTextfield.getText();
+            String companyAddress = CompanyAddressTextfield.getText();
+            String companyEmail = CompanyEmailTextfield.getText();
+            String companyHotline = CompanyHotlineNumberTextfield.getText();
+
+            if (companyID.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Insert Company ID", "Empty", JOptionPane.WARNING_MESSAGE);
+                RegenarateButton.grabFocus();
+                
+            } else if (companyName.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Entre Company Name", "Empty", JOptionPane.WARNING_MESSAGE);
+                CompanyNameTextfield.grabFocus();
+                
+            } else if (companyAddress.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Entre Company Address", "Empty", JOptionPane.WARNING_MESSAGE);
+                CompanyAddressTextfield.grabFocus();
+                
+            } else if (companyEmail.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Entre Company Email", "Empty", JOptionPane.WARNING_MESSAGE);
+                CompanyEmailTextfield.grabFocus();
+                
+            } else if (!companyEmail.matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")) {
+                
+                JOptionPane.showMessageDialog(this, "Please Entre a valid Email", "Empty", JOptionPane.WARNING_MESSAGE);
+                CompanyEmailTextfield.grabFocus();
+                
+            } else if (companyHotline.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please Enter mobile number", "Warning", JOptionPane.WARNING_MESSAGE);
+                CompanyHotlineNumberTextfield.grabFocus();
+                
+            } else if (!companyHotline.matches("^(?:0|94|\\+94|0094)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|4|5|6|7|8)\\d)\\d{6}$")) {
+                
+                JOptionPane.showMessageDialog(this, "Please enter valid mobile number", "Warning", JOptionPane.WARNING_MESSAGE);
+                CompanyHotlineNumberTextfield.grabFocus();
+                
+            }else if (companyHotline.length() !=10 ) {
+                
+                JOptionPane.showMessageDialog(this, "Mobile number must be included 10 characters only", "Warning", JOptionPane.WARNING_MESSAGE);
+                CompanyHotlineNumberTextfield.grabFocus();
+                
+            } else {
+                
+                ResultSet resultset = MySql.executeSearch("SELECT * FROM `company` WHERE `company_id` = '" + companyID
+                        
+                        + "' OR `hotline_number` = '" + companyHotline + "'");
+                
+                if (resultset.next()) {
+                    
+                    JOptionPane.showMessageDialog(this, "Company Already Registered", "Error", JOptionPane.ERROR_MESSAGE);
+                    RegenarateButton.grabFocus();
+                    
+                } else {
+                    
+                    MySql.executeUpdate("INSERT INTO `company` (`company_id`,`company_name`,`company_address`,`company_email`,`hotline_number`)"
+                            + " VALUES ('" + companyID + "','" + companyName + "','" + companyAddress + "','" + companyEmail + "',"
+                            + " '" + companyHotline + "')");
+                    
+                    reset();
+                    
+                    loadCompanys();
+                    
+                    JOptionPane.showMessageDialog(this, "Company Successfully Registered", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    
+                }
+
+            }
+
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+            
+        }
+
+
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void RegenarateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegenarateButtonActionPerformed
+        // Sets Hand Icon to select Employee ID
+        CompanyIdTextfield.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        // Sets back to Employee Id Color origin
+        CompanyIdTextfield.setForeground(Color.BLACK);
+
+        // Generate Id when button clicked
+        long id = System.currentTimeMillis();
+        CompanyIdTextfield.setText("ECR" + String.valueOf(id));       
+
+        // Request focus to the text field
+        CompanyIdTextfield.setFocusable(true);
+
+    }//GEN-LAST:event_RegenarateButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // Get the index of the selected row in the jtable
+        int selectedRow = CompanyRegistrationTable.getSelectedRow(); //Row selected
+
+        //Check if no row selected
+        if (selectedRow == -1) {
+
+            JOptionPane.showMessageDialog(this, "Please Select a Row to delete Company ", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+
+            try {
+
+                // Get the company ID of the selected row
+                String selectedCompanyId = String.valueOf(CompanyRegistrationTable.getValueAt(selectedRow, 0));
+
+                // Confirm before the deletion
+                int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this company?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+
+                    // Delete the selected company from the database
+                    MySql.executeUpdate("DELETE FROM `company` WHERE `company_id`='" + selectedCompanyId + "' ");                    
+
+                    //load to table
+                    
+                    reset();
+                    
+                    loadCompanys();
+                    //success message
+                    JOptionPane.showMessageDialog(this, "Company Deleted Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+                }
+
+            } catch (Exception e) {
+
+                e.printStackTrace();
+                // Show an error message if the operation fails
+                JOptionPane.showMessageDialog(this, "Error occurred while deleting the Compnay.", "Error", JOptionPane.ERROR_MESSAGE);
+
+            }
+
+        }
+
+
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        loadCompanys();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void RefreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshButtonActionPerformed
+        reset();
+    }//GEN-LAST:event_RefreshButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        // Get the index of the selected row in the table
+        int row = CompanyRegistrationTable.getSelectedRow(); //Row selected
+
+        //Check if no row selected
+        if (row == -1) {
+
+            // Show a warning message if no row is selected
+            JOptionPane.showMessageDialog(this, "Please Select a Row", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+         
+            String companyID = CompanyIdTextfield.getText();
+            String companyName = CompanyNameTextfield.getText();
+            String companyAddress = CompanyAddressTextfield.getText();
+            //String companyEmail = CompanyEmailTextfield.getText();
+            String companyHotline = CompanyHotlineNumberTextfield.getText();
+            
+            String selectedCompanyID = String.valueOf(CompanyRegistrationTable.getValueAt(row, 0));            
+            
+            String selectedCompanyEmail = String.valueOf(CompanyRegistrationTable.getValueAt(row, 4));
+            
+            // Check if the company name field is empty
+            
+            if (companyName.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please enter company", "Warning", JOptionPane.WARNING_MESSAGE);
+                CompanyNameTextfield.grabFocus();
+                
+                // Check if the new company name matches the current name
+            } else if (companyAddress.isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Please enter Company address", "Blank Address Warning", JOptionPane.WARNING_MESSAGE);
+                CompanyAddressTextfield.grabFocus();
+                
+            }else if (companyHotline.length() !=10 ) {
+                
+                JOptionPane.showMessageDialog(this, "Mobile number must be included 10 characters only", "Warning", JOptionPane.WARNING_MESSAGE);
+                CompanyHotlineNumberTextfield.grabFocus();
+                
+            } else {
+                
+                boolean companyUpdate = false;
+
+                try {
+
+                    //Search from Database
+                    ResultSet resultSet = MySql.executeSearch("SELECT * FROM `company` WHERE (`company_name`='" + companyName + "') AND `company_id` != '" + selectedCompanyID + "'");
+
+                    if (resultSet.next()) {
+                        
+                        if (!resultSet.getString("company_id").equals(companyID)) {
+                            
+                            JOptionPane.showMessageDialog(this, "This Company name is already used", "Warning", JOptionPane.WARNING_MESSAGE);
+                            
+                        }else{
+                            
+                            companyUpdate = true;
+                            
+                        }
+
+                    } else {
+
+                        companyUpdate = true;
+                        
+                        if (companyUpdate) {
+                            
+                            //Update the Database
+                            MySql.executeUpdate("UPDATE `company` SET `company_name` = '" + companyName + "', `company_address` = '"+companyAddress+"', `company_email` = '"+selectedCompanyEmail+"', `hotline_number` = '"+companyHotline+"' WHERE `company_id` = '" + selectedCompanyID + "' ");
+
+                            //load to table
+
+                            reset();
+
+                            loadCompanys();
+
+                            //success message
+                            JOptionPane.showMessageDialog(this, "Company Updated Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);                            
+                            
+                        }
+                        
+                    }
+                    
+                } catch (Exception e) {
+                    
+                    e.printStackTrace();
+                    // Show an error message if the operation fails
+                    JOptionPane.showMessageDialog(this, "Error occurred while updating the Company", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+
+        }
+
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void CompanyRegistrationTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CompanyRegistrationTableMouseClicked
+        int row = CompanyRegistrationTable.getSelectedRow();
+        
+        RegenarateButton.setEnabled(false);
+
+        CompanyIdTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 0)));
+        CompanyNameTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 1)));
+        CompanyAddressTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 2)));
+        CompanyHotlineNumberTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 3)));
+        CompanyEmailTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 4)));
+        
+        CompanyIdTextfield.setEditable(false);
+    }//GEN-LAST:event_CompanyRegistrationTableMouseClicked
+
+    private void CompanyIdTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CompanyIdTextfieldKeyPressed
+        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            CompanyNameTextfield.grabFocus();
+            
+        }
+        
+    }//GEN-LAST:event_CompanyIdTextfieldKeyPressed
+
+    private void CompanyNameTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CompanyNameTextfieldKeyPressed
+        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            CompanyAddressTextfield.grabFocus();
+            
+        }
+        
+    }//GEN-LAST:event_CompanyNameTextfieldKeyPressed
+
+    private void CompanyAddressTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CompanyAddressTextfieldKeyPressed
+        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            CompanyEmailTextfield.grabFocus();
+            
+        }
+        
+    }//GEN-LAST:event_CompanyAddressTextfieldKeyPressed
+
+    private void CompanyEmailTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CompanyEmailTextfieldKeyPressed
+        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            CompanyHotlineNumberTextfield.grabFocus();
+            
+        }
+        
+    }//GEN-LAST:event_CompanyEmailTextfieldKeyPressed
+
+    private void CompanyHotlineNumberTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CompanyHotlineNumberTextfieldKeyPressed
+        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            addButton.grabFocus();
+            
+        }
+        
+    }//GEN-LAST:event_CompanyHotlineNumberTextfieldKeyPressed
+
+    private void RegenarateButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RegenarateButtonKeyPressed
+        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            CompanyIdTextfield.grabFocus();
+            
+        }
+        
+    }//GEN-LAST:event_RegenarateButtonKeyPressed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-         FlatMacLightLaf.setup();
+        FlatMacLightLaf.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -393,6 +831,7 @@ public class AddNewCompany extends javax.swing.JFrame {
     private javax.swing.JTextField CompanyIdTextfield;
     private javax.swing.JTextField CompanyNameTextfield;
     private javax.swing.JTable CompanyRegistrationTable;
+    private javax.swing.JButton RefreshButton;
     private javax.swing.JButton RegenarateButton;
     private javax.swing.JTextField SearchCompanyNameTextField;
     private com.k33ptoo.components.KButton addButton;
@@ -414,4 +853,16 @@ public class AddNewCompany extends javax.swing.JFrame {
     private javax.swing.JPanel tablePanel;
     private com.k33ptoo.components.KButton updateButton;
     // End of variables declaration//GEN-END:variables
+
+    private void reset() {
+        CompanyIdTextfield.setText("");
+        RegenarateButton.setEnabled(true);
+        CompanyRegistrationTable.clearSelection();
+        RegenarateButton.grabFocus();
+        CompanyNameTextfield.setText("");
+        CompanyAddressTextfield.setText("");
+        CompanyHotlineNumberTextfield.setText("");
+        CompanyEmailTextfield.setText("");
+    }
+
 }

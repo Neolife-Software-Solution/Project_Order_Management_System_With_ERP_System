@@ -7,7 +7,6 @@ package hr_department_gui;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
@@ -36,7 +35,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         
         initComponents();
         
-        fullScreenCenter(); // call Dashboad fullscreen & center
+        fullScreen(); // call Dashboad fullscreen
         
         configureKeyBindings();   // For Default Frame Key Controls
         
@@ -67,12 +66,10 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         
     }
     
-    // method to Dashboad fullscreen & center
-    private void fullScreenCenter() {
+    // method to Dashboad fullscreen
+    private void fullScreen() {
         
-        this.setSize(Toolkit.getDefaultToolkit().getScreenSize());
-        
-        setLocationRelativeTo(this);
+        this.setExtendedState(HRDepartmentDashboard.MAXIMIZED_BOTH);
         
     }
     
@@ -629,6 +626,7 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         getContentPane().add(MainDashboardPanel, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked

@@ -269,8 +269,8 @@
                                           <Component id="Address" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="AddressTextfield" alignment="0" max="32767" attributes="0"/>
                                           <Component id="mobile" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="MobileTextfield" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="EmailAddressTextfield" alignment="1" min="-2" pref="359" max="-2" attributes="0"/>
+                                          <Component id="MobileTextfield" alignment="0" pref="359" max="32767" attributes="0"/>
+                                          <Component id="EmailAddressTextfield" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -295,15 +295,14 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="mobile" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="FirstName" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="FirstNameTextfield" min="-2" pref="32" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="mobile" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="MobileTextfield" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="FirstNameTextfield" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Component id="EmailAddressTextfield" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace pref="12" max="32767" attributes="0"/>
@@ -316,7 +315,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="Email" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="EmailAddressTextfield" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="MobileTextfield" min="-2" pref="32" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -345,6 +344,11 @@
                       <Font name="Verdana" size="14" style="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="FirstNameTextfieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="FirstNameTextfieldFocusLost"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FirstNameTextfieldKeyPressed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="LastName">
                   <Properties>
@@ -361,7 +365,10 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="LastNameTextfieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="LastNameTextfieldFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LastNameTextfieldActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="LastNameTextfieldKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="Address">
@@ -379,28 +386,13 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="AddressTextfieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="AddressTextfieldFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddressTextfieldActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="AddressTextfieldKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="Email">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Yu Gothic UI" size="14" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Email Address"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="EmailAddressTextfield">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Verdana" size="14" style="0"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmailAddressTextfieldActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="mobile">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="14" style="0"/>
@@ -415,8 +407,19 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="MobileTextfieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="MobileTextfieldFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MobileTextfieldActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="MobileTextfieldKeyPressed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="mobile">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Yu Gothic UI" size="14" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Email Address"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator1">
                 </Component>
@@ -430,7 +433,9 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="customerIDTextField">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customerIDTextFieldActionPerformed"/>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="customerIDTextFieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="customerIDTextFieldFocusLost"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="customerIDTextFieldKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="generateButton">
@@ -441,6 +446,7 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generateButtonActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="generateButtonKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="com.k33ptoo.components.KButton" name="addButton">
@@ -485,6 +491,18 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refreshButtonActionPerformed"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JTextField" name="EmailAddressTextfield">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Verdana" size="14" style="0"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="EmailAddressTextfieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="EmailAddressTextfieldFocusLost"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="EmailAddressTextfieldKeyPressed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="searchPanel">
@@ -520,10 +538,15 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Yu Gothic UI" size="14" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Full Name / Email / Mobile"/>
+                    <Property name="text" type="java.lang.String" value="First Name / Last Name / Email / Mobile"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="searchTextField">
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchTextFieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchTextFieldFocusLost"/>
+                    <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="searchTextFieldKeyTyped"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

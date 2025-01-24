@@ -4,7 +4,18 @@
  */
 package hr_department_gui;
 
+import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import model.MySql;
 
 /**
  *
@@ -16,7 +27,99 @@ public class AddNewCustomer extends javax.swing.JFrame {
      * Creates new form Add_New_Customer
      */
     public AddNewCustomer() {
+
         initComponents();
+
+        generateButton.grabFocus();
+        customerIDTextField.setEditable(false);
+        addPlaceholder(); //placeholder to textfield
+        loadCustomers();
+    }
+
+    //addplaceholder method
+    private void addPlaceholder() {
+
+        //ID textfield placeholder and color
+        customerIDTextField.setText("Customer ID");
+        customerIDTextField.setForeground(Color.GRAY);
+
+        //First Name textfield placeholder and color
+        FirstNameTextfield.setText("First Name");
+        FirstNameTextfield.setForeground(Color.GRAY);
+
+        //Last Name textfield placeholder and color
+        LastNameTextfield.setText("Last Name");
+        LastNameTextfield.setForeground(Color.GRAY);
+
+        //Address textfield placeholder and color
+        AddressTextfield.setText("Address");
+        AddressTextfield.setForeground(Color.GRAY);
+
+        //Mobile textfield placeholder and color
+        EmailAddressTextfield.setText("Email Address");
+        EmailAddressTextfield.setForeground(Color.GRAY);
+
+        //Email textfield placeholder and color
+        MobileTextfield.setText("Mobile Number");
+        MobileTextfield.setForeground(Color.GRAY);
+
+        //Search textfield placeholder and color
+        searchTextField.setText("Search by name/email/mobile");
+        searchTextField.setForeground(Color.GRAY);
+
+    }
+
+    //load customers to table
+    private void loadCustomers() {
+        try {
+
+            // Execute an SQL query to fetch all records from the "new_customer" table
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `customer` ");
+
+            DefaultTableModel model = (DefaultTableModel) CustomerTable.getModel();
+            model.setRowCount(0);  // Clear any existing rows in the table 
+
+            // Loop through the result set to extract cutomer data
+            while (resultSet.next()) {
+
+                Vector<String> vector = new Vector<>();
+                vector.add(resultSet.getString("customer_id"));
+                vector.add(resultSet.getString("first_name"));
+                vector.add(resultSet.getString("last_name"));
+                vector.add(resultSet.getString("address"));
+                vector.add(resultSet.getString("mobile"));
+                vector.add(resultSet.getString("email"));
+
+                model.addRow(vector); // Add the vector as a new row to the table model
+
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
+    }
+
+    //Search method
+    private void search(String searchTerm) {
+
+        DefaultTableModel model = (DefaultTableModel) CustomerTable.getModel();
+
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(model);
+
+        CustomerTable.setRowSorter(tr);
+
+        if (searchTerm.trim().length() == 0) {
+
+            tr.setRowFilter(null);
+
+        } else {
+
+            // Apply the RowFilter to search across columns 1 (First Name), 2 (Last Name), 4 (Email), and 5 (Mobile)
+            tr.setRowFilter(RowFilter.regexFilter("(?i)" + searchTerm, 0, 1, 2, 4, 5));
+
+        }
+
     }
 
     /**
@@ -44,15 +147,15 @@ public class AddNewCustomer extends javax.swing.JFrame {
         Address = new javax.swing.JLabel();
         AddressTextfield = new javax.swing.JTextField();
         Email = new javax.swing.JLabel();
-        EmailAddressTextfield = new javax.swing.JTextField();
-        mobile = new javax.swing.JLabel();
         MobileTextfield = new javax.swing.JTextField();
+        mobile = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         customerIDTextField = new javax.swing.JTextField();
         generateButton = new javax.swing.JButton();
         addButton = new com.k33ptoo.components.KButton();
         refreshButton = new javax.swing.JButton();
+        EmailAddressTextfield = new javax.swing.JTextField();
         searchPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         searchTextField = new javax.swing.JTextField();
@@ -139,14 +242,40 @@ public class AddNewCustomer extends javax.swing.JFrame {
         FirstName.setText("First Name");
 
         FirstNameTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        FirstNameTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                FirstNameTextfieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                FirstNameTextfieldFocusLost(evt);
+            }
+        });
+        FirstNameTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FirstNameTextfieldKeyPressed(evt);
+            }
+        });
 
         LastName.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         LastName.setText("Last Name ");
 
         LastNameTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        LastNameTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                LastNameTextfieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                LastNameTextfieldFocusLost(evt);
+            }
+        });
         LastNameTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LastNameTextfieldActionPerformed(evt);
+            }
+        });
+        LastNameTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LastNameTextfieldKeyPressed(evt);
             }
         });
 
@@ -154,38 +283,65 @@ public class AddNewCustomer extends javax.swing.JFrame {
         Address.setText("Address");
 
         AddressTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        AddressTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                AddressTextfieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                AddressTextfieldFocusLost(evt);
+            }
+        });
         AddressTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddressTextfieldActionPerformed(evt);
             }
         });
-
-        Email.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        Email.setText("Email Address");
-
-        EmailAddressTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        EmailAddressTextfield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailAddressTextfieldActionPerformed(evt);
+        AddressTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AddressTextfieldKeyPressed(evt);
             }
         });
 
-        mobile.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        mobile.setText("Mobile No");
+        Email.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        Email.setText("Mobile No");
 
         MobileTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        MobileTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                MobileTextfieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                MobileTextfieldFocusLost(evt);
+            }
+        });
         MobileTextfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MobileTextfieldActionPerformed(evt);
             }
         });
+        MobileTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                MobileTextfieldKeyPressed(evt);
+            }
+        });
+
+        mobile.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        mobile.setText("Email Address");
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel1.setText("Customer ID");
 
-        customerIDTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                customerIDTextFieldActionPerformed(evt);
+        customerIDTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                customerIDTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                customerIDTextFieldFocusLost(evt);
+            }
+        });
+        customerIDTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                customerIDTextFieldKeyPressed(evt);
             }
         });
 
@@ -193,6 +349,11 @@ public class AddNewCustomer extends javax.swing.JFrame {
         generateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generateButtonActionPerformed(evt);
+            }
+        });
+        generateButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                generateButtonKeyPressed(evt);
             }
         });
 
@@ -215,6 +376,21 @@ public class AddNewCustomer extends javax.swing.JFrame {
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
+            }
+        });
+
+        EmailAddressTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        EmailAddressTextfield.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                EmailAddressTextfieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                EmailAddressTextfieldFocusLost(evt);
+            }
+        });
+        EmailAddressTextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                EmailAddressTextfieldKeyPressed(evt);
             }
         });
 
@@ -250,8 +426,8 @@ public class AddNewCustomer extends javax.swing.JFrame {
                                 .addComponent(Address)
                                 .addComponent(AddressTextfield)
                                 .addComponent(mobile)
-                                .addComponent(MobileTextfield)
-                                .addComponent(EmailAddressTextfield, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(MobileTextfield, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                                .addComponent(EmailAddressTextfield)))))
                 .addGap(0, 80, Short.MAX_VALUE))
         );
         AddCustomerPanelLayout.setVerticalGroup(
@@ -268,14 +444,13 @@ public class AddNewCustomer extends javax.swing.JFrame {
                     .addComponent(generateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mobile)
                     .addGroup(AddCustomerPanelLayout.createSequentialGroup()
                         .addComponent(FirstName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FirstNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddCustomerPanelLayout.createSequentialGroup()
-                        .addComponent(mobile)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(MobileTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FirstNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EmailAddressTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddCustomerPanelLayout.createSequentialGroup()
@@ -285,7 +460,7 @@ public class AddNewCustomer extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddCustomerPanelLayout.createSequentialGroup()
                         .addComponent(Email)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EmailAddressTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(MobileTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28)
                 .addGroup(AddCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,7 +470,21 @@ public class AddNewCustomer extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel2.setText("Full Name / Email / Mobile");
+        jLabel2.setText("First Name / Last Name / Email / Mobile");
+
+        searchTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchTextFieldFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                searchTextFieldFocusLost(evt);
+            }
+        });
+        searchTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                searchTextFieldKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
@@ -348,43 +537,390 @@ public class AddNewCustomer extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MobileTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MobileTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MobileTextfieldActionPerformed
-
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
 
         this.dispose();
 
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
-    private void EmailAddressTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailAddressTextfieldActionPerformed
+    private void MobileTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MobileTextfieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EmailAddressTextfieldActionPerformed
+    }//GEN-LAST:event_MobileTextfieldActionPerformed
 
     private void LastNameTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LastNameTextfieldActionPerformed
-        // TODO add your handling code here:
+        AddressTextfield.grabFocus();
     }//GEN-LAST:event_LastNameTextfieldActionPerformed
 
     private void generateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateButtonActionPerformed
-        // TODO add your handling code here:
+
+        customerIDTextField.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        // Sets back to Customer Id Color origin
+        customerIDTextField.setForeground(Color.BLACK);
+
+        // Generate Id when button clicked
+        long cusid = System.currentTimeMillis();
+        customerIDTextField.setText("CUS" + String.valueOf(cusid));
+
+        // Enable the text field (if it was disabled)
+        customerIDTextField.setEnabled(true);
+
+        // Request focus to the text field
+        customerIDTextField.setFocusable(true);
+
+
     }//GEN-LAST:event_generateButtonActionPerformed
 
     private void AddressTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddressTextfieldActionPerformed
-        // TODO add your handling code here:
+        EmailAddressTextfield.grabFocus();
     }//GEN-LAST:event_AddressTextfieldActionPerformed
 
-    private void customerIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerIDTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_customerIDTextFieldActionPerformed
-
+    //Add Button function
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
+
+        try {
+
+            // Get the text entered in the text fields
+            String customerid = customerIDTextField.getText(); //Select cutomer id textfield
+            String firstname = FirstNameTextfield.getText(); //Select first name textfield
+            String lastname = LastNameTextfield.getText(); //Select last name textfield
+            String address = AddressTextfield.getText(); //Select address textfield
+            String email = EmailAddressTextfield.getText(); //Select email textfield
+            String mobileno = MobileTextfield.getText(); //Select mobile textfield
+
+            // Check if customer id is empty
+            if (customerid.isEmpty() || customerid.equals("Customer ID")) {
+                // Show a warning message if no customer id is entered
+                JOptionPane.showMessageDialog(this, "Please click the button for a new ID", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                generateButton.grabFocus();
+
+                // Check if first name is empty
+            } else if (firstname.isEmpty() || firstname.equals("First Name")) {
+                // Show a warning message if no first name is entered
+                JOptionPane.showMessageDialog(this, "Please enter First Name", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                FirstNameTextfield.grabFocus();
+
+                // Check if last name is empty
+            } else if (firstname.length() < 2 || firstname.length() > 50) {
+                // Show a warning message if no first name is entered
+                JOptionPane.showMessageDialog(this, "First name must include 2 - 50 characters", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                FirstNameTextfield.grabFocus();
+
+                // Check if last name is empty
+            } else if (lastname.isEmpty() || lastname.equals("Last Name")) {
+                // Show a warning message if no last name is entered
+                JOptionPane.showMessageDialog(this, "Please enter Last Name", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                LastNameTextfield.grabFocus();
+
+                // Check if address is empty
+            } else if (lastname.length() < 2 || lastname.length() > 50) {
+                // Show a warning message if no first name is entered
+                JOptionPane.showMessageDialog(this, "Last name must include 2 - 50 characters ", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                LastNameTextfield.grabFocus();
+
+                // Check if last name is empty
+            } else if (address.isEmpty() || address.equals("Address")) {
+                // Show a warning message if no address is entered
+                JOptionPane.showMessageDialog(this, "Please enter Address", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                AddressTextfield.grabFocus();
+
+                // Check if mobile is empty
+            } else if (email.isEmpty() || email.equals("Email Address")) {
+                // Show a warning message if no email is entered
+                JOptionPane.showMessageDialog(this, "Please enter Email", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                EmailAddressTextfield.grabFocus();
+
+            } else if (email.length() < 5 || email.length() > 100) {
+                // Show a warning message if no first name is entered
+                JOptionPane.showMessageDialog(this, "Email address must include 5 - 100 characters ", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                EmailAddressTextfield.grabFocus();
+
+                // Check if email name is empty
+            } else if (!email.matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")) {
+
+                JOptionPane.showMessageDialog(this, "Please enter valid email address", "Incorrect email type", JOptionPane.WARNING_MESSAGE);
+
+                EmailAddressTextfield.grabFocus();
+
+            } else if (mobileno.isEmpty() || mobileno.equals("Mobile Number")) {
+                // Show a warning message if no mobile number is entered
+                JOptionPane.showMessageDialog(this, "Please enter Mobile Number", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                MobileTextfield.grabFocus();
+
+            } else if (!mobileno.matches("^(?:0|94|\\+94|0094)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|4|5|6|7|8)\\d)\\d{6}$")) {
+                JOptionPane.showMessageDialog(this, "Please enter valid Mobile Number", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                MobileTextfield.grabFocus();
+
+                // Check if email is empty
+            } else if (mobileno.length() != 10) {
+                // Show a warning message if no first name is entered
+                JOptionPane.showMessageDialog(this, "mobile number must include 10 characters ", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                MobileTextfield.grabFocus();
+
+                // Check if last name is empty
+            } else {
+
+                // Check if the customer already exists in the database
+                ResultSet resultSet = MySql.executeSearch("SELECT * FROM `customer` WHERE `customer_id`= '" + customerid + "' OR `mobile`='" + mobileno + "'");
+
+                if (resultSet.next()) {
+
+                    // Show a warning if the customer is already added
+                    JOptionPane.showMessageDialog(this, "Customer Name Already Added", "Warning", JOptionPane.WARNING_MESSAGE);
+                } else {
+
+                    //Insert new customer
+                    MySql.executeUpdate("INSERT INTO `customer` (`customer_id`,`first_name`,`last_name`,`address`,`mobile`,`email` ) VALUES ('" + customerid + "','" + firstname + "','" + lastname + "','" + address + "','" + mobileno + "','" + email + "')");
+
+                    loadCustomers();  //load to table
+
+                    reset();  // Clear the text field for the next entry                 
+
+                    //success message
+                    JOptionPane.showMessageDialog(this, firstname + " " + lastname + " " + "Added Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+                    generateButton.grabFocus();
+
+                }
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            // Show an error message if the operation fails
+            JOptionPane.showMessageDialog(this, e + " " + "Error occurred while adding the Customer", "Error", JOptionPane.ERROR_MESSAGE);
+
+            generateButton.grabFocus();
+
+        }
+
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
-        // TODO add your handling code here:
+        reset(); //refresh the frame
     }//GEN-LAST:event_refreshButtonActionPerformed
+
+    private void customerIDTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_customerIDTextFieldFocusGained
+        //check and set clear the current textfield to enter data
+        if (customerIDTextField.getText().equals("Customer ID")) {
+
+            customerIDTextField.setText("");
+
+            customerIDTextField.setForeground(Color.BLACK);
+
+        }
+    }//GEN-LAST:event_customerIDTextFieldFocusGained
+
+    private void customerIDTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_customerIDTextFieldFocusLost
+        //set back the placeholder
+        if (customerIDTextField.getText().isEmpty()) {
+
+            customerIDTextField.setText("Customer ID");
+
+            customerIDTextField.setForeground(Color.GRAY);
+
+        }
+    }//GEN-LAST:event_customerIDTextFieldFocusLost
+
+    private void FirstNameTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FirstNameTextfieldFocusGained
+        //check and set clear the current textfield to enter data
+        if (FirstNameTextfield.getText().equals("First Name")) {
+
+            FirstNameTextfield.setText("");
+
+            FirstNameTextfield.setForeground(Color.BLACK);
+
+        }
+    }//GEN-LAST:event_FirstNameTextfieldFocusGained
+
+    private void FirstNameTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FirstNameTextfieldFocusLost
+        //set back the placeholder
+        if (FirstNameTextfield.getText().isEmpty()) {
+
+            FirstNameTextfield.setText("First Name");
+
+            FirstNameTextfield.setForeground(Color.GRAY);
+
+        }
+    }//GEN-LAST:event_FirstNameTextfieldFocusLost
+
+    private void LastNameTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LastNameTextfieldFocusGained
+        //check and set clear the current textfield to enter data
+        if (LastNameTextfield.getText().equals("Last Name")) {
+
+            LastNameTextfield.setText("");
+
+            LastNameTextfield.setForeground(Color.BLACK);
+
+        }
+    }//GEN-LAST:event_LastNameTextfieldFocusGained
+
+    private void LastNameTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_LastNameTextfieldFocusLost
+        //set back the placeholder
+        if (LastNameTextfield.getText().isEmpty()) {
+
+            LastNameTextfield.setText("Last Name");
+
+            LastNameTextfield.setForeground(Color.GRAY);
+
+        }
+    }//GEN-LAST:event_LastNameTextfieldFocusLost
+
+    private void AddressTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AddressTextfieldFocusGained
+        //check and set clear the current textfield to enter data
+        if (AddressTextfield.getText().equals("Address")) {
+            AddressTextfield.setText("");
+            AddressTextfield.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_AddressTextfieldFocusGained
+
+    private void AddressTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_AddressTextfieldFocusLost
+        //set back the placeholder
+        if (AddressTextfield.getText().isEmpty()) {
+            AddressTextfield.setText("Address");
+            AddressTextfield.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_AddressTextfieldFocusLost
+
+    private void MobileTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MobileTextfieldFocusGained
+        //check and set clear the current textfield to enter data
+        if (MobileTextfield.getText().equals("Mobile Number")) {
+            MobileTextfield.setText("");
+            MobileTextfield.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_MobileTextfieldFocusGained
+
+    private void MobileTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_MobileTextfieldFocusLost
+        //set back the placeholder
+        if (MobileTextfield.getText().isEmpty()) {
+            MobileTextfield.setText("Mobile Number");
+            MobileTextfield.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_MobileTextfieldFocusLost
+
+    private void FirstNameTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FirstNameTextfieldKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            LastNameTextfield.grabFocus();
+
+        }
+    }//GEN-LAST:event_FirstNameTextfieldKeyPressed
+
+    private void searchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusGained
+        //check and set clear the current textfield to enter data
+        if (searchTextField.getText().equals("Search by name/email/mobile")) {
+            searchTextField.setText("");
+            searchTextField.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_searchTextFieldFocusGained
+
+    private void searchTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchTextFieldFocusLost
+        //set back the placeholder
+        if (searchTextField.getText().isEmpty()) {
+
+            searchTextField.setText("Search by name/email/mobile");
+
+            searchTextField.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_searchTextFieldFocusLost
+
+    private void customerIDTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_customerIDTextFieldKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            FirstNameTextfield.grabFocus();
+
+        }
+
+    }//GEN-LAST:event_customerIDTextFieldKeyPressed
+
+    private void generateButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_generateButtonKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            customerIDTextField.grabFocus();
+
+        }
+
+    }//GEN-LAST:event_generateButtonKeyPressed
+
+    private void LastNameTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LastNameTextfieldKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            AddressTextfield.grabFocus();
+
+        }
+
+    }//GEN-LAST:event_LastNameTextfieldKeyPressed
+
+    private void AddressTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AddressTextfieldKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            EmailAddressTextfield.grabFocus();
+
+        }
+
+    }//GEN-LAST:event_AddressTextfieldKeyPressed
+
+    private void MobileTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_MobileTextfieldKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            addButton.grabFocus();
+
+        }
+
+    }//GEN-LAST:event_MobileTextfieldKeyPressed
+
+    private void searchTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyTyped
+
+        String searchTerm = searchTextField.getText();
+
+        search(searchTerm);
+
+    }//GEN-LAST:event_searchTextFieldKeyTyped
+
+    private void EmailAddressTextfieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmailAddressTextfieldFocusGained
+        
+        if (EmailAddressTextfield.getText().equals("Email Address")) {
+            EmailAddressTextfield.setText("");
+            EmailAddressTextfield.setForeground(Color.BLACK);
+        }
+        
+    }//GEN-LAST:event_EmailAddressTextfieldFocusGained
+
+    private void EmailAddressTextfieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmailAddressTextfieldFocusLost
+        
+        if (EmailAddressTextfield.getText().isEmpty()) {
+            EmailAddressTextfield.setText("Email Address");
+            EmailAddressTextfield.setForeground(Color.GRAY);
+        }
+        
+    }//GEN-LAST:event_EmailAddressTextfieldFocusLost
+
+    private void EmailAddressTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EmailAddressTextfieldKeyPressed
+        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            MobileTextfield.grabFocus();
+            
+        }
+        
+    }//GEN-LAST:event_EmailAddressTextfieldKeyPressed
 
     /**
      * @param args the command line arguments
@@ -431,4 +967,22 @@ public class AddNewCustomer extends javax.swing.JFrame {
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTextField searchTextField;
     // End of variables declaration//GEN-END:variables
+
+    // Function to reset the input fields and table selection
+    private void reset() {
+
+        customerIDTextField.setText("");
+        generateButton.grabFocus();
+        FirstNameTextfield.setText("");
+        LastNameTextfield.setText("");
+        AddressTextfield.setText("");
+        EmailAddressTextfield.setText("");
+        MobileTextfield.setText("");
+        searchTextField.setText("");
+        addButton.setEnabled(true);
+        CustomerTable.clearSelection();
+
+        //Re-add the placeholder to refreshed textfield
+        addPlaceholder();
+    }
 }

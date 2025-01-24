@@ -32,20 +32,30 @@ public class PayrollManagement extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BodyPanel = new javax.swing.JPanel();
         SearchPanel = new javax.swing.JPanel();
-        YearChooseFromDateField = new com.toedter.calendar.JYearChooser();
         SearchEmployeeTextField = new javax.swing.JTextField();
-        SearchButton = new javax.swing.JButton();
-        SelectDepartmentComboBox = new javax.swing.JComboBox<>();
         RefreshButton = new javax.swing.JButton();
-        MonthChooseFromDateField = new com.toedter.calendar.JMonthChooser();
+        jLabel3 = new javax.swing.JLabel();
+        searchButton = new com.k33ptoo.components.KButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        kButton1 = new com.k33ptoo.components.KButton();
         ViewPanel = new javax.swing.JPanel();
         BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
         TableViewPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         PayrollManagementTable = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        YearChooseFromDateField = new com.toedter.calendar.JYearChooser();
+        jLabel5 = new javax.swing.JLabel();
+        MonthChooseFromDateField = new com.toedter.calendar.JMonthChooser();
+        jLabel4 = new javax.swing.JLabel();
+        SelectDepartmentComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+
+        HeaderPanel.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -55,87 +65,107 @@ public class PayrollManagement extends javax.swing.JFrame {
         HeaderPanel.setLayout(HeaderPanelLayout);
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addGap(339, 339, 339)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(283, 283, 283))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
         );
         HeaderPanelLayout.setVerticalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel1)
-                .addGap(15, 15, 15))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
         );
 
         getContentPane().add(HeaderPanel, java.awt.BorderLayout.PAGE_START);
 
         BodyPanel.setLayout(new java.awt.BorderLayout());
 
-        SearchPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         SearchPanel.setPreferredSize(new java.awt.Dimension(855, 150));
 
         SearchEmployeeTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        SearchEmployeeTextField.setText("Search employee");
-
-        SearchButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        SearchButton.setText("Search");
-        SearchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchButtonActionPerformed(evt);
-            }
-        });
-
-        SelectDepartmentComboBox.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        SelectDepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Department", "HR Department", "Finance Department", "Product Department" }));
+        SearchEmployeeTextField.setPreferredSize(new java.awt.Dimension(64, 32));
 
         RefreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
         RefreshButton.setToolTipText("");
 
-        MonthChooseFromDateField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel3.setText("Search Employee");
+
+        searchButton.setText("Search");
+        searchButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        searchButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        searchButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        searchButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        searchButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        searchButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        searchButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        searchButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        searchButton.setPreferredSize(new java.awt.Dimension(185, 32));
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel6.setText("Basic Salary");
+
+        kButton1.setText("Add");
+        kButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        kButton1.setkEndColor(new java.awt.Color(0, 204, 204));
+        kButton1.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton1.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        kButton1.setkPressedColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkStartColor(new java.awt.Color(0, 102, 153));
 
         javax.swing.GroupLayout SearchPanelLayout = new javax.swing.GroupLayout(SearchPanel);
         SearchPanel.setLayout(SearchPanelLayout);
         SearchPanelLayout.setHorizontalGroup(
             SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SearchPanelLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchPanelLayout.createSequentialGroup()
+                .addContainerGap(130, Short.MAX_VALUE)
+                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6))
+                .addGap(12, 12, 12)
+                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(SearchPanelLayout.createSequentialGroup()
-                        .addComponent(SearchEmployeeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(SearchButton)
-                        .addGap(92, 92, 92)
-                        .addComponent(SelectDepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(MonthChooseFromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(SearchPanelLayout.createSequentialGroup()
-                        .addComponent(YearChooseFromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(706, 706, 706)
-                        .addComponent(RefreshButton)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                    .addComponent(SearchEmployeeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(RefreshButton)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         SearchPanelLayout.setVerticalGroup(
             SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SearchPanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(YearChooseFromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RefreshButton))
-                .addGap(28, 28, 28)
-                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(SearchEmployeeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(SelectDepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(MonthChooseFromDateField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(RefreshButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(SearchEmployeeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         BodyPanel.add(SearchPanel, java.awt.BorderLayout.PAGE_START);
 
         ViewPanel.setLayout(new java.awt.BorderLayout());
 
+        BackToDashboardPanel.setBackground(new java.awt.Color(153, 153, 153));
+        BackToDashboardPanel.setAutoscrolls(true);
         BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(855, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
@@ -152,7 +182,7 @@ public class PayrollManagement extends javax.swing.JFrame {
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
-                .addContainerGap(856, Short.MAX_VALUE))
+                .addContainerGap(882, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,11 +199,11 @@ public class PayrollManagement extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Employee ID", "Employee Name", "Department", "Position", "Basic", "Action"
+                "Employee ID", "Employee Name", "Department", "Position", "Basic"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -183,21 +213,61 @@ public class PayrollManagement extends javax.swing.JFrame {
         PayrollManagementTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(PayrollManagementTable);
 
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText("Year");
+        jLabel2.setPreferredSize(new java.awt.Dimension(38, 32));
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel5.setText("Month");
+
+        MonthChooseFromDateField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel4.setText("Select Department");
+
+        SelectDepartmentComboBox.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        SelectDepartmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Department", "HR Department", "Finance Department", "Product Department" }));
+
         javax.swing.GroupLayout TableViewPanelLayout = new javax.swing.GroupLayout(TableViewPanel);
         TableViewPanel.setLayout(TableViewPanelLayout);
         TableViewPanelLayout.setHorizontalGroup(
             TableViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TableViewPanelLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 860, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+            .addGroup(TableViewPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
+            .addGroup(TableViewPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(YearChooseFromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addGap(12, 12, 12)
+                .addComponent(MonthChooseFromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
+                .addComponent(jLabel4)
+                .addGap(12, 12, 12)
+                .addComponent(SelectDepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         TableViewPanelLayout.setVerticalGroup(
             TableViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TableViewPanelLayout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
-                .addGap(14, 14, 14))
+            .addGroup(TableViewPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(TableViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TableViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(SelectDepartmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(YearChooseFromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(TableViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(MonthChooseFromDateField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
         );
 
         ViewPanel.add(TableViewPanel, java.awt.BorderLayout.CENTER);
@@ -210,14 +280,14 @@ public class PayrollManagement extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SearchButtonActionPerformed
-
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
 //        LogOut Button
         System.exit(0);
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,7 +312,6 @@ public class PayrollManagement extends javax.swing.JFrame {
     private com.toedter.calendar.JMonthChooser MonthChooseFromDateField;
     private javax.swing.JTable PayrollManagementTable;
     private javax.swing.JButton RefreshButton;
-    private javax.swing.JButton SearchButton;
     private javax.swing.JTextField SearchEmployeeTextField;
     private javax.swing.JPanel SearchPanel;
     private javax.swing.JComboBox<String> SelectDepartmentComboBox;
@@ -250,6 +319,15 @@ public class PayrollManagement extends javax.swing.JFrame {
     private javax.swing.JPanel ViewPanel;
     private com.toedter.calendar.JYearChooser YearChooseFromDateField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField1;
+    private com.k33ptoo.components.KButton kButton1;
+    private com.k33ptoo.components.KButton searchButton;
     // End of variables declaration//GEN-END:variables
 }

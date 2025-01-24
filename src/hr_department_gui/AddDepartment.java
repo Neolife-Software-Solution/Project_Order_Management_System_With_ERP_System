@@ -7,6 +7,7 @@ package hr_department_gui;
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.util.Vector;
 import javax.swing.JOptionPane;
@@ -25,6 +26,7 @@ public class AddDepartment extends javax.swing.JFrame {
     public AddDepartment() {
         initComponents();
         addPlaceholder(); //placeholder to textfield
+        addNewDepartmentTextField.grabFocus();
         loadDepartments();
 
     }
@@ -136,6 +138,11 @@ public class AddDepartment extends javax.swing.JFrame {
         addNewDepartmentTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addNewDepartmentTextFieldActionPerformed(evt);
+            }
+        });
+        addNewDepartmentTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                addNewDepartmentTextFieldKeyPressed(evt);
             }
         });
 
@@ -340,9 +347,12 @@ public class AddDepartment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
-     
-        this.dispose();
+        //Close the current frame
+        dispose();
 
+        //Show the HR Dashboard
+        HRDepartmentDashboard hrDashboard = new HRDepartmentDashboard();
+        hrDashboard.setVisible(true);
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void addNewDepartmentTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewDepartmentTextFieldActionPerformed
@@ -468,7 +478,6 @@ public class AddDepartment extends javax.swing.JFrame {
             }
 
         }
-        
     }//GEN-LAST:event_updateButtonActionPerformed
 
     //delete button function
@@ -491,7 +500,6 @@ public class AddDepartment extends javax.swing.JFrame {
 
                 // Confirm before the deletion
                 int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this department?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
-                
                 if (confirm == JOptionPane.YES_OPTION) {
 
                     // Delete the selected department from the database
@@ -514,7 +522,6 @@ public class AddDepartment extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Department Deleted Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
 
                 }
-                
             } catch (Exception e) {
 
                 e.printStackTrace();
@@ -578,21 +585,17 @@ public class AddDepartment extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Error occurred while deleting the Department", "Error", JOptionPane.ERROR_MESSAGE);
 
                 }
-                
             }
 
         }
-        
     }//GEN-LAST:event_DepartmentTableMouseClicked
 
     private void addNewDepartmentTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_addNewDepartmentTextFieldFocusGained
 
         //check and set clear the current department textfield to enter data
         if (addNewDepartmentTextField.getText().equals("New Department")) {
-            
             addNewDepartmentTextField.setText("");
             addNewDepartmentTextField.setForeground(Color.BLACK);
-            
         }
     }//GEN-LAST:event_addNewDepartmentTextFieldFocusGained
 
@@ -600,13 +603,21 @@ public class AddDepartment extends javax.swing.JFrame {
 
         //set back the placeholder
         if (addNewDepartmentTextField.getText().isEmpty()) {
-            
             addNewDepartmentTextField.setText("New Department");
             addNewDepartmentTextField.setForeground(Color.GRAY);
-            
         }
 
     }//GEN-LAST:event_addNewDepartmentTextFieldFocusLost
+
+    private void addNewDepartmentTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addNewDepartmentTextFieldKeyPressed
+        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            addButton.grabFocus();
+            
+        }
+        
+    }//GEN-LAST:event_addNewDepartmentTextFieldKeyPressed
 
     /**
      * @param args the command line arguments
@@ -648,6 +659,7 @@ public class AddDepartment extends javax.swing.JFrame {
     private void reset() {
 
         addNewDepartmentTextField.setText("");
+        addNewDepartmentTextField.grabFocus();
         addButton.setEnabled(true);
         DepartmentTable.clearSelection();
 

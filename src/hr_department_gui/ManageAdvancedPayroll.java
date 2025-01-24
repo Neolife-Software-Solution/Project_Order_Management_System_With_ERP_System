@@ -5,6 +5,11 @@
 package hr_department_gui;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import javax.swing.JOptionPane;
+import model.MySql;
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -37,7 +42,7 @@ public class ManageAdvancedPayroll extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        kButton1 = new com.k33ptoo.components.KButton();
+        addButton = new com.k33ptoo.components.KButton();
         jPanel3 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -52,7 +57,7 @@ public class ManageAdvancedPayroll extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Manage Advanced Payroll");
+        jLabel1.setText("Manage Advance Payroll");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -99,15 +104,20 @@ public class ManageAdvancedPayroll extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("Employee Name");
 
-        kButton1.setText("Add");
-        kButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        kButton1.setkEndColor(new java.awt.Color(0, 204, 204));
-        kButton1.setkHoverEndColor(new java.awt.Color(0, 102, 153));
-        kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton1.setkHoverStartColor(new java.awt.Color(0, 204, 204));
-        kButton1.setkPressedColor(new java.awt.Color(0, 102, 153));
-        kButton1.setkSelectedColor(new java.awt.Color(0, 102, 153));
-        kButton1.setkStartColor(new java.awt.Color(0, 102, 153));
+        addButton.setText("Search");
+        addButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        addButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        addButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        addButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        addButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        addButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -119,7 +129,7 @@ public class ManageAdvancedPayroll extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(150, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -129,7 +139,7 @@ public class ManageAdvancedPayroll extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -138,7 +148,7 @@ public class ManageAdvancedPayroll extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Payroll Advanced ID", "Employee ID", "Date", "Advance Payment", "Salary", "Advanced Status"
+                "Payroll Advance ID", "Employee ID", "Date", "Advance Payment", "Salary", "Advance Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -204,17 +214,74 @@ public class ManageAdvancedPayroll extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
-       
+
         this.dispose();
-        
+
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        try {
+            String employeeName = jTextField1.getText().trim();
+
+            if (employeeName.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter an employee name", "Empty Field", JOptionPane.WARNING_MESSAGE);
+                return; // Stop further execution
+            }
+
+            // SQL query to fetch data
+            String query = "SELECT ap.ad_pay_id AS 'Payroll Advance ID', "
+                    + "ap.employee_employee_id AS 'Employee ID', "
+                    + "ep.employee_name AS 'Employee Name', "
+                    + "ap.date AS 'Date', "
+                    + "ap.advanced_price AS 'Advance Payment', "
+                    + "ep.net_salary AS 'Salary', "
+                    + "ast.advance_status_name AS 'Advance Status' "
+                    + "FROM advanced_payroll AS ap "
+                    + "INNER JOIN employee_payrolls AS ep "
+                    + "ON ap.employee_employee_id = ep.employee_employee_id "
+                    + "INNER JOIN advance_status AS ast "
+                    + "ON ap.advance_status_advance_status_id = ast.advance_status_id "
+                    + "WHERE ep.employee_name = '" + employeeName + "'";
+            // Execute the query
+            ResultSet resultSet = MySql.executeSearch(query);
+
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0); // Clear the table before adding new data
+
+            boolean dataFound = false;
+
+            // Process the ResultSet and populate the table
+            while (resultSet.next()) {
+                dataFound = true;
+
+                Vector<String> rowData = new Vector<>();
+                rowData.add(resultSet.getString("Payroll Advance ID"));
+                rowData.add(resultSet.getString("Employee ID"));
+                rowData.add(resultSet.getString("Date"));
+                rowData.add(resultSet.getString("Advance Payment"));
+                rowData.add(resultSet.getString("Salary"));
+                rowData.add(resultSet.getString("Advance Status"));
+
+                model.addRow(rowData); // Add the row to the table
+            }
+
+            if (!dataFound) {
+                JOptionPane.showMessageDialog(this, "No data found for the given employee name", "No Data", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_addButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-         FlatMacLightLaf.setup();
+        FlatMacLightLaf.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -226,6 +293,7 @@ public class ManageAdvancedPayroll extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackToDashboardButton;
+    private com.k33ptoo.components.KButton addButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -238,6 +306,5 @@ public class ManageAdvancedPayroll extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private com.k33ptoo.components.KButton kButton1;
     // End of variables declaration//GEN-END:variables
 }

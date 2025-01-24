@@ -55,7 +55,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         try {
 
             ResultSet resultSet = MySql.executeSearch(" SELECT * FROM `employee_address` "
-                    + "INNER JOIN `employee` ON `employee`.`employee_id` = `employee_address`.`employee_employee_id` "
+                    + "INNER JOIN `employee` ON `employee`.`employee_address_em_address_id` = `employee_address`.`em_address_id` "
                     + "INNER JOIN `city` ON `city`.`city_id` = `employee_address`.`city_city_id` "
                     + "INNER JOIN `province` ON `province`.`province_id` = `employee_address`.`province_province_id` "
                     + "INNER JOIN `district` ON `district`.`district_id` = `employee_address`.`district_district_id` ");
@@ -455,9 +455,9 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addContainerGap(384, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
-                .addContainerGap(385, Short.MAX_VALUE))
+                .addContainerGap(355, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+                .addContainerGap(355, Short.MAX_VALUE))
         );
         HeaderPanelLayout.setVerticalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -532,7 +532,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
             .addComponent(jSeparator1)
             .addComponent(jSeparator2)
             .addGroup(SearchPanelLayout.createSequentialGroup()
-                .addContainerGap(369, Short.MAX_VALUE)
+                .addContainerGap(325, Short.MAX_VALUE)
                 .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(EmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -540,19 +540,19 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(369, Short.MAX_VALUE))
+                .addContainerGap(325, Short.MAX_VALUE))
             .addGroup(SearchPanelLayout.createSequentialGroup()
-                .addContainerGap(341, Short.MAX_VALUE)
+                .addContainerGap(311, Short.MAX_VALUE)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SearchPanelLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(20, 20, 20)
                         .addComponent(provinceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addGap(20, 20, 20)
                         .addComponent(DistricComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addGap(20, 20, 20)
                         .addComponent(CityComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -564,7 +564,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                         .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AddressLine_01)
                             .addComponent(AddressLine_02))))
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addContainerGap(309, Short.MAX_VALUE))
         );
         SearchPanelLayout.setVerticalGroup(
             SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -622,7 +622,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(BackToDashboardButton)
-                .addContainerGap(1314, Short.MAX_VALUE))
+                .addContainerGap(1226, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -737,11 +737,11 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                         .addComponent(ProvinceLabel)
                         .addGap(20, 20, 20)
                         .addComponent(provinceComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(CityLabel)
                         .addGap(20, 20, 20)
                         .addComponent(cityComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(DistrictLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(districtComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -864,7 +864,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
 
                 // Query to fetch the original data
                 String query = "SELECT * FROM `employee_address` "
-                        + "INNER JOIN `employee` ON `employee`.`employee_id` = `employee_address`.`employee_employee_id` "
+                        + "INNER JOIN `employee` ON `employee`.`employee_address_em_address_id` = `employee_address`.`em_address_id` "
                         + "INNER JOIN `city` ON `city`.`city_id` = `employee_address`.`city_city_id` "
                         + "INNER JOIN `province` ON `province`.`province_id` = `employee_address`.`province_province_id` "
                         + "INNER JOIN `district` ON `district`.`district_id` = `employee_address`.`district_district_id`";
@@ -886,53 +886,52 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
 
                     if (!Province.equals(originalProvince)) {
 
-                        updateQuery.append("province_province_id = (SELECT province_id FROM province WHERE province_name = '")
-                                .append(Province).append("'), ");
+                        updateQuery.append("province_province_id = '"+Province+"' ");
                         hasChanges = true;
 
                     }
 
-                    if (!District.equals(originalDistrict)) {
-
-                        updateQuery.append("district_district_id = (SELECT district_id FROM district WHERE district_name = '")
-                                .append(District).append("'), ");
-                        hasChanges = true;
-
-                    }
-
-                    if (!City.equals(originalCity)) {
-
-                        updateQuery.append("city_city_id = (SELECT city_id FROM city WHERE city_name = '")
-                                .append(City).append("'), ");
-                        hasChanges = true;
-
-                    }
-
-                    if (!Addres_line_01.equals(originalAddressLine1)) {
-
-                        updateQuery.append("address_line01 = '").append(Addres_line_01).append("', ");
-                        hasChanges = true;
-
-                    }
-
-                    if (!Addres_line_02.equals(originalAddressLine2)) {
-
-                        updateQuery.append("address_line02 = '").append(Addres_line_02).append("', ");
-                        hasChanges = true;
-
-                    }
+//                    if (!District.equals(originalDistrict)) {
+//
+//                        updateQuery.append("district_district_id = (SELECT district_id FROM district WHERE district_name = '")
+//                                .append(District).append("'), ");
+//                        hasChanges = true;
+//
+//                    }
+//
+//                    if (!City.equals(originalCity)) {
+//
+//                        updateQuery.append("city_city_id = (SELECT city_id FROM city WHERE city_name = '")
+//                                .append(City).append("'), ");
+//                        hasChanges = true;
+//
+//                    }
+//
+//                    if (!Addres_line_01.equals(originalAddressLine1)) {
+//
+//                        updateQuery.append("address_line01 = '").append(Addres_line_01).append("', ");
+//                        hasChanges = true;
+//
+//                    }
+//
+//                    if (!Addres_line_02.equals(originalAddressLine2)) {
+//
+//                        updateQuery.append("address_line02 = '").append(Addres_line_02).append("', ");
+//                        hasChanges = true;
+//
+//                    }
 
                     // Execute the update query if there are changes
                     if (hasChanges) {
 
                         // Remove trailing comma and space
                         updateQuery.setLength(updateQuery.length() - 2);
-                        updateQuery.append(" WHERE employee_address.employee_employee_id = ").append(employeeId);
+                        updateQuery.append(" WHERE employee_address.em_address_id = ").append(employeeId);
 
                         MySql.executeUpdate(updateQuery.toString());
                         JOptionPane.showMessageDialog(this, "Employee data updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-                        loadAddress();
+                        loadAddress(); 
 
                     } else {
 
@@ -970,7 +969,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
 
 //                    Query
             String query = "SELECT * FROM `employee_address` "
-                    + "INNER JOIN `employee` ON `employee`.`employee_id` = `employee_address`.`employee_employee_id` "
+                    + "INNER JOIN `employee` ON `employee`.`employee_address_em_address_id` = `employee_address`.`em_address_id` "
                     + "INNER JOIN `city` ON `city`.`city_id` = `employee_address`.`city_city_id` "
                     + "INNER JOIN `province` ON `province`.`province_id` = `employee_address`.`province_province_id` "
                     + "INNER JOIN `district` ON `district`.`district_id` = `employee_address`.`district_district_id`";

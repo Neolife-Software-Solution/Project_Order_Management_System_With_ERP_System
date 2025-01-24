@@ -29,6 +29,8 @@ public class LeaveManage extends javax.swing.JFrame {
         
         initComponents();
         
+        generateButton.grabFocus();
+        
         LoadLeaveTable();
     }
 
@@ -244,6 +246,11 @@ public class LeaveManage extends javax.swing.JFrame {
         jLabel8.setText("Employee ID");
 
         employeeNameTextField.setEditable(false);
+        employeeNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                employeeNameTextFieldKeyPressed(evt);
+            }
+        });
 
         holidayButton.setText("Holidays");
         holidayButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -456,7 +463,7 @@ public class LeaveManage extends javax.swing.JFrame {
             ManageLeaveTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ManageLeaveTablePanelLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(BackToDashboardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -474,14 +481,20 @@ public class LeaveManage extends javax.swing.JFrame {
     //BackButtonCode
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
-              
+
+        //BackToDashboard
+        
+        HRDepartmentDashboard hRDepartmentDashboard = new HRDepartmentDashboard();
+        
+        hRDepartmentDashboard.setVisible(true);
+        
         this.dispose();
 
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void holidayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_holidayButtonActionPerformed
 
-        Holidays leave = new Holidays(this, true);
+        HoliDays leave = new HoliDays(this, true);
         leave.setVisible(true);
 
     }//GEN-LAST:event_holidayButtonActionPerformed
@@ -588,6 +601,8 @@ public class LeaveManage extends javax.swing.JFrame {
     private void ManageLeaveTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManageLeaveTableMouseClicked
         // Get data from the table
         int row = ManageLeaveTable.getSelectedRow();
+        
+        generateButton.grabFocus();
 
         String leave = String.valueOf(ManageLeaveTable.getValueAt(row, 0));
         leaveIDTextField.setText(leave);
@@ -684,7 +699,7 @@ public class LeaveManage extends javax.swing.JFrame {
         
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             
-            DateChooseFromDateField.grabFocus();
+            employeeNameTextField.grabFocus();
             
         }
         
@@ -725,6 +740,16 @@ public class LeaveManage extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_generateButtonKeyPressed
+
+    private void employeeNameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeNameTextFieldKeyPressed
+        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            DateChooseFromDateField.grabFocus();
+            
+        }
+        
+    }//GEN-LAST:event_employeeNameTextFieldKeyPressed
 
     /**
      * @param args the command line arguments
@@ -783,7 +808,7 @@ public class LeaveManage extends javax.swing.JFrame {
         employeeIDTextField.setText("");
         employeeNameTextField.setText("");
         ManageLeaveTable.clearSelection();
-        leaveIDTextField.grabFocus();
+        generateButton.grabFocus();
         DateChooseFromDateField.setDate(null);
         DateChooseToDateField.setDate(null);
 

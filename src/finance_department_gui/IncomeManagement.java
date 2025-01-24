@@ -38,18 +38,23 @@ public class IncomeManagement extends javax.swing.JFrame {
         DateChooseFromDateField = new com.toedter.calendar.JDateChooser();
         DateChooseToDateField = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
-        todayButton = new javax.swing.JButton();
         weekSelectCombo = new javax.swing.JComboBox<>();
         jMonthChooser1 = new com.toedter.calendar.JMonthChooser();
         jYearChooser1 = new com.toedter.calendar.JYearChooser();
-        refreshButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        RefreshButton = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         tableSection = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        headerPanel.setPreferredSize(new java.awt.Dimension(684, 80));
+        headerPanel.setBackground(new java.awt.Color(153, 153, 153));
+        headerPanel.setPreferredSize(new java.awt.Dimension(684, 50));
 
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -59,21 +64,16 @@ public class IncomeManagement extends javax.swing.JFrame {
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                .addGap(269, 269, 269))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1123, Short.MAX_VALUE)
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1)
-                .addContainerGap(25, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
+        BackToDashboardPanel.setBackground(new java.awt.Color(153, 153, 153));
         BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(684, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
@@ -90,7 +90,7 @@ public class IncomeManagement extends javax.swing.JFrame {
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
-                .addContainerGap(784, Short.MAX_VALUE))
+                .addContainerGap(1079, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,17 +104,12 @@ public class IncomeManagement extends javax.swing.JFrame {
 
         bodyPanel.setLayout(new java.awt.BorderLayout());
 
-        searchSection.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         DateChooseFromDateField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         DateChooseToDateField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("To");
-
-        todayButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        todayButton.setText("Select Today");
 
         weekSelectCombo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         weekSelectCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Last 7 Days", "Last 14 Days", "Last 21 Days" }));
@@ -124,50 +119,72 @@ public class IncomeManagement extends javax.swing.JFrame {
             }
         });
 
-        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel3.setText("Date");
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel4.setText("Select Last Days");
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel5.setText("Month");
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Year");
+
+        RefreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        RefreshButton.setMaximumSize(new java.awt.Dimension(42, 42));
+        RefreshButton.setMinimumSize(new java.awt.Dimension(42, 42));
+        RefreshButton.setPreferredSize(new java.awt.Dimension(42, 42));
 
         javax.swing.GroupLayout searchSectionLayout = new javax.swing.GroupLayout(searchSection);
         searchSection.setLayout(searchSectionLayout);
         searchSectionLayout.setHorizontalGroup(
             searchSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchSectionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(DateChooseFromDateField, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel3)
+                .addGap(12, 12, 12)
+                .addComponent(DateChooseFromDateField, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel2)
-                .addGap(43, 43, 43)
-                .addComponent(DateChooseToDateField, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-                .addGap(106, 106, 106)
-                .addComponent(todayButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(24, 24, 24)
-                .addComponent(weekSelectCombo, 0, 110, Short.MAX_VALUE)
+                .addGap(12, 12, 12)
+                .addComponent(DateChooseToDateField, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(searchSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jYearChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchSectionLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(refreshButton)
-                        .addGap(14, 14, 14)))
-                .addGap(19, 19, 19))
+                .addComponent(jLabel4)
+                .addGap(12, 12, 12)
+                .addComponent(weekSelectCombo, 0, 159, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addGap(12, 12, 12)
+                .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(jYearChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
+                .addGap(12, 12, 12)
+                .addComponent(RefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+            .addComponent(jSeparator1)
         );
         searchSectionLayout.setVerticalGroup(
             searchSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchSectionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(refreshButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(searchSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(searchSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jMonthChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(weekSelectCombo, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(todayButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(DateChooseToDateField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(DateChooseFromDateField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(16, 16, 16))
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addGroup(searchSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jYearChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jMonthChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DateChooseToDateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DateChooseFromDateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(weekSelectCombo)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(RefreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         bodyPanel.add(searchSection, java.awt.BorderLayout.PAGE_START);
@@ -177,11 +194,11 @@ public class IncomeManagement extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Total Revenue", "Profit", "Expenses", "Due Amount", "Total Sale", "View"
+                "ID", "Total Revenue", "Profit", "Expenses", "Due Amount", "Total Sale"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -195,17 +212,17 @@ public class IncomeManagement extends javax.swing.JFrame {
         tableSection.setLayout(tableSectionLayout);
         tableSectionLayout.setHorizontalGroup(
             tableSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tableSectionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(tableSectionLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
+                .addGap(28, 28, 28))
         );
         tableSectionLayout.setVerticalGroup(
             tableSectionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tableSectionLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
         );
 
         bodyPanel.add(tableSection, java.awt.BorderLayout.CENTER);
@@ -243,18 +260,22 @@ public class IncomeManagement extends javax.swing.JFrame {
     private javax.swing.JPanel BackToDashboardPanel;
     private com.toedter.calendar.JDateChooser DateChooseFromDateField;
     private com.toedter.calendar.JDateChooser DateChooseToDateField;
+    private javax.swing.JButton RefreshButton;
     private javax.swing.JPanel bodyPanel;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private com.toedter.calendar.JMonthChooser jMonthChooser1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private com.toedter.calendar.JYearChooser jYearChooser1;
-    private javax.swing.JButton refreshButton;
     private javax.swing.JPanel searchSection;
     private javax.swing.JPanel tableSection;
-    private javax.swing.JButton todayButton;
     private javax.swing.JComboBox<String> weekSelectCombo;
     // End of variables declaration//GEN-END:variables
 }

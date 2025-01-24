@@ -56,7 +56,7 @@ public class AdvancedPayrollIntergration extends javax.swing.JDialog {
 
         headingText.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
         headingText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        headingText.setText("Add Advanced Payroll");
+        headingText.setText("Add Advance Payroll");
 
         javax.swing.GroupLayout headerPanalLayout = new javax.swing.GroupLayout(headerPanal);
         headerPanal.setLayout(headerPanalLayout);

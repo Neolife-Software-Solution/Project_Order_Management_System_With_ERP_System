@@ -33,29 +33,32 @@ public class CompanyPromotion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
-        bodyPanel = new javax.swing.JPanel();
-        detailsSection = new javax.swing.JPanel();
-        searchPanel = new javax.swing.JPanel();
-        DateChooseFromDateField = new com.toedter.calendar.JDateChooser();
-        DateChooseToDateField = new com.toedter.calendar.JDateChooser();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
-        searchPromotionTextField = new javax.swing.JTextField();
-        searchButton = new javax.swing.JButton();
-        detailsAddPanel = new javax.swing.JPanel();
-        promotionType = new javax.swing.JLabel();
-        promotionTypeCombo = new javax.swing.JComboBox<>();
-        description = new javax.swing.JLabel();
-        descriptionTextField = new javax.swing.JTextField();
-        costLable = new javax.swing.JLabel();
-        costTextField = new javax.swing.JTextField();
-        addButton = new javax.swing.JButton();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        searchButton = new com.k33ptoo.components.KButton();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        addButton = new com.k33ptoo.components.KButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        addButton2 = new com.k33ptoo.components.KButton();
         refreshButton = new javax.swing.JButton();
-        tabalePanel = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        headerPanel.setBackground(new java.awt.Color(153, 153, 153));
         headerPanel.setPreferredSize(new java.awt.Dimension(803, 50));
 
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
@@ -66,21 +69,16 @@ public class CompanyPromotion extends javax.swing.JFrame {
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(290, 290, 290)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(245, 245, 245))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1063, Short.MAX_VALUE)
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(13, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
+        BackToDashboardPanel.setBackground(new java.awt.Color(153, 153, 153));
         BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(803, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
@@ -97,7 +95,7 @@ public class CompanyPromotion extends javax.swing.JFrame {
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
-                .addContainerGap(759, Short.MAX_VALUE))
+                .addContainerGap(1019, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,152 +107,153 @@ public class CompanyPromotion extends javax.swing.JFrame {
 
         getContentPane().add(BackToDashboardPanel, java.awt.BorderLayout.PAGE_END);
 
-        bodyPanel.setLayout(new java.awt.BorderLayout());
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel8.setText("Date");
 
-        detailsSection.setPreferredSize(new java.awt.Dimension(803, 180));
-        detailsSection.setLayout(new java.awt.BorderLayout());
-
-        searchPanel.setPreferredSize(new java.awt.Dimension(803, 60));
-
-        DateChooseFromDateField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
-        DateChooseToDateField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("To");
 
-        searchPromotionTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        searchPromotionTextField.setText("Search Promotion");
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel3.setText("Promotion");
 
-        searchButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         searchButton.setText("Search");
-        searchButton.setPreferredSize(new java.awt.Dimension(72, 24));
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
+        searchButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        searchButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        searchButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        searchButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        searchButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        searchButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        searchButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        searchButton.setkStartColor(new java.awt.Color(0, 102, 153));
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel4.setText("Promotion Type");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        addButton.setText("Add");
+        addButton.setkEndColor(new java.awt.Color(0, 204, 204));
+        addButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        addButton.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        addButton.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
+        addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        addButton.setkStartColor(new java.awt.Color(0, 102, 153));
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel5.setText("Promotion Description");
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
-        searchPanel.setLayout(searchPanelLayout);
-        searchPanelLayout.setHorizontalGroup(
-            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchPanelLayout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(DateChooseFromDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(37, 37, 37)
-                .addComponent(DateChooseToDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addComponent(searchPromotionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                .addGap(43, 43, 43)
-                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        searchPanelLayout.setVerticalGroup(
-            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(searchPromotionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(DateChooseToDateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DateChooseFromDateField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel6.setText("Cost");
 
-        detailsSection.add(searchPanel, java.awt.BorderLayout.PAGE_START);
-
-        detailsAddPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        detailsAddPanel.setPreferredSize(new java.awt.Dimension(803, 200));
-
-        promotionType.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        promotionType.setText("Promotion Type");
-
-        promotionTypeCombo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
-        promotionTypeCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        description.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        description.setText("Company Prormotion Description");
-
-        costLable.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        costLable.setText("Cost");
-
-        addButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        addButton.setText("ADD");
+        addButton2.setText("Add");
+        addButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        addButton2.setkEndColor(new java.awt.Color(0, 204, 204));
+        addButton2.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        addButton2.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        addButton2.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        addButton2.setkPressedColor(new java.awt.Color(0, 102, 153));
+        addButton2.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        addButton2.setkStartColor(new java.awt.Color(0, 102, 153));
 
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        refreshButton.setToolTipText("Refresh");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout detailsAddPanelLayout = new javax.swing.GroupLayout(detailsAddPanel);
-        detailsAddPanel.setLayout(detailsAddPanelLayout);
-        detailsAddPanelLayout.setHorizontalGroup(
-            detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(detailsAddPanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(description)
-                    .addComponent(costLable, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(promotionType))
-                .addGap(24, 24, 24)
-                .addGroup(detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descriptionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                    .addComponent(promotionTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(detailsAddPanelLayout.createSequentialGroup()
-                        .addComponent(costTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                        .addGap(258, 258, 258)))
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addGap(12, 12, 12)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField2)
+                                    .addComponent(jComboBox1, 0, 395, Short.MAX_VALUE)
+                                    .addComponent(jTextField3))
+                                .addGap(12, 12, 12)
+                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(addButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(refreshButton)))))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        detailsAddPanelLayout.setVerticalGroup(
-            detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(detailsAddPanelLayout.createSequentialGroup()
-                .addGroup(detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(detailsAddPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(refreshButton))
-                    .addGroup(detailsAddPanelLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(promotionTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(promotionType))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(descriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(detailsAddPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(detailsAddPanelLayout.createSequentialGroup()
-                                .addComponent(costLable)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE))
-                            .addComponent(costTextField)))
-                    .addGroup(detailsAddPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(7, 7, 7))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(addButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        detailsSection.add(detailsAddPanel, java.awt.BorderLayout.CENTER);
-
-        bodyPanel.add(detailsSection, java.awt.BorderLayout.PAGE_START);
-
-        tabalePanel.setPreferredSize(new java.awt.Dimension(803, 300));
-
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Date", "Promotion Type", "Description ", "Cost"
+                "ID", "Date", "Promotion Type", "Description", "Cost"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -264,38 +263,57 @@ public class CompanyPromotion extends javax.swing.JFrame {
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout tabalePanelLayout = new javax.swing.GroupLayout(tabalePanel);
-        tabalePanel.setLayout(tabalePanelLayout);
-        tabalePanelLayout.setHorizontalGroup(
-            tabalePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabalePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
-                .addContainerGap())
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1)
+                .addGap(40, 40, 40))
         );
-        tabalePanelLayout.setVerticalGroup(
-            tabalePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabalePanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
         );
 
-        bodyPanel.add(tabalePanel, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
-        getContentPane().add(bodyPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchButtonActionPerformed
-
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
       System.exit(0);  // Log Out Button
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,27 +333,29 @@ public class CompanyPromotion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackToDashboardButton;
     private javax.swing.JPanel BackToDashboardPanel;
-    private com.toedter.calendar.JDateChooser DateChooseFromDateField;
-    private com.toedter.calendar.JDateChooser DateChooseToDateField;
-    private javax.swing.JButton addButton;
-    private javax.swing.JPanel bodyPanel;
-    private javax.swing.JLabel costLable;
-    private javax.swing.JTextField costTextField;
-    private javax.swing.JLabel description;
-    private javax.swing.JTextField descriptionTextField;
-    private javax.swing.JPanel detailsAddPanel;
-    private javax.swing.JPanel detailsSection;
+    private com.k33ptoo.components.KButton addButton;
+    private com.k33ptoo.components.KButton addButton2;
     private javax.swing.JPanel headerPanel;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel promotionType;
-    private javax.swing.JComboBox<String> promotionTypeCombo;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton refreshButton;
-    private javax.swing.JButton searchButton;
-    private javax.swing.JPanel searchPanel;
-    private javax.swing.JTextField searchPromotionTextField;
-    private javax.swing.JPanel tabalePanel;
+    private com.k33ptoo.components.KButton searchButton;
     // End of variables declaration//GEN-END:variables
 }

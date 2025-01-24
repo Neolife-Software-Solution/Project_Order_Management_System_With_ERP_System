@@ -130,7 +130,7 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Emp_id = new javax.swing.JTextField();
         searchButton = new com.k33ptoo.components.KButton();
-        jButton1 = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         DepartmentComboBox = new javax.swing.JComboBox<>();
         addButton = new com.k33ptoo.components.KButton();
@@ -314,10 +314,10 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         searchButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         searchButton.setkStartColor(new java.awt.Color(0, 102, 153));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                refreshButtonActionPerformed(evt);
             }
         });
 
@@ -385,7 +385,7 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(jButton1)))
+                        .addComponent(refreshButton)))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -398,7 +398,7 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
                         .addComponent(Emp_id, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -438,11 +438,11 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
         department.setVisible(true);
     }//GEN-LAST:event_newDepartmentButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
 
         reset();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_refreshButtonActionPerformed
 
     private void Emp_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Emp_idKeyReleased
 
@@ -517,11 +517,9 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
 
         try {
 
-//            String EmpId = Emp_id.getText().trim();
             String department = String.valueOf(DepartmentComboBox.getSelectedItem());
             String departmentId = departmentMap.get(department);
             String EmpId = Emp_id.getText();
-//            String department = String.valueOf(Department.getSelectedItem());
 
             // Validate the form fields to ensure that no required fields are empty
             if (EmpId.isEmpty()) {
@@ -534,7 +532,7 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
 
             } else {
 
-                ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee` WHERE `employee_id` = '" + EmpId + "' ");
+                ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee` WHERE `department_department_id` = 0 ");
 
                 if (resultSet.next()) {
 
@@ -543,10 +541,13 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
 
                 } else {
 
-                    MySql.executeUpdate("INSERT INTO `employee`(`department_department_id`) VALUES ('" + departmentMap.get(department) + "') WHERE `employee_id`='" + EmpId + "' ");
+                    MySql.executeUpdate("UPDATE `employee` SET `department_department_id` = '" + departmentMap.get(department) + "' WHERE `employee_id` = '" + EmpId + "' ");
 
                     JOptionPane.showMessageDialog(null, "Department assigned successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-
+                    
+                    LoadTable();
+                    
+                    reset();
                 }
 
             }
@@ -737,7 +738,6 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
     private javax.swing.JPanel TableUpdatePanel;
     private com.k33ptoo.components.KButton addButton;
     private com.k33ptoo.components.KButton deleteButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -746,6 +746,7 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private com.k33ptoo.components.KButton newDepartmentButton;
+    private javax.swing.JButton refreshButton;
     private com.k33ptoo.components.KButton searchButton;
     private com.k33ptoo.components.KButton updateButton;
     // End of variables declaration//GEN-END:variables
@@ -754,6 +755,7 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
 
         Emp_id.setText("");
         DepartmentComboBox.setSelectedIndex(0);
+        Emp_id.setEditable(true);
         Emp_Name.setText("Employee Name");
 
         Hidebutton();

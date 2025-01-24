@@ -36,9 +36,11 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
         PromotionAddingSectionPanel = new javax.swing.JPanel();
         AddPromotionTypesTextField = new javax.swing.JTextField();
         PromotionTypesDescriptionTextField = new javax.swing.JTextField();
-        AddPromotionButton = new javax.swing.JButton();
         refreshButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        kButton1 = new com.k33ptoo.components.KButton();
         BackToDashboardPanel = new javax.swing.JPanel();
         BackToDashboardButton = new javax.swing.JButton();
         PromotionAddingTablePanel = new javax.swing.JPanel();
@@ -47,6 +49,7 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        headerPanel.setBackground(new java.awt.Color(153, 153, 153));
         headerPanel.setPreferredSize(new java.awt.Dimension(736, 50));
 
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 24)); // NOI18N
@@ -57,27 +60,18 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
-                .addGap(166, 166, 166))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1199, Short.MAX_VALUE)
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(13, 13, 13))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         getContentPane().add(headerPanel, java.awt.BorderLayout.PAGE_START);
 
         BodyPanel.setLayout(new java.awt.BorderLayout());
 
-        PromotionAddingSectionPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         AddPromotionTypesTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        AddPromotionTypesTextField.setText("Add Promotion Types");
         AddPromotionTypesTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddPromotionTypesTextFieldActionPerformed(evt);
@@ -85,47 +79,72 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
         });
 
         PromotionTypesDescriptionTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        PromotionTypesDescriptionTextField.setText("Promotion Types Description");
-
-        AddPromotionButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        AddPromotionButton.setText("Add Promotion");
 
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel2.setText("Promotion Type");
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel3.setText("Promotion Type Description");
+
+        kButton1.setText("Add");
+        kButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        kButton1.setkEndColor(new java.awt.Color(0, 204, 204));
+        kButton1.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton1.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        kButton1.setkPressedColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkStartColor(new java.awt.Color(0, 102, 153));
 
         javax.swing.GroupLayout PromotionAddingSectionPanelLayout = new javax.swing.GroupLayout(PromotionAddingSectionPanel);
         PromotionAddingSectionPanel.setLayout(PromotionAddingSectionPanelLayout);
         PromotionAddingSectionPanelLayout.setHorizontalGroup(
             PromotionAddingSectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PromotionAddingSectionPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AddPromotionTypesTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(PromotionTypesDescriptionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(AddPromotionButton)
-                .addGap(63, 63, 63)
-                .addComponent(refreshButton)
-                .addContainerGap())
+                .addGap(20, 20, 20)
+                .addComponent(jLabel2)
+                .addGap(12, 12, 12)
+                .addComponent(AddPromotionTypesTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(jLabel3)
+                .addGap(12, 12, 12)
+                .addComponent(PromotionTypesDescriptionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                .addGap(12, 12, 12)
+                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
             .addComponent(jSeparator1)
         );
         PromotionAddingSectionPanelLayout.setVerticalGroup(
             PromotionAddingSectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PromotionAddingSectionPanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addGroup(PromotionAddingSectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PromotionAddingSectionPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(refreshButton))
-                    .addGroup(PromotionAddingSectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(AddPromotionTypesTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                        .addComponent(PromotionTypesDescriptionTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-                    .addComponent(AddPromotionButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(40, 40, 40)
+                    .addGroup(PromotionAddingSectionPanelLayout.createSequentialGroup()
+                        .addGroup(PromotionAddingSectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(PromotionAddingSectionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(AddPromotionTypesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 1, Short.MAX_VALUE))
+                    .addComponent(PromotionTypesDescriptionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         BodyPanel.add(PromotionAddingSectionPanel, java.awt.BorderLayout.PAGE_START);
 
+        BackToDashboardPanel.setBackground(new java.awt.Color(153, 153, 153));
         BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(764, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
@@ -142,7 +161,7 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BackToDashboardButton)
-                .addContainerGap(720, Short.MAX_VALUE))
+                .addContainerGap(1155, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,16 +198,16 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
         PromotionAddingTablePanelLayout.setHorizontalGroup(
             PromotionAddingTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PromotionAddingTablePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1119, Short.MAX_VALUE)
+                .addGap(40, 40, 40))
         );
         PromotionAddingTablePanelLayout.setVerticalGroup(
             PromotionAddingTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PromotionAddingTablePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
         );
 
         BodyPanel.add(PromotionAddingTablePanel, java.awt.BorderLayout.CENTER);
@@ -213,6 +232,10 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -230,7 +253,6 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddPromotionButton;
     private javax.swing.JTextField AddPromotionTypesTextField;
     private javax.swing.JButton BackToDashboardButton;
     private javax.swing.JPanel BackToDashboardPanel;
@@ -241,9 +263,12 @@ public class AddCompanyPromotionTypes extends javax.swing.JFrame {
     private javax.swing.JTextField PromotionTypesDescriptionTextField;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private com.k33ptoo.components.KButton kButton1;
     private javax.swing.JButton refreshButton;
     // End of variables declaration//GEN-END:variables
 }

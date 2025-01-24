@@ -218,6 +218,9 @@
                       <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CustomerTableMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -241,26 +244,22 @@
                           <EmptySpace pref="83" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="FirstName" min="-2" pref="80" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="LastName" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="FirstNameTextfield" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="customerIDTextField" min="-2" pref="292" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="generateButton" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="customerIDTextField" min="-2" pref="292" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="generateButton" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="LastNameTextfield" min="-2" pref="336" max="-2" attributes="0"/>
+                                      <Component id="FirstNameTextfield" alignment="0" min="-2" pref="336" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="updateButton2" pref="0" max="32767" attributes="0"/>
+                                          <Component id="updateButton" pref="0" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                           <Component id="deleteButton" min="-2" pref="142" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -295,15 +294,14 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="FirstName" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="FirstNameTextfield" min="-2" pref="32" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="FirstName" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="mobile" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="MobileTextfield" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="MobileTextfield" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Component id="FirstNameTextfield" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <EmptySpace pref="12" max="32767" attributes="0"/>
@@ -323,7 +321,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="deleteButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="updateButton2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="updateButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                               </Group>
                               <Component id="refreshButton" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
@@ -348,6 +346,12 @@
                       <Font name="Verdana" size="14" style="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="FirstNameTextfieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="FirstNameTextfieldFocusLost"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FirstNameTextfieldActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="FirstNameTextfieldKeyPressed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="LastName">
                   <Properties>
@@ -364,6 +368,8 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="LastNameTextfieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="LastNameTextfieldFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LastNameTextfieldActionPerformed"/>
                   </Events>
                 </Component>
@@ -382,6 +388,8 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="AddressTextfieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="AddressTextfieldFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddressTextfieldActionPerformed"/>
                   </Events>
                 </Component>
@@ -400,7 +408,10 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="EmailAddressTextfieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="EmailAddressTextfieldFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EmailAddressTextfieldActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="EmailAddressTextfieldKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="mobile">
@@ -418,6 +429,8 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="MobileTextfieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="MobileTextfieldFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MobileTextfieldActionPerformed"/>
                   </Events>
                 </Component>
@@ -433,7 +446,10 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="customerIDTextField">
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="customerIDTextFieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="customerIDTextFieldFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customerIDTextFieldActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="customerIDTextFieldKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="generateButton">
@@ -444,6 +460,7 @@
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="generateButtonActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="generateButtonKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="com.k33ptoo.components.KButton" name="deleteButton">
@@ -488,7 +505,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refreshButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="com.k33ptoo.components.KButton" name="updateButton2">
+                <Component class="com.k33ptoo.components.KButton" name="updateButton">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Update"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -517,7 +534,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateButton2ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="updateButtonActionPerformed"/>
                   </Events>
                 </Component>
               </SubComponents>
@@ -559,6 +576,11 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="searchTextField">
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchTextFieldFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="searchTextFieldFocusLost"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="searchTextFieldKeyReleased"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
