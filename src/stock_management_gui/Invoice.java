@@ -31,14 +31,13 @@ public class Invoice extends javax.swing.JFrame {
         HeaderPanel = new javax.swing.JPanel();
         EmpID = new javax.swing.JLabel();
         EmpIDTextfield = new javax.swing.JTextField();
-        SeemysalesButton = new javax.swing.JButton();
         BodyPanel = new javax.swing.JPanel();
         SelectOrdersPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        OnlineOrdersButton = new javax.swing.JToggleButton();
-        TakeawayOrdersButton = new javax.swing.JToggleButton();
         SalesCountLable = new javax.swing.JLabel();
         SaleseCount = new javax.swing.JTextField();
+        kButton1 = new com.k33ptoo.components.KButton();
+        kButton2 = new com.k33ptoo.components.KButton();
         OrderViewPanel = new javax.swing.JPanel();
         AddProductTextField = new javax.swing.JTextField();
         AddProductLable = new javax.swing.JLabel();
@@ -49,17 +48,15 @@ public class Invoice extends javax.swing.JFrame {
         OrdersView = new javax.swing.JTable();
         TotalLable = new javax.swing.JLabel();
         TotalTextField = new javax.swing.JTextField();
-        PayTypeLable = new javax.swing.JLabel();
-        PayButton = new javax.swing.JToggleButton();
-        PayTypeComboBox = new javax.swing.JComboBox<>();
         BackToDashboardButton = new javax.swing.JButton();
+        kButton3 = new com.k33ptoo.components.KButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         HeaderPanel.setPreferredSize(new java.awt.Dimension(540, 80));
 
         EmpID.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        EmpID.setText("Enter Order ID / Mobile Number :-");
+        EmpID.setText("Enter Order ID / Mobile Number : ");
 
         EmpIDTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         EmpIDTextfield.addActionListener(new java.awt.event.ActionListener() {
@@ -68,78 +65,82 @@ public class Invoice extends javax.swing.JFrame {
             }
         });
 
-        SeemysalesButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        SeemysalesButton.setText("See My Sales");
-        SeemysalesButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SeemysalesButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout HeaderPanelLayout = new javax.swing.GroupLayout(HeaderPanel);
         HeaderPanel.setLayout(HeaderPanelLayout);
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(SeemysalesButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderPanelLayout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addComponent(EmpID)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         HeaderPanelLayout.setVerticalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SeemysalesButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(EmpID)
-                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40))
+                .addGroup(HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(EmpID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24))
         );
 
         getContentPane().add(HeaderPanel, java.awt.BorderLayout.PAGE_START);
 
         BodyPanel.setLayout(new java.awt.BorderLayout());
 
-        SelectOrdersPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         SelectOrdersPanel.setPreferredSize(new java.awt.Dimension(614, 40));
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 0, 14)); // NOI18N
 
-        OnlineOrdersButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        OnlineOrdersButton.setText("Online Orders");
-
-        TakeawayOrdersButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        TakeawayOrdersButton.setText("Takeaway Orders");
-
         SalesCountLable.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        SalesCountLable.setText("To Day Sales Count");
+        SalesCountLable.setText("To Day Sales Count :");
 
         SaleseCount.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         SaleseCount.setText("10");
+        SaleseCount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaleseCountActionPerformed(evt);
+            }
+        });
+
+        kButton1.setText("Online Orders");
+        kButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        kButton1.setkEndColor(new java.awt.Color(0, 204, 204));
+        kButton1.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton1.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        kButton1.setkPressedColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        kButton1.setkStartColor(new java.awt.Color(0, 102, 153));
+
+        kButton2.setText("Takeaway Orders");
+        kButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        kButton2.setkEndColor(new java.awt.Color(0, 204, 204));
+        kButton2.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        kButton2.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton2.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        kButton2.setkPressedColor(new java.awt.Color(0, 102, 153));
+        kButton2.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        kButton2.setkStartColor(new java.awt.Color(0, 102, 153));
 
         javax.swing.GroupLayout SelectOrdersPanelLayout = new javax.swing.GroupLayout(SelectOrdersPanel);
         SelectOrdersPanel.setLayout(SelectOrdersPanelLayout);
         SelectOrdersPanelLayout.setHorizontalGroup(
             SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SelectOrdersPanelLayout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(OnlineOrdersButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TakeawayOrdersButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
+                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
                 .addComponent(SalesCountLable)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(SaleseCount, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         SelectOrdersPanelLayout.setVerticalGroup(
             SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,14 +151,13 @@ public class Invoice extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(SelectOrdersPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(SalesCountLable, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SaleseCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(OnlineOrdersButton)
-                                .addComponent(TakeawayOrdersButton))
-                            .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(SalesCountLable)
-                                .addComponent(SaleseCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(7, Short.MAX_VALUE))
+                                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         BodyPanel.add(SelectOrdersPanel, java.awt.BorderLayout.PAGE_START);
@@ -170,7 +170,7 @@ public class Invoice extends javax.swing.JFrame {
         });
 
         AddProductLable.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        AddProductLable.setText("Add New Product :-");
+        AddProductLable.setText("Add New Product : ");
 
         QTYTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         QTYTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +180,7 @@ public class Invoice extends javax.swing.JFrame {
         });
 
         QTYLable.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        QTYLable.setText("QTY :-");
+        QTYLable.setText("QTY : ");
 
         AddButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/add.png"))); // NOI18N
 
@@ -205,7 +205,7 @@ public class Invoice extends javax.swing.JFrame {
         jScrollPane1.setViewportView(OrdersView);
 
         TotalLable.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        TotalLable.setText("Total :-");
+        TotalLable.setText("Total :");
 
         TotalTextField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         TotalTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -214,27 +214,22 @@ public class Invoice extends javax.swing.JFrame {
             }
         });
 
-        PayTypeLable.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        PayTypeLable.setText("Payment Type :-");
-
-        PayButton.setBackground(new java.awt.Color(204, 204, 204));
-        PayButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        PayButton.setText("Pay");
-        PayButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PayButtonActionPerformed(evt);
-            }
-        });
-
-        PayTypeComboBox.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        PayTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cache", "Card", "" }));
-
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
         BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BackToDashboardButtonActionPerformed(evt);
             }
         });
+
+        kButton3.setText("Pay");
+        kButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        kButton3.setkEndColor(new java.awt.Color(0, 204, 204));
+        kButton3.setkHoverEndColor(new java.awt.Color(0, 102, 153));
+        kButton3.setkHoverForeGround(new java.awt.Color(255, 255, 255));
+        kButton3.setkHoverStartColor(new java.awt.Color(0, 204, 204));
+        kButton3.setkPressedColor(new java.awt.Color(0, 102, 153));
+        kButton3.setkSelectedColor(new java.awt.Color(0, 102, 153));
+        kButton3.setkStartColor(new java.awt.Color(0, 102, 153));
 
         javax.swing.GroupLayout OrderViewPanelLayout = new javax.swing.GroupLayout(OrderViewPanel);
         OrderViewPanel.setLayout(OrderViewPanelLayout);
@@ -243,33 +238,27 @@ public class Invoice extends javax.swing.JFrame {
             .addGroup(OrderViewPanelLayout.createSequentialGroup()
                 .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(OrderViewPanelLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(36, 36, 36)
                         .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
                             .addGroup(OrderViewPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                                .addComponent(AddProductLable, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AddProductTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
+                                .addGap(53, 53, 53)
+                                .addComponent(AddProductLable)
+                                .addGap(12, 12, 12)
+                                .addComponent(AddProductTextField)
+                                .addGap(18, 18, 18)
                                 .addComponent(QTYLable)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(QTYTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(AddButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE))))
+                                .addGap(12, 12, 12)
+                                .addComponent(QTYTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(AddButton))))
                     .addGroup(OrderViewPanelLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(OrderViewPanelLayout.createSequentialGroup()
-                                .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(PayTypeLable)
-                                    .addComponent(TotalLable))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TotalTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                                    .addComponent(PayTypeComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(PayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(TotalLable)
+                        .addGap(12, 12, 12)
+                        .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TotalTextField)
+                            .addComponent(kButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))))
                 .addGap(36, 36, 36))
             .addGroup(OrderViewPanelLayout.createSequentialGroup()
                 .addContainerGap()
@@ -279,27 +268,23 @@ public class Invoice extends javax.swing.JFrame {
         OrderViewPanelLayout.setVerticalGroup(
             OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(OrderViewPanelLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(AddProductLable)
-                        .addComponent(AddProductTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(QTYLable)
-                        .addComponent(QTYTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(AddButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                        .addComponent(AddProductLable, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AddProductTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(QTYLable, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(QTYTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TotalLable)
-                    .addComponent(TotalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(OrderViewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PayTypeLable, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PayTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PayButton)
-                .addGap(18, 18, 18)
+                    .addComponent(TotalLable, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TotalTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addComponent(kButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(BackToDashboardButton)
                 .addGap(7, 7, 7))
         );
@@ -315,15 +300,6 @@ public class Invoice extends javax.swing.JFrame {
     private void EmpIDTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpIDTextfieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_EmpIDTextfieldActionPerformed
-
-    private void SeemysalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeemysalesButtonActionPerformed
-
-//        Display See My Sales Design
-        SeemySales sales = new SeemySales();
-        sales.setVisible(true);
-        
-
-    }//GEN-LAST:event_SeemysalesButtonActionPerformed
 
     private void AddProductTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductTextFieldActionPerformed
         // TODO add your handling code here:
@@ -344,13 +320,9 @@ public class Invoice extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
-    private void PayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayButtonActionPerformed
-
-//         Chanage Price View Desig
-        PriceView priceView = new PriceView(this, true);
-        priceView.setVisible(true);
-        
-    }//GEN-LAST:event_PayButtonActionPerformed
+    private void SaleseCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaleseCountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaleseCountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,22 +348,19 @@ public class Invoice extends javax.swing.JFrame {
     private javax.swing.JLabel EmpID;
     private javax.swing.JTextField EmpIDTextfield;
     private javax.swing.JPanel HeaderPanel;
-    private javax.swing.JToggleButton OnlineOrdersButton;
     private javax.swing.JPanel OrderViewPanel;
     private javax.swing.JTable OrdersView;
-    private javax.swing.JToggleButton PayButton;
-    private javax.swing.JComboBox<String> PayTypeComboBox;
-    private javax.swing.JLabel PayTypeLable;
     private javax.swing.JLabel QTYLable;
     private javax.swing.JTextField QTYTextField;
     private javax.swing.JLabel SalesCountLable;
     private javax.swing.JTextField SaleseCount;
-    private javax.swing.JButton SeemysalesButton;
     private javax.swing.JPanel SelectOrdersPanel;
-    private javax.swing.JToggleButton TakeawayOrdersButton;
     private javax.swing.JLabel TotalLable;
     private javax.swing.JTextField TotalTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.k33ptoo.components.KButton kButton1;
+    private com.k33ptoo.components.KButton kButton2;
+    private com.k33ptoo.components.KButton kButton3;
     // End of variables declaration//GEN-END:variables
 }

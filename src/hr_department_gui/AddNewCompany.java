@@ -11,7 +11,9 @@ import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import model.MySql;
 
 /**
@@ -30,12 +32,15 @@ public class AddNewCompany extends javax.swing.JFrame {
     }
     //load company to table
 
+    DefaultTableModel model;
+    
     private void loadCompanys() {
         try {
 
-            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `company` ORDER BY `company_id` ASC "); 
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `company` ORDER BY `company_id` ASC ");
 
-            DefaultTableModel model = (DefaultTableModel) CompanyRegistrationTable.getModel();
+             model = (DefaultTableModel) CompanyRegistrationTable.getModel();
+             
             model.setRowCount(0);  // Clear any existing rows in the table 
 
             // Loop through the result set to extract company data
@@ -45,8 +50,8 @@ public class AddNewCompany extends javax.swing.JFrame {
                 vector.add(resultSet.getString("company_id"));
                 vector.add(resultSet.getString("company_name"));
                 vector.add(resultSet.getString("company_address"));
-                vector.add(resultSet.getString("hotline_number"));
                 vector.add(resultSet.getString("company_email"));
+                vector.add(resultSet.getString("hotline_number"));
 
                 model.addRow(vector); // Add the vector as a new row to the table model
 
@@ -357,17 +362,23 @@ public class AddNewCompany extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Search Company Name");
 
+        SearchCompanyNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                SearchCompanyNameTextFieldKeyTyped(evt);
+            }
+        });
+
         CompanyRegistrationTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         CompanyRegistrationTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Company Name", "Company Address", "Hotline Number", "Email"
+                "ID", "Company Name", "Company Address", "Email", "Hotline Number"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -378,6 +389,11 @@ public class AddNewCompany extends javax.swing.JFrame {
         CompanyRegistrationTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CompanyRegistrationTableMouseClicked(evt);
+            }
+        });
+        CompanyRegistrationTable.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CompanyRegistrationTableKeyPressed(evt);
             }
         });
         jScrollPane1.setViewportView(CompanyRegistrationTable);
@@ -483,84 +499,89 @@ public class AddNewCompany extends javax.swing.JFrame {
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        
         try {
+            
             String companyID = CompanyIdTextfield.getText();
+            
             String companyName = CompanyNameTextfield.getText();
+            
             String companyAddress = CompanyAddressTextfield.getText();
+            
             String companyEmail = CompanyEmailTextfield.getText();
+            
             String companyHotline = CompanyHotlineNumberTextfield.getText();
 
             if (companyID.isEmpty()) {
-                
+
                 JOptionPane.showMessageDialog(this, "Please Insert Company ID", "Empty", JOptionPane.WARNING_MESSAGE);
                 RegenarateButton.grabFocus();
-                
+
             } else if (companyName.isEmpty()) {
-                
+
                 JOptionPane.showMessageDialog(this, "Please Entre Company Name", "Empty", JOptionPane.WARNING_MESSAGE);
                 CompanyNameTextfield.grabFocus();
-                
+
             } else if (companyAddress.isEmpty()) {
-                
+
                 JOptionPane.showMessageDialog(this, "Please Entre Company Address", "Empty", JOptionPane.WARNING_MESSAGE);
                 CompanyAddressTextfield.grabFocus();
-                
+
             } else if (companyEmail.isEmpty()) {
-                
+
                 JOptionPane.showMessageDialog(this, "Please Entre Company Email", "Empty", JOptionPane.WARNING_MESSAGE);
                 CompanyEmailTextfield.grabFocus();
-                
+
             } else if (!companyEmail.matches("^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$")) {
-                
+
                 JOptionPane.showMessageDialog(this, "Please Entre a valid Email", "Empty", JOptionPane.WARNING_MESSAGE);
                 CompanyEmailTextfield.grabFocus();
-                
+
             } else if (companyHotline.isEmpty()) {
-                
+
                 JOptionPane.showMessageDialog(this, "Please Enter mobile number", "Warning", JOptionPane.WARNING_MESSAGE);
                 CompanyHotlineNumberTextfield.grabFocus();
-                
+
             } else if (!companyHotline.matches("^(?:0|94|\\+94|0094)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|4|5|6|7|8)\\d)\\d{6}$")) {
-                
+
                 JOptionPane.showMessageDialog(this, "Please enter valid mobile number", "Warning", JOptionPane.WARNING_MESSAGE);
                 CompanyHotlineNumberTextfield.grabFocus();
-                
-            }else if (companyHotline.length() !=10 ) {
-                
+
+            } else if (companyHotline.length() != 10) {
+
                 JOptionPane.showMessageDialog(this, "Mobile number must be included 10 characters only", "Warning", JOptionPane.WARNING_MESSAGE);
                 CompanyHotlineNumberTextfield.grabFocus();
-                
+
             } else {
-                
+
                 ResultSet resultset = MySql.executeSearch("SELECT * FROM `company` WHERE `company_id` = '" + companyID
-                        
                         + "' OR `hotline_number` = '" + companyHotline + "'");
-                
+
                 if (resultset.next()) {
-                    
+
                     JOptionPane.showMessageDialog(this, "Company Already Registered", "Error", JOptionPane.ERROR_MESSAGE);
                     RegenarateButton.grabFocus();
-                    
+
                 } else {
-                    
+
                     MySql.executeUpdate("INSERT INTO `company` (`company_id`,`company_name`,`company_address`,`company_email`,`hotline_number`)"
                             + " VALUES ('" + companyID + "','" + companyName + "','" + companyAddress + "','" + companyEmail + "',"
                             + " '" + companyHotline + "')");
-                    
+
                     reset();
-                    
+
                     loadCompanys();
-                    
-                    JOptionPane.showMessageDialog(this, "Company Successfully Registered", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    
+
+                    JOptionPane.showMessageDialog(this, companyName+" "+"company registerd successfully", "Company Registration Success", JOptionPane.INFORMATION_MESSAGE);
+
                 }
 
             }
 
         } catch (Exception e) {
-            
+
             e.printStackTrace();
-            
+
         }
 
 
@@ -575,7 +596,7 @@ public class AddNewCompany extends javax.swing.JFrame {
 
         // Generate Id when button clicked
         long id = System.currentTimeMillis();
-        CompanyIdTextfield.setText("ECR" + String.valueOf(id));       
+        CompanyIdTextfield.setText("ECR" + String.valueOf(id));
 
         // Request focus to the text field
         CompanyIdTextfield.setFocusable(true);
@@ -604,12 +625,11 @@ public class AddNewCompany extends javax.swing.JFrame {
                 if (confirm == JOptionPane.YES_OPTION) {
 
                     // Delete the selected company from the database
-                    MySql.executeUpdate("DELETE FROM `company` WHERE `company_id`='" + selectedCompanyId + "' ");                    
+                    MySql.executeUpdate("DELETE FROM `company` WHERE `company_id`='" + selectedCompanyId + "' ");
 
                     //load to table
-                    
                     reset();
-                    
+
                     loadCompanys();
                     //success message
                     JOptionPane.showMessageDialog(this, "Company Deleted Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
@@ -648,85 +668,66 @@ public class AddNewCompany extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please Select a Row", "Warning", JOptionPane.WARNING_MESSAGE);
 
         } else {
-         
+
             String companyID = CompanyIdTextfield.getText();
+            
             String companyName = CompanyNameTextfield.getText();
-            String companyAddress = CompanyAddressTextfield.getText();
-            //String companyEmail = CompanyEmailTextfield.getText();
-            String companyHotline = CompanyHotlineNumberTextfield.getText();
+
+            String selectedCompanyID = String.valueOf(CompanyRegistrationTable.getValueAt(row, 0));
+
+            String selectedCompanyName = String.valueOf(CompanyRegistrationTable.getValueAt(row, 1));
+
+            String selectedCompanyAddress = String.valueOf(CompanyRegistrationTable.getValueAt(row, 2));
+
+            String selectedCompanyEmail = String.valueOf(CompanyRegistrationTable.getValueAt(row, 3));
+
+            String selectedCompanyHotline = String.valueOf(CompanyRegistrationTable.getValueAt(row, 4));
             
-            String selectedCompanyID = String.valueOf(CompanyRegistrationTable.getValueAt(row, 0));            
-            
-            String selectedCompanyEmail = String.valueOf(CompanyRegistrationTable.getValueAt(row, 4));
-            
-            // Check if the company name field is empty
-            
-            if (companyName.isEmpty()) {
+            boolean companyUpdate = false;
 
-                JOptionPane.showMessageDialog(this, "Please enter company", "Warning", JOptionPane.WARNING_MESSAGE);
-                CompanyNameTextfield.grabFocus();
-                
-                // Check if the new company name matches the current name
-            } else if (companyAddress.isEmpty()) {
+            try {
 
-                JOptionPane.showMessageDialog(this, "Please enter Company address", "Blank Address Warning", JOptionPane.WARNING_MESSAGE);
-                CompanyAddressTextfield.grabFocus();
-                
-            }else if (companyHotline.length() !=10 ) {
-                
-                JOptionPane.showMessageDialog(this, "Mobile number must be included 10 characters only", "Warning", JOptionPane.WARNING_MESSAGE);
-                CompanyHotlineNumberTextfield.grabFocus();
-                
-            } else {
-                
-                boolean companyUpdate = false;
+                //Search from Database
+                ResultSet resultSet = MySql.executeSearch("SELECT * FROM `company` WHERE (`company_name`='" + companyName + "') AND `company_id` != '" + selectedCompanyID + "'");
 
-                try {
+                if (resultSet.next()) {
 
-                    //Search from Database
-                    ResultSet resultSet = MySql.executeSearch("SELECT * FROM `company` WHERE (`company_name`='" + companyName + "') AND `company_id` != '" + selectedCompanyID + "'");
+                    if (!resultSet.getString("company_id").equals(companyID)) {
 
-                    if (resultSet.next()) {
-                        
-                        if (!resultSet.getString("company_id").equals(companyID)) {
-                            
-                            JOptionPane.showMessageDialog(this, "This Company name is already used", "Warning", JOptionPane.WARNING_MESSAGE);
-                            
-                        }else{
-                            
-                            companyUpdate = true;
-                            
-                        }
+                        JOptionPane.showMessageDialog(this, "This Company name is already used", "Warning", JOptionPane.WARNING_MESSAGE);
 
                     } else {
 
                         companyUpdate = true;
-                        
-                        if (companyUpdate) {
-                            
-                            //Update the Database
-                            MySql.executeUpdate("UPDATE `company` SET `company_name` = '" + companyName + "', `company_address` = '"+companyAddress+"', `company_email` = '"+selectedCompanyEmail+"', `hotline_number` = '"+companyHotline+"' WHERE `company_id` = '" + selectedCompanyID + "' ");
 
-                            //load to table
-
-                            reset();
-
-                            loadCompanys();
-
-                            //success message
-                            JOptionPane.showMessageDialog(this, "Company Updated Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);                            
-                            
-                        }
-                        
                     }
-                    
-                } catch (Exception e) {
-                    
-                    e.printStackTrace();
-                    // Show an error message if the operation fails
-                    JOptionPane.showMessageDialog(this, "Error occurred while updating the Company", "Error", JOptionPane.ERROR_MESSAGE);
+
+                } else {
+
+                    companyUpdate = true;
+
+                    if (companyUpdate) {
+
+                        //Update the Database
+                        MySql.executeUpdate("UPDATE `company` SET `company_name` = '" + selectedCompanyName + "', `company_address` = '" + selectedCompanyAddress + "', `company_email` = '" + selectedCompanyEmail + "', `hotline_number` = '" + selectedCompanyHotline + "' WHERE `company_id` = '" + selectedCompanyID + "' ");
+
+                        //load to table
+                        reset();
+
+                        loadCompanys();
+
+                        //success message
+                        JOptionPane.showMessageDialog(this, selectedCompanyName+" "+"company updated successfully", "Company Update Successfully", JOptionPane.INFORMATION_MESSAGE);
+
+                    }
+
                 }
 
+            } catch (Exception e) {
+
+                e.printStackTrace();
+                // Show an error message if the operation fails
+                JOptionPane.showMessageDialog(this, "Error occurred while updating the Company", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         }
@@ -734,78 +735,105 @@ public class AddNewCompany extends javax.swing.JFrame {
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void CompanyRegistrationTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CompanyRegistrationTableMouseClicked
+
         int row = CompanyRegistrationTable.getSelectedRow();
-        
-        RegenarateButton.setEnabled(false);
+
+        RegenarateButton.setEnabled(rootPaneCheckingEnabled);
 
         CompanyIdTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 0)));
-        CompanyNameTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 1)));
-        CompanyAddressTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 2)));
-        CompanyHotlineNumberTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 3)));
-        CompanyEmailTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 4)));
         
-        CompanyIdTextfield.setEditable(false);
+        
+        CompanyNameTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 1)));
+        CompanyNameTextfield.setEditable(false);
+        
+        CompanyAddressTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 2)));
+        CompanyAddressTextfield.setEditable(false);
+        
+        CompanyEmailTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 3)));
+        CompanyEmailTextfield.setEditable(false);
+        
+        CompanyHotlineNumberTextfield.setText(String.valueOf(CompanyRegistrationTable.getValueAt(row, 4)));        
+        CompanyHotlineNumberTextfield.setEditable(false);
+        
     }//GEN-LAST:event_CompanyRegistrationTableMouseClicked
 
     private void CompanyIdTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CompanyIdTextfieldKeyPressed
-        
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
+
             CompanyNameTextfield.grabFocus();
-            
+
         }
-        
+
     }//GEN-LAST:event_CompanyIdTextfieldKeyPressed
 
     private void CompanyNameTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CompanyNameTextfieldKeyPressed
-        
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
+
             CompanyAddressTextfield.grabFocus();
-            
+
         }
-        
+
     }//GEN-LAST:event_CompanyNameTextfieldKeyPressed
 
     private void CompanyAddressTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CompanyAddressTextfieldKeyPressed
-        
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
+
             CompanyEmailTextfield.grabFocus();
-            
+
         }
-        
+
     }//GEN-LAST:event_CompanyAddressTextfieldKeyPressed
 
     private void CompanyEmailTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CompanyEmailTextfieldKeyPressed
-        
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
+
             CompanyHotlineNumberTextfield.grabFocus();
-            
+
         }
-        
+
     }//GEN-LAST:event_CompanyEmailTextfieldKeyPressed
 
     private void CompanyHotlineNumberTextfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CompanyHotlineNumberTextfieldKeyPressed
-        
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
-            addButton.grabFocus();
-            
+
+            addButton.doClick();
+
         }
-        
+
     }//GEN-LAST:event_CompanyHotlineNumberTextfieldKeyPressed
 
     private void RegenarateButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RegenarateButtonKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            CompanyIdTextfield.grabFocus();
+
+        }
+
+    }//GEN-LAST:event_RegenarateButtonKeyPressed
+
+    private void CompanyRegistrationTableKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CompanyRegistrationTableKeyPressed
         
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             
-            CompanyIdTextfield.grabFocus();
+            updateButton.doClick();
             
         }
         
-    }//GEN-LAST:event_RegenarateButtonKeyPressed
+    }//GEN-LAST:event_CompanyRegistrationTableKeyPressed
+
+    private void SearchCompanyNameTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SearchCompanyNameTextFieldKeyTyped
+        
+        String companyNameSearch = SearchCompanyNameTextField.getText();
+        
+        searchName(companyNameSearch);
+        
+    }//GEN-LAST:event_SearchCompanyNameTextFieldKeyTyped
 
     /**
      * @param args the command line arguments
@@ -857,12 +885,37 @@ public class AddNewCompany extends javax.swing.JFrame {
     private void reset() {
         CompanyIdTextfield.setText("");
         RegenarateButton.setEnabled(true);
+        CompanyNameTextfield.setEnabled(true);
+        CompanyRegistrationTable.clearSelection();
+        CompanyAddressTextfield.setEditable(true);
+        CompanyEmailTextfield.setEnabled(true);
+        CompanyHotlineNumberTextfield.setEditable(true);
         CompanyRegistrationTable.clearSelection();
         RegenarateButton.grabFocus();
         CompanyNameTextfield.setText("");
         CompanyAddressTextfield.setText("");
         CompanyHotlineNumberTextfield.setText("");
         CompanyEmailTextfield.setText("");
+    }
+
+    private void searchName(String companyNameSearch) {
+        
+        model = (DefaultTableModel)CompanyRegistrationTable.getModel();
+        
+        TableRowSorter<DefaultTableModel> ctrs = new TableRowSorter<>(model);
+        
+        CompanyRegistrationTable.setRowSorter(ctrs);
+        
+        if (companyNameSearch.trim().length() == 0) {
+            
+            ctrs.setRowFilter(null);
+            
+        }else{
+            
+            ctrs.setRowFilter(RowFilter.regexFilter("(?i)" + companyNameSearch, 1));
+            
+        }
+        
     }
 
 }

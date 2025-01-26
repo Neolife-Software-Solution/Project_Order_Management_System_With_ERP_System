@@ -6,6 +6,23 @@ package finance_department_gui;
 
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.sql.ResultSet;
+import java.util.Vector;
+import java.text.ParseException;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import javax.swing.DefaultComboBoxModel;
+import java.util.HashMap;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import model.MySql;
 
 /**
  *
@@ -13,11 +30,91 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
  */
 public class CompanyPromotion extends javax.swing.JFrame {
 
+    // HashMap to store expences types and their IDs 
+    private static HashMap<String, String> PromotionTypesMap = new HashMap<>();
+
     /**
      * Creates new form CompanyPromotion
      */
     public CompanyPromotion() {
         initComponents();
+        addPlaceholder(); //placeholder to textfield
+        loadPromotions();
+        loadPromotionTypes();
+    }
+
+    //addplaceholder method
+    private void addPlaceholder() {
+
+        //Search textfield placeholder and color
+        jTextField1.setText("Search Promotions");
+        jTextField1.setForeground(Color.GRAY);
+
+        //Description textfield placeholder and color
+        jTextField2.setText("Enter Description");
+        jTextField2.setForeground(Color.GRAY);
+
+        //Cost textfield placeholder and color
+        jTextField3.setText("Enter Cost");
+        jTextField3.setForeground(Color.GRAY);
+
+    }
+
+    // Load promotion types into the combo box
+    private void loadPromotionTypes() {
+        try {
+
+            // Execute an SQL query to fetch all records from the db table
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `company_promotion_types` ");
+            Vector<String> vector = new Vector<>();
+            vector.add("Select Promotion Type");// Placeholder item in combobox
+
+            while (resultSet.next()) {
+                vector.add(resultSet.getString("type_name"));// Add type name to the vector
+                PromotionTypesMap.put(resultSet.getString("type_name"), resultSet.getString("promotiontypes_id"));// Map type name to ID
+            }
+
+            // Show the combo box with expences types
+            DefaultComboBoxModel model = new DefaultComboBoxModel(vector);
+            jComboBox1.setModel(model);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    //load to Promotions into table
+    private void loadPromotions() {
+        try {
+
+            //Get data from databse table 
+            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `company_promotion` "
+                    + "INNER JOIN `company_promotion_types` ON `company_promotion` .`company_promotion_types_promotiontypes_id`= `company_promotion_types`.`promotiontypes_id`");
+
+            //Clear existing rows
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+
+            //Show in the table
+            while (resultSet.next()) {
+
+                Vector<String> vector = new Vector<>();
+                vector.add(resultSet.getString("company_promotion_id"));
+                vector.add(resultSet.getString("date"));
+                vector.add(resultSet.getString("type_name"));
+                vector.add(resultSet.getString("promotion_description"));
+                vector.add(resultSet.getString("cost"));
+
+                //Add the row to the table
+                model.addRow(vector);
+
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+        }
     }
 
     /**
@@ -116,6 +213,15 @@ public class CompanyPromotion extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel3.setText("Promotion");
 
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
+
         searchButton.setText("Search");
         searchButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         searchButton.setkEndColor(new java.awt.Color(0, 204, 204));
@@ -125,6 +231,11 @@ public class CompanyPromotion extends javax.swing.JFrame {
         searchButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         searchButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         searchButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel4.setText("Promotion Type");
@@ -139,10 +250,23 @@ public class CompanyPromotion extends javax.swing.JFrame {
         addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         addButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel5.setText("Promotion Description");
 
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField2FocusLost(evt);
+            }
+        });
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -151,6 +275,15 @@ public class CompanyPromotion extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setText("Cost");
+
+        jTextField3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField3FocusLost(evt);
+            }
+        });
 
         addButton2.setText("Add");
         addButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -161,6 +294,11 @@ public class CompanyPromotion extends javax.swing.JFrame {
         addButton2.setkPressedColor(new java.awt.Color(0, 102, 153));
         addButton2.setkSelectedColor(new java.awt.Color(0, 102, 153));
         addButton2.setkStartColor(new java.awt.Color(0, 102, 153));
+        addButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButton2ActionPerformed(evt);
+            }
+        });
 
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
         refreshButton.setToolTipText("Refresh");
@@ -261,6 +399,11 @@ public class CompanyPromotion extends javax.swing.JFrame {
             }
         });
         jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -304,22 +447,254 @@ public class CompanyPromotion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
-      System.exit(0);  // Log Out Button
+        System.exit(0);  // Log Out Button
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
-        // TODO add your handling code here:
+        reset(); //refresh the frame
     }//GEN-LAST:event_refreshButtonActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    //Promotion search
+    private void jTextField1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusGained
+        //check and set clear the current textfield to enter data
+        if (jTextField1.getText().equals("Search Promotions")) {
+            jTextField1.setText("");
+            jTextField1.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextField1FocusGained
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        //set back the placeholder
+        if (jTextField1.getText().isEmpty()) {
+            jTextField1.setText("Search Promotions");
+            jTextField1.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_jTextField1FocusLost
+
+    //Promotion description
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        //check and set clear the current textfield to enter data
+        if (jTextField2.getText().equals("Enter Description")) {
+            jTextField2.setText("");
+            jTextField2.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+        //set back the placeholder
+        if (jTextField2.getText().isEmpty()) {
+            jTextField2.setText("Enter Description");
+            jTextField2.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_jTextField2FocusLost
+
+    //Promotion cost
+    private void jTextField3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusGained
+        //check and set clear the current textfield to enter data
+        if (jTextField3.getText().equals("Enter Cost")) {
+            jTextField3.setText("");
+            jTextField3.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextField3FocusGained
+
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        //set back the placeholder
+        if (jTextField3.getText().isEmpty()) {
+            jTextField3.setText("Enter Cost");
+            jTextField3.setForeground(Color.GRAY);
+        }
+    }//GEN-LAST:event_jTextField3FocusLost
+
+    //AddPromotionTypes frame open button in the current frame
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        AddCompanyPromotionTypes types = new AddCompanyPromotionTypes();
+        types.setVisible(true);
+
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // Get the index of the selected row in the table
+        int row = jTable1.getSelectedRow();
+
+        // Display the data of the selected row in the text fields
+        jComboBox1.setSelectedItem(String.valueOf(jTable1.getValueAt(row, 2)));
+        jTextField2.setText(String.valueOf(jTable1.getValueAt(row, 3)));
+        jTextField3.setText(String.valueOf(jTable1.getValueAt(row, 4)));
+
+        // Disable the Add button while deleting
+        addButton2.setEnabled(false);
+
+        // Check if the user double-clicked on a row
+        if (evt.getClickCount() == 2) {
+
+            String selectedID = String.valueOf(jTable1.getValueAt(row, 0));
+
+            // Asking to confirm before the deletion
+            int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this Company Promotion?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+
+            //If user confirms the deletion
+            if (confirm == JOptionPane.YES_OPTION) {
+
+                try {
+
+                    //Delete from database
+                    MySql.executeUpdate("DELETE FROM `company_promotion` WHERE `company_promotion_id`='" + selectedID + "' ");
+
+                    // Renumber remaining rows
+                    MySql.executeUpdate("SET @row_number = 0");
+                    MySql.executeUpdate("UPDATE `company_promotion` "
+                            + "SET `company_promotion_id` = (@row_number := @row_number + 1) "
+                            + "ORDER BY `company_promotion_id`");
+
+                    // Reset AUTO_INCREMENT value
+                    MySql.executeUpdate("ALTER TABLE `company_promotion` AUTO_INCREMENT = 1");
+
+                    // Reload the jtable table 
+                    loadPromotions();
+                    reset(); // Clear the text field for the next entry
+
+                    //Success message
+                    JOptionPane.showMessageDialog(this, "Company Promotion Deleted Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(this, "Error occurred while deleting the Company Promotion", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+        }
+
+
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    //Promotion add
+    private void addButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButton2ActionPerformed
+        try {
+
+            // Get the text entered in the text fields
+            String promotiontype = String.valueOf(jComboBox1.getSelectedItem());
+            String description = jTextField2.getText(); //Select description textfield
+            String cost = jTextField3.getText(); //Select cost textfield
+
+            // Validate promotion type selection
+            if (promotiontype.isEmpty() || promotiontype.equals("Select Promotion Type")) {
+
+                JOptionPane.showMessageDialog(this, "Please select a type", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                //Check if the description is empty
+            } else if (description.isEmpty() || description.equals("Enter Description")) {
+
+                JOptionPane.showMessageDialog(this, "Please enter Promotion Description", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                //Check if the cost is empty
+            } else if (cost.isEmpty() || cost.equals("Enter Cost")) {
+
+                JOptionPane.showMessageDialog(this, "Please enter Promotion Cost", "Warning", JOptionPane.WARNING_MESSAGE);
+
+            } else {
+
+                try {
+                    double parsedAmount = Double.parseDouble(cost); // Check if the cost is a valid number
+                    if (parsedAmount <= 0) {
+                        JOptionPane.showMessageDialog(this, "Cost must be a positive value", "Warning", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+
+                    // Reset AUTO_INCREMENT value
+                    MySql.executeUpdate("ALTER TABLE `company_promotion` AUTO_INCREMENT = 1");
+
+                    // Get the current date
+                    LocalDate currentDate = LocalDate.now();
+                    String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+                    //Insert new payment
+                    MySql.executeUpdate("INSERT INTO `company_promotion` (`date`,`company_promotion_types_promotiontypes_id`,`promotion_description`,`cost`) VALUES ('" + formattedDate + "','" + PromotionTypesMap.get(promotiontype) + "','" + description + "','" + cost + "')");
+
+                    //load to table
+                    loadPromotions();
+                    reset();// Clear the text field for the next entry
+
+                    //focus on the type combobox again aftr adding the expence
+                    jComboBox1.grabFocus();
+
+                    //success message
+                    JOptionPane.showMessageDialog(this, "Company Promotion Added Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(this, "Cost must be a valid numeric value", "Warning", JOptionPane.WARNING_MESSAGE);
+
+                }
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error occurred while adding the Company Promotion", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_addButton2ActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // Retrieve input values
+        Date dateFrom = jDateChooser1.getDate();
+        Date dateTo = jDateChooser2.getDate();
+        String promotion = jTextField1.getText();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        // Validate input fields
+        if (dateFrom == null || dateTo == null || promotion.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "All fields are required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        try {
+            // Format dates for SQL
+            String dateFromStr = dateFormat.format(dateFrom);
+            String dateToStr = dateFormat.format(dateTo);
+
+            // Construct the query with the parameters inserted directly into the string
+            String query = "SELECT * FROM `company_promotion` "
+                    + "INNER JOIN `company_promotion_types` "
+                    + "ON `company_promotion`.`company_promotion_types_promotiontypes_id` = `company_promotion_types`.`promotiontypes_id` "
+                    + "WHERE `date` BETWEEN '" + dateFromStr + "' AND '" + dateToStr + "' "
+                    + "AND `type_name` LIKE '%" + promotion + "%'";
+
+            // Execute the query using the existing MySql.executeSearch method
+            ResultSet resultSet = MySql.executeSearch(query);
+
+            // Clear existing table rows
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0);
+
+            // Populate table with filtered data
+            while (resultSet.next()) {
+                Vector<String> vector = new Vector<>();
+                vector.add(resultSet.getString("company_promotion_id")); // ID
+                vector.add(resultSet.getString("date"));                 // Date
+                vector.add(resultSet.getString("type_name"));            // Promotion Type
+                vector.add(resultSet.getString("promotion_description")); // Description
+                vector.add(resultSet.getString("cost"));                 // Cost
+                model.addRow(vector);
+            }
+
+            reset();// Clear the text field for the next entry
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "An Error Occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_searchButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+
         FlatMacLightLaf.setup();
 
         /* Create and display the form */
@@ -358,4 +733,18 @@ public class CompanyPromotion extends javax.swing.JFrame {
     private javax.swing.JButton refreshButton;
     private com.k33ptoo.components.KButton searchButton;
     // End of variables declaration//GEN-END:variables
+
+    // Function to reset the input fields and table selection
+    private void reset() {
+
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jComboBox1.setSelectedIndex(0);
+        addButton2.setEnabled(true);
+        jTable1.clearSelection();
+
+        //Re-add the placeholder to refreshed textfield
+        addPlaceholder();
+    }
 }

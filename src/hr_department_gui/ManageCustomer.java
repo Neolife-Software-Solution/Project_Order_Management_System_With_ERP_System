@@ -489,8 +489,8 @@ public class ManageCustomer extends javax.swing.JFrame {
             }
         });
         searchTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchTextFieldKeyReleased(evt);
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchTextFieldKeyPressed(evt);
             }
         });
 
@@ -860,12 +860,6 @@ public class ManageCustomer extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_FirstNameTextfieldKeyPressed
 
-    private void searchTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyReleased
-        String searchTerm = searchTextField.getText();
-
-        search(searchTerm);
-    }//GEN-LAST:event_searchTextFieldKeyReleased
-
     //Handle mouse clicks on customer table
     private void CustomerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CustomerTableMouseClicked
 
@@ -979,6 +973,14 @@ public class ManageCustomer extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_generateButtonKeyPressed
+
+    private void searchTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextFieldKeyPressed
+        
+        String searchTerm = searchTextField.getText();
+
+        search(searchTerm);
+        
+    }//GEN-LAST:event_searchTextFieldKeyPressed
 
     /**
      * @param args the command line arguments

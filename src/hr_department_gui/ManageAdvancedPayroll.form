@@ -267,7 +267,7 @@
                             <Column editable="false" title="Date" type="java.lang.Object"/>
                             <Column editable="false" title="Advance Payment" type="java.lang.Object"/>
                             <Column editable="false" title="Salary" type="java.lang.Object"/>
-                            <Column editable="false" title="Advance Status" type="java.lang.Object"/>
+                            <Column editable="true" title="Advance Status" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

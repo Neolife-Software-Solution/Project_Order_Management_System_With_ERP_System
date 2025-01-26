@@ -5,16 +5,12 @@
 package hr_department_gui;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.AbstractAction;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComponent;
 import javax.swing.JOptionPane;
-import javax.swing.KeyStroke;
 import model.MySql;
 
 /**
@@ -52,13 +48,12 @@ public class EmployeeAddress extends javax.swing.JDialog {
         } else {
             addemp = null; // Or handle as needed
         }
-        
-        configureKeyBindings(); // For Default Frame Key Controls
 
     }
 
     private String lastSavedCity = ""; // Holds the current City
 
+    
     // Model for populating the JComboBoxes with a list of strings
     private DefaultComboBoxModel<String> model;
 
@@ -245,16 +240,13 @@ public class EmployeeAddress extends javax.swing.JDialog {
                 // Check if the cityTextField is empty OR matches the placeholder text "New City"
 
                 JOptionPane.showMessageDialog(this, "Please Enter New City to Add!", "Warning: Input Field Empty", JOptionPane.ERROR_MESSAGE);
-                
-                cityTextField.grabFocus();
+                // Exit the method
 
             } else if (district.equals("Select District")) {
                 // Validate if a valid district has been selected
 
                 JOptionPane.showMessageDialog(this, "Please Select a District to Add New City", "Warning: Unknown District of City", JOptionPane.WARNING_MESSAGE);
 
-                districtComboBox.grabFocus();
-                
             } else if (cityinput.matches("[a-zA-Z\\s]+")) {
                 // Validate the cityinput to ensure only letters and spaces are allowed
 
@@ -270,7 +262,7 @@ public class EmployeeAddress extends javax.swing.JDialog {
                     // If the query affected rows, show a success message
                     if (rs > 0) {
 
-                        JOptionPane.showMessageDialog(this, "City updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "District updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
                         loadCities(district);   // Reload the cityComboBox
 
@@ -338,77 +330,56 @@ public class EmployeeAddress extends javax.swing.JDialog {
             if (postalcode.isEmpty() || postalcode.equals("Type Postal Code")) {
                 // Check if the postalcode is empty or matches the placeholder text "Type Postal Code"
 
-                JOptionPane.showMessageDialog(this, "Please enter your Postalcode of Your Area!", "Warning: Input Field Empty!", JOptionPane.WARNING_MESSAGE);
-
-                postalcodeTextField.grabFocus(); // Gets focus to postalcodeTextField
+                JOptionPane.showMessageDialog(this, "Please enter your Postalcode of Your Area", "Warning: Input Field Empty", JOptionPane.WARNING_MESSAGE);
 
             } else if (!postalcode.matches("^\\d{5}$")) {
                 //  Handle invalid postalcode
 
-                JOptionPane.showMessageDialog(this, "Please enter Valid Postalcode of Your Area!", "Warning: Input Field Empty!", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Please enter Valid Postalcode of Your Area", "Warning: Input Field Empty", JOptionPane.WARNING_MESSAGE);
 
-                postalcodeTextField.grabFocus(); // Gets focus to postalcodeTextField
-
-            } else if (postalcode.length() != 5) {
-                // Check if the postalcode has 5 characters!
-                
-                JOptionPane.showMessageDialog(this, "Postal Code length must have 5 characters!", "Warning: Invalid Input!", JOptionPane.ERROR_MESSAGE);
-                
-                postalcodeTextField.grabFocus(); // Gets focus to postalcodeTextField
-                
             } else if (province.equals("Select Province")) {
                 // Check if the province in default value
 
-                JOptionPane.showMessageDialog(this, "Please select a Province!", "Warning: Not Selected!", JOptionPane.WARNING_MESSAGE);
-
-                provinceComboBox.grabFocus(); // Gets focus to provinceComboBox
+                JOptionPane.showMessageDialog(this, "Please select a Province", "Warning: Not Selected", JOptionPane.WARNING_MESSAGE);
 
             } else if (district.equals("Select District")) {
                 // Check if the district in default value
-
-                JOptionPane.showMessageDialog(this, "Please select a District!", "Warning: Not Selected!", JOptionPane.WARNING_MESSAGE);
-
-                districtComboBox.grabFocus(); // Gets focus to districtComboBox
+                
+                JOptionPane.showMessageDialog(this, "Please select a District", "Warning: Not Selected", JOptionPane.WARNING_MESSAGE);
 
             } else if (city.equals("Select City")) {
                 // Check if the city in default value
 
                 JOptionPane.showMessageDialog(this, "Please select a City", "Warning: Not Selected", JOptionPane.WARNING_MESSAGE);
 
-                cityComboBox.grabFocus(); // Gets focus to cityComboBox
-
             } else if (addressLine1.isEmpty() || addressLine1.equals("Type your address line 1")) {
                 // Check if the addressLine1 is empty or matches the placeholder text "Type your address line 1"
 
                 JOptionPane.showMessageDialog(this, "Please enter your Address Line 1", "Warning: Input Field Empty", JOptionPane.WARNING_MESSAGE);
-
-                addressLine1TextField.grabFocus(); // Gets focus to addressLine1TextField             
 
             } else if (addressLine2.isEmpty() || addressLine2.equals("Type your address line 2")) {
                 // Check if the addressLine2 is empty or matches the placeholder text "Type your address line 2"
 
                 JOptionPane.showMessageDialog(this, "Please enter your Address Line 2", "Warning: Input Field Empty", JOptionPane.WARNING_MESSAGE);
 
-                addressLine2TextField.grabFocus(); // Gets focus to addressLine2TextField 
-
             } else {
 
                 // Address INSERT Query String Variable
                 String query = "INSERT INTO `employee_address` (`address_line01`,`address_line02`,`postal_code`,`city_city_id`,`province_province_id`,`district_district_id`) "
-                        + "VALUES ('" + addressLine1 + "','" + addressLine2 + "','" + postalcode + "','" + cityId + "','" + provinceId + "','" + districtId + "')";
+                        + "VALUES ('" + addressLine1 + "','" + addressLine1 + "','" + postalcode + "','" + cityId + "','" + provinceId + "','" + districtId + "')";
 
                 // Execute Address INSERT Query
                 MySql.executeUpdate(query);
 
                 // Fetch the last inserted ID (To get Address)
                 String lastInsertQuery = "SELECT LAST_INSERT_ID() AS address_id";
-
+                
                 // Execute Query to get Address ID
                 ResultSet rs = MySql.executeSearch(lastInsertQuery);
-
+                
                 // Sets a variable for default Address ID
                 int addressId = -1;
-
+                
                 // Checks and assign current Query Address ID
                 if (rs.next()) {
                     addressId = rs.getInt("address_id");
@@ -416,21 +387,21 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
                 // Checks if an Address Id added 
                 if (addressId > 0) {
-
+                    
                     // Pass addressId to AddEmployee Frame
                     AddEmployee.setAddressId(addressId);
 
-                    // dispose this (Employee Address) dialogbox
-                    this.dispose();
-
                     // Success 
                     JOptionPane.showMessageDialog(this, "Employee Address Updated Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-
+                    
+                    // dispose this (Employee Address) dialogbox
+                    this.dispose();
+                    
                 } else {
-
+                    
                     // Shows an Error Message
                     JOptionPane.showMessageDialog(this, "Failed to retrieve address ID!", "Error", JOptionPane.ERROR_MESSAGE);
-
+                    
                 }
 
             }
@@ -517,7 +488,6 @@ public class EmployeeAddress extends javax.swing.JDialog {
         BackToDashboardPanel.setPreferredSize(new java.awt.Dimension(808, 50));
 
         BackToDashboardButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back-arrow.png"))); // NOI18N
-        BackToDashboardButton.setToolTipText("Go Back!");
         BackToDashboardButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BackToDashboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -548,7 +518,6 @@ public class EmployeeAddress extends javax.swing.JDialog {
         provinceLabel.setText("Select Province");
 
         provinceComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Province" }));
-        provinceComboBox.setToolTipText("Please Choose Your Province!");
         provinceComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 provinceComboBoxActionPerformed(evt);
@@ -563,14 +532,12 @@ public class EmployeeAddress extends javax.swing.JDialog {
         employeeIDLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         employeeIDLabel.setText("Employee ID");
 
-        employeeIDTextField.setToolTipText("Employee ID");
         employeeIDTextField.setEnabled(false);
 
         districtLabel.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         districtLabel.setText("Select District");
 
         districtComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select District" }));
-        districtComboBox.setToolTipText("Please Choose Your District!");
         districtComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 districtComboBoxActionPerformed(evt);
@@ -586,7 +553,6 @@ public class EmployeeAddress extends javax.swing.JDialog {
         cityLabel.setText("Select City");
 
         cityComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select City" }));
-        cityComboBox.setToolTipText("Please Choose Your City!");
         cityComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 cityComboBoxKeyPressed(evt);
@@ -596,7 +562,6 @@ public class EmployeeAddress extends javax.swing.JDialog {
         cityTextField.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         cityTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         cityTextField.setText("New City");
-        cityTextField.setToolTipText("Please Add Your New City, If Your City Not Available!");
         cityTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 cityTextFieldFocusGained(evt);
@@ -612,7 +577,6 @@ public class EmployeeAddress extends javax.swing.JDialog {
         });
 
         cityButton.setText("Add");
-        cityButton.setToolTipText("Click to Add Your New City!");
         cityButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         cityButton.setkEndColor(new java.awt.Color(0, 204, 204));
         cityButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
@@ -635,7 +599,6 @@ public class EmployeeAddress extends javax.swing.JDialog {
         addressLine1Label.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         addressLine1Label.setText("Address Line 1");
 
-        addressLine1TextField.setToolTipText("Please Enter Your Addres Line 1!");
         addressLine1TextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 addressLine1TextFieldFocusGained(evt);
@@ -653,7 +616,6 @@ public class EmployeeAddress extends javax.swing.JDialog {
         addressLine2Label.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         addressLine2Label.setText("Address Line 2");
 
-        addressLine2TextField.setToolTipText("Please Enter Your Addres Line 2!");
         addressLine2TextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 addressLine2TextFieldFocusGained(evt);
@@ -669,7 +631,6 @@ public class EmployeeAddress extends javax.swing.JDialog {
         });
 
         submitButton.setText("Submit");
-        submitButton.setToolTipText("Click to Add Your Address!");
         submitButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         submitButton.setkEndColor(new java.awt.Color(0, 204, 204));
         submitButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
@@ -690,7 +651,6 @@ public class EmployeeAddress extends javax.swing.JDialog {
         });
 
         clearButton.setText("Clear");
-        clearButton.setToolTipText("Click to Clear All Data!");
         clearButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         clearButton.setkEndColor(new java.awt.Color(0, 204, 204));
         clearButton.setkHoverEndColor(new java.awt.Color(0, 102, 153));
@@ -713,7 +673,6 @@ public class EmployeeAddress extends javax.swing.JDialog {
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("Postal Code");
 
-        postalcodeTextField.setToolTipText("Please Enter Your Postal Code!");
         postalcodeTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 postalcodeTextFieldFocusGained(evt);
@@ -755,9 +714,9 @@ public class EmployeeAddress extends javax.swing.JDialog {
                                 .addComponent(cityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(detailsPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(postalcodeTextField)
-                                .addGap(177, 177, 177)))
+                                .addGap(171, 171, 171)))
                         .addGap(50, 50, 50))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanelLayout.createSequentialGroup()
                         .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -833,43 +792,8 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
 
-        // Get input values as variables from Textfields and ComboBoxes
-        String postalcode = postalcodeTextField.getText();
-        String province = String.valueOf(provinceComboBox.getSelectedItem());
-        String district = String.valueOf(districtComboBox.getSelectedItem());
-        String city = String.valueOf(cityComboBox.getSelectedItem());
-        String addressLine1 = addressLine1TextField.getText();
-        String addressLine2 = addressLine2TextField.getText();
-
-        if (!postalcode.isEmpty() || !postalcode.equals("Type Postal Code")
-                || !province.equals("Select Province")
-                || !district.equals("Select Province")
-                || !city.equals("Select Province")
-                || !addressLine1.isEmpty() || !addressLine1.equals("Type your address line 1")
-                || !addressLine2.isEmpty() || !addressLine2.equals("Type your address line 2")) {
-
-            // Show confirmation dialog
-            int result = JOptionPane.showConfirmDialog(this, "Are you sure you want to Clear the Address?", "Confirm Deletion", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-
-            // Check user's choice
-            if (result == JOptionPane.YES_OPTION) {
-
-                JOptionPane.showMessageDialog(this, "The Address Cleared Successfully!", "Data Cleared", JOptionPane.INFORMATION_MESSAGE);
-
-                // Calling reset method (created method)
-                reset();
-
-            } else {
-
-                JOptionPane.showMessageDialog(this, "The Address Clear Cancelled!", "Cancelled", JOptionPane.INFORMATION_MESSAGE);
-
-            }
-
-        } else {
-
-            JOptionPane.showMessageDialog(this, "No Data Found To Delete!", "Error: Empty Data!", JOptionPane.ERROR_MESSAGE);
-
-        }
+        // Calling reset method (created method)
+        reset();
 
     }//GEN-LAST:event_clearButtonActionPerformed
 
@@ -877,10 +801,8 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
         // Checks and set clear the current cityTextField to enter data to it
         if (cityTextField.getText().equals("New City")) {
-            
             cityTextField.setText("");
             cityTextField.setForeground(Color.BLACK);
-            
         }
 
     }//GEN-LAST:event_cityTextFieldFocusGained
@@ -889,10 +811,8 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
         // Checks and set clear the current addressLine1TextField to enter data to it
         if (addressLine1TextField.getText().equals("Type your address line 1")) {
-            
             addressLine1TextField.setText("");
             addressLine1TextField.setForeground(Color.BLACK);
-            
         }
 
     }//GEN-LAST:event_addressLine1TextFieldFocusGained
@@ -901,10 +821,8 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
         // Checks and set clear the current addressLine2TextField to enter data to it
         if (addressLine2TextField.getText().equals("Type your address line 2")) {
-            
             addressLine2TextField.setText("");
             addressLine2TextField.setForeground(Color.BLACK);
-            
         }
 
     }//GEN-LAST:event_addressLine2TextFieldFocusGained
@@ -913,10 +831,8 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
         // Sets back the placeholder of cityTextField
         if (cityTextField.getText().isEmpty()) {
-            
             cityTextField.setText("New City");
             cityTextField.setForeground(Color.GRAY);
-            
         }
 
     }//GEN-LAST:event_cityTextFieldFocusLost
@@ -925,10 +841,8 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
         // Sets back the placeholder of addressLine1TextField
         if (addressLine1TextField.getText().isEmpty()) {
-            
             addressLine1TextField.setText("Type your address line 1");
             addressLine1TextField.setForeground(Color.GRAY);
-            
         }
 
     }//GEN-LAST:event_addressLine1TextFieldFocusLost
@@ -937,10 +851,8 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
         // Sets back the placeholder of addressLine2TextField
         if (addressLine2TextField.getText().isEmpty()) {
-            
             addressLine2TextField.setText("Type your address line 2");
             addressLine2TextField.setForeground(Color.GRAY);
-            
         }
 
     }//GEN-LAST:event_addressLine2TextFieldFocusLost
@@ -961,24 +873,20 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
     private void postalcodeTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_postalcodeTextFieldFocusGained
 
-        // Checks and set clear the current postalcodeTextField to enter data to it
+        // Checks and set clear the current cityTextField to enter data to it
         if (postalcodeTextField.getText().equals("Type Postal Code")) {
-            
             postalcodeTextField.setText("");
             postalcodeTextField.setForeground(Color.BLACK);
-            
         }
 
     }//GEN-LAST:event_postalcodeTextFieldFocusGained
 
     private void postalcodeTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_postalcodeTextFieldFocusLost
 
-        // Sets back the placeholder of postalcodeTextField
+        // Sets back the placeholder of addressLine1TextField
         if (postalcodeTextField.getText().isEmpty()) {
-            
             postalcodeTextField.setText("Type Postal Code");
             postalcodeTextField.setForeground(Color.GRAY);
-            
         }
 
     }//GEN-LAST:event_postalcodeTextFieldFocusLost
@@ -1028,7 +936,7 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
         switch (keyCode) {
 
-            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT, KeyEvent.VK_DOWN ->
+            case KeyEvent.VK_ENTER, KeyEvent.VK_DOWN, KeyEvent.VK_RIGHT ->
                 provinceComboBox.grabFocus();
 
             case KeyEvent.VK_DELETE ->
@@ -1040,7 +948,7 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
     private void provinceComboBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_provinceComboBoxKeyPressed
         // code to add key controls for provinceComboBox
-
+        
         int keyCode = evt.getKeyCode();
         int selectedIndex = provinceComboBox.getSelectedIndex();
 
@@ -1048,7 +956,7 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
             switch (keyCode) {
 
-                case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
+                case KeyEvent.VK_ENTER ->
                     districtComboBox.grabFocus();
 
                 case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A -> {
@@ -1081,7 +989,7 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
     private void districtComboBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_districtComboBoxKeyPressed
         // code to add key controls for districtComboBox
-
+        
         int keyCode = evt.getKeyCode();
         int selectedIndex = districtComboBox.getSelectedIndex();
 
@@ -1089,7 +997,7 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
             switch (keyCode) {
 
-                case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
+                case KeyEvent.VK_ENTER ->
                     cityComboBox.grabFocus();
 
                 case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A -> {
@@ -1121,7 +1029,7 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
     private void cityComboBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cityComboBoxKeyPressed
         // code to add key controls for cityComboBox
-
+        
         int keyCode = evt.getKeyCode();
         int selectedIndex = cityComboBox.getSelectedIndex();
 
@@ -1142,8 +1050,8 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
                 case KeyEvent.VK_DOWN, KeyEvent.VK_S, KeyEvent.VK_RIGHT, KeyEvent.VK_D -> {
 
-                    if (selectedIndex < cityComboBox.getItemCount() - 1) { // Prevent exceeding last index
-                        cityComboBox.setSelectedIndex(selectedIndex + 1);
+                    if (selectedIndex < districtComboBox.getItemCount() - 1) { // Prevent exceeding last index
+                        districtComboBox.setSelectedIndex(selectedIndex + 1);
                     }
 
                 }
@@ -1165,20 +1073,13 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
     private void cityTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cityTextFieldKeyPressed
         // code to add key controls for cityTextField
-
+        
         int keyCode = evt.getKeyCode();
 
         switch (keyCode) {
 
-            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT -> {
-                
+            case KeyEvent.VK_ENTER, KeyEvent.VK_DOWN ->
                 cityButton.grabFocus();
-                cityButton.doClick();
-                
-            }
-            
-            case KeyEvent.VK_DOWN ->
-                addressLine1TextField.grabFocus();
 
             case KeyEvent.VK_UP ->
                 cityComboBox.grabFocus();
@@ -1192,13 +1093,13 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
     private void cityButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cityButtonKeyPressed
         // code to add key controls for cityButton
-
+        
         int keyCode = evt.getKeyCode();
 
         switch (keyCode) {
 
-            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
-                cityButton.doClick();
+            case KeyEvent.VK_ENTER ->
+                addNewCityToDatabase();
 
             case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A, KeyEvent.VK_BACK_SPACE ->
                 cityTextField.grabFocus();
@@ -1215,12 +1116,12 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
     private void addressLine1TextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addressLine1TextFieldKeyPressed
         // code to add key controls for addressLine1
-
+        
         int keyCode = evt.getKeyCode();
 
         switch (keyCode) {
 
-            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT, KeyEvent.VK_DOWN ->
+            case KeyEvent.VK_ENTER, KeyEvent.VK_DOWN ->
                 addressLine2TextField.grabFocus();
 
             case KeyEvent.VK_UP ->
@@ -1235,26 +1136,19 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
     private void addressLine2TextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addressLine2TextFieldKeyPressed
         // code to add key controls for addressLine2TextField
-
+        
         int keyCode = evt.getKeyCode();
 
         switch (keyCode) {
 
-            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->{
-                
-                submitButton.grabFocus();
-                submitButton.doClick();
-                
-            }
-                
-            case KeyEvent.VK_DOWN ->
+            case KeyEvent.VK_ENTER, KeyEvent.VK_DOWN ->
                 submitButton.grabFocus();
 
             case KeyEvent.VK_UP ->
                 addressLine1TextField.grabFocus();
 
             case KeyEvent.VK_DELETE ->
-                addressLine2TextField.setText("");
+                addressLine1TextField.setText("");
 
         }
 
@@ -1262,26 +1156,22 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
     private void submitButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_submitButtonKeyPressed
         // code to add key controls for submitButton
-
+        
         int keyCode = evt.getKeyCode();
 
         switch (keyCode) {
 
-            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT ->
-                submitButton.doClick();
-            
+            case KeyEvent.VK_ENTER ->
+                submitAddress();
+
             case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A, KeyEvent.VK_BACK_SPACE ->
                 addressLine2TextField.grabFocus();
 
             case KeyEvent.VK_DOWN, KeyEvent.VK_S, KeyEvent.VK_RIGHT, KeyEvent.VK_D ->
                 clearButton.grabFocus();
 
-            case KeyEvent.VK_DELETE -> {
-                
-                clearButton.grabFocus();
-                clearButton.doClick();
-                
-            }
+            case KeyEvent.VK_DELETE ->
+                reset();
 
         }
 
@@ -1289,19 +1179,19 @@ public class EmployeeAddress extends javax.swing.JDialog {
 
     private void clearButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_clearButtonKeyPressed
         // code to add key controls for clearButton
-
+        
         int keyCode = evt.getKeyCode();
 
         switch (keyCode) {
 
-            case KeyEvent.VK_ENTER, KeyEvent.VK_INSERT, KeyEvent.VK_DELETE ->
-                clearButton.doClick();
+            case KeyEvent.VK_ENTER, KeyEvent.VK_DELETE ->
+                reset();
 
-            case KeyEvent.VK_UP, KeyEvent.VK_W ->
+            case KeyEvent.VK_UP, KeyEvent.VK_W, KeyEvent.VK_LEFT, KeyEvent.VK_A, KeyEvent.VK_BACK_SPACE ->
                 addressLine2TextField.grabFocus();
 
-            case KeyEvent.VK_LEFT, KeyEvent.VK_A, KeyEvent.VK_BACK_SPACE ->
-                submitButton.grabFocus();
+            case KeyEvent.VK_DOWN, KeyEvent.VK_S, KeyEvent.VK_RIGHT, KeyEvent.VK_D ->
+                clearButton.grabFocus();
 
         }
 
@@ -1349,38 +1239,4 @@ public class EmployeeAddress extends javax.swing.JDialog {
         addPlaceholder();
 
     }
-    
-    private void configureKeyBindings() {
-        
-        // Bind ESC key to dispose the frame
-        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("ESCAPE"), "disposeFrame");
-        
-        getRootPane().getActionMap().put("disposeFrame", new AbstractAction() {
-            
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-                BackToDashboardButton.grabFocus();
-                BackToDashboardButton.doClick(); // Simulate Exit button press
-                
-            }
-            
-        });
-
-        // Bind F5 key to refresh
-        getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("F5"), "refreshFrame");
-        
-        getRootPane().getActionMap().put("refreshFrame", new AbstractAction() {
-            
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-                reset();
-                
-            }
-            
-        });
-        
-    }
-    
 }

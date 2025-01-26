@@ -20,6 +20,7 @@ public class PayrollIntegrations extends javax.swing.JFrame {
      * Creates new form PayrollIntegrations
      */
     public PayrollIntegrations() {
+        
         initComponents();
     }
 

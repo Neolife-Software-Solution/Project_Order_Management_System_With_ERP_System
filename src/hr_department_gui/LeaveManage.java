@@ -6,6 +6,7 @@ package hr_department_gui;
 
 import java.sql.ResultSet;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import com.mysql.cj.protocol.Resultset;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
@@ -26,11 +27,11 @@ public class LeaveManage extends javax.swing.JFrame {
      * Creates new form LeaveManage
      */
     public LeaveManage() {
-        
+
         initComponents();
-        
+
         generateButton.grabFocus();
-        
+
         LoadLeaveTable();
     }
 
@@ -41,30 +42,30 @@ public class LeaveManage extends javax.swing.JFrame {
      */
     private void LoadLeaveTable() {
 
-        try {                        
-            
+        try {
+
             ResultSet resultSet = MySql.executeSearch("SELECT * FROM `leave` ");
-            
-            DefaultTableModel LeavedefaultTableModel = (DefaultTableModel)ManageLeaveTable.getModel();
-            
+
+            DefaultTableModel LeavedefaultTableModel = (DefaultTableModel) ManageLeaveTable.getModel();
+
             LeavedefaultTableModel.setRowCount(0);
 
             while (resultSet.next()) {
 
                 Vector<String> vector = new Vector<>();
-                
-                vector.add(resultSet.getString("leave_id"));                
+
+                vector.add(resultSet.getString("leave_id"));
                 vector.add(resultSet.getString("employee_employee_id"));
                 vector.add(resultSet.getString("employee_name"));
                 vector.add(resultSet.getString("date_from"));
                 vector.add(resultSet.getString("date_to"));
 
                 LeavedefaultTableModel.addRow(vector);
-                
+
             }
 
         } catch (Exception e) {
-            
+
             e.printStackTrace();
 
         }
@@ -186,6 +187,11 @@ public class LeaveManage extends javax.swing.JFrame {
         updateButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         updateButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
 
         refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
@@ -483,11 +489,10 @@ public class LeaveManage extends javax.swing.JFrame {
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
 
         //BackToDashboard
-        
         HRDepartmentDashboard hRDepartmentDashboard = new HRDepartmentDashboard();
-        
+
         hRDepartmentDashboard.setVisible(true);
-        
+
         this.dispose();
 
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
@@ -495,39 +500,47 @@ public class LeaveManage extends javax.swing.JFrame {
     private void holidayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_holidayButtonActionPerformed
 
         HoliDays leave = new HoliDays(this, true);
+        
         leave.setVisible(true);
 
     }//GEN-LAST:event_holidayButtonActionPerformed
 
     private void employeeIDTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeIDTextFieldKeyReleased
 
-        // store a employee id & Trim to remove space
         String empId = employeeIDTextField.getText();
 
         try {
 
-            // check id field is empty & clear textfield    
             if (empId.isEmpty()) {
 
                 employeeNameTextField.setText("");
-                return;
                 
-            }
-            // execute database query
-            ResultSet resultSet = MySql.executeSearch("SELECT * FROM `employee` WHERE `employee_id` = ' " + empId + " ' ");
-
-            if (resultSet.next()) {
-
-                String firstName = resultSet.getString("first_name");
-                String lastName = resultSet.getString("last_name");
-                String fullName = firstName + " " + lastName;
-
-                employeeNameTextField.setText(fullName);
+                return;
 
             } else {
 
-                // clear employee name text field
-                employeeNameTextField.setText("");
+                try {
+
+                    ResultSet resultset = MySql.executeSearch("SELECT * FROM `employee` WHERE `employee_id` = '" + empId + "' ");
+
+                    if (resultset.next()) {
+
+                        String fullName = resultset.getString("first_name") + " " + resultset.getString("last_name");
+
+                        employeeNameTextField.setText(fullName);
+
+                    }else{
+                        
+                        JOptionPane.showMessageDialog(this, "Something Went Wrong", "Error", JOptionPane.WARNING_MESSAGE);
+                        
+                    }
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+
+                }
+
             }
 
         } catch (Exception e) {
@@ -551,15 +564,15 @@ public class LeaveManage extends javax.swing.JFrame {
             String employeeName = employeeNameTextField.getText();
             Date DateChooseFrom = DateChooseFromDateField.getDate();
             Date DateChooseTo = DateChooseToDateField.getDate();
-            
+
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
             //Validate leave ID
             if (leave.isBlank()) {
                 JOptionPane.showMessageDialog(this, "Please genarate the id", "Warning", JOptionPane.WARNING_MESSAGE);
-                
+
                 return;
-                
+
                 //Validate employee ID
             }
             if (employeeID.isEmpty()) {
@@ -574,24 +587,24 @@ public class LeaveManage extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Please select a 'to' date", "Warning", JOptionPane.WARNING_MESSAGE);
 
             } else {
-                
+
                 String fromDateChooser = dateFormat.format(DateChooseFrom);
                 String toDateChooser = dateFormat.format(DateChooseTo);
                 MySql.executeUpdate("INSERT INTO `leave` (`leave_id`,`employee_name`,`date_from`,`date_to`,`employee_employee_id`) VALUES "
-                        + "('" + leave + "','" + employeeName + "','" + fromDateChooser + "','" + toDateChooser + "','"+employeeID+"')");
-                
+                        + "('" + leave + "','" + employeeName + "','" + fromDateChooser + "','" + toDateChooser + "','" + employeeID + "')");
+
                 LoadLeaveTable();
-                
-                JOptionPane.showMessageDialog(this, employeeName+"'s"+" "+"Leave added successfully","Successfully added leave",JOptionPane.INFORMATION_MESSAGE);
-                
+
+                JOptionPane.showMessageDialog(this, employeeName + "'s" + " " + "Leave added successfully", "Successfully added leave", JOptionPane.INFORMATION_MESSAGE);
+
                 reset();
-                
+
             }
 
-        } catch (Exception e) { 
-            
+        } catch (Exception e) {
+
             e.printStackTrace();
-            
+
             JOptionPane.showMessageDialog(this, "An error occurred" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
@@ -601,7 +614,7 @@ public class LeaveManage extends javax.swing.JFrame {
     private void ManageLeaveTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManageLeaveTableMouseClicked
         // Get data from the table
         int row = ManageLeaveTable.getSelectedRow();
-        
+
         generateButton.grabFocus();
 
         String leave = String.valueOf(ManageLeaveTable.getValueAt(row, 0));
@@ -620,7 +633,7 @@ public class LeaveManage extends javax.swing.JFrame {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date date = sdf.parse(dateChooserFrom);
             DateChooseFromDateField.setDate(date);
-            
+
             String dateChooserTo = String.valueOf(ManageLeaveTable.getValueAt(row, 4));
             // Parse the date string and set it to the JDateChooser
             SimpleDateFormat sdt = new SimpleDateFormat("yyyy-MM-dd");
@@ -628,9 +641,9 @@ public class LeaveManage extends javax.swing.JFrame {
             DateChooseToDateField.setDate(datet);
 
         } catch (Exception e) {
-            
+
             e.printStackTrace();
-            
+
         }
 
     }//GEN-LAST:event_ManageLeaveTableMouseClicked
@@ -644,7 +657,7 @@ public class LeaveManage extends javax.swing.JFrame {
 
         // Generate Id when button clicked
         long id = System.currentTimeMillis();
-        leaveIDTextField.setText("LEA"+String.valueOf(id));
+        leaveIDTextField.setText("LEA" + String.valueOf(id));
 
         // Enable the text field (if it was disabled)
         leaveIDTextField.setEnabled(true);
@@ -655,101 +668,151 @@ public class LeaveManage extends javax.swing.JFrame {
     }//GEN-LAST:event_generateButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        
+
         int tableRow = ManageLeaveTable.getSelectedRow();
-        
+
         if (tableRow == -1) {
-            
-            JOptionPane.showMessageDialog(this, "Please select a row to  delete","Empty Row", JOptionPane.WARNING_MESSAGE);
-            
-        }else{
-            
-           String leaveID = String.valueOf(ManageLeaveTable.getValueAt(tableRow, 0));
-           String employeeID = String.valueOf(ManageLeaveTable.getValueAt(tableRow, 1));
-           String employeeName = String.valueOf(ManageLeaveTable.getValueAt(tableRow, 2));
-           
-           int confirmDelete = JOptionPane.showConfirmDialog(this, "Do you want to delete" + " "+ employeeName, "Leave Delete", 
-                   JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE);
-           
+
+            JOptionPane.showMessageDialog(this, "Please select a row to  delete", "Empty Row", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+
+            String leaveID = String.valueOf(ManageLeaveTable.getValueAt(tableRow, 0));
+            String employeeID = String.valueOf(ManageLeaveTable.getValueAt(tableRow, 1));
+            String employeeName = String.valueOf(ManageLeaveTable.getValueAt(tableRow, 2));
+
+            int confirmDelete = JOptionPane.showConfirmDialog(this, "Do you want to delete" + " " + employeeName, "Leave Delete",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+
             if (confirmDelete == JOptionPane.YES_NO_OPTION) {
-                
+
                 try {
-                    
-                    MySql.executeUpdate("DELETE FROM `leave` WHERE `leave_id` = '"+leaveID+"' AND `employee_employee_id` = '"+employeeID+"' ");
-                    
-                    JOptionPane.showMessageDialog(this, employeeName+"'s"+" "+"Leave Delete Successfully","Leave Delete Success",JOptionPane.INFORMATION_MESSAGE);
-                    
+
+                    MySql.executeUpdate("DELETE FROM `leave` WHERE `leave_id` = '" + leaveID + "' AND `employee_employee_id` = '" + employeeID + "' ");
+
+                    JOptionPane.showMessageDialog(this, employeeName + "'s" + " " + "Leave Delete Successfully", "Leave Delete Success", JOptionPane.INFORMATION_MESSAGE);
+
                     LoadLeaveTable();
-                    
+
                 } catch (Exception e) {
-                    
+
                     e.printStackTrace();
-                    
+
                 }
-                
+
             }
-            
+
         }
-        
+
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void employeeIDTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeIDTextFieldKeyPressed
-        
+
         //set the grabfocus for DateChooserFromTextField TextField
-        
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
+
             employeeNameTextField.grabFocus();
-            
+
         }
-        
+
     }//GEN-LAST:event_employeeIDTextFieldKeyPressed
 
     private void DateChooseFromDateFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DateChooseFromDateFieldKeyPressed
-        
+
         //set the grabfocus for DateChooserFromTextField TextField
-        
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
+
             DateChooseToDateField.grabFocus();
-            
+
         }
-        
+
     }//GEN-LAST:event_DateChooseFromDateFieldKeyPressed
 
     private void DateChooseToDateFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DateChooseToDateFieldKeyPressed
-        
+
         //set the grabfocus for DateChooserFromTextField TextField
-        
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
+
             addButton.grabFocus();
-            
+
         }
-        
+
     }//GEN-LAST:event_DateChooseToDateFieldKeyPressed
 
     private void generateButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_generateButtonKeyPressed
-        
+
         //set the grabfocus for DateChooserFromTextField TextField
-        
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
+
             employeeIDTextField.grabFocus();
-            
+
         }
-        
+
     }//GEN-LAST:event_generateButtonKeyPressed
 
     private void employeeNameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_employeeNameTextFieldKeyPressed
-        
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
+
             DateChooseFromDateField.grabFocus();
-            
+
         }
-        
+
     }//GEN-LAST:event_employeeNameTextFieldKeyPressed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+
+        int row = ManageLeaveTable.getSelectedRow();
+
+        if (row == -1) {
+            JOptionPane.showMessageDialog(this, "Please select the row you want to update", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            String leaveID = leaveIDTextField.getText().trim();
+            String employeeID = employeeIDTextField.getText().trim();
+            String employeeName = employeeNameTextField.getText().trim();
+            Date dateFrom = DateChooseFromDateField.getDate();
+            Date dateTo = DateChooseToDateField.getDate();
+
+            // Validate inputs
+            if (leaveID.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please generate the leave ID", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (employeeID.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter employee ID", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (dateFrom == null) {
+                JOptionPane.showMessageDialog(this, "Please select a 'From' date", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (dateTo == null) {
+                JOptionPane.showMessageDialog(this, "Please select a 'To' date", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Format dates
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String fromDate = dateFormat.format(dateFrom);
+            String toDate = dateFormat.format(dateTo);
+
+            MySql.executeUpdate("UPDATE  `leave`  SET  `employee_name` = ' " + employeeName + "', "
+                    + "`date_from` = ' " + fromDate + " ' , `date_to` = ' " + toDate + " '  WHERE  `leave_id` =  '" + leaveID + "'  ");
+
+            JOptionPane.showMessageDialog(this, "Sucssesfuly Updated", "Warning", JOptionPane.INFORMATION_MESSAGE);
+
+            LoadLeaveTable();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+
+    }//GEN-LAST:event_updateButtonActionPerformed
 
     /**
      * @param args the command line arguments

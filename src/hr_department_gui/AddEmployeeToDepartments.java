@@ -543,7 +543,7 @@ public class AddEmployeeToDepartments extends javax.swing.JFrame {
 
                     MySql.executeUpdate("UPDATE `employee` SET `department_department_id` = '" + departmentMap.get(department) + "' WHERE `employee_id` = '" + EmpId + "' ");
 
-                    JOptionPane.showMessageDialog(null, "Department assigned successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Department assigned successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
                     
                     LoadTable();
                     

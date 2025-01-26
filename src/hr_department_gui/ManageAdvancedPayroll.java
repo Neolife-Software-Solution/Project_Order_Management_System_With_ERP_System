@@ -152,7 +152,7 @@ public class ManageAdvancedPayroll extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -229,19 +229,10 @@ public class ManageAdvancedPayroll extends javax.swing.JFrame {
             }
 
             // SQL query to fetch data
-            String query = "SELECT ap.ad_pay_id AS 'Payroll Advance ID', "
-                    + "ap.employee_employee_id AS 'Employee ID', "
-                    + "ep.employee_name AS 'Employee Name', "
-                    + "ap.date AS 'Date', "
-                    + "ap.advanced_price AS 'Advance Payment', "
-                    + "ep.net_salary AS 'Salary', "
-                    + "ast.advance_status_name AS 'Advance Status' "
-                    + "FROM advanced_payroll AS ap "
-                    + "INNER JOIN employee_payrolls AS ep "
-                    + "ON ap.employee_employee_id = ep.employee_employee_id "
-                    + "INNER JOIN advance_status AS ast "
-                    + "ON ap.advance_status_advance_status_id = ast.advance_status_id "
-                    + "WHERE ep.employee_name = '" + employeeName + "'";
+            String query = "SELECT ap.ad_pay_id AS 'Payroll Advance ID',ap.employee_employee_id AS 'Employee ID', "
+                    + "ep.employee_name AS 'Employee Name', ap.date AS 'Date', "
+                    + "ap.advanced_price AS 'Advance Payment', ep.net_salary AS 'Salary' FROM advanced_payroll AS ap INNER JOIN employee_payrolls AS ep "
+                    + "ON ap.employee_employee_id = ep.employee_employee_id  WHERE ep.employee_name = '" + employeeName + "'";
             // Execute the query
             ResultSet resultSet = MySql.executeSearch(query);
 
@@ -260,7 +251,7 @@ public class ManageAdvancedPayroll extends javax.swing.JFrame {
                 rowData.add(resultSet.getString("Date"));
                 rowData.add(resultSet.getString("Advance Payment"));
                 rowData.add(resultSet.getString("Salary"));
-                rowData.add(resultSet.getString("Advance Status"));
+                rowData.add(resultSet.getString("advance_status_or_note"));
 
                 model.addRow(rowData); // Add the row to the table
             }
@@ -271,6 +262,7 @@ public class ManageAdvancedPayroll extends javax.swing.JFrame {
 
         } catch (Exception e) {
             e.printStackTrace();
+            
             JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
