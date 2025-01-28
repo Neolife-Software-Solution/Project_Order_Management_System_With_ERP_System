@@ -590,8 +590,8 @@ public class MarkAttendance extends javax.swing.JFrame {
             int attendencetype = 1;  // Presumably for "Present" status
 
             // Insert Data into employee_attendance table
-            String insertQuery = "INSERT INTO employee_attendence (employee_employee_id, employee_name, date, time, status, attendence_type_type_id) "
-                    + "VALUES ('" + employeeId + "','" + employeeName + "', '" + currentDate + "', '" + currentTime + "','" + status + "', '" + attendencetype + "')";
+            String insertQuery = "INSERT INTO employee_attendence (employee_employee_id, employee_name, date, time, attendence_type_type_id) "
+                    + "VALUES ('" + employeeId + "','" + employeeName + "', '" + currentDate + "', '" + currentTime + "', '" + attendencetype + "')";
 
             MySql.executeUpdate(insertQuery);
 

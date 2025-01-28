@@ -208,6 +208,11 @@ public class AddCategory extends javax.swing.JFrame {
         addButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         addButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         addButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout addCategorySectionLayout = new javax.swing.GroupLayout(addCategorySection);
         addCategorySection.setLayout(addCategorySectionLayout);
@@ -340,6 +345,10 @@ public class AddCategory extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_categoryTableMouseClicked
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addButtonActionPerformed
 
     /**
      * @param args the command line arguments

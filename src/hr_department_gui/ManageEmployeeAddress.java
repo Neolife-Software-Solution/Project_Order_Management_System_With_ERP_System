@@ -55,7 +55,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         try {
 
             ResultSet resultSet = MySql.executeSearch(" SELECT * FROM `employee_address` "
-                    + "INNER JOIN `employee` ON `employee`.`employee_id` = `employee_address`.`employee_employee_id` "
+                    + "INNER JOIN `employee` ON `employee`.`employee_address_em_address_id` = `employee_address`.`em_address_id` "
                     + "INNER JOIN `city` ON `city`.`city_id` = `employee_address`.`city_city_id` "
                     + "INNER JOIN `province` ON `province`.`province_id` = `employee_address`.`province_province_id` "
                     + "INNER JOIN `district` ON `district`.`district_id` = `employee_address`.`district_district_id` ");
@@ -455,9 +455,9 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         HeaderPanelLayout.setHorizontalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderPanelLayout.createSequentialGroup()
-                .addContainerGap(384, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
-                .addContainerGap(385, Short.MAX_VALUE))
+                .addContainerGap(355, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
+                .addContainerGap(355, Short.MAX_VALUE))
         );
         HeaderPanelLayout.setVerticalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -492,6 +492,11 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
         searchButton.setkPressedColor(new java.awt.Color(0, 102, 153));
         searchButton.setkSelectedColor(new java.awt.Color(0, 102, 153));
         searchButton.setkStartColor(new java.awt.Color(0, 102, 153));
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButtonActionPerformed(evt);
+            }
+        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -532,7 +537,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
             .addComponent(jSeparator1)
             .addComponent(jSeparator2)
             .addGroup(SearchPanelLayout.createSequentialGroup()
-                .addContainerGap(369, Short.MAX_VALUE)
+                .addContainerGap(325, Short.MAX_VALUE)
                 .addComponent(NameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(EmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -540,19 +545,19 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                 .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(369, Short.MAX_VALUE))
+                .addContainerGap(325, Short.MAX_VALUE))
             .addGroup(SearchPanelLayout.createSequentialGroup()
-                .addContainerGap(341, Short.MAX_VALUE)
+                .addContainerGap(311, Short.MAX_VALUE)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SearchPanelLayout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(20, 20, 20)
                         .addComponent(provinceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addGap(20, 20, 20)
                         .addComponent(DistricComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addGap(20, 20, 20)
                         .addComponent(CityComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -564,7 +569,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                         .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AddressLine_01)
                             .addComponent(AddressLine_02))))
-                .addContainerGap(340, Short.MAX_VALUE))
+                .addContainerGap(311, Short.MAX_VALUE))
         );
         SearchPanelLayout.setVerticalGroup(
             SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -622,7 +627,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
             .addGroup(BackToDashboardPanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(BackToDashboardButton)
-                .addContainerGap(1314, Short.MAX_VALUE))
+                .addContainerGap(1226, Short.MAX_VALUE))
         );
         BackToDashboardPanelLayout.setVerticalGroup(
             BackToDashboardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -737,11 +742,11 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
                         .addComponent(ProvinceLabel)
                         .addGap(20, 20, 20)
                         .addComponent(provinceComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(CityLabel)
                         .addGap(20, 20, 20)
                         .addComponent(cityComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(DistrictLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(districtComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -830,124 +835,86 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
 
         try {
-
             // Get the values entered by the user in the form fields
-            String Province = String.valueOf(provinceComboBox.getSelectedItem());
-            String District = String.valueOf(DistricComboBox.getSelectedItem());
-            String City = String.valueOf(CityComboBox.getSelectedItem());
-            String Addres_line_01 = AddressLine_01.getText();
-            String Addres_line_02 = AddressLine_02.getText();
+            String province = String.valueOf(provinceComboBox.getSelectedItem());
+            String district = String.valueOf(DistricComboBox.getSelectedItem());
+            String city = String.valueOf(CityComboBox.getSelectedItem());
+            String addressLine1 = AddressLine_01.getText();
+            String addressLine2 = AddressLine_02.getText();
             String employeeId = EmpId.getText();
 
             // Validate the form fields to ensure that no required fields are empty
-            if (Province.isEmpty()) {
+            if (province.isEmpty() || district.isEmpty() || city.isEmpty() || addressLine1.isEmpty() || addressLine2.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please fill all required fields", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
-                JOptionPane.showMessageDialog(this, "Please Select Province", "Warning", JOptionPane.WARNING_MESSAGE);
+            // Query to fetch the original data of the employee
+            String query = "SELECT ea.em_address_id, p.province_name, d.district_name, c.city_name, ea.address_line01, ea.address_line02 "
+                    + "FROM employee_address ea "
+                    + "INNER JOIN employee e ON e.employee_address_em_address_id = ea.em_address_id "
+                    + "INNER JOIN city c ON c.city_id = ea.city_city_id "
+                    + "INNER JOIN province p ON p.province_id = ea.province_province_id "
+                    + "INNER JOIN district d ON d.district_id = ea.district_district_id "
+                    + "WHERE e.employee_id = '" + employeeId + "' ";
 
-            } else if (District.isEmpty()) {
+            ResultSet rs = MySql.executeSearch(query);
 
-                JOptionPane.showMessageDialog(this, "Please Select District", "Warning", JOptionPane.WARNING_MESSAGE);
+            if (rs.next()) {
+                int addressId = rs.getInt("em_address_id");
+                String originalProvince = rs.getString("province_name");
+                String originalDistrict = rs.getString("district_name");
+                String originalCity = rs.getString("city_name");
+                String originalAddressLine1 = rs.getString("address_line01");
+                String originalAddressLine2 = rs.getString("address_line02");
 
-            } else if (City.isEmpty()) {
+                // Build the dynamic update query
+                StringBuilder updateQuery = new StringBuilder("UPDATE employee_address SET ");
+                boolean hasChanges = false;
 
-                JOptionPane.showMessageDialog(this, "Please Select City", "Warning", JOptionPane.WARNING_MESSAGE);
-
-            } else if (Addres_line_01.isEmpty()) {
-
-                JOptionPane.showMessageDialog(this, "Please Enter Address Line 01", "Warning", JOptionPane.WARNING_MESSAGE);
-
-            } else if (Addres_line_02.isEmpty()) {
-
-                JOptionPane.showMessageDialog(this, "Please Enter Address Line 02", "Warning", JOptionPane.WARNING_MESSAGE);
-
-            } else {
-
-                // Query to fetch the original data
-                String query = "SELECT * FROM `employee_address` "
-                        + "INNER JOIN `employee` ON `employee`.`employee_id` = `employee_address`.`employee_employee_id` "
-                        + "INNER JOIN `city` ON `city`.`city_id` = `employee_address`.`city_city_id` "
-                        + "INNER JOIN `province` ON `province`.`province_id` = `employee_address`.`province_province_id` "
-                        + "INNER JOIN `district` ON `district`.`district_id` = `employee_address`.`district_district_id`";
-
-                ResultSet rs = MySql.executeSearch(query);
-
-                if (rs.next()) {
-
-                    // Fetch the original values from the database
-                    String originalProvince = rs.getString("province_name");
-                    String originalDistrict = rs.getString("district_name");
-                    String originalCity = rs.getString("city_name");
-                    String originalAddressLine1 = rs.getString("address_line01");
-                    String originalAddressLine2 = rs.getString("address_line02");
-
-                    // Build the dynamic update query
-                    StringBuilder updateQuery = new StringBuilder("UPDATE employee_address SET ");
-                    boolean hasChanges = false;
-
-                    if (!Province.equals(originalProvince)) {
-
-                        updateQuery.append("province_province_id = (SELECT province_id FROM province WHERE province_name = '")
-                                .append(Province).append("'), ");
-                        hasChanges = true;
-
-                    }
-
-                    if (!District.equals(originalDistrict)) {
-
-                        updateQuery.append("district_district_id = (SELECT district_id FROM district WHERE district_name = '")
-                                .append(District).append("'), ");
-                        hasChanges = true;
-
-                    }
-
-                    if (!City.equals(originalCity)) {
-
-                        updateQuery.append("city_city_id = (SELECT city_id FROM city WHERE city_name = '")
-                                .append(City).append("'), ");
-                        hasChanges = true;
-
-                    }
-
-                    if (!Addres_line_01.equals(originalAddressLine1)) {
-
-                        updateQuery.append("address_line01 = '").append(Addres_line_01).append("', ");
-                        hasChanges = true;
-
-                    }
-
-                    if (!Addres_line_02.equals(originalAddressLine2)) {
-
-                        updateQuery.append("address_line02 = '").append(Addres_line_02).append("', ");
-                        hasChanges = true;
-
-                    }
-
-                    // Execute the update query if there are changes
-                    if (hasChanges) {
-
-                        // Remove trailing comma and space
-                        updateQuery.setLength(updateQuery.length() - 2);
-                        updateQuery.append(" WHERE employee_address.employee_employee_id = ").append(employeeId);
-
-                        MySql.executeUpdate(updateQuery.toString());
-                        JOptionPane.showMessageDialog(this, "Employee data updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-
-                        loadAddress();
-
-                    } else {
-
-                        JOptionPane.showMessageDialog(this, "No changes detected.", "Info", JOptionPane.INFORMATION_MESSAGE);
-
-                    }
-
+                if (!province.equals(originalProvince)) {
+                    updateQuery.append("province_province_id = (SELECT province_id FROM province WHERE province_name = '")
+                            .append(province).append("'), ");
+                    hasChanges = true;
+                }
+                if (!district.equals(originalDistrict)) {
+                    updateQuery.append("district_district_id = (SELECT district_id FROM district WHERE district_name = '")
+                            .append(district).append("'), ");
+                    hasChanges = true;
+                }
+                if (!city.equals(originalCity)) {
+                    updateQuery.append("city_city_id = (SELECT city_id FROM city WHERE city_name = '")
+                            .append(city).append("'), ");
+                    hasChanges = true;
+                }
+                if (!addressLine1.equals(originalAddressLine1)) {
+                    updateQuery.append("address_line01 = '").append(addressLine1).append("', ");
+                    hasChanges = true;
+                }
+                if (!addressLine2.equals(originalAddressLine2)) {
+                    updateQuery.append("address_line02 = '").append(addressLine2).append("', ");
+                    hasChanges = true;
                 }
 
+                // Execute the update query if there are changes
+                if (hasChanges) {
+                    // Remove the trailing comma and space
+                    updateQuery.setLength(updateQuery.length() - 2);
+                    updateQuery.append(" WHERE em_address_id = ").append(addressId);
+
+                    MySql.executeUpdate(updateQuery.toString());
+                    JOptionPane.showMessageDialog(this, "Employee address updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    loadAddress();
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "No changes detected.", "Info", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Employee address not found.", "Error", JOptionPane.ERROR_MESSAGE);
             }
 
         } catch (Exception e) {
-
             e.printStackTrace();
-
         }
 
     }//GEN-LAST:event_updateButtonActionPerformed
@@ -970,7 +937,7 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
 
 //                    Query
             String query = "SELECT * FROM `employee_address` "
-                    + "INNER JOIN `employee` ON `employee`.`employee_id` = `employee_address`.`employee_employee_id` "
+                    + "INNER JOIN `employee` ON `employee`.`employee_address_em_address_id` = `employee_address`.`em_address_id` "
                     + "INNER JOIN `city` ON `city`.`city_id` = `employee_address`.`city_city_id` "
                     + "INNER JOIN `province` ON `province`.`province_id` = `employee_address`.`province_province_id` "
                     + "INNER JOIN `district` ON `district`.`district_id` = `employee_address`.`district_district_id`";
@@ -1031,34 +998,90 @@ public class ManageEmployeeAddress extends javax.swing.JFrame {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
 
         try {
+            
+            String searchID = EmpId.getText().trim();
 
-            String searchID = EmpId.getText();
+            if (searchID.isEmpty()) {
+                
+                JOptionPane.showMessageDialog(this, "Please enter Employee ID", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+                
+            }
 
             int response = JOptionPane.showConfirmDialog(
-                    null,
+                    
+                    this,
                     "Are you sure you want to delete this record?",
                     "Confirm Deletion",
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE
+                    
             );
 
             if (response == JOptionPane.YES_OPTION) {
+                
+                // Check if employee exists
+                String checkQuery = "SELECT COUNT(*) AS count FROM employee WHERE employee_id = '" + searchID + "'";
+                
+                ResultSet rs = MySql.executeSearch(checkQuery);
 
-                MySql.executeUpdate("DELETE FROM `employee_address` WHERE `employee_employee_id` = '" + searchID + "' ");
+                if (rs.next() && rs.getInt("count") > 0) {
+                    
+                    // Start a transaction
+                    MySql.executeUpdate("START TRANSACTION");
 
-                JOptionPane.showMessageDialog(this, "Delete Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    try {
+                        
+                        // 1️⃣ Delete dependent records in 'leave' table
+                        String deleteLeaveQuery = "DELETE FROM `order_management_system_with_erp_db`.`leave` WHERE `employee_employee_id` = '" + searchID + "' ";
+                        MySql.executeUpdate(deleteLeaveQuery);
 
-                loadAddress();
+                        // 2⃣ delete the employee record
+                        String deleteEmployeeQuery = "DELETE FROM employee WHERE employee_id = '" + searchID + "'";
+                        MySql.executeUpdate(deleteEmployeeQuery);
 
+                        // 23⃣ Delete dependent records in 'employee_address' table
+                        String deleteAddressQuery = "DELETE FROM employee_address WHERE em_address_id = (SELECT employee_address_em_address_id FROM employee WHERE employee_id = '" + searchID + "')";
+                        MySql.executeUpdate(deleteAddressQuery);
+
+                        // Commit transaction
+                        MySql.executeUpdate("COMMIT");
+
+                        JOptionPane.showMessageDialog(this, "Employee deleted successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                        loadAddress();
+                        
+                    } catch (Exception e) {
+                        
+                        // Rollback in case of an error
+                        MySql.executeUpdate("ROLLBACK");
+                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(this, "An error occurred while deleting the records. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+                    
+                    } finally {
+                        
+                        rs.close();
+                        
+                    }
+                    
+                } else {
+                    
+                    JOptionPane.showMessageDialog(this, "Employee not found!", "Error", JOptionPane.ERROR_MESSAGE);
+                    
+                }
+                
             }
-
+            
         } catch (Exception e) {
-
+            
             e.printStackTrace();
-
+            
         }
 
     }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchButtonActionPerformed
 
     /**
      * @param args the command line arguments
