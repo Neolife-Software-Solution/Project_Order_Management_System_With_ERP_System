@@ -5,6 +5,13 @@
 package stock_management_gui;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
+import model.MySql;
 
 /**
  *
@@ -17,8 +24,61 @@ public class SeeSales extends javax.swing.JFrame {
      */
     public SeeSales() {
         initComponents();
+        loadSalesTable();
     }
 
+    private void loadSalesTable() {
+        
+        try {
+            
+            // Clear the existing table data
+            DefaultTableModel model = (DefaultTableModel) salesView.getModel();
+            model.setRowCount(0);
+
+            // Fetch the data from the database
+            String query = "SELECT * FROM invoice";
+            ResultSet rs = MySql.executeSearch(query);
+
+            double totalPrice = 0; // Variable to store the total price
+
+            // Iterate through the ResultSet
+            while (rs.next()) {
+                
+                String invoiceId = rs.getString("invoice_id");
+                String orderID = rs.getString("order_details_order_id");
+                String item_Name = rs.getString("item_name");
+                String qty = rs.getString("qty");
+                String price = rs.getString("total_amount");
+
+                // Add a new row to the table
+                model.addRow(new Object[]{invoiceId, orderID, item_Name, qty, price});
+
+                // Add the price to the total
+                try {
+                    
+                    totalPrice += Double.parseDouble(price);
+                    
+                } catch (NumberFormatException e) {
+                    
+                    System.out.println("Invalid price format for invoice ID: " + invoiceId);
+                    
+                }
+                
+            }
+
+            // Display the total price in total_TextField
+            total_TextField.setText(String.format("%.2f", totalPrice)); // Formatting to 2 decimal places
+
+        } catch (Exception e) {
+            
+            e.printStackTrace();
+            
+        }
+        
+    }
+
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,11 +98,11 @@ public class SeeSales extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        invoice_id = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        salesView = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        total_TextField = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -122,6 +182,15 @@ public class SeeSales extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("Enter Invoice Number :");
 
+        invoice_id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                invoice_idKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                invoice_idKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -130,7 +199,7 @@ public class SeeSales extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(12, 12, 12)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(invoice_id, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -139,38 +208,38 @@ public class SeeSales extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(invoice_id, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        salesView.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Invoice ID", "Items Name", "QTY", "Price"
+                "Invoice ID", "Order ID", "Items Name", "QTY", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
+        salesView.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(salesView);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel3.setText("Total :");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        total_TextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                total_TextFieldActionPerformed(evt);
             }
         });
 
@@ -185,7 +254,7 @@ public class SeeSales extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addGap(12, 12, 12)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(total_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)))
@@ -200,7 +269,7 @@ public class SeeSales extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(total_TextField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
 
@@ -226,16 +295,44 @@ public class SeeSales extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void total_TextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_total_TextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_total_TextFieldActionPerformed
+
+    DefaultTableModel model;
+
+    public void search(String Invoice_ID) {
+
+        model = (DefaultTableModel) salesView.getModel();
+        
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(model);
+        
+        salesView.setRowSorter(tr);
+        
+        tr.setRowFilter(RowFilter.regexFilter(Invoice_ID, 0));
+
+    }
+
+
+    private void invoice_idKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_invoice_idKeyPressed
+
+
+    }//GEN-LAST:event_invoice_idKeyPressed
+
+    private void invoice_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_invoice_idKeyReleased
+
+        String Invoice_ID = invoice_id.getText();
+
+        search(Invoice_ID);
+
+    }//GEN-LAST:event_invoice_idKeyReleased
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-         FlatMacLightLaf.setup();
+        FlatMacLightLaf.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -247,6 +344,7 @@ public class SeeSales extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackToDashboardButton;
+    private javax.swing.JTextField invoice_id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -258,8 +356,7 @@ public class SeeSales extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTable salesView;
+    private javax.swing.JTextField total_TextField;
     // End of variables declaration//GEN-END:variables
 }

@@ -106,6 +106,8 @@ public class PayrollManagement extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setText("Basic Salary");
 
+        jTextField1.setToolTipText("Basic Salary");
+
         kButton1.setText("Add");
         kButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         kButton1.setkEndColor(new java.awt.Color(0, 204, 204));
@@ -199,11 +201,11 @@ public class PayrollManagement extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Employee ID", "Employee Name", "Department", "Position", "Basic"
+                "Employee ID", "Employee Name", "Department", "Position", "Year", "Month", "Basic Salary"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -266,7 +268,7 @@ public class PayrollManagement extends javax.swing.JFrame {
                         .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(MonthChooseFromDateField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
 

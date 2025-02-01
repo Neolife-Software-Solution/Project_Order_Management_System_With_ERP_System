@@ -111,7 +111,7 @@ public class MarkAttendance extends javax.swing.JFrame {
         } catch (Exception e) {
 
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            
 
         }
 

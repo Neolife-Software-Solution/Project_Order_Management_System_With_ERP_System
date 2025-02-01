@@ -130,12 +130,14 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="SalesCountLable" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="SaleseCount" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                       <Component id="kButton1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                                       <Component id="kButton2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="SalesCountLable" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Component id="SaleseCount" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -461,6 +463,9 @@
                   <Color blue="99" green="66" red="0" type="rgb"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kButton3ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

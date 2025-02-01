@@ -5,6 +5,10 @@
 package stock_management_gui;
 
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.MySql;
 
 /**
  *
@@ -17,6 +21,43 @@ public class Invoice extends javax.swing.JFrame {
      */
     public Invoice() {
         initComponents();
+    }
+
+    private void loadInvoiceTable() {
+
+        try {
+
+            // Clear the existing table data
+            DefaultTableModel model = (DefaultTableModel) OrdersView.getModel();
+            model.setRowCount(0);
+
+            // Fetch the data from the database
+            String query = "SELECT * FROM temp_employee_attendance";
+            ResultSet rs = MySql.executeSearch(query);
+
+            // Iterate through the ResultSet
+            while (rs.next()) {
+
+                // Fetch employee details from the ResultSet
+                int attendanceId = rs.getInt("attendance_id");
+                String EmpID = rs.getString("employee_employee_id");
+                String fullName = rs.getString("employee_name");
+                String date = rs.getString("date");
+                String time = rs.getString("time");
+                String status = rs.getString("attendence_type_type_id").equals("1") ? "Present" : "Absent";
+
+                // Add a new row with EmpID, fullName, current date, and a placeholder for current time
+                model.addRow(new Object[]{attendanceId, EmpID, fullName, date, time, status});
+
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+
     }
 
     /**
@@ -151,12 +192,13 @@ public class Invoice extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(SelectOrdersPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(SalesCountLable, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SaleseCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(SalesCountLable, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(SaleseCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -230,6 +272,11 @@ public class Invoice extends javax.swing.JFrame {
         kButton3.setkPressedColor(new java.awt.Color(0, 102, 153));
         kButton3.setkSelectedColor(new java.awt.Color(0, 102, 153));
         kButton3.setkStartColor(new java.awt.Color(0, 102, 153));
+        kButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout OrderViewPanelLayout = new javax.swing.GroupLayout(OrderViewPanel);
         OrderViewPanel.setLayout(OrderViewPanelLayout);
@@ -323,6 +370,14 @@ public class Invoice extends javax.swing.JFrame {
     private void SaleseCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaleseCountActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SaleseCountActionPerformed
+
+    private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
+
+        PriceView p_view = new PriceView(this, true); // `true` -> Modal
+        p_view.setTotalPrice("1500.00"); // Total price eka set karanawa
+        p_view.setVisible(true);
+
+    }//GEN-LAST:event_kButton3ActionPerformed
 
     /**
      * @param args the command line arguments
