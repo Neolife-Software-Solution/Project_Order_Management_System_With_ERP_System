@@ -2,9 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package order_management_gui.takeaway_gui;
+package order_management_gui.dinning_gui;
 
-import order_management_gui.dinning_gui.*;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,14 +15,14 @@ import javax.swing.Timer;
  *
  * @author Hash_Boy
  */
-public class Takeaway extends javax.swing.JFrame {
+public class Dining extends javax.swing.JFrame {
 
     /**
      * Creates new form Takeaway
      */
-    public Takeaway() {
+    public Dining() {
         initComponents();
-        this.setExtendedState(Takeaway.MAXIMIZED_BOTH);
+        this.setExtendedState(Dining.MAXIMIZED_BOTH);
         dt();
         times();
     }
@@ -108,7 +107,7 @@ public class Takeaway extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Audiowide", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Takeaway");
+        jLabel1.setText("Dinning");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
@@ -363,7 +362,7 @@ public class Takeaway extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Takeaway().setVisible(true);
+                new Dining().setVisible(true);
             }
         });
     }

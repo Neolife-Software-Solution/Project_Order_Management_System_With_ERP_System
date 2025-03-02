@@ -14,15 +14,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import order_management_gui.delivery_gui.DeliveryGuyRegistration;
-import order_management_gui.delivery_gui.DeliveryGuyVehicleInformation;
 
 /**
  *
  * @author GOLDEN FIELD
  */
 public class HRDepartmentDashboard extends javax.swing.JFrame {
-    
+
     private JFrame currentWindow = null; // Keep track of the currently open window
 
     /**
@@ -31,108 +29,100 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
     public HRDepartmentDashboard() {
         initComponents();
     }
-    
+
     public void changeimage(JLabel image, String resourceImage) {
-        
+
         ImageIcon imageIcon = new ImageIcon(getClass().getResource(resourceImage));
         image.setIcon(imageIcon);
-        
+
     }
-    
+
     boolean hide = true;
-    
+
     public void hidemenu(JPanel showmenu, boolean dashboard, JLabel icButton) {
-        
+
         if (dashboard == true) {
-            
+
             showmenu.setPreferredSize(new Dimension(60, showmenu.getHeight()));
             changeimage(icButton, "/resources/menu.png");
         } else {
-            
+
             showmenu.setPreferredSize(new Dimension(300, showmenu.getHeight()));
             changeimage(icButton, "/resources/back-arrow.png");
         }
-        
+
     }
-    
+
     private void openWindow(String windowType) {
-        
+
         if (currentWindow != null) {
-            
+
             currentWindow.dispose(); // Close the previous window if it's already open
 
         }
-        
+
         switch (windowType) {
-            
+
             case "AddEmployee":
                 currentWindow = new AddEmployee();
                 break;
-            
+
             case "AddDepartment":
                 currentWindow = new AddDepartment();
                 break;
-            
+
             case "EmployeePosition":
                 currentWindow = new EmployeePosition();
                 break;
-            
+
             case "AddEmployeeToDepartments":
                 currentWindow = new AddEmployeeToDepartments();
                 break;
-            
+
             case "AddNewUser":
                 currentWindow = new AddNewUser();
                 break;
-            
+
             case "ManageEmployee":
                 currentWindow = new ManageEmployee();
                 break;
-            
+
             case "ManageEmployeeAddress":
                 currentWindow = new ManageEmployeeAddress();
                 break;
-            
+
             case "LeaveManage":
                 currentWindow = new LeaveManage();
                 break;
-            
+
             case "MarkAttendance":
                 currentWindow = new MarkAttendance();
                 break;
-            
+
             case "PayrollIntegrations":
                 currentWindow = new PayrollIntegrations();
                 break;
-            
+
             case "ManageAdvancedPayroll":
                 currentWindow = new ManageAdvancedPayroll();
                 break;
-            
+
             case "ManageCustomer":
                 currentWindow = new ManageCustomer();
                 break;
-            
+
             case "AddNewCompany":
                 currentWindow = new AddNewCompany();
                 break;
-            
+
             case "AddNewSupplier":
                 currentWindow = new AddNewSupplier();
                 break;
-            
-            case "DeliveryGuyRegistration":
-                currentWindow = new DeliveryGuyRegistration();
-                break;
-            
-            case "DeliveryGuyVehicleInformation":
-                currentWindow = new DeliveryGuyVehicleInformation();
-                break;
-            
+
         }
-        
+
         currentWindow.setVisible(true);
-        
+
     }
 
     /**
@@ -169,9 +159,6 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         ManageCustomerButton = new com.k33ptoo.components.KButton();
         AddNewCompanyButton = new com.k33ptoo.components.KButton();
         AddNewSupplierButton = new com.k33ptoo.components.KButton();
-        DeliveryGuyRegisterButton = new com.k33ptoo.components.KButton();
-        DeliveryVehicalRegisterButton = new com.k33ptoo.components.KButton();
-        DeliveryAttendenceButton = new com.k33ptoo.components.KButton();
         MainDashboardPanel = new javax.swing.JPanel();
         FooterPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -524,51 +511,6 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
         });
         SideBarButtonPanel.add(AddNewSupplierButton);
 
-        DeliveryGuyRegisterButton.setText("Delivery Guy Register");
-        DeliveryGuyRegisterButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        DeliveryGuyRegisterButton.setkBorderRadius(0);
-        DeliveryGuyRegisterButton.setkEndColor(new java.awt.Color(51, 51, 51));
-        DeliveryGuyRegisterButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        DeliveryGuyRegisterButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        DeliveryGuyRegisterButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        DeliveryGuyRegisterButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        DeliveryGuyRegisterButton.setkPressedColor(new java.awt.Color(51, 51, 51));
-        DeliveryGuyRegisterButton.setkStartColor(new java.awt.Color(153, 153, 153));
-        DeliveryGuyRegisterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeliveryGuyRegisterButtonActionPerformed(evt);
-            }
-        });
-        SideBarButtonPanel.add(DeliveryGuyRegisterButton);
-
-        DeliveryVehicalRegisterButton.setText("Delivery Vehical Register");
-        DeliveryVehicalRegisterButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        DeliveryVehicalRegisterButton.setkBorderRadius(0);
-        DeliveryVehicalRegisterButton.setkEndColor(new java.awt.Color(51, 51, 51));
-        DeliveryVehicalRegisterButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        DeliveryVehicalRegisterButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        DeliveryVehicalRegisterButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        DeliveryVehicalRegisterButton.setkPressedColor(new java.awt.Color(51, 51, 51));
-        DeliveryVehicalRegisterButton.setkStartColor(new java.awt.Color(153, 153, 153));
-        DeliveryVehicalRegisterButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeliveryVehicalRegisterButtonActionPerformed(evt);
-            }
-        });
-        SideBarButtonPanel.add(DeliveryVehicalRegisterButton);
-
-        DeliveryAttendenceButton.setText("Delivery Attendance");
-        DeliveryAttendenceButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        DeliveryAttendenceButton.setkBorderRadius(0);
-        DeliveryAttendenceButton.setkEndColor(new java.awt.Color(51, 51, 51));
-        DeliveryAttendenceButton.setkHoverEndColor(new java.awt.Color(153, 153, 153));
-        DeliveryAttendenceButton.setkHoverForeGround(new java.awt.Color(204, 204, 204));
-        DeliveryAttendenceButton.setkHoverStartColor(new java.awt.Color(51, 51, 51));
-        DeliveryAttendenceButton.setkIndicatorColor(new java.awt.Color(204, 0, 51));
-        DeliveryAttendenceButton.setkPressedColor(new java.awt.Color(51, 51, 51));
-        DeliveryAttendenceButton.setkStartColor(new java.awt.Color(153, 153, 153));
-        SideBarButtonPanel.add(DeliveryAttendenceButton);
-
         sideBarMainPanel.add(SideBarButtonPanel, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(sideBarMainPanel, java.awt.BorderLayout.LINE_START);
@@ -631,126 +573,114 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
-        
+
         if (hide == true) {
-            
+
             hidemenu(sideBarMainPanel, hide, jLabel4);
             SwingUtilities.updateComponentTreeUI(this);
-            
+
             hide = false;
-            
+
         } else {
-            
+
             hidemenu(sideBarMainPanel, hide, jLabel4);
             SwingUtilities.updateComponentTreeUI(this);
-            
+
             hide = true;
-            
+
         }
     }//GEN-LAST:event_jLabel4MousePressed
 
     private void addEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeButtonActionPerformed
-        
+
         openWindow("AddEmployee");
 
     }//GEN-LAST:event_addEmployeeButtonActionPerformed
 
     private void addDepartmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDepartmentButtonActionPerformed
-        
+
         openWindow("AddDepartment");
 
     }//GEN-LAST:event_addDepartmentButtonActionPerformed
 
     private void productPromotionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productPromotionButtonActionPerformed
-        
+
         openWindow("EmployeePosition");
 
     }//GEN-LAST:event_productPromotionButtonActionPerformed
 
     private void addEmployeeToDepartmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeToDepartmentButtonActionPerformed
-        
+
         openWindow("AddEmployeeToDepartments");
 
     }//GEN-LAST:event_addEmployeeToDepartmentButtonActionPerformed
 
     private void addNewUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewUserButtonActionPerformed
-        
+
         openWindow("AddNewUser");
 
     }//GEN-LAST:event_addNewUserButtonActionPerformed
 
     private void manageEmployeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeButtonActionPerformed
-        
+
         openWindow("ManageEmployee");
 
     }//GEN-LAST:event_manageEmployeeButtonActionPerformed
 
     private void manageEmployeeAddressButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeAddressButtonActionPerformed
-        
+
         openWindow("ManageEmployeeAddress");
 
     }//GEN-LAST:event_manageEmployeeAddressButtonActionPerformed
 
     private void leaveManageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaveManageButtonActionPerformed
-        
+
         openWindow("LeaveManage");
 
     }//GEN-LAST:event_leaveManageButtonActionPerformed
 
     private void MarkAttendenceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MarkAttendenceButtonActionPerformed
-        
+
         openWindow("MarkAttendance");
 
     }//GEN-LAST:event_MarkAttendenceButtonActionPerformed
 
     private void PayrollIntegrationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayrollIntegrationButtonActionPerformed
-        
+
         openWindow("PayrollIntegrations");
 
     }//GEN-LAST:event_PayrollIntegrationButtonActionPerformed
 
     private void ManageAdvancedPayrollButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageAdvancedPayrollButtonActionPerformed
-        
+
         openWindow("ManageAdvancedPayroll");
 
     }//GEN-LAST:event_ManageAdvancedPayrollButtonActionPerformed
 
     private void ManageCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageCustomerButtonActionPerformed
-        
+
         openWindow("ManageCustomer");
-        
+
     }//GEN-LAST:event_ManageCustomerButtonActionPerformed
 
     private void AddNewCompanyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewCompanyButtonActionPerformed
-        
+
         openWindow("AddNewCompany");
 
     }//GEN-LAST:event_AddNewCompanyButtonActionPerformed
 
     private void AddNewSupplierButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewSupplierButtonActionPerformed
-        
+
         openWindow("AddNewSupplier");
 
     }//GEN-LAST:event_AddNewSupplierButtonActionPerformed
-
-    private void DeliveryGuyRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeliveryGuyRegisterButtonActionPerformed
-        
-        openWindow("DeliveryGuyRegistration");
-
-    }//GEN-LAST:event_DeliveryGuyRegisterButtonActionPerformed
-
-    private void DeliveryVehicalRegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeliveryVehicalRegisterButtonActionPerformed
-        
-        openWindow("DeliveryGuyVehicleInformation");
-
-    }//GEN-LAST:event_DeliveryVehicalRegisterButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        
+
         FlatMacLightLaf.setup();
 
         /* Create and display the form */
@@ -764,9 +694,6 @@ public class HRDepartmentDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.k33ptoo.components.KButton AddNewCompanyButton;
     private com.k33ptoo.components.KButton AddNewSupplierButton;
-    private com.k33ptoo.components.KButton DeliveryAttendenceButton;
-    private com.k33ptoo.components.KButton DeliveryGuyRegisterButton;
-    private com.k33ptoo.components.KButton DeliveryVehicalRegisterButton;
     private javax.swing.JPanel FooterPanel;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JPanel MainDashboardPanel;

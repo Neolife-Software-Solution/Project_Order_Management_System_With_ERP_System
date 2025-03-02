@@ -7,8 +7,11 @@ package stock_management_gui;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import model.MySql;
+import order_management_gui.kitchen_gui.KitchenDashboard;
 
 /**
  *
@@ -21,40 +24,81 @@ public class Invoice extends javax.swing.JFrame {
      */
     public Invoice() {
         initComponents();
+        loadOrdersTable();
     }
 
-    private void loadInvoiceTable() {
+    private void loadOrdersTable() {
 
         try {
 
             // Clear the existing table data
             DefaultTableModel model = (DefaultTableModel) OrdersView.getModel();
+
             model.setRowCount(0);
 
             // Fetch the data from the database
-            String query = "SELECT * FROM temp_employee_attendance";
+            String query = "SELECT * FROM order_details";
+
             ResultSet rs = MySql.executeSearch(query);
 
             // Iterate through the ResultSet
             while (rs.next()) {
 
                 // Fetch employee details from the ResultSet
-                int attendanceId = rs.getInt("attendance_id");
-                String EmpID = rs.getString("employee_employee_id");
-                String fullName = rs.getString("employee_name");
-                String date = rs.getString("date");
-                String time = rs.getString("time");
-                String status = rs.getString("attendence_type_type_id").equals("1") ? "Present" : "Absent";
+                String Order_ID = rs.getString("order_id");
 
                 // Add a new row with EmpID, fullName, current date, and a placeholder for current time
-                model.addRow(new Object[]{attendanceId, EmpID, fullName, date, time, status});
+                model.addRow(new Object[]{Order_ID});
 
             }
 
         } catch (Exception e) {
 
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+    }
+
+    private void loadOrderItems() {
+
+        String orderId = orderIdField.getText().trim();
+
+        if (orderId.isEmpty()) {
+
+            JOptionPane.showMessageDialog(this, "Please enter an Order ID.");
+
+            return;
+
+        }
+
+        DefaultTableModel model = (DefaultTableModel) OrdersView.getModel();
+
+        model.setRowCount(0);
+
+        double total = 0;
+
+        try {
+
+            ResultSet rs = MySql.executeSearch("SELECT * FROM order_details "
+                    + "INNER JOIN order_items ON order_details.order_id = order_items.order_details_order_id "
+                    + "INNER JOIN portion_types ON portion_types.portion_types_id = order_items.portion_types_portion_types_id "
+                    + "INNER JOIN foods ON order_items.foods_food_id = foods.food_id WHERE order_details.order_id = '" + orderId + "'");
+
+            while (rs.next()) {
+
+                double price = rs.getDouble("price");
+
+                model.addRow(new Object[]{rs.getString("order_id"), rs.getString("foods.food_name"), rs.getString("portion_types.portion_types_name"), rs.getInt("order_qty"), rs.getDouble("price")});
+
+                total += price;
+            }
+
+            TotalTextField.setText(String.valueOf(total));
+
+        } catch (Exception ex) {
+
+            ex.printStackTrace();
 
         }
 
@@ -71,14 +115,14 @@ public class Invoice extends javax.swing.JFrame {
 
         HeaderPanel = new javax.swing.JPanel();
         EmpID = new javax.swing.JLabel();
-        EmpIDTextfield = new javax.swing.JTextField();
+        orderIdField = new javax.swing.JTextField();
+        refreshButton = new javax.swing.JButton();
         BodyPanel = new javax.swing.JPanel();
         SelectOrdersPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         SalesCountLable = new javax.swing.JLabel();
         SaleseCount = new javax.swing.JTextField();
         kButton1 = new com.k33ptoo.components.KButton();
-        kButton2 = new com.k33ptoo.components.KButton();
         OrderViewPanel = new javax.swing.JPanel();
         AddProductTextField = new javax.swing.JTextField();
         AddProductLable = new javax.swing.JLabel();
@@ -99,10 +143,22 @@ public class Invoice extends javax.swing.JFrame {
         EmpID.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         EmpID.setText("Enter Order ID / Mobile Number : ");
 
-        EmpIDTextfield.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        EmpIDTextfield.addActionListener(new java.awt.event.ActionListener() {
+        orderIdField.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        orderIdField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmpIDTextfieldActionPerformed(evt);
+                orderIdFieldActionPerformed(evt);
+            }
+        });
+        orderIdField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                orderIdFieldKeyReleased(evt);
+            }
+        });
+
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/refresh.png"))); // NOI18N
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
             }
         });
 
@@ -114,16 +170,20 @@ public class Invoice extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(EmpID)
                 .addGap(12, 12, 12)
-                .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addComponent(orderIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(refreshButton)
+                .addGap(36, 36, 36))
         );
         HeaderPanelLayout.setVerticalGroup(
             HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(EmpID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(EmpIDTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(HeaderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(EmpID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(orderIdField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
         );
 
@@ -139,14 +199,13 @@ public class Invoice extends javax.swing.JFrame {
         SalesCountLable.setText("To Day Sales Count :");
 
         SaleseCount.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        SaleseCount.setText("10");
         SaleseCount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SaleseCountActionPerformed(evt);
             }
         });
 
-        kButton1.setText("Online Orders");
+        kButton1.setText("Check Kitchen");
         kButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         kButton1.setkEndColor(new java.awt.Color(0, 204, 204));
         kButton1.setkHoverEndColor(new java.awt.Color(0, 102, 153));
@@ -155,16 +214,16 @@ public class Invoice extends javax.swing.JFrame {
         kButton1.setkPressedColor(new java.awt.Color(0, 102, 153));
         kButton1.setkSelectedColor(new java.awt.Color(0, 102, 153));
         kButton1.setkStartColor(new java.awt.Color(0, 102, 153));
-
-        kButton2.setText("Takeaway Orders");
-        kButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        kButton2.setkEndColor(new java.awt.Color(0, 204, 204));
-        kButton2.setkHoverEndColor(new java.awt.Color(0, 102, 153));
-        kButton2.setkHoverForeGround(new java.awt.Color(255, 255, 255));
-        kButton2.setkHoverStartColor(new java.awt.Color(0, 204, 204));
-        kButton2.setkPressedColor(new java.awt.Color(0, 102, 153));
-        kButton2.setkSelectedColor(new java.awt.Color(0, 102, 153));
-        kButton2.setkStartColor(new java.awt.Color(0, 102, 153));
+        kButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                kButton1MouseClicked(evt);
+            }
+        });
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout SelectOrdersPanelLayout = new javax.swing.GroupLayout(SelectOrdersPanel);
         SelectOrdersPanel.setLayout(SelectOrdersPanelLayout);
@@ -173,15 +232,13 @@ public class Invoice extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SelectOrdersPanelLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(218, 218, 218)
                 .addComponent(SalesCountLable)
                 .addGap(12, 12, 12)
-                .addComponent(SaleseCount, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SaleseCount, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         SelectOrdersPanelLayout.setVerticalGroup(
             SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,12 +250,10 @@ public class Invoice extends javax.swing.JFrame {
                     .addGroup(SelectOrdersPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(kButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(kButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(SelectOrdersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(SalesCountLable, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(SaleseCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(SaleseCount, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -232,11 +287,11 @@ public class Invoice extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Order ID", "Items Name", "QTY", "Price"
+                "Order ID", "Items Name", "Portion", "QTY", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -244,6 +299,11 @@ public class Invoice extends javax.swing.JFrame {
             }
         });
         OrdersView.getTableHeader().setReorderingAllowed(false);
+        OrdersView.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OrdersViewMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(OrdersView);
 
         TotalLable.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -344,9 +404,11 @@ public class Invoice extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EmpIDTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpIDTextfieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EmpIDTextfieldActionPerformed
+    private void orderIdFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderIdFieldActionPerformed
+
+        loadOrderItems();
+
+    }//GEN-LAST:event_orderIdFieldActionPerformed
 
     private void AddProductTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductTextFieldActionPerformed
         // TODO add your handling code here:
@@ -374,10 +436,87 @@ public class Invoice extends javax.swing.JFrame {
     private void kButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton3ActionPerformed
 
         PriceView p_view = new PriceView(this, true); // `true` -> Modal
-        p_view.setTotalPrice("1500.00"); // Total price eka set karanawa
+
+        p_view.setTotalPrice(TotalTextField.getText()); // Total price eka set karanawa
+
         p_view.setVisible(true);
+        
+        
 
     }//GEN-LAST:event_kButton3ActionPerformed
+
+    private void kButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kButton1MouseClicked
+
+
+    }//GEN-LAST:event_kButton1MouseClicked
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+
+        KitchenDashboard kitchenDashboard = new KitchenDashboard();
+
+        kitchenDashboard.setVisible(true);
+
+    }//GEN-LAST:event_kButton1ActionPerformed
+
+    DefaultTableModel model;
+
+    public void search(String orderid) {
+
+        model = (DefaultTableModel) OrdersView.getModel();
+
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(model);
+
+        OrdersView.setRowSorter(tr);
+
+        tr.setRowFilter(RowFilter.regexFilter(orderid, 0));
+
+    }
+
+    private void orderIdFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_orderIdFieldKeyReleased
+
+        String Od_ID = orderIdField.getText();
+
+        search(Od_ID);
+
+
+    }//GEN-LAST:event_orderIdFieldKeyReleased
+
+    private void OrdersViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrdersViewMouseClicked
+
+        if (evt.getClickCount() == 2) {
+
+            int row = OrdersView.getSelectedRow();
+
+            if (row != -1) {
+
+                String Orderid = String.valueOf(OrdersView.getValueAt(row, 0));
+
+                orderIdField.setText(Orderid);
+
+                loadOrderItems();
+
+            }
+
+        }
+
+    }//GEN-LAST:event_OrdersViewMouseClicked
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+
+        reset();
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
+    private void reset() {
+
+        orderIdField.setText("");
+
+        model = (DefaultTableModel) OrdersView.getModel();
+
+        model.setRowCount(0);
+
+        loadOrdersTable();
+
+    }
 
     /**
      * @param args the command line arguments
@@ -401,7 +540,6 @@ public class Invoice extends javax.swing.JFrame {
     private javax.swing.JButton BackToDashboardButton;
     private javax.swing.JPanel BodyPanel;
     private javax.swing.JLabel EmpID;
-    private javax.swing.JTextField EmpIDTextfield;
     private javax.swing.JPanel HeaderPanel;
     private javax.swing.JPanel OrderViewPanel;
     private javax.swing.JTable OrdersView;
@@ -415,7 +553,8 @@ public class Invoice extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private com.k33ptoo.components.KButton kButton1;
-    private com.k33ptoo.components.KButton kButton2;
     private com.k33ptoo.components.KButton kButton3;
+    private javax.swing.JTextField orderIdField;
+    private javax.swing.JButton refreshButton;
     // End of variables declaration//GEN-END:variables
 }

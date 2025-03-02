@@ -20,12 +20,12 @@ import javax.swing.SwingUtilities;
  *
  * @author GOLDEN FIELD
  */
-public class kichenManagementDashboard extends javax.swing.JFrame {
+public class kitchenManagementDashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form FinanceDepartmentDashboard
      */
-    public kichenManagementDashboard() {
+    public kitchenManagementDashboard() {
         initComponents();
     }
 
@@ -183,7 +183,7 @@ public class kichenManagementDashboard extends javax.swing.JFrame {
         SideBarButtonPanel.setPreferredSize(new java.awt.Dimension(240, 549));
         SideBarButtonPanel.setLayout(new java.awt.GridLayout(13, 1, 6, 6));
 
-        diningButton.setText("Kichen Dashboard");
+        diningButton.setText("Kitchen Dashboard");
         diningButton.setAlignmentY(0.0F);
         diningButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         diningButton.setkBorderRadius(0);
@@ -300,7 +300,7 @@ public class kichenManagementDashboard extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new kichenManagementDashboard().setVisible(true);
+                new kitchenManagementDashboard().setVisible(true);
             }
         });
     }

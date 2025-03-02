@@ -6,6 +6,11 @@ package stock_management_gui;
 
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.MySql;
 
 /**
  *
@@ -15,11 +20,35 @@ public class AddUnites extends javax.swing.JDialog {
 
     /**
      * Creates new form AddUnites
+     * @param parent
      */
     public AddUnites(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+         LoadUnitesTable();
+
     }
+ private void LoadUnitesTable(){
+        try{
+        ResultSet resultset = MySql.executeSearch("SELECT * FROM `unite` ");
+        
+        DefaultTableModel defaultTableModel = (DefaultTableModel)jTable1.getModel();
+        
+        defaultTableModel.setRowCount(0);
+        
+        while (resultset.next()){
+            
+            Vector<String>vector = new Vector<>();
+            vector.add(resultset.getString("unit_id"));
+            vector.add(resultset.getString("unit_type"));
+            
+            defaultTableModel.addRow(vector);
+        }
+    }catch(Exception e){
+        e.printStackTrace();
+    }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -110,6 +139,11 @@ public class AddUnites extends javax.swing.JDialog {
         kButton1.setkPressedColor(new java.awt.Color(0, 102, 153));
         kButton1.setkSelectedColor(new java.awt.Color(0, 102, 153));
         kButton1.setkStartColor(new java.awt.Color(0, 102, 153));
+        kButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout unitesAddSectionLayout = new javax.swing.GroupLayout(unitesAddSection);
         unitesAddSection.setLayout(unitesAddSectionLayout);
@@ -159,6 +193,11 @@ public class AddUnites extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout tableSectionLayout = new javax.swing.GroupLayout(tableSection);
@@ -189,6 +228,78 @@ public class AddUnites extends javax.swing.JDialog {
     private void BackToDashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToDashboardButtonActionPerformed
         System.exit(0);        // Log out button
     }//GEN-LAST:event_BackToDashboardButtonActionPerformed
+
+    private void kButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kButton1ActionPerformed
+       String unitType = unitTypeTextField.getText();
+       
+       if(unitType.isEmpty()){
+           JOptionPane.showMessageDialog(this, "Please Enter Unit Type","Warning",JOptionPane.WARNING_MESSAGE);
+           
+       }else{
+           try {
+               MySql.executeUpdate("INSERT INTO `unite`(`unit_type`) VALUES ('"+unitType+"')");
+               LoadUnitesTable();
+               reset();
+           } catch (Exception e) {
+             
+       }
+       }
+
+    }//GEN-LAST:event_kButton1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+       // Get the index of the selected row in the table
+        int row = jTable1.getSelectedRow();
+
+        // Display the data of the selected row in the text fields
+        unitTypeTextField.setText(String.valueOf(jTable1.getValueAt(row, 1)));
+        
+
+        // Disable the Add button while deleting
+        unitTypeTextField.setEnabled(false);
+
+        // Check if the user double-clicked on a row
+        if (evt.getClickCount() == 2) {
+
+            String selectedID = String.valueOf(jTable1.getValueAt(row, 0));
+
+            // Asking to confirm before the deletion
+            int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this Unite Types?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+
+            //If user confirms the deletion
+            if (confirm == JOptionPane.YES_OPTION) {
+
+                try {
+
+                    //Delete from database
+                    MySql.executeUpdate("DELETE FROM `unite` WHERE  `unit_id`='" + selectedID + "' ");
+
+                    // Renumber remaining rows
+                    MySql.executeUpdate("SET @row_number = 0");
+                    MySql.executeUpdate("UPDATE `unite`"
+                            + "SET  `unit_id` = (@row_number := @row_number + 1) "
+                            + "ORDER BY  `unit_id`");
+
+                    // Reset AUTO_INCREMENT value
+                    MySql.executeUpdate("ALTER TABLE `unite` AUTO_INCREMENT = 1");
+
+                    // Reload the jtable table 
+                    LoadUnitesTable();
+                    reset();
+
+                    //Success message
+                    JOptionPane.showMessageDialog(this, "Unit Type Deleted Successfully", "Information", JOptionPane.INFORMATION_MESSAGE);
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(this, "Error occurred while deleting the Unites type Type", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+        }
+
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -226,4 +337,10 @@ public class AddUnites extends javax.swing.JDialog {
     private javax.swing.JTextField unitTypeTextField;
     private javax.swing.JPanel unitesAddSection;
     // End of variables declaration//GEN-END:variables
+
+    private void reset() {
+        unitTypeTextField.setText(" ");
+    }
 }
+
+

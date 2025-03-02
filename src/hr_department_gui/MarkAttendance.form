@@ -366,6 +366,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="emp_id_name_fields">
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="emp_id_name_fieldsKeyReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>

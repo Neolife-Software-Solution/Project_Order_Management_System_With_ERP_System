@@ -262,7 +262,7 @@
           <SubComponents>
             <Component class="com.k33ptoo.components.KButton" name="diningButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Kichen Dashboard"/>
+                <Property name="text" type="java.lang.String" value="Kitchen Dashboard"/>
                 <Property name="alignmentY" type="float" value="0.0"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="12" style="1"/>

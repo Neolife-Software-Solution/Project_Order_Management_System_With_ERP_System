@@ -326,6 +326,12 @@ public class MarkAttendance extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setText("Employee ID / Name");
 
+        emp_id_name_fields.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                emp_id_name_fieldsKeyReleased(evt);
+            }
+        });
+
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel7.setText("Date");
 
@@ -686,6 +692,10 @@ public class MarkAttendance extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_employeeIDTextFieldKeyPressed
+
+    private void emp_id_name_fieldsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emp_id_name_fieldsKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emp_id_name_fieldsKeyReleased
 
     private static void scheduleDailyReset() {
 
